@@ -1,0 +1,27 @@
+# Group: 02_Load Models
+# 🌟Load Diffusion Model🌟
+# Download Link: https://civitai.com/models/141592/pixelwave
+# File Name: pixelwave_flux1_dev_fp8_03.safetensors
+# Directory: ComfyUI/models/unet/
+# I used dpmpp 2m sgm uniform 30 steps for the showcase images. If you want a neater/cleaner output, try increasing the guidance. Also mentioning a style can help, so the model doesn't have to guess.
+# I also recommend try adding the upscale latent by node, and scale the latent by 1.5, e.g. generating an image that is 1536x1536 instead of 1024x1024
+https://civitai.com/api/download/models/992642?type=Model&format=SafeTensor&size=full&fp=fp8
+   dir=/workspace/ComfyUI/models/unet
+   out=pixelwave_flux1_dev_fp8_03.safetensors
+
+# Group: 03_Relight
+# 🌟Load CheckPoint🌟
+# Download Link: https://civitai.com/models/132632/epicphotogasm
+# File Name: epicphotogasm_ultimateFidelity.safetensors
+# Directory: ComfyUI/models/checkpoints
+https://civitai.com/api/download/models/429454?type=Model&format=SafeTensor&size=pruned&fp=fp16
+    dir=/workspace/ComfyUI/models/checkpoints
+    out=epicphotogasm_ultimateFidelity.safetensors
+
+# 🌟LoraLoaderModelOnly🌟
+# Download Link: https://civitai.com/models/200255/hands-xl-sd-15-flux1-dev
+# File Name: flux Hand v2.safetensors
+# Directory: ComfyUI/models/loras/
+https://civitai.com/api/download/models/804967?type=Model&format=SafeTensor
+    dir=/workspace/ComfyUI/models/loras
+    out=Flux_Hand_v2.safetensors

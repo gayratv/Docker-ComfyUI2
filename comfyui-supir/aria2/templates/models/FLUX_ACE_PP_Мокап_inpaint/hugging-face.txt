@@ -1,0 +1,36 @@
+# FLUX\TURBO\FLUX.1-Turbo-Alpha.safetensors
+# https://huggingface.co/alimama-creative/FLUX.1-Turbo-Alpha
+https://huggingface.co/alimama-creative/FLUX.1-Turbo-Alpha/resolve/main/diffusion_pytorch_model.safetensors
+  dir=/workspace/ComfyUI/models/loras/FLUX/TURBO
+  out=FLUX.1-Turbo-Alpha.safetensors
+
+# FLUX\ACE_PP\comfyui_subject_lora16.safetensors
+# https://huggingface.co/ali-vilab/ACE_Plus/blob/main/subject/comfyui_subject_lora16.safetensors
+https://huggingface.co/ali-vilab/ACE_Plus/resolve/main/subject/comfyui_subject_lora16.safetensors
+  dir=/workspace/ComfyUI/models/loras/FLUX/ACE_PP
+  out=comfyui_subject_lora16.safetensors
+
+# boricuapab/flux1-fill-dev-fp8
+https://huggingface.co/boricuapab/flux1-fill-dev-fp8/resolve/main/flux1-fill-dev-fp8.safetensors
+  dir=/workspace/ComfyUI/models/diffusion_models/FLUX/
+  out=flux1-fill-dev-fp8.safetensors
+
+# t5xxl_fp8_e4m3fn.safetensors
+# https://huggingface.co/comfyanonymous/flux_text_encoders/tree/main
+https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors
+  dir=/workspace/ComfyUI/models/clip/FLUX/
+  out=t5xxl_fp8_e4m3fn.safetensors
+
+https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors
+  dir=/workspace/ComfyUI/models/clip/FLUX/
+  out=clip_l.safetensors
+
+# VAE fill
+https://huggingface.co/Gayrat1968/Flux-fill/resolve/main/flux.fill-vae.safetensors
+  dir=/workspace/ComfyUI/models/vae/FLUX-fill/
+  out=flux.fill-vae.safetensors
+
+# VAE dev
+https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/vae/diffusion_pytorch_model.safetensors
+  dir=/workspace/ComfyUI/models/vae/FLUX/
+  out=flux.vae.safetensors

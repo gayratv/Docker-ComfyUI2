@@ -1,0 +1,36 @@
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
+source connect.sh "ssh -p 33975 root@64.49.13.174 -L 8080:localhost:8080"
+ssh -p $SSH_PORT $SSH_USER_HOST -i "$SSH_KEY"
+
+
+>->->->->->->->->->->->->->->->->->->->->->->->-
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/docker-base/docker-cuda-12-4
+export IMAGE_NAME="cuda-12-4"
+export BASE_IMAGE="pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime"
+export VERSION="v5.2-pytorch-2.6.0"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/docker-base/docker-cuda-12-4
+export IMAGE_NAME="cuda-12-4"
+export BASE_IMAGE="pytorch/pytorch:2.5.1-cuda12.4-cudnn9-runtime"
+export VERSION="v5.2-pytorch-2.5.1-runtime"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/docker-base/docker-cuda-12-4
+export IMAGE_NAME="cuda-12-4"
+export BASE_IMAGE="pytorch/pytorch:2.5.1-cuda12.4-cudnn9-devel"
+export VERSION="v5.2-pytorch-2.5.1-devel"
+
+
+echo "docker build --build-arg BASE_IMAGE=$BASE_IMAGE -t $IMAGE_NAME:$VERSION ."
+docker build --progress=plain --build-arg BASE_IMAGE="$BASE_IMAGE" -t $IMAGE_NAME:$VERSION .
+## docker build --build-arg BASE_IMAGE="$BASE_IMAGE" -t $IMAGE_NAME:$VERSION .
+
+docker tag "$IMAGE_NAME:$VERSION" gayrat/"$IMAGE_NAME:$VERSION"
+echo "docker push gayrat/$IMAGE_NAME:$VERSION"
+docker push gayrat/"$IMAGE_NAME:$VERSION"
+
+docker rm -f  "$IMAGE_NAME"
+echo "docker run  $IMAGE_NAME $IMAGE_NAME:$VERSION"
+docker run -it --privileged --gpus all --name "$IMAGE_NAME" "$IMAGE_NAME:$VERSION" bash
+docker exec -it "$IMAGE_NAME" bash
+>->->->->->->->->->->->->->->->->->->->->->->->-

@@ -1,0 +1,91 @@
+ssh -p 41813 root@78.139.4.171
+
+touch ~/.no_auto_tmux
+source connect.sh ""
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-cuda-12-8
+source connect.sh "ssh -p 33975 root@64.49.13.174 -L 8080:localhost:8080"
+ssh -p $SSH_PORT $SSH_USER_HOST -i "$SSH_KEY"
+
+entrypoint.sh
+
+cd /workspace
+./SUPIR-v2-MaskTile-civitay.sh
+./SUPIR-v2-MaskTile-hf.sh
+
+cd /mnt/f/_prg/python/Docker-test/docker-supir-v2
+scp -i "$SSH_KEY" -P $SSH_PORT -r "./VPS-copy" $SSH_USER_HOST:/root/VPS-copy
+
+/workspace/ComfyUI
+
+cd ~/VPS-copy
+chmod +x *.sh
+./mkdir-comf.sh
+./call-dl-SUPIR-v2-MaskTile.sh
+
+nethogs
+
+docker rm -f supir
+docker run -it --privileged --gpus all --name supir supir-5090:v1.0 bash
+docker exec -it --privileged  supir bash
+
+comfy.sh
+
+docker cp /путь/к/файлу контейнер:/путь/внутри/контейнера
+docker cp /mnt/d/ComfyUI-data/models/checkpoints/SD1.5/v1-5-pruned-emaonly.ckpt supir:/workspace/ComfyUI/models/checkpoints/SD1.5
+docker cp /mnt/d/ComfyUI-data/models/checkpoints/SD1.5/v1-5-pruned-emaonly.ckpt supir:/workspace/ComfyUI/models/checkpoints/SD1.5/v1-5-pruned-emaonly.ckpt
+
+
+
+
+=-=-=-=-=-=-=-=-=-=-
+--- DRAGON ---
+docker build -t comfyui-cuda-12-8:v1.0 .
+
+docker rm -f comfyui-cuda-12-8
+docker run -it --privileged --gpus all --name comfyui-cuda-12-8 comfyui-cuda-12-8:v1.0 bash
+docker exec -it comfyui-cuda-12-8  bash
+
+curl -L "https://drive.google.com/uc?export=download&id=14Z6CQ2LJuYFkODYWD4o4li08n15jyhYD" -o .env
+entrypoint.sh
+
+./SUPIR-v2-MaskTile-civitay.sh
+./SUPIR-v2-MaskTile-hf.sh
+
+
+comfy.sh
+
+//docker build --progress=plain -t supir-5090:v1.0 . 2>&1 | tee build.log
+
+docker tag comfyui-cuda-12-8:v1.0 gayrat/comfyui-cuda-12-8:v1.0
+docker push gayrat/comfyui-cuda-12-8:v1.0
+=-=-=-=-=-=-=-=-=-=-
+
+docker cp my_folder/ my_container:/app/
+docker cp <путь_на_хосте> <имя_контейнера>:/путь_внутри_контейнера
+
+///////////
+https://drive.google.com/file/d/14Z6CQ2LJuYFkODYWD4o4li08n15jyhYD/view?usp=sharing
+curl -L "https://drive.google.com/uc?export=download&id=14Z6CQ2LJuYFkODYWD4o4li08n15jyhYD" -o .env
+
+>->->->->->->->->->->->->->->->->->->->->->->->-
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-cuda-12-8
+export IMAGE_NAME="comfyui-cuda-12-4"
+export BASE_IMAGE="cuda-12-4"
+export VERSION="v1.0"
+env | grep VERSION
+env | grep ENV1
+docker build --build-arg BASE_IMAGE="gayrat/$BASE_IMAGE:$VERSION" -t $IMAGE_NAME:$VERSION .
+
+docker history --no-trunc "$IMAGE_NAME:$VERSION"
+docker inspect "$IMAGE_NAME:$VERSION" | grep -i parent
+
+docker run -it --privileged --gpus all --name "IMAGE_NAME" "$IMAGE_NAME:$VERSION" bash
+
+docker tag "$IMAGE_NAME:$VERSION" gayrat/"$IMAGE_NAME:$VERSION"
+docker push gayrat/"$IMAGE_NAME:$VERSION"
+
+>->->->->->->->->->->->->->->->->->->->->->->->-
+
+cd /workspace/aria2/templates
+curl -L "https://drive.google.com/uc?export=download&id=14Z6CQ2LJuYFkODYWD4o4li08n15jyhYD" -o .env
+entrypoint.sh

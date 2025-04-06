@@ -1,0 +1,28 @@
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/nunchaki
+source /mnt/f/_prg/python/Docker-ComfyUI/.venv-wsl/bin/activate
+./vast-offers.sh
+
+source vast-contract.sh 18284318
+source vast-env-run.sh
+
+CONTRACT_ID=19092564
+
+echo "http://$VAST_PUBLIC_IPADDR:$VAST_COMFY"
+cmd.exe /c start chrome "http://$VAST_PUBLIC_IPADDR:$VAST_COMFY"
+ssh -p $VAST_SSH "root@$VAST_PUBLIC_IPADDR" -i ~/.ssh/mvps/ud_rsa
+
+entrypoint.sh
+
+scp -P "$VAST_SSH" -i ~/.ssh/mvps/ud_rsa "root@$VAST_PUBLIC_IPADDR":/workspace/flux.1-dev.png ./
+
+scp -P "$VAST_SSH" -i ~/.ssh/mvps/ud_rsa /mnt/f/_prg/python/Docker-ComfyUI/nunchaki/aria2/templates/models/nunchaki/huggingface.txt  "root@$VAST_PUBLIC_IPADDR":/workspace/aria2/templates/models/nunchaki/
+
+cd /workspace/aria2/templates
+./nunchaki.sh
+
+
+cd /workspace/ComfyUI/models/diffusion_models
+
+
+vastai search offers 'num_gpus=1 gpu_name=RTX_3090 inet_down>=5000 cpu_ram>=32'

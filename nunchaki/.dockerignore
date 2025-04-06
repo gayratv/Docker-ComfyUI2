@@ -1,0 +1,64 @@
+# Исключаем временные файлы и системные файлы
+*.log
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
+
+# Исключаем файлы IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Исключаем зависимости и артефакты сборки
+node_modules/
+vendor/
+dist/
+build/
+
+# Исключаем конфиденциальные файлы
+.env
+*.env
+*.pem
+*.key
+*.crt
+
+# Исключаем контроль версий
+.git/
+.gitignore
+.svn/
+.hg/
+
+# Исключаем тестовые файлы
+tests/
+__tests__/
+coverage/
+
+# Исключаем файлы документации
+docs/
+README.md
+CHANGELOG.md
+
+# Исключаем локальные настройки
+.local/
+.config/
+.cache/
+
+# Исключаем бинарные файлы
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Исключаем архивы
+*.zip
+*.tar.gz
+*.rar
+
+
+
+flux.1-dev.png
+template-start.txt
+vast*.*
+заметки*.*

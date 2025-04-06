@@ -1,0 +1,21 @@
+ssh -p 46560 root@216.144.178.146 -L 8080:localhost:8080
+
+source connect.sh "ssh -p 40716 root@136.228.125.173 -L 8080:localhost:8080"
+source connect.sh ""
+
+ssh -p $SSH_PORT $SSH_USER_HOST -i "$SSH_KEY"
+
+=-=-=-=-=-=-=-=-=-=-
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/docker-base-from/docker-cuda-12-8
+export BASE_IMAGE=""
+export IMAGE_NAME="cuda-12-8"
+export VERSION="v4.0"
+
+
+echo "docker build --build-arg BASE_IMAGE=gayrat/$BASE_IMAGE -t $IMAGE_NAME:$VERSION "
+docker build -t $IMAGE_NAME:$VERSION .
+docker tag "$IMAGE_NAME:$VERSION" gayrat/"$IMAGE_NAME:$VERSION"
+echo "docker push gayrat/$IMAGE_NAME:$VERSION"
+docker push gayrat/"$IMAGE_NAME:$VERSION"
+=-=-=-=-=-=-=-=-=-=-
