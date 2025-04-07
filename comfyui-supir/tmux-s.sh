@@ -18,19 +18,13 @@ SCRIPT_PATH="$1"
 # Запускаем tmux сессию
 tmux new-session -d -s comfy 'comfy.sh'
 
-# Создаем новое окно с bash
-tmux new-window -t comfy:1 'bash'
 
-# Создаем новое окно с выполнением переданного скрипта
+
 tmux new-window -t comfy:1 "bash -c 'cd /workspace/aria2/templates && ./$SCRIPT_PATH'"
-#tmux new-window -t comfy:1 \
-#  "bash -c \"\
-#    cd /workspace/aria2/templates && \
-#    ./$SCRIPT_PATH; \
-#    echo \\\"Скрипт завершен. Запуск интерактивного bash...\\\"; \
-#    exec bash\
-#  \""
 
 # Выбираем первое окно и подключаемся к сессии
 tmux select-window -t comfy:0
 tmux attach-session -t comfy
+
+# nano /usr/local/bin/tmux-s.sh
+# tmux-s.sh ComfyUI-Fluxtapoz.sh

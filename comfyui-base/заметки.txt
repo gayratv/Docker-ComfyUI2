@@ -13,18 +13,19 @@ export VERSION="v4.0"
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
 export IMAGE_NAME="comfyui-base-cuda-12-4"
 export BASE_IMAGE="cuda-12-4:v5.1-pytorch-2.6.0"
-export VERSION="v5.1-pytorch-2.6.0"
+export VERSION="v5.3-pytorch-2.6.0"
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
 export IMAGE_NAME="comfyui-base-cuda-12-4"
-export BASE_IMAGE="cuda-12-4:v5.2-pytorch-2.5.1-runtime"
-export VERSION="v5.2-pytorch-2.5.1"
+export BASE_IMAGE="cuda-12-4:v5.3-pytorch-2.5.1-runtime"
+export VERSION="v5.3-pytorch-2.5.1-runtime"
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
 export IMAGE_NAME="comfyui-base-cuda-12-4"
 export BASE_IMAGE="cuda-12-4:v5.1-pytorch-2.5.1-devel"
-export VERSION="v5.2-pytorch-2.5.1-devel"
+export VERSION="v5.3-pytorch-2.5.1-devel"
 
+=====================================
 
 echo "docker build --build-arg BASE_IMAGE=gayrat/$BASE_IMAGE -t $IMAGE_NAME:$VERSION ."
 docker build --progress=plain --build-arg BASE_IMAGE="gayrat/$BASE_IMAGE" -t $IMAGE_NAME:$VERSION .

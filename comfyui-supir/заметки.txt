@@ -62,22 +62,24 @@ export NODES="nodes1.txt"
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
 export IMAGE_NAME="comfyui"
-export BASE_IMAGE="comfyui-base-cuda-12-4:v5.2-pytorch-2.5.1"
-export VERSION="v1.0-Fluxtapoz"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.3-pytorch-2.5.1-runtime"
+export VERSION="v1.2-Fluxtapoz"
 export NODES="nodes-Fluxtapoz.txt"
 
 
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
 export IMAGE_NAME="comfyui"
-export BASE_IMAGE="comfyui-base-cuda-12-4:v5.1-pytorch-2.5.1-devel"
-export VERSION="v1.0-relight-devel"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.3-pytorch-2.5.1-devel"
+export VERSION="v1.1-relight-devel"
 
+===================================
 
 docker build --progress=plain \
   --build-arg BASE_IMAGE="gayrat/$BASE_IMAGE" \
   --build-arg NODES="$NODES" \
   -t $IMAGE_NAME:$VERSION .
+
 
 docker tag "$IMAGE_NAME:$VERSION" gayrat/"$IMAGE_NAME:$VERSION"
 echo "docker push gayrat/$IMAGE_NAME:$VERSION"
@@ -90,6 +92,10 @@ docker run -it --privileged --gpus all -p 8188:8188 \
     --name "$IMAGE_NAME" "$IMAGE_NAME:$VERSION" \
     bash
 
+docker rm -f "$IMAGE_NAME"
+docker run -it --privileged --gpus all -p 8188:8188 \
+    --name "$IMAGE_NAME" "$IMAGE_NAME:$VERSION" \
+    bash
 
 docker exec -it "$IMAGE_NAME" bash
 
@@ -101,6 +107,8 @@ python main.py  --listen 0.0.0.0 --port 8188 --front-end-version Comfy-Org/Comfy
 http://127.0.0.1:8188
 curl http://127.0.0.1:8188
 apt-get update && apt-get install -y net-tools
+
+tmux-s.sh ComfyUI-Fluxtapoz.sh
 
 >->->->->->->->->->->->->->->->->->->->->->->->-
 

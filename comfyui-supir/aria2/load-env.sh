@@ -4,7 +4,7 @@
 SCRIPT_DIR=$(dirname "$(realpath "$BASH_SOURCE")")
 
 # Загружаем переменные из .env, если файл существует в той же директории
-if [ -f "$SCRIPT_DIR/templates/.env" ]; then
+if [ -f "../$SCRIPT_DIR/.env" ]; then
     # Читаем и экспортируем каждую строку из .env
     while IFS='=' read -r key value; do
         # Игнорируем пустые строки и комментарии

@@ -3,7 +3,7 @@ source /mnt/f/_prg/python/Docker-ComfyUI/.venv-wsl/bin/activate
 
 ./vast-offers2.sh 1 RTX_3090 5000 32
 
-source vast-contract.sh 5708967 gayrat/comfyui:v1.0-Fluxtapoz
+source vast-contract.sh 5708967 gayrat/comfyui:v1.2-Fluxtapoz
 
 source vast-contract.sh 13109408 gayrat/comfyui:v1.0-flux-inpaint1
 
@@ -19,6 +19,8 @@ tmux-s.sh ComfyUI-Fluxtapoz.sh
 
 vastai destroy instances --help
 vastai destroy instances "$CONTRACT_ID"
+vastai destroy instances 19259571
+
 
 entrypoint.sh
 

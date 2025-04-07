@@ -18,6 +18,7 @@ RUN apt-get update  \
     net-tools \
     gpg-agent \
     tmux \
+    locales \
     build-essential g++ cmake ninja-build libomp-dev \
     && rm -rf /var/lib/apt/lists/*
 
@@ -27,7 +28,13 @@ RUN apt-get update \
     && apt-get install -y tzdata \
     && ln -fs /usr/share/zoneinfo/Etc/UTC /etc/localtime  \
     && dpkg-reconfigure -f noninteractive tzdata \
+    && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
+    && locale-gen \
+    && update-locale LANG=en_US.UTF-8 \
     && rm -rf /var/lib/apt/lists/*
+
+ENV LANG=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
 
 RUN wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb \
     && dpkg -i cloudflared-linux-amd64.deb \
