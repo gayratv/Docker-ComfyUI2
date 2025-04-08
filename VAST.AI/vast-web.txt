@@ -71,3 +71,15 @@ curl -o vast-search.json -G "https://cloud.vast.ai/api/v0/search/asks/" --data-u
 
 "inet_down_cost": {"lte": "0.0001"},
         "inet_down": {"gte": "5000.0"},
+
+curl -o vast-search.json -G "https://cloud.vast.ai/api/v0/search/asks/" --data-urlencode \
+    'q={
+        "gpu_name": {"eq": "RTX 3090"},
+        "num_gpus": {"eq": 1},
+        "rentable": {"eq": true},
+        "cuda_max_good": {"gte": "12.4"},
+        "cpu_ram": {"gte": "32000"},
+        "inet_down": {"gte": "1000.0"},
+        "gpu_frac": {"gte": "0.5"},
+        "disk_space": {"gte": "100.0"}
+      }'
