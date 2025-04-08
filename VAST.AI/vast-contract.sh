@@ -23,7 +23,7 @@ IMAGE_NAME=$2
 # Создаем инстанс с использованием переданного имени образа
 vastai create instance "$INSTANCE_ID" \
     --image "$IMAGE_NAME" \
-    --disk 160 \
+    --disk 100 \
     --ssh --direct \
     --onstart-cmd 'env >> /etc/environment ; tmux source-file ~/.tmux.conf ; touch ~/.no_auto_tmux; ' \
     --env '-p 8188:8188' \

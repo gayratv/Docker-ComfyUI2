@@ -1,0 +1,73 @@
+curl -o vast-search.json --location --request PUT 'https://console.vast.ai/api/v0/search/asks/' \
+--header 'Accept: application/json' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer f92b765a9d15cc6e3eb2445a11111dd4768cbf6d9cc245d9dc3b376f06fe859c' \
+--data '{
+  "body": {
+    "gpu_name": {"eq": "RTX 3090"},
+    "num_gpus": {"eq": 1  },
+    "inet_down":{"gte":"5000"},
+    "limit": 1,
+    "rentable": {"eq": true  },
+    "cuda_max_good": {"gte": "12.4" },
+    "cpu_ram": {"gte": 32 }
+}'
+
+
+curl -o vast-search.json --location --request PUT 'https://console.vast.ai/api/v0/search/asks/' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer f92b765a9d15cc6e3eb2445a11111dd4768cbf6d9cc245d9dc3b376f06fe859c' \
+--data '{"body":{}}'
+
+
+curl -o vast-search.json --location --request PUT PUT "https://console.vast.ai/api/v0/search/asks/" \
+  -H "Authorization: Bearer f92b765a9d15cc6e3eb2445a11111dd4768cbf6d9cc245d9dc3b376f06fe859c" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "body": {
+      "num_gpus": {"eq": 1},
+      "gpu_name": {"eq": "RTX_3090"},
+    }
+  }'
+
+curl -o vast-search.json --location --request PUT 'https://console.vast.ai/api/v0/search/asks/' \
+--header 'Accept: application/json' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer f92b765a9d15cc6e3eb2445a11111dd4768cbf6d9cc245d9dc3b376f06fe859c' \
+--data '{
+  "body": {
+    "gpu_name": {"eq": RTX_3090}
+}'
+
+
+https://cloud.vast.ai/api/v0/search/asks/?q={%22gpu_name%22:{%22eq%22:%22RTX%203090%22}}
+{"gpu_name":{"eq":"RTX 3090"}}
+
+curl -o vast-search.json -X GET "https://cloud.vast.ai/api/v0/search/asks/?q=%7B%22gpu_name%22%3A%7B%22eq%22%3A%22RTX%203090%22%7D%7D"
+
+
+curl -o vast-search.json -X GET "https://cloud.vast.ai/api/v0/search/asks/?q=
+
+%7B%22gpu_name%22%3A%7B%22eq%22%3A%22RTX%203090%22%7D%7D"
+%7B%22gpu_name%22%3A%7B%22eq%22%3A%22RTX%203090%22%7D%7D%0A
+
+curl -o vast-search.json -G "https://cloud.vast.ai/api/v0/search/asks/" --data-urlencode \
+    'q={"gpu_name":{"eq":"RTX 3090"},"num_gpus": {"eq": 1}, "rentable": {"eq": true  }, "cuda_max_good": {"gte": "12.4" }, "cpu_ram": {"gte": "32000" }}'
+
+  "cpu_ram": 11973,
+
+curl -o vast-search.json -G "https://cloud.vast.ai/api/v0/search/asks/" --data-urlencode \
+    'q={
+        "gpu_name": {"eq": "RTX 3090"},
+        "num_gpus": {"eq": 1},
+        "rentable": {"eq": true},
+        "cuda_max_good": {"gte": "12.4"},
+        "cpu_ram": {"gte": "32000"},
+        "inet_down": {"gte": "1000.0"},
+        "gpu_frac": {"gte": "0.5"},
+        "disk_space": {"gte": "100.0"}
+      }'
+
+
+"inet_down_cost": {"lte": "0.0001"},
+        "inet_down": {"gte": "5000.0"},

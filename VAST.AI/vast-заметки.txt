@@ -1,3 +1,5 @@
+vastai set api-key xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
 clear
 cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
 source /mnt/f/_prg/python/Docker-ComfyUI/.venv-wsl/bin/activate
@@ -5,10 +7,26 @@ export IMAGE_NAME=gayrat/comfyui:v1.5-Fluxtapoz
 
 ## gayrat/comfyui:v1.0-flux-inpaint1
 
-./vast-offers2.sh 1 RTX_3090 5000 32
+./vast-offers2.sh 1 RTX_3090 1000 32
 ./vast-offers2.sh 1 RTX_4090 5000 32
 
-source vast-contract.sh 17082814 $IMAGE_NAME
+curl -o vast-search.json -G "https://cloud.vast.ai/api/v0/search/asks/" --data-urlencode \
+    'q={
+        "gpu_name": {"eq": "RTX 3090"},
+        "num_gpus": {"eq": 1},
+        "rentable": {"eq": true},
+        "cuda_max_good": {"gte": "12.4"},
+        "cpu_ram": {"gte": "32000"},
+        "inet_down": {"gte": "1000.0"},
+        "gpu_frac": {"gte": "0.5"},
+        "disk_space": {"gte": "100.0"}
+      }'
+
+python3 vast-search-py.py
+
+
+/mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/vast-search.sh
+source vast-contract.sh 18734675 $IMAGE_NAME
 
 source vast-env-run.sh
 
