@@ -62,16 +62,14 @@ export NODES="nodes1.txt"
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
 export IMAGE_NAME="comfyui"
-export BASE_IMAGE="comfyui-base-cuda-12-4:v5.3-pytorch-2.5.1-runtime"
-export VERSION="v1.2-Fluxtapoz"
-export NODES="nodes-Fluxtapoz.txt"
-
-
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.3-pytorch-2.5.1-devel"
+export VERSION="v1.1-relight-devel"
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
 export IMAGE_NAME="comfyui"
-export BASE_IMAGE="comfyui-base-cuda-12-4:v5.3-pytorch-2.5.1-devel"
-export VERSION="v1.1-relight-devel"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.3-pytorch-2.5.1-runtime"
+export VERSION="v1.5-Fluxtapoz"
+export NODES="nodes-Fluxtapoz.txt"
 
 ===================================
 

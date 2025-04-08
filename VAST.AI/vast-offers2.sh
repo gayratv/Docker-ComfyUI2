@@ -17,7 +17,21 @@ CPU_RAM=$4
 OUTPUT_FILE="vast-search-offers.txt"
 
 # Выполняем запрос к vastai и сохраняем результат в файл
-vastai search offers "num_gpus=$NUM_GPUS gpu_name=$GPU_NAME inet_down>=$INET_DOWN cpu_ram>=$CPU_RAM" > "$OUTPUT_FILE"
+
+# QUESTION="'num_gpus=$NUM_GPUS' 'gpu_name=$GPU_NAME' 'inet_down>=$INET_DOWN' 'cpu_ram>=$CPU_RAM' 'cuda_vers>=12.4'"
+# QUESTION=("num_gpus=$NUM_GPUS" "gpu_name=$GPU_NAME" "inet_down>=$INET_DOWN" "cpu_ram>=$CPU_RAM" "cuda_vers>=12.4")
+#QUESTION=("'num_gpus=$NUM_GPUS'" "'gpu_name=$GPU_NAME'" "'inet_down>=$INET_DOWN'" "'cpu_ram>=$CPU_RAM'" "'cuda_vers>=12.4'")
+#echo "vastai search offers ${QUESTION[@]}"
+# vastai search offers 'num_gpus=1' 'gpu_name=RTX_4090' 'inet_down>=5000' 'cpu_ram>=32' 'cuda_vers>=12.4'
+
+# vastai search offers "$QUESTION" > "$OUTPUT_FILE"
+# eval vastai search offers $QUESTION > "$OUTPUT_FILE"
+#vastai search offers "${QUESTION[@]}" > "$OUTPUT_FILE"
+
+QUESTION=("num_gpus=$NUM_GPUS" "gpu_name=$GPU_NAME" "inet_down>=$INET_DOWN" "cpu_ram>=$CPU_RAM" "cuda_vers>=12.4")
+#bash -c 'vastai search offers '"${QUESTION[@]}"' > "$OUTPUT_FILE"'
+#bash -c 'vastai search offers '"${QUESTION[@]}"' > vast-search-offers.txt'
+bash -c "vastai search offers ${QUESTION[@]} > vast-search-offers.txt"
 
 # Обрабатываем заголовок с фиксированной шириной столбцов
 header=$(awk 'NR == 1 {
