@@ -51,6 +51,8 @@ def fetch_vast_data(gpu_name, cpu_ram):
         print(f"Ошибка при выполнении запроса: {response.status_code}")
         print(f"Ответ сервера: {response.text}")
 
+import json
+
 def display_offers():
     # Открываем и читаем файл
     try:
@@ -59,11 +61,17 @@ def display_offers():
 
         # Проверяем, что в данных есть список offers
         if 'offers' in data:
+            # Сортируем данные по значению total_hour
+            sorted_offers = sorted(
+                data['offers'],
+                key=lambda offer: offer.get('search', {}).get('totalHour', float('inf'))
+            )
+
             # Выводим заголовок таблицы
             print(f"{'ID':<10} {'CPU RAM':<10} {'GPU Name':<15} {'Inet Down':<12} {'IDown Cost':<15} {'IDown Cost TB':<15}  {'Setup Cost':<12} {'Machine ID':<12} {'$/HR':<12}")
             print("-" * 97)  # Разделительная линия
 
-            for offer in data['offers']:
+            for offer in sorted_offers:
                 # Извлекаем необходимые данные
                 offer_id = offer.get('id')
                 cpu_ram = offer.get('cpu_ram')
