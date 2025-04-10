@@ -12,18 +12,18 @@ export VERSION="v4.0"
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
 export IMAGE_NAME="comfyui-base-cuda-12-4"
-export BASE_IMAGE="cuda-12-4:v5.1-pytorch-2.6.0"
-export VERSION="v5.3-pytorch-2.6.0"
+export BASE_IMAGE="cuda-12-4:v5.4-pytorch-2.6.0"
+export VERSION="v5.4-pytorch-2.6.0"
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
 export IMAGE_NAME="comfyui-base-cuda-12-4"
-export BASE_IMAGE="cuda-12-4:v5.3-pytorch-2.5.1-runtime"
-export VERSION="v5.3-pytorch-2.5.1-runtime"
+export BASE_IMAGE="cuda-12-4:v5.4-pytorch-2.5.1-runtime"
+export VERSION="v5.4-pytorch-2.5.1-runtime"
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
 export IMAGE_NAME="comfyui-base-cuda-12-4"
-export BASE_IMAGE="cuda-12-4:v5.1-pytorch-2.5.1-devel"
-export VERSION="v5.3-pytorch-2.5.1-devel"
+export BASE_IMAGE="cuda-12-4:v5.4-pytorch-2.5.1-devel"
+export VERSION="v5.4-pytorch-2.5.1-devel"
 
 =====================================
 
@@ -52,3 +52,10 @@ http://127.0.0.1:8188
 
 docker rm -f comfyui
 docker run -it --privileged --gpus all --name comfyui  comfyui-base-cuda-12-4:v4.0 bash
+
+===================
+pip install pip-tools
+Создайте файл requirements.in, где укажите только те пакеты, которые вам нужны:
+
+pip-compile requirements.in
+pip install -r requirements.txt

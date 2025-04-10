@@ -36,41 +36,46 @@ entrypoint.sh
 >->->->->->->->->->->->->->->->->->->->->->->->-
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
 export IMAGE_NAME="comfyui-supir-12-8"
-export BASE_IMAGE="comfyui-base-cuda-12-8:v5.1"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.4-pytorch-2.5.1-runtime"
 export VERSION="v12.0"
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
 export IMAGE_NAME="comfyui-supir-12-4"
-export BASE_IMAGE="comfyui-base-cuda-12-4:v5.1"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.4-pytorch-2.5.1-runtime"
 export VERSION="v12.0"
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
 export IMAGE_NAME="comfyui-supir-12-4"
-export BASE_IMAGE="comfyui-base-cuda-12-4:v5.1-pytorch-2.5.1"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.4-pytorch-2.5.1-runtime"
 export VERSION="v12.6"
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
 export IMAGE_NAME="comfyui"
-export BASE_IMAGE="comfyui-base-cuda-12-4:v5.1-pytorch-2.5.1"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.4-pytorch-2.5.1-runtime"
 export VERSION="v1.0-relight"
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
 export IMAGE_NAME="comfyui"
-export BASE_IMAGE="comfyui-base-cuda-12-4:v5.1-pytorch-2.5.1"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.4-pytorch-2.5.1-runtime"
 export VERSION="v1.0-flux-inpaint1"
 export NODES="nodes1.txt"
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
 export IMAGE_NAME="comfyui"
-export BASE_IMAGE="comfyui-base-cuda-12-4:v5.3-pytorch-2.5.1-devel"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.4-pytorch-2.5.1-devel"
 export VERSION="v1.1-relight-devel"
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
 export IMAGE_NAME="comfyui"
-export BASE_IMAGE="comfyui-base-cuda-12-4:v5.3-pytorch-2.5.1-runtime"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.4-pytorch-2.5.1-runtime"
 export VERSION="v1.5-Fluxtapoz"
 export NODES="nodes-Fluxtapoz.txt"
 
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+export IMAGE_NAME="comfyui"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.4-pytorch-2.5.1-runtime"
+export VERSION="v1.1-FaceReplicator"
+export NODES="nodes-FaceReplicator_v1-1.txt"
 ===================================
 
 docker build --progress=plain \
@@ -89,6 +94,12 @@ docker run -it --privileged --gpus all -p 8188:8188 \
     -v /mnt/h/ComfyUI-data/models:/workspace/ComfyUI/models \
     --name "$IMAGE_NAME" "$IMAGE_NAME:$VERSION" \
     bash
+
+docker run -it --privileged --gpus all -p 8188:8188 \
+    -v /mnt/h/ComfyUI-data/models:/workspace/ComfyUI/models \
+    --name "$IMAGE_NAME" "$IMAGE_NAME:$VERSION" \
+    tmux-s-bash.sh
+
 
 docker rm -f "$IMAGE_NAME"
 docker run -it --privileged --gpus all -p 8188:8188 \
@@ -144,3 +155,11 @@ http://207.174.105.41:8188
 
 
 docker cp 854228f46bb5:/workspace/ComfyUI/custom_nodes/ComfyUI_IPAdapter_plus /mnt/f/tempg/3
+docker cp comfyui:/workspace/ComfyUI/custom_nodes/uv.log  /mnt/f/tempg/3
+
+cd /workspace/ComfyUI/custom_nodes
+cat requirements-common.txt
+
+pip install pip-tools
+pip-compile requirements-common.txt --output-file requirements.txt
+pip install -r requirements.txt

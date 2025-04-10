@@ -23,15 +23,19 @@ def read_unique_lines(file_path):
     # Удаляем лишние пробелы и переводы строк
     return set(line.strip() for line in lines if line.strip())
 
-
 def merge_requirements(output_file, input_files):
     """
     Объединяет все строки из входных файлов, удаляет дубликаты,
-    сортирует их и записывает в выходной файл.
+    сортирует их и записывает в выходной файл. Пропускает строки,
+    начинающиеся на 'torch'.
     """
     all_lines = set()
     for file_path in input_files:
-        all_lines.update(read_unique_lines(file_path))
+        # Читаем уникальные строки из файла
+        for line in read_unique_lines(file_path):
+            # Проверяем, не начинается ли строка с 'torch'
+            if not line.startswith('torch'):
+                all_lines.add(line)
 
     # Сортируем строки
     sorted_lines = sorted(all_lines)
@@ -68,7 +72,7 @@ def main():
         return
 
     # Путь к объединенному файлу
-    output_file = os.path.join(start_directory, 'requirements-common.txt')
+    output_file = os.path.join(start_directory, 'requirements.in')
 
     # Объединяем файлы
     merge_requirements(output_file, requirements_files)

@@ -1,6 +1,3 @@
-# Базовый образ с CUDA 12.4 и PyTorch 2.4.0
-# FROM pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime
-
 ARG BASE_IMAGE="pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime"
 FROM ${BASE_IMAGE}
 
@@ -31,6 +28,7 @@ RUN apt-get update \
     && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
     && locale-gen \
     && update-locale LANG=en_US.UTF-8 \
+    && curl -LsSf https://astral.sh/uv/install.sh | sh \
     && rm -rf /var/lib/apt/lists/*
 
 ENV LANG=en_US.UTF-8

@@ -9,21 +9,19 @@ WORKDIR /workspace
 
 RUN git clone https://github.com/comfyanonymous/ComfyUI
 
-#    && pip3 install -r requirements.txt \
 WORKDIR /workspace/ComfyUI
-RUN pip3 install --pre -r  requirements.txt
-#RUN pip3 install -r <(grep -v '^ *#\|^torch' requirements.txt | grep .)
 
-#    && rm -rf ~/.cache/pip
+COPY *.sh cloudflare.py nodes.txt ./
 
-WORKDIR /workspace/ComfyUI
-# Копирование скрипта для обработки массива данных
-COPY process_repos.sh cloudflare.py nodes.txt ./
-
-# Делаем скрипт исполняемым
-RUN chmod +x process_repos.sh  \
-    && /bin/bash -c "./process_repos.sh nodes.txt" \
+RUN --mount=type=cache,target=/root/pip-cache-comfy-base \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    && chmod +x *.sh  \
+    && pip3 install --cache-dir=/root/pip-cache-comfy-base --pre -r  requirements.txt \
+    && ./process_repos-install-req.sh nodes.txt \
+    && pip3 install --cache-dir=/root/pip-cache-comfy-base onnxruntime-gpu pip-tools \
     && rm -rf ~/.cache/pip
+
 
 # Устанавливаем переменную окружения для пути
 ENV DOWNLOADS_DIR=/usr/local/bin

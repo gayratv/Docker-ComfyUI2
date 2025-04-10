@@ -31,19 +31,12 @@ RUN --mount=type=cache,target=/root/repo-cache \
     if [ "$NODES" != "nodes1.txt" ]; then \
         PIP_CACHE_DIR=/root/pip-cache \
         process_repos-install-req.sh "$NODES" \
-        && pip install --cache-dir=/root/pip-cache onnxruntime-gpu \
         && rm -rf ~/.cache/pip; \
     else \
         echo "Skipping RUN because NODES is set to 'nodes1.txt'"; \
     fi
 
-#pip3 install --cache-dir "${PIP_CACHE_DIR:-/root/pip-cache}"
-
-# SUPIR-v2-MaskTile
-#RUN ./process_repos.sh nodes-SUPIR-v2-MaskTile.txt \
-#    && ./process_repos.sh nodes-dragon.txt \
-#    && pip install pytz \
-#    && rm -rf ~/.cache/pip
+#        process_repos-git-clone.sh "$NODES" \
 
 
 WORKDIR /workspace/ComfyUI
@@ -59,6 +52,11 @@ WORKDIR /workspace/aria2
 COPY aria2 .
 RUN chmod +x *.sh \
     && chmod +x ./templates/*.sh
+
+WORKDIR /workspace/ComfyUI/custom_nodes
+COPY union-requiere.py .
+RUN python3 union-requiere.py
+
 
 RUN echo "cd /workspace/aria2/templates" >> /root/.bashrc \
   && echo "set -g mouse on" >> ~/.tmux.conf

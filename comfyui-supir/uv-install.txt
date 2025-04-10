@@ -1,0 +1,39 @@
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+uv venv  # Create a virtual environment at .venv.
+Активировать venv
+source .venv/bin/activate
+
+uv pip install flask                # Install Flask.
+uv pip install -r requirements.txt
+
+https://medium.com/bitgrit-data-science-publication/forget-pip-install-use-this-instead-754863c58f1e
+https://astral.sh/blog/uv
+
+torch==2.5.1+cu124
+--extra-index-url https://download.pytorch.org/whl/cu124
+--extra-index-url https://pypi.org/simple
+--extra-index-url https://pypi.nvidia.com
+
+uv pip compile requirements.in -o requirements.txt --python /opt/conda/bin/python3 --no-build-isolation --index-strategy unsafe-best-match
+
+uv pip compile requirements.in -o requirements.txt --python /opt/conda/bin/python3 --index-strategy unsafe-best-match
+
+
+Всегда ставил ноды не заморачиваясь - install missing nodes и все
+В этом способе процесс установки версии пакетов pуthon зависит от порядка установки нод.
+
+Сегодня решил попробовать новый способ - ноды просто клонировал, собрал все requirements.txt в один файл
+Потом начал компилировать зависимости с помощью uv
+Сразу выяснилось что версии некоторых пакетов несовместимы.
+Условно говоря одна нода  требует пакета версии ==1, другая нода требует пакет >=2
+
+Соответственно в объединнеом файле есть 2 записи с версией 1 и версией >=2
+Я руками запись с версией 1 удалял.
+
+Как Вы думаете - насколько стоит с этим заморачиваться?
+
+P.S
+uv - программа, написанная на rust, работает быстрее pip от 10 до 100 раз
+ссылка на uv:
+https://astral.sh/blog/uv
