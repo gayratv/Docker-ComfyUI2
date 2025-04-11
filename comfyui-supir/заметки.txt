@@ -1,38 +1,3 @@
-
-cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
-source connect.sh "ssh -p 37536 root@64.49.13.174 -L 8080:localhost:8080"
-ssh -p $SSH_PORT $SSH_USER_HOST -i "$SSH_KEY"
-
-64.49.13.174:49574
-
-cmd.exe /c "start chrome http://64.49.13.174:8188"
-
-scp -P "$SSH_PORT" -i ~/.ssh/mvps/ud_rsa ./заметки.txt "$SSH_USER_HOST":/workspace/
-
-scp -P "$SSH_PORT" -i ~/.ssh/mvps/ud_rsa ./aria2/templates/models/bg-replacer-v3-hf-models.txt "$SSH_USER_HOST":/workspace/aria2/templates/models/
-scp -P "$SSH_PORT" -i ~/.ssh/mvps/ud_rsa ./aria2/templates/models/bg-replacer-v3-hf-models.txt "$SSH_USER_HOST":/workspace/aria2/templates/models/
-
-scp -P "$SSH_PORT" -i ~/.ssh/mvps/ud_rsa ./aria2/templates/models/*.txt "$SSH_USER_HOST":/workspace/aria2/templates/models
-scp -P "$SSH_PORT" -i ~/.ssh/mvps/ud_rsa ./aria2/templates/models/Blend-Human-into-Background-Image-with-ACE-Plus-Redux/*.txt "$SSH_USER_HOST":/workspace/aria2/templates/models/Blend-Human-into-Background-Image-with-ACE-Plus-Redux/
-
-/workspace/ComfyUI/models/BiRefNet/RMBG-2.0
-does not appear to have a file named
-BiRefNet_config.py.
-Checkout 'https://huggingface.co//workspace/ComfyUI/models/BiRefNet/RMBG-2.0/tree/None'
-for available files.
-
-env | grep HF_TOKEN
-env | grep CIVITAI_TOKEN
-
-env >> /etc/environment
-cd /workspace
-echo "set -g mouse on" >> ~/.tmux.conf
-tmux source-file ~/.tmux.conf
-
-cat ~/.tmux.conf
-
-entrypoint.sh
-
 >->->->->->->->->->->->->->->->->->->->->->->->-
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
 export IMAGE_NAME="comfyui-supir-12-8"
@@ -57,8 +22,9 @@ export VERSION="v1.0-relight"
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
 export IMAGE_NAME="comfyui"
 export BASE_IMAGE="comfyui-base-cuda-12-4:v5.4-pytorch-2.5.1-runtime"
-export VERSION="v1.0-flux-inpaint1"
-export NODES="nodes1.txt"
+export VERSION="v1.0-Reactor-TransferFace"
+export NODES="nodes-Reactor-TransferFace.txt"
+#pip install onnxruntime
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
 export IMAGE_NAME="comfyui"
@@ -76,6 +42,12 @@ export IMAGE_NAME="comfyui"
 export BASE_IMAGE="comfyui-base-cuda-12-4:v5.4-pytorch-2.5.1-runtime"
 export VERSION="v1.1-FaceReplicator"
 export NODES="nodes-FaceReplicator_v1-1.txt"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+export IMAGE_NAME="comfyui"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.4-pytorch-2.5.1-runtime"
+export VERSION="v1.0-Bodrov"
+export NODES="nodes-supir-bodrov.txt"
 ===================================
 
 docker build --progress=plain \
@@ -118,6 +90,7 @@ curl http://127.0.0.1:8188
 apt-get update && apt-get install -y net-tools
 
 tmux-s.sh ComfyUI-Fluxtapoz.sh
+tmux-s-bash.sh
 
 >->->->->->->->->->->->->->->->->->->->->->->->-
 

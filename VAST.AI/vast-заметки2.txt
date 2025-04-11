@@ -5,12 +5,16 @@ export IMAGE_NAME=gayrat/comfyui:v1.1-FaceReplicator
 
 python3 vast-search-py.py --gpu "RTX 3090" --ram 32000
 
-source vast-contract.sh 18914771 $IMAGE_NAME
+source vast-contract.sh 19360094 $IMAGE_NAME
 
 CONTRACT_ID=19329962
+19365306
+
 ID         CPU RAM    GPU Name        Inet Down    IDown Cost      IDown Cost TB    Setup Cost   Machine ID   $/HR
 -------------------------------------------------------------------------------------------------
 18914771   128622     RTX 3090        5848.5       0.001302        1.333333        0.052083     14398        0.242222
+19360094   64237      RTX 3090        2171.9       0.001628        1.666667        0.065104     21320        0.222222
+
 
 source vast-env-run.sh
 
@@ -18,8 +22,8 @@ echo "http://$VAST_PUBLIC_IPADDR:$VAST_COMFY"
 cmd.exe /c start chrome "http://$VAST_PUBLIC_IPADDR:$VAST_COMFY"
 ssh -p $VAST_SSH "root@$VAST_PUBLIC_IPADDR" -i ~/.ssh/mvps/ud_rsa
 
-tmux-s.sh ComfyUI-Fluxtapoz.sh
 tmux-s.sh FaceReplicator.sh
+tmux-s.sh ComfyUI-Fluxtapoz.sh
 
 vastai destroy instances "$CONTRACT_ID"
 

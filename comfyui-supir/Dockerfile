@@ -41,7 +41,7 @@ RUN --mount=type=cache,target=/root/repo-cache \
 
 WORKDIR /workspace/ComfyUI
 COPY workflows/ user/default/workflows/
-COPY comfy.settings.json user/default/
+#COPY comfy.settings.json user/default/
 
 COPY union-requiere.py VPS-copy  ./
 
