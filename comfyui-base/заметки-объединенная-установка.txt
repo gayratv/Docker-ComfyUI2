@@ -1,28 +1,20 @@
 >->->->->->->->->->->->->->->->->->->->->->->->-
-cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
-export IMAGE_NAME="comfyui-base-cuda-12-8"
-export BASE_IMAGE="cuda-12-8:v4.0"
-export VERSION="v4.0"
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
 export IMAGE_NAME="comfyui-base-cuda-12-4"
 export BASE_IMAGE="cuda-12-4:v5.5-pytorch-2.6.0"
 export VERSION="v5.5-pytorch-2.6.0"
 
-cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
-export IMAGE_NAME="comfyui-base-cuda-12-4"
-export BASE_IMAGE="cuda-12-4:v5.4-pytorch-2.5.1-runtime"
-export VERSION="v5.4-pytorch-2.5.1-runtime"
-
-cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
-export IMAGE_NAME="comfyui-base-cuda-12-4"
-export BASE_IMAGE="cuda-12-4:v5.4-pytorch-2.5.1-devel"
-export VERSION="v5.4-pytorch-2.5.1-devel"
+export IMAGE_NAME-docker-base="cuda-12-4"
+export BASE_IMAGE-docker-base="pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime"
+export VERSION-docker-base="v5.5-pytorch-2.6.0"
 
 =====================================
+cd /mnt/f/_prg/python/Docker-ComfyUI/docker-base/docker-cuda-12-4
+docker build --progress=plain --build-arg BASE_IMAGE-docker-base="$BASE_IMAGE-docker-base" -t $IMAGE_NAME-docker-base:$VERSION-docker-base .
 
-echo "docker build --build-arg BASE_IMAGE=gayrat/$BASE_IMAGE -t $IMAGE_NAME:$VERSION ."
-docker build --progress=plain --build-arg BASE_IMAGE="gayrat/$BASE_IMAGE" -t $IMAGE_NAME:$VERSION .
+echo "docker build --build-arg BASE_IMAGE=$BASE_IMAGE -t $IMAGE_NAME:$VERSION ."
+docker build --progress=plain --build-arg BASE_IMAGE="$BASE_IMAGE" -t $IMAGE_NAME:$VERSION .
 
 docker tag "$IMAGE_NAME:$VERSION" gayrat/"$IMAGE_NAME:$VERSION"
 echo "docker push gayrat/$IMAGE_NAME:$VERSION"

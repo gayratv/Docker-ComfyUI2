@@ -48,6 +48,12 @@ export IMAGE_NAME="comfyui"
 export BASE_IMAGE="comfyui-base-cuda-12-4:v5.4-pytorch-2.5.1-runtime"
 export VERSION="v1.0-Bodrov"
 export NODES="nodes-supir-bodrov.txt"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+export IMAGE_NAME="comfyui"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.5-pytorch-2.6.0"
+export VERSION="v1.0-Bodrov-pytorch-2.6.0"
+export NODES="nodes-supir-bodrov.txt"
 ===================================
 
 docker build --progress=plain \
