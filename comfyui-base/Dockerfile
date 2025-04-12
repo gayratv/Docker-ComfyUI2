@@ -1,5 +1,5 @@
 # Определяем аргумент для базового образа
-ARG BASE_IMAGE="gayrat/cuda-12-4:latest"
+ARG BASE_IMAGE="comfyui-base-cuda"
 
 # Используем аргумент в качестве имени образа
 FROM ${BASE_IMAGE}
@@ -37,8 +37,7 @@ COPY nodes*.txt ./
 
 WORKDIR /workspace/ComfyUI
 
-COPY comfy.settings.json user/default/
-COPY ptest.sh $DOWNLOADS_DIR/
+#COPY comfy.settings.json user/default/
 
 RUN echo "cd /workspace" >> /root/.bashrc
 

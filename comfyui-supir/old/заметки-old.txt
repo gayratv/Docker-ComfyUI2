@@ -1,0 +1,144 @@
+>->->->->->->->->->->->->->->->->->->->->->->->-
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+export IMAGE_NAME="comfyui-supir-12-8"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.4-pytorch-2.5.1-runtime"
+export VERSION="v12.0"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+export IMAGE_NAME="comfyui-supir-12-4"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.4-pytorch-2.5.1-runtime"
+export VERSION="v12.0"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+export IMAGE_NAME="comfyui-supir-12-4"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.4-pytorch-2.5.1-runtime"
+export VERSION="v12.6"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+export IMAGE_NAME="comfyui"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.4-pytorch-2.5.1-runtime"
+export VERSION="v1.0-relight"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+export IMAGE_NAME="comfyui"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.4-pytorch-2.5.1-runtime"
+export VERSION="v1.0-Reactor-TransferFace"
+export NODES="nodes-Reactor-TransferFace.txt"
+#pip install onnxruntime
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+export IMAGE_NAME="comfyui"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.4-pytorch-2.5.1-devel"
+export VERSION="v1.1-relight-devel"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+export IMAGE_NAME="comfyui"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.4-pytorch-2.5.1-runtime"
+export VERSION="v1.5-Fluxtapoz"
+export NODES="nodes-Fluxtapoz.txt"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+export IMAGE_NAME="comfyui"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.4-pytorch-2.5.1-runtime"
+export VERSION="v1.1-FaceReplicator"
+export NODES="nodes-FaceReplicator_v1-1.txt"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+export IMAGE_NAME="comfyui"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.4-pytorch-2.5.1-runtime"
+export VERSION="v1.0-Bodrov"
+export NODES="nodes-supir-bodrov.txt"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+export IMAGE_NAME="comfyui"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v5.5-pytorch-2.6.0"
+export VERSION="v1.0-Bodrov-pytorch-2.6.0"
+export NODES="nodes-supir-bodrov.txt"
+===================================
+
+docker build --progress=plain \
+  --build-arg BASE_IMAGE="gayrat/$BASE_IMAGE" \
+  --build-arg NODES="$NODES" \
+  -t $IMAGE_NAME:$VERSION .
+
+
+docker tag "$IMAGE_NAME:$VERSION" gayrat/"$IMAGE_NAME:$VERSION"
+echo "docker push gayrat/$IMAGE_NAME:$VERSION"
+docker push gayrat/"$IMAGE_NAME:$VERSION"
+
+echo "run --name $IMAGE_NAME $IMAGE_NAME:$VERSION"
+docker rm -f "$IMAGE_NAME"
+docker run -it --privileged --gpus all -p 8188:8188 \
+    -v /mnt/h/ComfyUI-data/models:/workspace/ComfyUI/models \
+    --name "$IMAGE_NAME" "$IMAGE_NAME:$VERSION" \
+    bash
+
+docker run -it --privileged --gpus all -p 8188:8188 \
+    -v /mnt/h/ComfyUI-data/models:/workspace/ComfyUI/models \
+    --name "$IMAGE_NAME" "$IMAGE_NAME:$VERSION" \
+    tmux-s-bash.sh
+
+
+docker rm -f "$IMAGE_NAME"
+docker run -it --privileged --gpus all -p 8188:8188 \
+    --name "$IMAGE_NAME" "$IMAGE_NAME:$VERSION" \
+    bash
+
+docker exec -it "$IMAGE_NAME" bash
+
+docker cp "$IMAGE_NAME":/workspace/ComfyUI/requirements-common.txt ./requirements-common.txt
+
+cd /workspace/ComfyUI
+python main.py  --listen 0.0.0.0 --port 8188 --front-end-version Comfy-Org/ComfyUI_frontend@latest
+
+http://127.0.0.1:8188
+curl http://127.0.0.1:8188
+apt-get update && apt-get install -y net-tools
+
+tmux-s.sh ComfyUI-Fluxtapoz.sh
+tmux-s-bash.sh
+
+>->->->->->->->->->->->->->->->->->->->->->->->-
+
+env | grep VERSION
+env | grep HF_TOKEN
+
+
+docker run -it --privileged --gpus all --listen 0.0.0.0 --name comfyui  comfyui-base-cuda-12-4:v1.0 bash
+
+scp -P 2222 -i ~/.ssh/mvps/ud_rsa ./заметки.txt root@172.17.0.2:/workspace/
+
+
+https://github.com/ltdrdata/ComfyUI-Impact-Subpack
+
+ Очистка всего кэша BuildKit
+ docker builder prune --all
+
+
+ =================
+ Использование отладочного контейнера
+Если вам нужно более детально исследовать содержимое /root/repo-cache, можно создать временный контейнер, который монтирует кэш как том.
+
+# Создайте локальную директорию для эмуляции кэша
+
+mkdir -p /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir/tmp/repo-cache
+
+# Запустите контейнер, примонтировав локальную директорию
+docker run --rm -it -v /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir/tmp/repo-cache:/root/repo-cache alpine:latest sh
+
+Внутри контейнера выполните:
+ls -la /root/repo-cache
+
+
+http://207.174.105.41:8188
+
+
+docker cp 854228f46bb5:/workspace/ComfyUI/custom_nodes/ComfyUI_IPAdapter_plus /mnt/f/tempg/3
+docker cp comfyui:/workspace/ComfyUI/custom_nodes/uv.log  /mnt/f/tempg/3
+
+cd /workspace/ComfyUI/custom_nodes
+cat requirements-common.txt
+
+pip install pip-tools
+pip-compile requirements-common.txt --output-file requirements.txt
+pip install -r requirements.txt

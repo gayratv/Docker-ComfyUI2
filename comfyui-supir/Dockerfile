@@ -4,28 +4,18 @@ ARG BASE_IMAGE="gayrat/comfyui-base-cuda-12-4:v2.0"
 # Используем аргумент в качестве имени образа
 FROM ${BASE_IMAGE}
 
-
-
 ENV DOWNLOADS_DIR=/usr/local/bin
 COPY *.sh $DOWNLOADS_DIR/
 RUN chmod +x $DOWNLOADS_DIR/*.sh
 
 WORKDIR /workspace/ComfyUI
-COPY nodes*.txt ./
+# шаг 11
+COPY ./custom-nodes/nodes*.txt ./
 
 # Создаем ARG для передачи списка файлов
-#ARG NODES="nodes-Blend-Human-into-Background-ACE-Plus-Redux.txt nodes-FLUX_ACE_PP_Мокап_inpaint.txt"
-#ARG NODES="nodes-FLUX_ACE_PP_Мокап_inpaint.txt"
 ARG NODES="nodes1.txt"
 
-# Кэшируем зависимости и выполняем установку для каждого файла
-#RUN --mount=type=cache,target=/root/repo-cache \
-#    --mount=type=cache,target=/root/pip-cache \
-#    PIP_CACHE_DIR=/root/pip-cache \
-#    process_repos-install-req.sh "$NODES" \
-#    && pip install --cache-dir=/root/pip-cache onnxruntime-gpu \
-#    && rm -rf ~/.cache/pip
-
+# шаг 12 Кэшируем зависимости и выполняем установку для каждого файла
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     if [ "$NODES" != "nodes1.txt" ]; then \

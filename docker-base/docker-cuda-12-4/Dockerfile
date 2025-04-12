@@ -1,5 +1,5 @@
-ARG BASE_IMAGE="pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime"
-FROM ${BASE_IMAGE}
+ARG BASE_IMAGE_docker_base="pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime"
+FROM ${BASE_IMAGE_docker_base}
 
 RUN apt-get update  \
     && apt-get install -y \

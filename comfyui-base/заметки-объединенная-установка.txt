@@ -1,24 +1,36 @@
 >->->->->->->->->->->->->->->->->->->->->->->->-
 
+/////
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
-export IMAGE_NAME="comfyui-base-cuda-12-4"
-export BASE_IMAGE="cuda-12-4:v5.5-pytorch-2.6.0"
-export VERSION="v5.5-pytorch-2.6.0"
+export IMAGE_NAME_docker_base="cuda-12-4"
+export BASE_IMAGE_docker_base="pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime"
+export VERSION_docker_base="v1.0-pytorch-2.6.0"
 
-export IMAGE_NAME-docker-base="cuda-12-4"
-export BASE_IMAGE-docker-base="pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime"
-export VERSION-docker-base="v5.5-pytorch-2.6.0"
+export IMAGE_NAME="comfyui-base-cuda-12-4"
+export BASE_IMAGE="$IMAGE_NAME_docker_base:$VERSION_docker_base"
+echo $BASE_IMAGE
+export VERSION="v1.0-pytorch-2.6.0"
 
 =====================================
-cd /mnt/f/_prg/python/Docker-ComfyUI/docker-base/docker-cuda-12-4
-docker build --progress=plain --build-arg BASE_IMAGE-docker-base="$BASE_IMAGE-docker-base" -t $IMAGE_NAME-docker-base:$VERSION-docker-base .
 
-echo "docker build --build-arg BASE_IMAGE=$BASE_IMAGE -t $IMAGE_NAME:$VERSION ."
-docker build --progress=plain --build-arg BASE_IMAGE="$BASE_IMAGE" -t $IMAGE_NAME:$VERSION .
+## Сборка docker-base
 
-docker tag "$IMAGE_NAME:$VERSION" gayrat/"$IMAGE_NAME:$VERSION"
-echo "docker push gayrat/$IMAGE_NAME:$VERSION"
-docker push gayrat/"$IMAGE_NAME:$VERSION"
+docker build --progress=plain \
+    --build-arg BASE_IMAGE_docker_base="$BASE_IMAGE_docker_base" \
+    -f /mnt/f/_prg/python/Docker-ComfyUI/docker-base/docker-cuda-12-4/Dockerfile \
+    -t $IMAGE_NAME_docker_base:$VERSION_docker_base \
+    /mnt/f/_prg/python/Docker-ComfyUI/docker-base/docker-cuda-12-4
+echo "собран образ $IMAGE_NAME_docker_base:$VERSION_docker_base"
+
+## сборка    comfyui-base
+
+docker build --progress=plain \
+    --build-arg BASE_IMAGE="$BASE_IMAGE" \
+    -f /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base/Dockerfile \
+    -t $IMAGE_NAME:$VERSION \
+    /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
+echo "собран образ $IMAGE_NAME:$VERSION"
+
 
 docker rm -f  "$IMAGE_NAME"
 docker run -it --privileged --gpus all \
@@ -28,22 +40,3 @@ docker run -it --privileged --gpus all \
 
 docker exec -it "$IMAGE_NAME" bash
 
-docker run -it --privileged --gpus all -p 8188:8188 --name "$IMAGE_NAME" "$IMAGE_NAME:$VERSION" bash
->->->->->->->->->->->->->->->->->->->->->->->->-
-
-env | grep VERSION
-env | grep ENV1
-
-http://127.0.0.1:8188
-
-docker rm -f comfyui
-docker run -it --privileged --gpus all --name comfyui  comfyui-base-cuda-12-4:v4.0 bash
-
-===================
-pip install pip-tools
-Создайте файл requirements.in, где укажите только те пакеты, которые вам нужны:
-
-pip-compile requirements.in
-pip install -r requirements.txt
-
-cat /workspace/ComfyUI/requirements.txt

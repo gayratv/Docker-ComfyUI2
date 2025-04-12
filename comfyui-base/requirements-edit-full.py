@@ -5,10 +5,10 @@ file_path = "requirements.txt"
 
 # Список пакетов для удаления
 packages_to_remove = {
-    # "torch",
-    # "torchvision",
-    # "torchaudio",
-    # "numpy"
+    "torch",
+    "torchvision",
+    "torchaudio",
+    "numpy"
 }
 
 # Создаем регулярное выражение для точного совпадения с началом строки
