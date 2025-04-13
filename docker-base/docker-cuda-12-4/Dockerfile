@@ -16,8 +16,13 @@ RUN apt-get update  \
     gpg-agent \
     tmux \
     locales \
-    build-essential g++ cmake ninja-build libomp-dev \
+    build-essential python3 python3-pip python3-dev libssl-dev libffi-dev zlib1g-dev libbz2-dev \
     && rm -rf /var/lib/apt/lists/*
+
+# libssl-dev : Для работы с SSL/TLS.
+# libffi-dev : Для работы с внешними функциями интерфейса (FFI).
+# zlib1g-dev : Для работы с сжатием данных.
+# libbz2-dev : Для работы с форматом Bzip2. \
 
 # Set non-interactive mode to prevent timezone selection prompts
 ENV DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC
@@ -38,12 +43,12 @@ RUN wget https://github.com/cloudflare/cloudflared/releases/latest/download/clou
     && dpkg -i cloudflared-linux-amd64.deb \
     && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /root/.config/pip
-#COPY old/pip.conf constraints.txt ./
+# WORKDIR /root/.config/pip
+# COPY old/pip.conf constraints.txt ./
 
 # Обновление pip, setuptools и wheel
 RUN python3.11 -m pip install --upgrade pip setuptools wheel \
-  && pip install numpy pytz \
+  && pip install pytz \
   && rm -rf ~/.cache/pip
 
 #  && pip install xformers==0.0.29.post2 --index-url https://download.pytorch.org/whl/cu124

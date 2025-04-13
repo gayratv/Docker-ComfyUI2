@@ -13,6 +13,12 @@ export BASE_IMAGE="comfyui-base-cuda-12-4:v1.0-pytorch-2.6.0"
 export NODES="nodes-FaceAnalysis.txt"
 
 
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+export IMAGE_NAME="comfyui"
+export VERSION="v1.0-supir-MaskTile"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v1.0-pytorch-2.6.0"
+export NODES="nodes-SUPIR-v2-MaskTile.txt"
+
 ===================================
 
 docker build --progress=plain \
@@ -21,7 +27,7 @@ docker build --progress=plain \
     -f /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir/Dockerfile \
     -t $IMAGE_NAME:$VERSION \
     /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
-echo "собран образ $IMAGE_NAME:$VERSION"
+echo -e "\nсобран образ $IMAGE_NAME:$VERSION"
 
 
 docker tag "$IMAGE_NAME:$VERSION" gayrat/"$IMAGE_NAME:$VERSION"
@@ -35,6 +41,7 @@ docker run -it --privileged --gpus all -p 8188:8188 \
     --name "$IMAGE_NAME" "$IMAGE_NAME:$VERSION" \
     bash
 
+docker rm -f "$IMAGE_NAME"
 docker run -it --privileged --gpus all -p 8188:8188 \
     -v /mnt/h/ComfyUI-data/models:/workspace/ComfyUI/models \
     --name "$IMAGE_NAME" "$IMAGE_NAME:$VERSION" \
@@ -57,3 +64,4 @@ tmux-s-bash.sh
 
 >->->->->->->->->->->->->->->->->->->->->->->->-
 
+docker builder prune --all

@@ -4,24 +4,29 @@ ARG BASE_IMAGE="comfyui-base-cuda"
 # Используем аргумент в качестве имени образа
 FROM ${BASE_IMAGE}
 
-
+# Создание рабочей директории
 WORKDIR /workspace
+# Создание виртуального окружения
+# RUN python -m venv /workspace/.venv --system-site-packages
 
-RUN git clone https://github.com/comfyanonymous/ComfyUI
+
+RUN git clone https://github.com/comfyanonymous/ComfyUI \
+    && cd ComfyUI \
+    && git checkout v0.3.26
 
 WORKDIR /workspace/ComfyUI
 
-COPY *.sh cloudflare.py nodes.txt requirements-edit.py ./
+COPY *.sh cloudflare.py nodes.txt *.py ./
 
 
 RUN --mount=type=cache,target=/root/pip-cache-comfy-base \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
     && chmod +x *.sh  \
-    && python3 requirements-edit.py \
-    && pip3 install --cache-dir=/root/pip-cache-comfy-base -r  requirements.txt \
+    && python3 requirements-edit-full.py \
+    && pip install --cache-dir=/root/pip-cache-comfy-base -r  requirements.txt \
     && ./process_repos-install-req.sh nodes.txt \
-    && pip3 install --cache-dir=/root/pip-cache-comfy-base onnxruntime onnxruntime-gpu pip-tools \
+    && pip install --cache-dir=/root/pip-cache-comfy-base onnxruntime onnxruntime-gpu pip-tools \
     && rm -rf ~/.cache/pip
 
 
