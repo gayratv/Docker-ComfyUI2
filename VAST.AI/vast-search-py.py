@@ -41,7 +41,7 @@ def fetch_vast_data(gpu_name, cpu_ram):
         if "offers" in data and isinstance(data["offers"], list):
             # Подсчет количества записей в массиве offers
             offer_count = len(data["offers"])
-            print(f"Количество записей в массиве 'offers': {offer_count}")
+            print(f"\nКоличество записей в массиве 'offers': {offer_count}\n")
 
         # Сохранение результата в файл vast-search.json
         with open(file_path_json, "w") as file:

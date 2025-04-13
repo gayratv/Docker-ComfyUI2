@@ -1,11 +1,11 @@
 clear
 cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
 source /mnt/f/_prg/python/Docker-ComfyUI/.venv-wsl/bin/activate
-export IMAGE_NAME=gayrat/comfyui:v1.0-supir-light
+export IMAGE_NAME=gayrat/comfyui:v1.0-supir-MaskTile
 
 python3 vast-search-py.py --gpu "RTX 3090" --ram 32000
 
-source vast-contract.sh 19394482 $IMAGE_NAME
+source vast-contract.sh 19394533 $IMAGE_NAME
 
 CONTRACT_ID=
 19365306
@@ -14,6 +14,8 @@ CONTRACT_ID=
 19389829
 19390844
 19422514
+19430813
+19430883
 
 ID         CPU RAM    GPU Name        Inet Down    IDown Cost      IDown Cost TB    Setup Cost   Machine ID   $/HR
 -------------------------------------------------------------------------------------------------
@@ -23,6 +25,8 @@ ID         CPU RAM    GPU Name        Inet Down    IDown Cost      IDown Cost TB
 18734675   127895     RTX 3090        7489.6       0.006510        6.666667        0.260417     32058        0.294815
 19204397   128717     RTX 3090        5809.1       0.001302        1.333333        0.052083     32889        0.242222
 19394482   128927     RTX 3090        1468.4       0.000000        0.000000        0.000000     19902        0.108889
+19394444   32028      RTX 3090        1046.0       0.000000        0.000000        0.000000     33479        0.095556 bad
+19394533   128906     RTX 3090        1436.4       0.000000        0.000000        0.000000     15501        0.108889
 
 source vast-env-run.sh
 
