@@ -53,7 +53,50 @@ def fetch_vast_data(gpu_name, cpu_ram):
 
 import json
 
+import json
+
+import json
+
+import json
+
+import json
+
+# columns = [
+#         {"var_name": "id", "title": "ID", "width": 10, "order_num": 1, "decimal_places": None},
+#         {"var_name": "search.totalHour", "title": "Tot $/HR", "width": 10, "order_num": 2, "decimal_places": 2},
+#         {"var_name": "cpu_ram", "title": "CPU RAM", "width": 10, "order_num": 3, "decimal_places": None},
+#         {"var_name": "gpu_frac", "title": "GPU Frac", "width": 10, "order_num": 4, "decimal_places": 1},
+#         {"var_name": "inet_down", "title": "Inet Down", "width": 10, "order_num": 5, "decimal_places": 1},
+#         {"var_name": "search.gpuCostPerHour", "title": "GPU $/HR", "width": 9, "order_num": 6, "decimal_places": 2},
+#         {"var_name": "search.diskHour", "title": "Disk $/HR", "width": 10, "order_num": 7, "decimal_places": 3},
+#         {"var_name": "instance.diskHour", "title": "Inst Disk $/HR", "width": 15, "order_num": 8, "decimal_places": 3},
+#         {"var_name": "instance.totalHour", "title": "Inst Tot $/HR", "width": 15, "order_num": 9, "decimal_places": 4},
+#         {"var_name": "internet_down_cost_per_tb", "title": "IDown Cost TB", "width": 15, "order_num": 10, "decimal_places": 2},
+#         {"var_name": "storage_cost", "title": "Storage Cost", "width": 15, "order_num": 11, "decimal_places": 3},
+#         {"var_name": "storage_total_cost", "title": "Storage Total Cost", "width": 15, "order_num": 12, "decimal_places": 3},
+#         {"var_name": "inet_down_cost", "title": "IDown Cost", "width": 12, "order_num": 13, "decimal_places": 4},
+#         {"var_name": "host_id", "title": "Host ID", "width": 10, "order_num": 14, "decimal_places": None},
+#         {"var_name": "machine_id", "title": "Machine ID", "width": 12, "order_num": 15, "decimal_places": None},
+#     ]
+
+
 def display_offers():
+    # Определяем структуру вывода
+    columns = [
+        {"var_name": "id", "title": "ID", "width": 10, "order_num": 1, "decimal_places": None},
+        {"var_name": "search.totalHour", "title": "Tot $/HR", "width": 10, "order_num": 2, "decimal_places": 2},
+        {"var_name": "internet_down_cost_per_tb", "title": "IDown Cost TB", "width": 15, "order_num": 3, "decimal_places": 2},
+        {"var_name": "inet_down", "title": "Inet Down", "width": 10, "order_num": 4, "decimal_places": 1},
+        {"var_name": "cpu_ram", "title": "CPU RAM", "width": 10, "order_num": 5, "decimal_places": None},
+        {"var_name": "gpu_frac", "title": "GPU Frac", "width": 10, "order_num": 6, "decimal_places": 1},
+        {"var_name": "search.gpuCostPerHour", "title": "GPU $/HR", "width": 9, "order_num": 7, "decimal_places": 2},
+        {"var_name": "instance.totalHour", "title": "Inst Tot $/HR", "width": 15, "order_num": 8, "decimal_places": 4},
+        {"var_name": "storage_cost", "title": "Storage Cost", "width": 15, "order_num": 9, "decimal_places": 3},
+        {"var_name": "storage_total_cost", "title": "Storage Total Cost", "width": 15, "order_num": 10, "decimal_places": 3},
+        {"var_name": "host_id", "title": "Host ID", "width": 10, "order_num": 11, "decimal_places": None},
+        {"var_name": "machine_id", "title": "Machine ID", "width": 12, "order_num": 12, "decimal_places": None},
+    ]
+
     # Открываем и читаем файл
     try:
         with open(file_path_json, 'r', encoding='utf-8') as file:
@@ -61,32 +104,50 @@ def display_offers():
 
         # Проверяем, что в данных есть список offers
         if 'offers' in data:
-            # Сортируем данные по значению total_hour
+            # Сортируем данные по значению search.totalHour
             sorted_offers = sorted(
                 data['offers'],
                 key=lambda offer: offer.get('search', {}).get('totalHour', float('inf'))
             )
 
-            # Выводим заголовок таблицы
-            print(f"{'ID':<10} {'CPU RAM':<10} {'GPU Name':<15} {'Inet Down':<12} {'IDown Cost':<15} {'IDown Cost TB':<15}  {'Setup Cost':<12} {'Machine ID':<12} {'$/HR':<12}")
-            print("-" * 97)  # Разделительная линия
+            # Формируем заголовок таблицы
+            header = ""
+            separator = ""
+            for col in sorted(columns, key=lambda x: x["order_num"]):
+                header += f"{col['title']:<{col['width']}}"
+                separator += "-" * col["width"]
+            print(header)
+            print(separator)
 
+            # Выводим данные
             for offer in sorted_offers:
-                # Извлекаем необходимые данные
-                offer_id = offer.get('id')
-                cpu_ram = offer.get('cpu_ram')
-                gpu_name = offer.get('gpu_name')
-                inet_down = offer.get('inet_down')
-                inet_down_cost = offer.get('inet_down_cost')
-                internet_down_cost_per_tb = offer.get('internet_down_cost_per_tb')
-                machine_id = offer.get('machine_id')
-                total_hour = offer.get('search', {}).get('totalHour')
+                row = ""
+                for col in sorted(columns, key=lambda x: x["order_num"]):
+                    var_name = col["var_name"]
+                    width = col["width"]
+                    decimal_places = col["decimal_places"]
 
-                # Вычисляем Setup cost
-                setup_cost = inet_down_cost * 40 if inet_down_cost is not None else 0
+                    # Извлекаем значение из данных
+                    if '.' in var_name:
+                        # Для вложенных полей (например, search.totalHour)
+                        keys = var_name.split('.')
+                        value = offer
+                        for key in keys:
+                            value = value.get(key, None)
+                            if value is None:
+                                break
+                    else:
+                        # Для простых полей
+                        value = offer.get(var_name, None)
 
-                # Выводим данные в формате столбцов с фиксированной шириной
-                print(f"{offer_id:<10} {cpu_ram:<10} {gpu_name:<15} {inet_down:<12.1f} {inet_down_cost:<15.6f} {internet_down_cost_per_tb:<15.6f} {setup_cost:<12.6f} {machine_id:<12} {total_hour:<12.6f}")
+                    # Форматируем значение
+                    if isinstance(value, float) and decimal_places is not None:
+                        row += f"{value:<{width}.{decimal_places}f}"
+                    elif isinstance(value, int):
+                        row += f"{value:<{width}}"
+                    else:
+                        row += f"{'':<{width}}"
+                print(row)
         else:
             print("В файле нет данных о предложениях.")
     except FileNotFoundError:

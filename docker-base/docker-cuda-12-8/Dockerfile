@@ -1,6 +1,6 @@
 # Стадия 1: Сборка и установка зависимостей
 ARG BASE_IMAGE="nvidia/cuda:12.8.1-cudnn-runtime-ubuntu22.04"
-FROM ${BASE_IMAGE} AS builder
+FROM ${BASE_IMAGE}
 
 # Установка необходимых пакетов
 RUN apt-get update \
@@ -29,9 +29,21 @@ RUN apt-get update \
     && apt-get install -y software-properties-common \
     && add-apt-repository ppa:deadsnakes/ppa -y \
     && apt-get update \
-    && apt-get install -y python3.11 python3.11-dev python3.11-venv \
+    && apt-get install -y  \
+      python3.11 \
+      python3.11-dev \
+      python3.11-venv \
+      python3.11-distutils \
+    && curl -sS https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
+    && python3.11 get-pip.py \
+    && rm get-pip.py \
     && curl -LsSf https://astral.sh/uv/install.sh | sh \
     && rm -rf /var/lib/apt/lists/*
+
+# Устанавливаем python3.11 как основной python
+RUN ln -sf /usr/bin/python3.11 /usr/bin/python && \
+    ln -sf /usr/bin/python3.11 /usr/local/bin/python && \
+    update-alternatives --install /usr/bin/python python /usr/bin/python3.11 1
 
 ENV PATH="/root/.local/bin:$PATH"
 
@@ -42,31 +54,23 @@ RUN python3.11 -m ensurepip \
 
 # Установка PyTorch и других зависимостей
 RUN --mount=type=cache,target=/root/pip-cache \
-    uv pip install --cache-dir=/root/pip-cache --system --index-strategy unsafe-best-match \
+    uv pip install \
+    --cache-dir=/root/pip-cache  \
+    --system \
+    --index-strategy unsafe-best-match \
     torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128 \
     && uv pip install --cache-dir=/root/pip-cache --system --index-strategy unsafe-best-match \
-    xformers pytz \
+    pytz \
     && rm -rf ~/.cache/pip
 
-# Стадия 2: Финальный образ
-FROM ${BASE_IMAGE} AS final
+# xformers пока не буду ставить - убивает torch
+#    xformers pytz \
 
 # Установка минимально необходимых пакетов
-RUN apt-get update \
-    && apt-get install -y \
-    locales \
-    libopenblas-dev libomp-dev \
-    libjpeg-dev libpng-dev libtiff-dev libavcodec-dev libavformat-dev libswscale-dev \
-    libv4l-dev libxvidcore-dev libx264-dev libgtk-3-dev libatlas-base-dev gfortran \
-    && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
+RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
     && locale-gen \
     && update-locale LANG=en_US.UTF-8 \
     && rm -rf /var/lib/apt/lists/*
-
-# Копирование Python и установленных зависимостей из первой стадии
-COPY --from=builder /usr/bin/python3.11 /usr/bin/python3.11
-COPY --from=builder /usr/lib/python3.11 /usr/lib/python3.11
-COPY --from=builder /root/.local /root/.local
 
 # Настройка локали
 ENV LANG=en_US.UTF-8

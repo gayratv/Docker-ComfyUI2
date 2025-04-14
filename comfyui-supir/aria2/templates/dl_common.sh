@@ -17,9 +17,22 @@ WORKSPACE_DIR="${2:-/workspace/ComfyUI/}"
 HF_FILE="./models/$MODEL_PARAM/hf.txt"
 CIVITAI_FILE="./models/$MODEL_PARAM/civitay.txt"
 
-# Запускаем скрипт для Hugging Face
-../aria-start-huggingface.sh "$HF_FILE" "$WORKSPACE_DIR"
 
-# Запускаем скрипт для Civitai
-../process-models-civitai.sh "$CIVITAI_FILE"
-../aria-start-civitay.sh "$CIVITAI_FILE" "$WORKSPACE_DIR"
+# Проверяем наличие файла hf.txt
+if check_file_exists "$HF_FILE"; then
+  # Запускаем скрипт для Hugging Face, если файл существует
+  echo "Запуск скрипта для Hugging Face с файлом '$HF_FILE'..."
+  ../aria-start-huggingface.sh "$HF_FILE" "$WORKSPACE_DIR"
+else
+  echo "Пропуск запуска скрипта для Hugging Face из-за отсутствия файла '$HF_FILE'."
+fi
+
+# Проверяем наличие файла civitay.txt
+if check_file_exists "$CIVITAI_FILE"; then
+  # Запускаем скрипт для Civitai, если файл существует
+  echo "Запуск скрипта для Civitai с файлом '$CIVITAI_FILE'..."
+  ../process-models-civitai.sh "$CIVITAI_FILE"
+  ../aria-start-civitay.sh "$CIVITAI_FILE" "$WORKSPACE_DIR"
+else
+  echo "Пропуск запуска скриптов для Civitai из-за отсутствия файла '$CIVITAI_FILE'."
+fi

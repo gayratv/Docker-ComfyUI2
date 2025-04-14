@@ -4,12 +4,24 @@
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
 export IMAGE_NAME_docker_base="cuda-12-4"
 export BASE_IMAGE_docker_base="pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime"
-export VERSION_docker_base="v1.0-pytorch-2.6.0"
+export VERSION_docker_base="v1.1-pytorch-2.6.0"
 
 export IMAGE_NAME="comfyui-base-cuda-12-4"
 export BASE_IMAGE="$IMAGE_NAME_docker_base:$VERSION_docker_base"
 echo $BASE_IMAGE
-export VERSION="v1.0-pytorch-2.6.0"
+export VERSION="v1.1-pytorch-2.6.0"
+
+///////////////////////////
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
+export IMAGE_NAME_docker_base="cuda-12-8"
+export BASE_IMAGE_docker_base="nvidia/cuda:12.8.1-cudnn-runtime-ubuntu22.04"
+export VERSION_docker_base="v1.1-nvidia"
+
+export IMAGE_NAME="comfyui-base-cuda-12-8"
+export BASE_IMAGE="$IMAGE_NAME_docker_base:$VERSION_docker_base"
+echo $BASE_IMAGE
+export VERSION="v1.0-CUDA-12.8"
+
 
 =====================================
 
@@ -20,6 +32,15 @@ docker build --progress=plain \
     -f /mnt/f/_prg/python/Docker-ComfyUI/docker-base/docker-cuda-12-4/Dockerfile \
     -t $IMAGE_NAME_docker_base:$VERSION_docker_base \
     /mnt/f/_prg/python/Docker-ComfyUI/docker-base/docker-cuda-12-4
+
+echo -e "\nСобран образ $IMAGE_NAME_docker_base:$VERSION_docker_base"
+
+## Сборка docker-base CUDA 12-8
+docker build --progress=plain \
+    --build-arg BASE_IMAGE_docker_base="$BASE_IMAGE_docker_base" \
+    -f /mnt/f/_prg/python/Docker-ComfyUI/docker-base/docker-cuda-12-8/Dockerfile \
+    -t $IMAGE_NAME_docker_base:$VERSION_docker_base \
+    /mnt/f/_prg/python/Docker-ComfyUI/docker-base/docker-cuda-12-8
 
 echo -e "\nСобран образ $IMAGE_NAME_docker_base:$VERSION_docker_base"
 
@@ -41,6 +62,8 @@ docker run -it --privileged --gpus all \
 
 docker exec -it "$IMAGE_NAME" bash
 
+
+docker run -it --gpus all --name "$IMAGE_NAME_docker_base" "$IMAGE_NAME_docker_base:$VERSION_docker_base" bash
 
 docker builder prune --all
 
