@@ -25,6 +25,11 @@ export VERSION="v1.0-supir-12.8"
 export BASE_IMAGE="comfyui-base-cuda-12-8:v1.0-CUDA-12.8"
 export NODES="nodes-SUPIR-v2-MaskTile.txt"
 
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+export IMAGE_NAME="comfyui"
+export VERSION="v1.0-ace-orex"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v1.1-pytorch-2.6.0"
+export NODES="nodes-ACE-plus-portrait-face-swap.txt"
 ===================================
 
 docker build --progress=plain \
@@ -45,14 +50,13 @@ docker rm -f "$IMAGE_NAME"
 docker run -it --privileged --gpus all -p 8188:8188 \
     -v /mnt/h/ComfyUI-data/models:/workspace/ComfyUI/models \
     --name "$IMAGE_NAME" "$IMAGE_NAME:$VERSION" \
-    bash
+    tmux-s-bash.sh
 
 docker rm -f "$IMAGE_NAME"
 docker run -it --privileged --gpus all -p 8188:8188 \
     -v /mnt/h/ComfyUI-data/models:/workspace/ComfyUI/models \
     --name "$IMAGE_NAME" "$IMAGE_NAME:$VERSION" \
-    tmux-s-bash.sh
-
+    bash
 
 docker rm -f "$IMAGE_NAME"
 docker run -it --privileged --gpus all -p 8188:8188 \

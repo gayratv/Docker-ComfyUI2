@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir/aria2/templates
+
 # Проверка наличия первого параметра
 if [ -z "$1" ]; then
   echo "Ошибка: Необходимо указать первый параметр (например, supir-bodrov)."
@@ -17,9 +19,8 @@ WORKSPACE_DIR="${2:-/workspace/ComfyUI/}"
 HF_FILE="./models/$MODEL_PARAM/hf.txt"
 CIVITAI_FILE="./models/$MODEL_PARAM/civitay.txt"
 
-
 # Проверяем наличие файла hf.txt
-if check_file_exists "$HF_FILE"; then
+if [[ -e "$HF_FILE" ]]; then
   # Запускаем скрипт для Hugging Face, если файл существует
   echo "Запуск скрипта для Hugging Face с файлом '$HF_FILE'..."
   ../aria-start-huggingface.sh "$HF_FILE" "$WORKSPACE_DIR"
@@ -28,7 +29,7 @@ else
 fi
 
 # Проверяем наличие файла civitay.txt
-if check_file_exists "$CIVITAI_FILE"; then
+if [[ -e  "$CIVITAI_FILE" ]]; then
   # Запускаем скрипт для Civitai, если файл существует
   echo "Запуск скрипта для Civitai с файлом '$CIVITAI_FILE'..."
   ../process-models-civitai.sh "$CIVITAI_FILE"

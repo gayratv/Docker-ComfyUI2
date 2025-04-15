@@ -1,7 +1,7 @@
 https://github.com/cubiq/ComfyUI_IPAdapter_plus
 
 /ComfyUI/models/clip_vision
-![Снимок экрана 2025-04-03 133622.png](assets/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202025-04-03%20133622.png)
+![Снимок экрана 2025-04-03 133622.png](assets/Снимок экрана 2025-04-03 133622.png)
 
 
 /ComfyUI/models/clip_vision
