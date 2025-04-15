@@ -49,3 +49,17 @@ vastai show instance --raw 19063866
 IP & Port Info:
 
 vastai search offers inet_down>=5000
+
+
+
+q:{"gpu_name" ={"eq": "RTX 3090 Ti"}}
+curl --location --request GET 'https://console.vast.ai/api/v0/search/asks/?q=%7B%22gpu_name%22%3A%7B%22eq%22%3A%22RTX%203090%20Ti%22%7D%7D' \
+--header 'Accept: application/json'
+
+q:{"gpu_name" ={"eq": "RTX_3090_Ti"}}
+curl --location --request GET 'https://console.vast.ai/api/v0/search/asks/?q=%7B%22gpu_name%22%3A%7B%22eq%22%3A%22RTX_3090_Ti%22%7D%7D' \
+--header 'Accept: application/json'
+
+q:{"gpu_name" ={"eq": "RTX 3090"}}
+curl --location --request GET 'https://console.vast.ai/api/v0/search/asks/?q=%7B%22gpu_name%22%3A%7B%22eq%22%3A%22RTX%203090%22%7D%7D' \
+--header 'Accept: application/json'

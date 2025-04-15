@@ -40,6 +40,8 @@ docker build --progress=plain \
     /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
 echo -e "\nсобран образ $IMAGE_NAME:$VERSION"
 
+
+->->->->->->->-> ACE++
 docker build --progress=plain \
     --build-arg BASE_IMAGE="$BASE_IMAGE" \
     --build-arg NODES="$NODES" \

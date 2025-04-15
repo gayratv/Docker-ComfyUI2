@@ -3,6 +3,8 @@ cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
 source /mnt/f/_prg/python/Docker-ComfyUI/.venv-wsl/bin/activate
 export IMAGE_NAME=gayrat/comfyui:v1.0-ace-orex
 
+python3 vast-search-py2.py --ram 32000
+
 python3 vast-search-py2.py --gpu1 "RTX 3090" --gpu2 "RTX 4090" --ram 32000
 python3 vast-search-py2.py --gpu1 "RTX 4090" --ram 32000
 
@@ -12,15 +14,15 @@ python3 vast-search-py.py --gpu "RTX 5090" --ram 32000
 
 -------------------
 
-source vast-contract.sh 19459788 $IMAGE_NAME
+source vast-contract.sh 19394440 $IMAGE_NAME
 ./vast-wait.sh
-
 source vast-env-run.sh
 echo "http://$VAST_PUBLIC_IPADDR:$VAST_COMFY"
 cmd.exe /c start chrome "http://$VAST_PUBLIC_IPADDR:$VAST_COMFY"
 ssh -p $VAST_SSH "root@$VAST_PUBLIC_IPADDR" -i ~/.ssh/mvps/ud_rsa
 
 tmux-s-bash.sh
+./dl_common.sh ACE-examples
 ./dl_common.sh ACE-plus-portrait
 ./dl_common.sh comfy-inpaint
 ./dl_common.sh SUPIR-v2-MaskTile
