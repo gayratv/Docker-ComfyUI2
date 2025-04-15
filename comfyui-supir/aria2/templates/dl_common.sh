@@ -37,3 +37,6 @@ if [[ -e  "$CIVITAI_FILE" ]]; then
 else
   echo "Пропуск запуска скриптов для Civitai из-за отсутствия файла '$CIVITAI_FILE'."
 fi
+
+# cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir/aria2/templates
+# ./dl_common.sh ACE-plus-portrait /mnt/d/1/3

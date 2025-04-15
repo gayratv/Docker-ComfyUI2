@@ -2,9 +2,10 @@
 
 # Получаем директорию, где находится текущий скрипт
 SCRIPT_DIR=$(dirname "$(realpath "$BASH_SOURCE")")
+echo -e "SCRIPT_DIR= $SCRIPT_DIR \n"
 
 # Загружаем переменные из .env, если файл существует в той же директории
-if [ -f "../$SCRIPT_DIR/.env" ]; then
+if [ -f "$SCRIPT_DIR/templates/.env" ]; then
     # Читаем и экспортируем каждую строку из .env
     while IFS='=' read -r key value; do
         # Игнорируем пустые строки и комментарии

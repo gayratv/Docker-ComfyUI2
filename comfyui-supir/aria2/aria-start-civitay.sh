@@ -10,6 +10,8 @@ fi
 # Путь к файлу
 MODEL_FILE="$1"
 
+MODEL_FILE_TOKEN=$(echo "$MODEL_FILE" | sed 's/\(.*\)\..*/\1-token.txt/')
+echo -e "MODEL_FILE_TOKEN = $MODEL_FILE_TOKEN \n"
 
 # Префикс (второй параметр)
 PREFIX="$2"
@@ -17,8 +19,8 @@ echo "PREFIX: $PREFIX"
 # Если префикс передан, применяем sed и создаем новый файл
 if [ -n "$PREFIX" ]; then
 
-  NEW_MODEL_FILE="${MODEL_FILE}.modified"
-  sed "s|^[[:space:]]*dir=|    dir=${PREFIX}/|" "$MODEL_FILE" > "$NEW_MODEL_FILE"
+  NEW_MODEL_FILE="${MODEL_FILE_TOKEN}.modified"
+  sed "s|^[[:space:]]*dir=|    dir=${PREFIX}/|" "$MODEL_FILE_TOKEN" > "$NEW_MODEL_FILE"
 fi
 
 aria2c --input-file="$NEW_MODEL_FILE" \
