@@ -43,6 +43,17 @@ COPY aria2 .
 RUN chmod +x *.sh \
     && chmod +x ./templates/*.sh
 
+# 21
+ARG ACE_PLUS_NODE_INSTALL
+RUN --mount=type=cache,target=/root/pip-cache \
+    if [ "$ACE_PLUS_NODE_INSTALL" = "true" ]; then \
+        echo "Running ace-plus-node-install.sh"; \
+        PIP_CACHE_DIR=/root/pip-cache; \
+        ace-plus-node-install.sh; \
+    else \
+        echo "Skipping ace-plus-node-install.sh"; \
+    fi
+
 WORKDIR /workspace/ComfyUI/custom_nodes
 COPY union-requiere.py .
 RUN python3 union-requiere.py

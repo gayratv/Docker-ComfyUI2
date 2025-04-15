@@ -40,6 +40,14 @@ docker build --progress=plain \
     /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
 echo -e "\nсобран образ $IMAGE_NAME:$VERSION"
 
+docker build --progress=plain \
+    --build-arg BASE_IMAGE="$BASE_IMAGE" \
+    --build-arg NODES="$NODES" \
+    --build-arg ACE_PLUS_NODE_INSTALL="true" \
+    -f /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir/Dockerfile \
+    -t $IMAGE_NAME:$VERSION \
+    /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+echo -e "\nсобран образ $IMAGE_NAME:$VERSION"
 
 docker tag "$IMAGE_NAME:$VERSION" gayrat/"$IMAGE_NAME:$VERSION"
 echo "docker push gayrat/$IMAGE_NAME:$VERSION"
@@ -66,6 +74,8 @@ docker run -it --privileged --gpus all -p 8188:8188 \
 docker exec -it "$IMAGE_NAME" bash
 
 docker cp "$IMAGE_NAME":/workspace/ComfyUI/requirements-common.txt ./requirements-common.txt
+docker cp  "/mnt/f/_prg/ComfyUI/схемы/ACE/ACE examples/workflow/ComfyUI-ACE_Plus/" "$IMAGE_NAME":/workspace/ComfyUI/custom_nodes/
+H:\ComfyUI\custom_nodes
 
 http://127.0.0.1:8188
 

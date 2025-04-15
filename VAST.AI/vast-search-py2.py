@@ -12,6 +12,10 @@ def fetch_vast_data(gpu_name1,gpu_name2, cpu_ram):
 
     # Параметры запроса с учетом переданных аргументов
     #         "gpu_name": {"eq": gpu_name},
+    gpu_name_filter = (
+        {"in": [gpu_name1, gpu_name2]} if gpu_name2 is not None else {"eq": gpu_name1}
+    )
+
     query_data = {
         "q": json.dumps({
             "gpu_name": {"in": [gpu_name1, gpu_name2]},  # Изменение здесь
