@@ -2,6 +2,7 @@ import requests
 import json
 from urllib.parse import urlencode
 import argparse
+from PY_mysql.vast_offers_to_sql import OfferImporter
 
 # Указываем путь к JSON файлу
 file_path_json = 'vast-search.json'
@@ -155,6 +156,9 @@ if __name__ == "__main__":
 
     # Выполняем запрос к API
     fetch_vast_data(args.gpu1,args.gpu2, args.ram)
+
+    importer = OfferImporter(json_file="vast-search.json")
+    inserted, batch_number = importer.insert_offers()
 
     # Отображаем результаты
     display_offers()

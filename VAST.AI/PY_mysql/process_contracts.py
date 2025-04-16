@@ -1,12 +1,12 @@
 # process_contracts.py
-
+import ast
 import os
 import json
 from typing import Optional, Tuple
 from db_connection import create_db_connection
 from mysql.connector.connection import MySQLConnection
 from mysql.connector.cursor import MySQLCursor
-
+import argparse
 
 def process_contract(id: int) -> None:
     """
@@ -32,7 +32,10 @@ def process_contract(id: int) -> None:
     try:
         # Извлекаем JSON-строку после "Started."
         json_part = content.split("Started.")[1].strip()
-        data = json.loads(json_part)
+        # print(f"json_part {json_part}")
+        data = ast.literal_eval(json_part)
+        # print(f"data.get('new_contract') {data.get('new_contract')}")
+        # data = json.loads(json_part)
 
         # Извлекаем new_contract из данных
         new_contract = data.get('new_contract')
@@ -86,5 +89,8 @@ def process_contract(id: int) -> None:
 
 
 if __name__ == "__main__":
-    # Пример вызова функции с параметром id
-    process_contract(id=123)
+    parser = argparse.ArgumentParser(description="Process a contract by ID.")
+    parser.add_argument("--id", type=int, required=True, help="The ID of the instance to process")
+    args = parser.parse_args()
+
+    process_contract(args.id)

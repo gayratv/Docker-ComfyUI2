@@ -4,7 +4,7 @@ from urllib.parse import urlencode
 import argparse
 
 # Указываем путь к JSON файлу
-file_path_json = 'vast-search.json'
+file_path_json = '../vast-search.json'
 
 def fetch_vast_data(gpu_name, cpu_ram):
     # URL для запроса

@@ -32,15 +32,6 @@ export BASE_IMAGE="comfyui-base-cuda-12-4:v1.1-pytorch-2.6.0"
 export NODES="nodes-ACE-plus-portrait-face-swap.txt"
 ===================================
 
-docker build --progress=plain \
-    --build-arg BASE_IMAGE="$BASE_IMAGE" \
-    --build-arg NODES="$NODES" \
-    -f /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir/Dockerfile \
-    -t $IMAGE_NAME:$VERSION \
-    /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
-echo -e "\nсобран образ $IMAGE_NAME:$VERSION"
-
-
 ->->->->->->->-> ACE++
 docker build --progress=plain \
     --build-arg BASE_IMAGE="$BASE_IMAGE" \
