@@ -58,7 +58,7 @@ gitdb==4.0.12
     # via gitpython
 gitpython==3.1.44
     # via -r requirements.in
-huggingface-hub==0.30.1
+huggingface-hub~=0.29.3
     # via
     #   -r requirements.in
     #   tokenizers
@@ -202,7 +202,7 @@ typing-extensions==4.13.1
     #   spandrel
     #   torch
     #   typer
-urllib3==1.26.20
+urllib3~=2.3.0
     # via
     #   matrix-client
     #   pygithub
@@ -215,3 +215,11 @@ yarl==1.18.3
     # via
     #   -r requirements.in
     #   aiohttp
+
+mysql-connector-python~=9.2.0
+pip~=25.0.1
+build~=1.2.2.post1
+wheel~=0.45.1
+xdg~=6.0.0
+typing_extensions~=4.13.0
+setuptools~=75.8.0

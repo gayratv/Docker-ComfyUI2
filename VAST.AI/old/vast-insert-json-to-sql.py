@@ -45,7 +45,7 @@ if __name__ == "__main__":
     if conn is not None:
         # Читаем JSON из файла
         try:
-            with open("vast-search.json", "r", encoding="utf-8") as file:
+            with open("../vast-search.json", "r", encoding="utf-8") as file:
                 data = json.load(file)
                 print("JSON успешно загружен")
         except Exception as e:

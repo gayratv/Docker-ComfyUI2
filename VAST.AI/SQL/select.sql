@@ -16,6 +16,7 @@ select `id`,
        `host_id`,
 
        `machine_id`,
+       auto_id,
        CONTRACT_ID
 
 from offers

@@ -1,19 +1,16 @@
 import json
-import mysql.connector
 import os
+from typing import Optional, Tuple
+from db_connection import create_db_connection
+from mysql.connector.connection import MySQLConnection
+from mysql.connector.cursor import MySQLCursor
 
 
-JSON_FILE = 'vast-search.json'
+JSON_FILE = '../vast-search.json'
 
 # 🧭 Подключение к БД
 # Подключение к MySQL
-conn = mysql.connector.connect(
-    host='localhost',
-    user='root',
-    password='root',
-    database='vast',
-    port=3307
-)
+conn: Optional[MySQLConnection] = create_db_connection()
 
 cursor = conn.cursor()
 

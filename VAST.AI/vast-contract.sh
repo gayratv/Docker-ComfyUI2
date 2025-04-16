@@ -39,6 +39,8 @@ if [[ -f "vast-create-instance.txt" ]]; then
         # Экспортируем значение в переменную окружения
         export CONTRACT_ID="$contract_id"
         echo "CONTRACT_ID=$CONTRACT_ID успешно экспортирован."
+
+        python3 "./PY-mysql/process_contract(id=$CONTRACT_ID)"
     else
         echo "Не удалось найти значение new_contract в файле."
         exit 1
