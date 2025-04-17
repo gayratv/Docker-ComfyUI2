@@ -31,7 +31,7 @@ RUN --mount=type=cache,target=/root/repo-cache \
 
 WORKDIR /workspace/ComfyUI
 COPY workflows/ user/default/workflows/
-#COPY comfy.settings.json user/default/
+COPY ./user/default/comfy.settings.json user/default/
 
 COPY union-requiere.py VPS-copy  ./
 
@@ -43,6 +43,8 @@ COPY aria2 .
 RUN chmod +x *.sh \
     && chmod +x ./templates/*.sh
 
+WORKDIR /workspace
+RUN echo -e "\n========= ACE 23-24===============\n"
 # 21
 ARG ACE_PLUS_NODE_INSTALL
 RUN --mount=type=cache,target=/root/pip-cache \

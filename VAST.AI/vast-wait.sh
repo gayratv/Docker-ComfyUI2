@@ -4,6 +4,7 @@
 check_vast_ssh() {
     # Загружаем переменные окружения из файла vast-env-run.sh
     source vast-env-run.sh
+    echo -e "\n------"
 
     # Проверяем, равно ли значение VAST_SSH "null"
     if [[ "$VAST_SSH" != "null" ]]; then
