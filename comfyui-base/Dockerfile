@@ -21,17 +21,23 @@ WORKDIR /workspace/ComfyUI
 
 COPY *.sh cloudflare.py nodes.txt *.py ./
 
+# удаляет пакеты и версию frontend
+#packages_to_remove = {
+#    "torch",
+#    "torchvision",
+#    "torchaudio",
+#    "numpy"
+#}
 
 RUN --mount=type=cache,target=/root/pip-cache-comfy-base \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    && chmod +x *.sh  \
-    && python3 requirements-edit-full.py \
-    && pip install --cache-dir=/root/pip-cache-comfy-base -r  requirements.txt \
+    && chmod +x *.sh \
+    && if [ -z "$COMFYUI_VERSION" ]; then python3 requirements-edit-full.py; fi \
+    && pip install --cache-dir=/root/pip-cache-comfy-base -r requirements.txt \
     && ./process_repos-install-req.sh nodes.txt \
     && pip install --cache-dir=/root/pip-cache-comfy-base onnxruntime onnxruntime-gpu pip-tools \
     && rm -rf ~/.cache/pip
-
 
 # Устанавливаем переменную окружения для пути
 ENV DOWNLOADS_DIR=/usr/local/bin
