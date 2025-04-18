@@ -9,10 +9,13 @@ WORKDIR /workspace
 # Создание виртуального окружения
 # RUN python -m venv /workspace/.venv --system-site-packages
 
+ARG COMFYUI_VERSION
 
 RUN git clone https://github.com/comfyanonymous/ComfyUI \
-    && cd ComfyUI \
-    && git checkout v0.3.26
+    && if [ -n "$COMFYUI_VERSION" ]; then \
+        cd ComfyUI \
+        && git checkout "$COMFYUI_VERSION"; \
+    fi
 
 WORKDIR /workspace/ComfyUI
 

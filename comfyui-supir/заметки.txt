@@ -30,13 +30,22 @@ export IMAGE_NAME="comfyui"
 export VERSION="v1.0-ace-orex"
 export BASE_IMAGE="comfyui-base-cuda-12-4:v1.1-pytorch-2.6.0"
 export NODES="nodes-ACE-plus-portrait-face-swap.txt"
+export ACE_PLUS_NODE_INSTALL="true"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+export IMAGE_NAME="comfyui"
+export VERSION="v1.0-HunyuanVideo"
+export BASE_IMAGE="comfyui-base-cuda-12-4:v1.1-pytorch-2.6.0"
+export NODES="nodes-hunian-video.txt"
+export ACE_PLUS_NODE_INSTALL="false"
+
 ===================================
 
 ->->->->->->->-> ACE++
 docker build --progress=plain \
     --build-arg BASE_IMAGE="$BASE_IMAGE" \
     --build-arg NODES="$NODES" \
-    --build-arg ACE_PLUS_NODE_INSTALL="true" \
+    --build-arg ACE_PLUS_NODE_INSTALL=$ACE_PLUS_NODE_INSTALL \
     -f /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir/Dockerfile \
     -t $IMAGE_NAME:$VERSION \
     /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir

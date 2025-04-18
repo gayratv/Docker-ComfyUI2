@@ -10,6 +10,7 @@ NODES_FILE="${1:-nodes.txt}"
 
 #echo "DEBUG: Checking for file at path: $NODES_FILE"
 #ls -l "$NODES_FILE"
+# echo -e "\n\033[34mDEBUG\033[0m: =======NODES_FILE = $NODES_FILE\n"
 
 # Проверка наличия файла nodes.txt
 if [ ! -f "$NODES_FILE" ]; then

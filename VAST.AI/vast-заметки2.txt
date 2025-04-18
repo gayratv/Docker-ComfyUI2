@@ -6,7 +6,7 @@ export IMAGE_NAME=gayrat/comfyui:v1.0-ace-orex
 
 python3 vast-search-py2.py --ram 32000
 
-source vast-contract.sh 19093236 $IMAGE_NAME
+source vast-contract.sh 18839326 $IMAGE_NAME
 
 ./vast-wait.sh
 source vast-env-run.sh
