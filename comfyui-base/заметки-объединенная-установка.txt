@@ -13,6 +13,19 @@ export VERSION="v1.1-pytorch-2.6.0-comfy-$COMFYUI_VERSION"
 echo -e "$BASE_IMAGE"
 echo -e "версия $VERSION"
 
+///// CUDA 12.4 - установка последней версии
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
+export IMAGE_NAME_docker_base="cuda-12-4"
+export BASE_IMAGE_docker_base="pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime"
+export VERSION_docker_base="v1.1-pytorch-2.6.0"
+
+export IMAGE_NAME="comfyui-base-cuda-12-4"
+export BASE_IMAGE="$IMAGE_NAME_docker_base:$VERSION_docker_base"
+export COMFYUI_VERSION=""
+export VERSION="v1.1-pytorch-2.6.0"
+echo -e "$BASE_IMAGE"
+echo -e "версия $VERSION"
+
 ///////////////////////////
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
 export IMAGE_NAME_docker_base="cuda-12-8"
@@ -46,6 +59,7 @@ docker build --progress=plain \
 
 echo -e "\nСобран образ $IMAGE_NAME_docker_base:$VERSION_docker_base"
 
+## =================================================================
 ## сборка  =========  comfyui-base
 
 docker build --progress=plain \

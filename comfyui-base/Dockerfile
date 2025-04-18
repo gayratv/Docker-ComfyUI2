@@ -36,8 +36,11 @@ RUN --mount=type=cache,target=/root/pip-cache-comfy-base \
     && if [ -z "$COMFYUI_VERSION" ]; then python3 requirements-edit-full.py; fi \
     && pip install --cache-dir=/root/pip-cache-comfy-base -r requirements.txt \
     && ./process_repos-install-req.sh nodes.txt \
-    && pip install --cache-dir=/root/pip-cache-comfy-base onnxruntime onnxruntime-gpu pip-tools \
+    && uv pip install --cache-dir=/root/pip-cache-comfy-base onnxruntime onnxruntime-gpu pip-tools \
+    && uv pip install torch torchvision torchaudio --cache-dir /root/pip-cache-comfy-base \
     && rm -rf ~/.cache/pip
+
+# uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 --cache-dir /root/pip-cache-comfy-base
 
 # Устанавливаем переменную окружения для пути
 ENV DOWNLOADS_DIR=/usr/local/bin
