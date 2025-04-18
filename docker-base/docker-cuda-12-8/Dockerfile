@@ -13,6 +13,8 @@ RUN apt-get update \
     nano \
     ffmpeg \
     locales \
+    tmux \
+    mc \
     build-essential g++ cmake ninja-build git pkg-config libopenblas-dev libomp-dev \
     libjpeg-dev libpng-dev libtiff-dev libavcodec-dev libavformat-dev libswscale-dev \
     libv4l-dev libxvidcore-dev libx264-dev libgtk-3-dev libatlas-base-dev gfortran \
@@ -53,15 +55,15 @@ RUN python3.11 -m ensurepip \
     && rm -rf /var/lib/apt/lists/*
 
 # Установка PyTorch и других зависимостей
-RUN --mount=type=cache,target=/root/pip-cache \
-    uv pip install \
-    --cache-dir=/root/pip-cache  \
-    --system \
-    --index-strategy unsafe-best-match \
-    torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128 \
-    && uv pip install --cache-dir=/root/pip-cache --system --index-strategy unsafe-best-match \
-    pytz \
-    && rm -rf ~/.cache/pip
+#RUN --mount=type=cache,target=/root/pip-cache \
+#    uv pip install \
+#    --cache-dir=/root/pip-cache  \
+#    --system \
+#    --index-strategy unsafe-best-match \
+#    torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128 \
+#    && uv pip install --cache-dir=/root/pip-cache --system --index-strategy unsafe-best-match \
+#    pytz \
+#    && rm -rf ~/.cache/pip
 
 # xformers пока не буду ставить - убивает torch
 #    xformers pytz \

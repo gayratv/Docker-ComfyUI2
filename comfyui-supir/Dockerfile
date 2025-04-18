@@ -58,7 +58,8 @@ RUN --mount=type=cache,target=/root/pip-cache \
 
 WORKDIR /workspace/ComfyUI/custom_nodes
 COPY union-requiere.py .
-RUN python3 union-requiere.py
+RUN python3 union-requiere.py \
+  && rm union-requiere.py
 
 
 RUN echo "cd /workspace/aria2/templates" >> /root/.bashrc \

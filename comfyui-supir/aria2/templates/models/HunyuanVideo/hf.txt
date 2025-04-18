@@ -1,0 +1,40 @@
+# 🌟 clip_vision 🌟
+https://huggingface.co/Comfy-Org/sigclip_vision_384/resolve/main/sigclip_vision_patch14_384.safetensors
+    dir=models/clip_vision
+    out=sigclip_vision_patch14_384.safetensors
+
+
+# to ComfyUI\models\diffusers\lllyasviel\FramePackI2V_HY
+# https://huggingface.co/Kijai/HunyuanVideo_comfy/resolve/main/FramePackI2V_HY_fp8_e4m3fn.safetensors
+#    dir=models/diffusers/lllyasviel/FramePackI2V_HY
+#    dir=models/framepack/
+#    out=FramePackI2V_HY_fp8_e4m3fn.safetensors
+
+# 🌟 FramePack bf16 🌟
+# FramePackI2V_HY_bf16.safetensors
+https://huggingface.co/Kijai/HunyuanVideo_comfy/resolve/main/FramePackI2V_HY_bf16.safetensors
+    dir=models/diffusion_models/
+    out=FramePackI2V_HY_bf16.safetensors
+
+# split_files/clip_vision
+https://huggingface.co/Comfy-Org/HunyuanVideo_repackaged/resolve/main/split_files/clip_vision/llava_llama3_vision.safetensors
+    dir=models/clip_vision
+    out=llava_llama3_vision.safetensors
+
+# split_files/diffusion_models 25gb
+# https://huggingface.co/Comfy-Org/HunyuanVideo_repackaged/resolve/main/split_files/diffusion_models/hunyuan_video_t2v_720p_bf16.safetensors
+#     dir=models/diffusion_models
+#     out=hunyuan_video_t2v_720p_bf16.safetensors
+
+# split_files/text_encoders
+https://huggingface.co/Comfy-Org/HunyuanVideo_repackaged/resolve/main/split_files/text_encoders/clip_l.safetensors
+    dir=models/clip
+    out=clip_l.safetensors
+https://huggingface.co/Comfy-Org/HunyuanVideo_repackaged/resolve/main/split_files/text_encoders/llava_llama3_fp8_scaled.safetensors
+    dir=models/clip
+    out=llava_llama3_fp8_scaled.safetensors
+
+# split_files/vae
+https://huggingface.co/Comfy-Org/HunyuanVideo_repackaged/resolve/main/split_files/vae/hunyuan_video_vae_bf16.safetensors
+    dir=models/vae
+    out=hunyuan_video_vae_bf16.safetensors

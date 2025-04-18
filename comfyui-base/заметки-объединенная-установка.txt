@@ -31,13 +31,13 @@ echo -e "версия $VERSION"
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
 export IMAGE_NAME_docker_base="cuda-12-8"
 export BASE_IMAGE_docker_base="nvidia/cuda:12.8.1-cudnn-runtime-ubuntu22.04"
-export VERSION_docker_base="v1.1-nvidia"
+export VERSION_docker_base="v1.3-nvidia"
 
 export IMAGE_NAME="comfyui-base-cuda-12-8"
 export BASE_IMAGE="$IMAGE_NAME_docker_base:$VERSION_docker_base"
 export COMFYUI_VERSION=""
 export CUDA_VER="12.8"
-export VERSION="v1.0-CUDA-12.8"
+export VERSION="v1.3-CUDA-12.8"
 echo $BASE_IMAGE
 
 

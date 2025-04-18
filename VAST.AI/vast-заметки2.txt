@@ -2,11 +2,14 @@ wsl
 clear
 cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
 source /mnt/f/_prg/python/Docker-ComfyUI/.venv-wsl/bin/activate
+export IMAGE_NAME=gayrat/comfyui:v1.0-HunyuanVideo
+
 export IMAGE_NAME=gayrat/comfyui:v1.0-ace-orex
 
 python3 vast-search-py2.py --ram 32000
+python3 vast-search-py2.py --ram 32000 --gpu1 "RTX 5090"
 
-source vast-contract.sh 18839326 $IMAGE_NAME
+source vast-contract.sh 19093236 $IMAGE_NAME
 
 ./vast-wait.sh
 source vast-env-run.sh
@@ -15,6 +18,7 @@ cmd.exe /c start chrome "http://$VAST_PUBLIC_IPADDR:$VAST_COMFY"
 ssh -p $VAST_SSH "root@$VAST_PUBLIC_IPADDR" -i ~/.ssh/mvps/ud_rsa
 
 tmux-s-bash.sh
+./dl_common.sh HunyuanVideo
 ./dl_common.sh ACE-examples
 ./dl_common.sh ACE-plus-portrait
 ./dl_common.sh comfy-inpaint
@@ -36,3 +40,9 @@ python3 vast-search-py2.py --gpu1 "RTX 4090" --ram 32000
 python3 vast-search-py.py --gpu "RTX 3090" --ram 32000
 python3 vast-search-py.py --gpu "RTX 4090" --ram 32000
 python3 vast-search-py.py --gpu "RTX 5090" --ram 32000
+
+
+scp ~/downloads/file.txt root@123.123.123.123:/home/user/
+scp -P 38068 -i ~/.ssh/mvps/ud_rsa FramePack_00001.mp4 root@76.69.199.17:/workspace/ComfyUI/temp/FramePack_00001.mp4
+
+scp -P 38068 -i ~/.ssh/mvps/ud_rsa root@76.69.199.17:/workspace/ComfyUI/temp/FramePack_00001.mp4 .

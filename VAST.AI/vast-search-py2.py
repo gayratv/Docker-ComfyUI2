@@ -11,15 +11,10 @@ def fetch_vast_data(gpu_name1,gpu_name2, cpu_ram):
     # URL для запроса
     url = "https://cloud.vast.ai/api/v0/search/asks/"
 
-    # Параметры запроса с учетом переданных аргументов
-    #         "gpu_name": {"eq": gpu_name},
-    gpu_name_filter = (
-        {"in": [gpu_name1, gpu_name2]} if gpu_name2 is not None else {"eq": gpu_name1}
-    )
-
-    gpu_name_filter ={"eq": "RTX_3090_Ti"}
-    gpu_name_filter ={"eq": "RTX 3090 Ti"}
-    gpu_name_filter ={"in": ["RTX 3090", "RTX 4090","RTX_3090_Ti"]}
+    if gpu_name2 is None and gpu_name1 is  None:
+        gpu_name_filter = {"in": ["RTX 3090", "RTX 4090", "RTX_3090_Ti"]}
+    else:
+        gpu_name_filter =  {"eq": gpu_name1}
 
     query_data = {
         "q": json.dumps({
