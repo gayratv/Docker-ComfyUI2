@@ -13,7 +13,7 @@ export VERSION="v1.1-pytorch-2.6.0-comfy-$COMFYUI_VERSION"
 echo -e "$BASE_IMAGE"
 echo -e "версия $VERSION"
 
-///// CUDA 12.4 - установка последней версии
+///// CUDA 12.4 - установка последней версии Comfy
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
 export IMAGE_NAME_docker_base="cuda-12-4"
 export BASE_IMAGE_docker_base="pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime"
@@ -22,11 +22,12 @@ export VERSION_docker_base="v1.1-pytorch-2.6.0"
 export IMAGE_NAME="comfyui-base-cuda-12-4"
 export BASE_IMAGE="$IMAGE_NAME_docker_base:$VERSION_docker_base"
 export COMFYUI_VERSION=""
+export CUDA_VER="12.4"
 export VERSION="v1.1-pytorch-2.6.0"
 echo -e "$BASE_IMAGE"
 echo -e "версия $VERSION"
 
-///////////////////////////
+///// CUDA 12.8 - установка последней версии Comfy
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
 export IMAGE_NAME_docker_base="cuda-12-8"
 export BASE_IMAGE_docker_base="nvidia/cuda:12.8.1-cudnn-runtime-ubuntu22.04"
@@ -34,8 +35,10 @@ export VERSION_docker_base="v1.1-nvidia"
 
 export IMAGE_NAME="comfyui-base-cuda-12-8"
 export BASE_IMAGE="$IMAGE_NAME_docker_base:$VERSION_docker_base"
-echo $BASE_IMAGE
+export COMFYUI_VERSION=""
+export CUDA_VER="12.8"
 export VERSION="v1.0-CUDA-12.8"
+echo $BASE_IMAGE
 
 
 =====================================
@@ -65,6 +68,7 @@ echo -e "\nСобран образ $IMAGE_NAME_docker_base:$VERSION_docker_base"
 docker build --progress=plain \
     --build-arg BASE_IMAGE="$BASE_IMAGE" \
     --build-arg COMFYUI_VERSION="$COMFYUI_VERSION" \
+    --build-arg CUDA_VER="$CUDA_VER" \
     -f /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base/Dockerfile \
     -t $IMAGE_NAME:$VERSION \
     /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
@@ -77,12 +81,6 @@ docker run -it --privileged --gpus all \
     -p 8188:8188 \
     -v /mnt/h/ComfyUI-data/models:/workspace/ComfyUI/models \
     --name "$IMAGE_NAME" "$IMAGE_NAME:$VERSION" bash
-
-docker run -it --gpus all \
-    -p 8188:8188 \
-    --name comfy comfyui-base-cuda-12-4:v1.1-pytorch-2.6.0-comfy-v0.3.26  \
-    bash
-
 
 docker exec -it "$IMAGE_NAME" bash
 

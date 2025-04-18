@@ -4,12 +4,16 @@ ARG BASE_IMAGE="comfyui-base-cuda"
 # Используем аргумент в качестве имени образа
 FROM ${BASE_IMAGE}
 
+# Удалить кеш pip перед установкой:
+# RUN rm -rf /root/pip-cache-comfy-base/*
+
 # Создание рабочей директории
 WORKDIR /workspace
 # Создание виртуального окружения
 # RUN python -m venv /workspace/.venv --system-site-packages
 
 ARG COMFYUI_VERSION
+ARG CUDA_VER="12.4"
 
 RUN git clone https://github.com/comfyanonymous/ComfyUI \
     && if [ -n "$COMFYUI_VERSION" ]; then \
@@ -28,7 +32,7 @@ COPY *.sh cloudflare.py nodes.txt *.py ./
 #    "torchaudio",
 #    "numpy"
 #}
-
+# 12
 RUN --mount=type=cache,target=/root/pip-cache-comfy-base \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
@@ -36,11 +40,29 @@ RUN --mount=type=cache,target=/root/pip-cache-comfy-base \
     && if [ -z "$COMFYUI_VERSION" ]; then python3 requirements-edit-full.py; fi \
     && pip install --cache-dir=/root/pip-cache-comfy-base -r requirements.txt \
     && ./process_repos-install-req.sh nodes.txt \
-    && uv pip install --cache-dir=/root/pip-cache-comfy-base onnxruntime onnxruntime-gpu pip-tools \
-    && uv pip install torch torchvision torchaudio --cache-dir /root/pip-cache-comfy-base \
+    && echo -e "\033[0;31m \n\n Установка дополнительных пакетов \033[0m" \
+    && uv pip install \
+    --link-mode=copy \
+    --system \
+    --cache-dir=/root/pip-cache-comfy-base \
+    onnxruntime onnxruntime-gpu pip-tools \
+    && echo -e "\033[0;31m \n\n Установка torch torchvision torchaudio \033[0m" \
+    && if [ "$CUDA_VER" = "12.8" ]; then \
+        uv pip install \
+        --link-mode=copy \
+        --system \
+        --cache-dir=/root/pip-cache-comfy-base \
+        --pre \
+        --index-url https://download.pytorch.org/whl/nightly/cu128 \
+        torch torchvision torchaudio; \
+    else \
+        uv pip install \
+        --link-mode=copy \
+        --system \
+        --cache-dir=/root/pip-cache-comfy-base \
+        torch torchvision torchaudio; \
+    fi \
     && rm -rf ~/.cache/pip
-
-# uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 --cache-dir /root/pip-cache-comfy-base
 
 # Устанавливаем переменную окружения для пути
 ENV DOWNLOADS_DIR=/usr/local/bin
