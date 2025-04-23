@@ -47,7 +47,6 @@ export NODES="nodes-hunian-video.txt"
 export ACE_PLUS_NODE_INSTALL="false"
 ===================================
 
-->->->->->->->-> ACE++
 docker build --progress=plain \
     --build-arg BASE_IMAGE="$BASE_IMAGE" \
     --build-arg NODES="$NODES" \

@@ -6,10 +6,11 @@ export IMAGE_NAME=gayrat/comfyui:v1.0-HunyuanVideo
 
 export IMAGE_NAME=gayrat/comfyui:v1.0-ace-orex
 
-python3 vast-search-py2.py --ram 32000
 python3 vast-search-py2.py --ram 32000 --gpu1 "RTX 5090"
 
-source vast-contract.sh 19093236 $IMAGE_NAME
+python3 vast-search-py2.py --ram 32000
+
+source vast-contract.sh 19495616 $IMAGE_NAME
 
 ./vast-wait.sh
 source vast-env-run.sh
@@ -42,7 +43,10 @@ python3 vast-search-py.py --gpu "RTX 4090" --ram 32000
 python3 vast-search-py.py --gpu "RTX 5090" --ram 32000
 
 
-scp ~/downloads/file.txt root@123.123.123.123:/home/user/
-scp -P 38068 -i ~/.ssh/mvps/ud_rsa FramePack_00001.mp4 root@76.69.199.17:/workspace/ComfyUI/temp/FramePack_00001.mp4
 
 scp -P 38068 -i ~/.ssh/mvps/ud_rsa root@76.69.199.17:/workspace/ComfyUI/temp/FramePack_00001.mp4 .
+scp -P 9081 -i ~/.ssh/mvps/ud_rsa root@50.35.45.243:/workspace/ComfyUI/temp/FramePack_00001.mp4 .
+ssh -p 9081 root@50.35.45.243 -L 8080:localhost:8080
+
+
+vastai set api-key xx
