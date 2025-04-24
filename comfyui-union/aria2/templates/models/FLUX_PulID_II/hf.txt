@@ -1,0 +1,23 @@
+# 🌟 FP16 Dev 🌟
+# flux1-dev.safetensors
+https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/flux1-dev.safetensors
+    dir=models/diffusion_models/Flux
+    out=flux1D-fp16.safetensors
+
+#  🌟 CLIP 🌟
+# comfyanonymous/flux_text_encoders
+https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors
+    out=clip_l.safetensors
+    dir=models/clip/Flux
+
+# comfyanonymous/flux_text_encoders
+https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16.safetensors
+    out=t5xxl_fp16.safetensors
+    dir=models/clip/Flux
+
+#  🌟 PuLID 🌟
+# guozinan/PuLID
+# pulid_flux_v0.9.1.safetensors
+https://huggingface.co/guozinan/PuLID/resolve/main/pulid_flux_v0.9.1.safetensors
+    out=pulid_flux_v0.9.1.safetensors
+    dir=models/pulid/Flux

@@ -1,6 +1,6 @@
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union
 export IMAGE_NAME="comfy-union"
-export VERSION="v1.0"
+export VERSION="FLUX_PulID_II"
 export BASE_IMAGE="cuda-12-4:v1.2-NV-runtime"
 export NODES="nodes-FLUX_PulID_II.txt"
 export ACE_PLUS_NODE_INSTALL="false"
@@ -10,6 +10,8 @@ export COMFYUI_VERSION=""
 ===================================
 
 ./docb.sh
+./docr.sh
+./docp.sh
 
 docker build --progress=plain \
     --build-arg BASE_IMAGE="$BASE_IMAGE" \
@@ -27,7 +29,7 @@ docker push gayrat/"$IMAGE_NAME:$VERSION"
 
 ==== RUN tmux-s-bash.sh
 
-./docr.sh
+
 
 echo "run --name $IMAGE_NAME $IMAGE_NAME:$VERSION"
 docker rm -f "$IMAGE_NAME"
