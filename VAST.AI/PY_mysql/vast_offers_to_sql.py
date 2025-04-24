@@ -95,7 +95,7 @@ class OfferImporter:
         })
         return row
 
-    def insert_offers(self) -> Tuple[int, int]:
+    def insert_offers(self, batch_num_param: Optional[int] = None) -> Tuple[int, int]:
         """
         Вставка данных из JSON-файла в базу данных.
 
@@ -103,13 +103,17 @@ class OfferImporter:
         """
         try:
             self.connect_to_db()
-            batch_number = self.get_new_batch_number()
-            print(f"📦 Используемый batch_number: {batch_number}")
+            batch_number_insert=None
+            if batch_num_param:
+                batch_number_insert = batch_num_param
+            else:
+                batch_number_insert = self.get_new_batch_number()
+            print(f"📦 Используемый batch_number: {batch_number_insert}")
 
             offers = self.read_json()
             if not offers:
                 print("❌ JSON-файл пуст.")
-                return 0, batch_number
+                return 0, batch_number_insert
 
             insert_query = f"""
             INSERT INTO {self.table_name} (
@@ -155,7 +159,7 @@ class OfferImporter:
 
             inserted = 0
             for offer in offers:
-                row = self.prepare_row(offer, batch_number)
+                row = self.prepare_row(offer, batch_number_insert)
                 try:
                     self.cursor.execute(insert_query, row)
                     inserted += 1
@@ -163,8 +167,8 @@ class OfferImporter:
                     print(f"⚠️ Ошибка вставки: {err} (id: {offer.get('id')})")
 
             self.conn.commit()
-            print(f"✅ Импорт завершён. Всего вставлено: {inserted} записей. Batch: {batch_number}")
-            return inserted, batch_number
+            print(f"✅ Импорт завершён. Всего вставлено: {inserted} записей. Batch: {batch_number_insert}")
+            return inserted, batch_number_insert
 
         finally:
             self.disconnect_from_db()

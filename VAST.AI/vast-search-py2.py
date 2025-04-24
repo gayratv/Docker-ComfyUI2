@@ -16,24 +16,40 @@ def fetch_vast_data(gpu_name1,gpu_name2, cpu_ram):
     else:
         gpu_name_filter =  {"eq": gpu_name1}
 
+    # query_data = {
+    #     "q": json.dumps({
+    #         "gpu_name": gpu_name_filter,
+    #         "num_gpus": {"eq": 1},
+    #         "rentable": {"eq": True},
+    #         "cuda_max_good": {"gte": "12.4"},
+    #         "cpu_ram": {"gte": str(cpu_ram)},
+    #         "inet_down": {"gte": "1000.0"},
+    #         "gpu_frac": {"gte": "0.5"},
+    #         "disk_space": {"gte": "100.0"}
+    #     })
+    # }
+
     query_data = {
         "q": json.dumps({
             "gpu_name": gpu_name_filter,
             "num_gpus": {"eq": 1},
             "rentable": {"eq": True},
-            "cuda_max_good": {"gte": "12.4"},
             "cpu_ram": {"gte": str(cpu_ram)},
-            "inet_down": {"gte": "1000.0"},
-            "gpu_frac": {"gte": "0.5"},
-            "disk_space": {"gte": "100.0"}
+            "inet_down": {"gte": "800.0"},
+            "disk_space": {"gte": "100.0"},
+            "cuda_max_good": {"gte": "12.4"},
         })
     }
+
+    print(f"\nquery_data: {query_data}\n")
 
     # Кодирование параметров с помощью urlencode
     encoded_params = urlencode(query_data)
 
     # Полный URL с закодированными параметрами
     full_url = f"{url}?{encoded_params}"
+
+    print(f"\nfull_url: {full_url} \n\n")
 
     # Выполнение GET-запроса
     response = requests.get(full_url)
