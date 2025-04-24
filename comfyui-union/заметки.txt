@@ -7,11 +7,20 @@ export ACE_PLUS_NODE_INSTALL="false"
 export COMFYUI_VERSION=""
 
 
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union
+export IMAGE_NAME="comfy-union"
+export VERSION="FLUX_HIRES_Artur"
+export BASE_IMAGE="cuda-12-4:v1.2-NV-runtime"
+export NODES="nodes-FLUX_генерация_HIRES_Artur.txt"
+export ACE_PLUS_NODE_INSTALL="false"
+export COMFYUI_VERSION=""
+
+
 ===================================
 
-./docb.sh
-./docr.sh
-./docp.sh
+./db.sh
+./dr.sh
+./dp.sh
 
 docker build --progress=plain \
     --build-arg BASE_IMAGE="$BASE_IMAGE" \
