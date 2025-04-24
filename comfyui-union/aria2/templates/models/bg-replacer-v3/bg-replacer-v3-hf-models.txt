@@ -1,0 +1,148 @@
+## clip_interrogator_model not found: /workspace/ComfyUI/models/clip_interrogator/Salesforce/blip-image-captioning-base, pls download from https://huggingface.co/Salesforce/blip-image-captioning-base
+# Salesforce/blip-image-captioning-base
+# https://huggingface.co/Salesforce/blip-image-captioning-base/tree/main
+https://huggingface.co/Salesforce/blip-image-captioning-base/resolve/main/README.md
+  dir=/workspace/ComfyUI/models/clip_interrogator/Salesforce/blip-image-captioning-base
+
+https://huggingface.co/Salesforce/blip-image-captioning-base/resolve/main/config.json
+  dir=/workspace/ComfyUI/models/clip_interrogator/Salesforce/blip-image-captioning-base
+
+https://huggingface.co/Salesforce/blip-image-captioning-base/resolve/main/preprocessor_config.json
+  dir=/workspace/ComfyUI/models/clip_interrogator/Salesforce/blip-image-captioning-base
+
+https://huggingface.co/Salesforce/blip-image-captioning-base/resolve/main/pytorch_model.bin
+  dir=/workspace/ComfyUI/models/clip_interrogator/Salesforce/blip-image-captioning-base
+
+https://huggingface.co/Salesforce/blip-image-captioning-base/resolve/main/special_tokens_map.json
+  dir=/workspace/ComfyUI/models/clip_interrogator/Salesforce/blip-image-captioning-base
+
+https://huggingface.co/Salesforce/blip-image-captioning-base/resolve/main/tf_model.h5
+  dir=/workspace/ComfyUI/models/clip_interrogator/Salesforce/blip-image-captioning-base
+
+https://huggingface.co/Salesforce/blip-image-captioning-base/resolve/main/tokenizer.json
+  dir=/workspace/ComfyUI/models/clip_interrogator/Salesforce/blip-image-captioning-base
+
+https://huggingface.co/Salesforce/blip-image-captioning-base/resolve/main/tokenizer_config.json
+  dir=/workspace/ComfyUI/models/clip_interrogator/Salesforce/blip-image-captioning-base
+
+## text_generator_model not found: /workspace/ComfyUI/models/prompt_generator/text2image-prompt-generator,
+# pls download from https://huggingface.co/succinctly/text2image-prompt-generator/tree/main
+https://huggingface.co/succinctly/text2image-prompt-generator/resolve/main/pytorch_model.bin
+    dir=/workspace/ComfyUI/models/prompt_generator/text2image-prompt-generator
+
+## zh_en_model not found: /workspace/ComfyUI/models/prompt_generator/opus-mt-zh-en, pls download
+# from https://huggingface.co/Helsinki-NLP/opus-mt-zh-en/tree/main
+https://huggingface.co/Helsinki-NLP/opus-mt-zh-en/resolve/main/tf_model.h5
+    dir=/workspace/ComfyUI/models/prompt_generator/opus-mt-zh-en
+https://huggingface.co/Helsinki-NLP/opus-mt-zh-en/resolve/main/target.spm
+    dir=/workspace/ComfyUI/models/prompt_generator/opus-mt-zh-en
+https://huggingface.co/Helsinki-NLP/opus-mt-zh-en/resolve/main/source.spm
+    dir=/workspace/ComfyUI/models/prompt_generator/opus-mt-zh-en
+https://huggingface.co/Helsinki-NLP/opus-mt-zh-en/resolve/main/rust_model.ot
+    dir=/workspace/ComfyUI/models/prompt_generator/opus-mt-zh-en
+https://huggingface.co/Helsinki-NLP/opus-mt-zh-en/resolve/main/pytorch_model.bin
+    dir=/workspace/ComfyUI/models/prompt_generator/opus-mt-zh-en
+
+# 🌟Power Lora Loader🌟
+# : diffusion_pytorch_model.safetensors (Rename to FLUX.1-Turbo-Alpha.safetensors
+https://huggingface.co/alimama-creative/FLUX.1-Turbo-Alpha/resolve/main/diffusion_pytorch_model.safetensors
+    dir=/workspace/ComfyUI/models/loras
+    out=FLUX.1-Turbo-Alpha.safetensors
+
+# 🌟DualCLIPLoader🌟
+https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn_scaled.safetensors
+    dir=/workspace/ComfyUI/models/clip/flux
+https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors
+    dir=/workspace/ComfyUI/models/clip/flux
+https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16.safetensors
+    dir=/workspace/ComfyUI/models/clip/flux
+https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors
+    dir=/workspace/ComfyUI/models/clip/flux
+
+# 🌟Load VAE🌟
+https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors
+    dir=/workspace/ComfyUI/models/vae/flux-schnell
+
+# 🌟Load ControlNet Model🌟
+#	Download Link: https://huggingface.co/xinsir/controlnet-union-sdxl-1.0/tree/main
+https://huggingface.co/xinsir/controlnet-union-sdxl-1.0/resolve/main/diffusion_pytorch_model_promax.safetensors
+   dir=/workspace/ComfyUI/models/controlnet/sdxl
+   out=diffusion_pytorch_model_promax.safetensors
+
+# 🌟BiRefNet Ultra V2🌟
+# 	Download all the files and extract them to the ComfyUI/models/vitmatte directory.
+# 	Download Link: https://huggingface.co/hustvl/vitmatte-small-composition-1k/tree/main
+
+https://huggingface.co/hustvl/vitmatte-small-composition-1k/resolve/main/pytorch_model.bin
+   dir=/workspace/ComfyUI/models/vitmatte
+   out=pytorch_model.bin
+https://huggingface.co/hustvl/vitmatte-small-composition-1k/resolve/main/preprocessor_config.json
+   dir=/workspace/ComfyUI/models/vitmatte
+   out=preprocessor_config.json
+https://huggingface.co/hustvl/vitmatte-small-composition-1k/resolve/main/config.json
+   dir=/workspace/ComfyUI/models/vitmatte
+   out=config.json
+https://huggingface.co/hustvl/vitmatte-small-composition-1k/resolve/main/model.safetensors
+   dir=/workspace/ComfyUI/models/vitmatte
+   out=model.safetensors
+
+# 🌟Big lama Remover🌟
+#	Download Link: https://github.com/Sanster/models/releases/download/add_big_lama/big-lama.pt
+#	File Name: big-lama.pt
+https://huggingface.co/Gayrat1968/Big-lama-Remover/resolve/main/big-lama.pt
+  dir=/workspace/ComfyUI/custom_nodes/comfyui-lama-remover/ckpts/
+  out=big-lama.pt
+
+
+
+# ../aria-start-huggingface.sh ./models/biref.txt
+# 🌟LayerMask: Load BiRefNet Model V2🌟
+#	Download all the files and extract them to the ComfyUI/models/ directory.
+#	Download Link: https://drive.google.com/drive/folders/1YidZChNHJxPZUUBHtzOefE9sbclr8646?usp=sharing
+# https://huggingface.co/briaai/RMBG-2.0/tree/main
+# briaai/RMBG-2.0
+https://huggingface.co/briaai/RMBG-2.0/resolve/main/pytorch_model.bin
+    dir=/workspace/ComfyUI/models/BiRefNet/RMBG-2.0
+    out=pytorch_model.bin
+https://huggingface.co/briaai/RMBG-2.0/resolve/main/preprocessor_config.json
+    dir=/workspace/ComfyUI/models/BiRefNet/RMBG-2.0
+    out=preprocessor_config.json
+https://huggingface.co/briaai/RMBG-2.0/resolve/main/model.safetensors
+    dir=/workspace/ComfyUI/models/BiRefNet/RMBG-2.0
+    out=model.safetensors
+https://huggingface.co/briaai/RMBG-2.0/resolve/main/config.json
+    dir=/workspace/ComfyUI/models/BiRefNet/RMBG-2.0
+    out=config.json
+https://huggingface.co/briaai/RMBG-2.0/resolve/main/birefnet.py
+    dir=/workspace/ComfyUI/models/BiRefNet/RMBG-2.0
+    out=birefnet.py
+https://huggingface.co/briaai/RMBG-2.0/resolve/main/BiRefNet_config.py
+    dir=/workspace/ComfyUI/models/BiRefNet/RMBG-2.0
+    out=BiRefNet_config.py
+
+https://huggingface.co/briaai/RMBG-2.0/resolve/main/onnx/model_uint8.onnx
+    dir=/workspace/ComfyUI/models/BiRefNet/RMBG-2.0/onnx
+    out=model_uint8.onnx
+https://huggingface.co/briaai/RMBG-2.0/resolve/main/onnx/model_quantized.onnx
+    dir=/workspace/ComfyUI/models/BiRefNet/RMBG-2.0/onnx
+    out=model_quantized.onnx
+https://huggingface.co/briaai/RMBG-2.0/resolve/main/onnx/model_q4f16.onnx
+    dir=/workspace/ComfyUI/models/BiRefNet/RMBG-2.0/onnx
+    out=model_q4f16.onnx
+https://huggingface.co/briaai/RMBG-2.0/resolve/main/onnx/model_q4.onnx
+    dir=/workspace/ComfyUI/models/BiRefNet/RMBG-2.0/onnx
+    out=model_q4.onnx
+https://huggingface.co/briaai/RMBG-2.0/resolve/main/onnx/model_int8.onnx
+    dir=/workspace/ComfyUI/models/BiRefNet/RMBG-2.0/onnx
+    out=model_int8.onnx
+https://huggingface.co/briaai/RMBG-2.0/resolve/main/onnx/model_fp16.onnx
+    dir=/workspace/ComfyUI/models/BiRefNet/RMBG-2.0/onnx
+    out=model_fp16.onnx
+https://huggingface.co/briaai/RMBG-2.0/resolve/main/onnx/model_bnb4.onnx
+    dir=/workspace/ComfyUI/models/BiRefNet/RMBG-2.0/onnx
+    out=model_bnb4.onnx
+https://huggingface.co/briaai/RMBG-2.0/resolve/main/onnx/model.onnx
+    dir=/workspace/ComfyUI/models/BiRefNet/RMBG-2.0/onnx
+    out=model.onnx
+
+

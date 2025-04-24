@@ -1,0 +1,68 @@
+# 🌟 CLIP 🌟
+# zer0int/CLIP-GmP-ViT-L-14
+# ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors
+# https://huggingface.co/zer0int/CLIP-GmP-ViT-L-14/blob/main/ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors
+
+https://huggingface.co/zer0int/CLIP-GmP-ViT-L-14/resolve/main/ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors
+    dir=models/clip
+    out=ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors
+
+# clip_l.safetensors
+https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors
+    dir=models/clip
+    out=clip_l.safetensors
+
+# Flux-Main/t5xxl_fp8_e4m3fn.safetensors
+https://huggingface.co/OreX/Models/resolve/main/Flux-Main/t5xxl_fp8_e4m3fn.safetensors
+    dir=models/clip
+    out=FLUX/t5xxl_fp8_e4m3fn.safetensors
+
+
+#  🌟 Upscale 🌟
+# `4x_NMKD-Siax_200k.pth`
+# https://huggingface.co/gemasai/4x_NMKD-Siax_200k/blob/main/4x_NMKD-Siax_200k.pth
+# gemasai/4x_NMKD-Siax_200k
+
+https://huggingface.co/gemasai/4x_NMKD-Siax_200k/resolve/main/4x_NMKD-Siax_200k.pth
+    dir=models/upscale_models
+    out=4x_NMKD-Siax_200k.pth
+
+# VAE dev
+https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/vae/diffusion_pytorch_model.safetensors
+  dir=models/vae/FLUX/
+  out=flux.vae.safetensors
+
+
+# 🌟 https://huggingface.co/Kijai/flux-fp8 🌟
+# flux1-dev-fp8-e4m3fn.safetensors
+
+https://huggingface.co/Kijai/flux-fp8/resolve/main/flux1-dev-fp8-e4m3fn.safetensors
+  dir=models/diffusion_models/FLUX/
+  out=flux1-dev-fp8-e4m3fn.safetensors
+
+https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors
+    dir=models/checkpoints/FLUX1/flux1-dev-fp8.safetensors
+    out=flux1-dev-fp8.safetensors
+
+# https://huggingface.co/black-forest-labs/FLUX.1-dev/blob/main/flux1-dev.safetensors
+# 23gb
+
+# 🌟Load Redux Model🌟
+# Download Link: https://huggingface.co/black-forest-labs/FLUX.1-Redux-dev/tree/main
+# File Name: flux1-redux-dev.safetensors
+# Directory: ComfyUI/models/style_models/
+https://huggingface.co/black-forest-labs/FLUX.1-Redux-dev/resolve/main/flux1-redux-dev.safetensors
+   dir=models/style_models/Flux
+   out=flux1-redux-dev.safetensors
+
+# 🌟Load Clip Vision🌟
+# Download Link: https://huggingface.co/Comfy-Org/sigclip_vision_384/tree/main
+# File Name: sigclip_vision_patch14_384.safetensors
+# Directory: ComfyUI/models/clip-vision/
+https://huggingface.co/Comfy-Org/sigclip_vision_384/resolve/main/sigclip_vision_patch14_384.safetensors
+   dir=models/clip_vision
+   out=sigclip_vision_patch14_384.safetensors
+
+https://huggingface.co/google/siglip-so400m-patch14-384/resolve/main/model.safetensors
+   dir=models/clip_vision
+   out=siglip-so400m-patch14-384.safetensors

@@ -15,7 +15,16 @@ torch==2.5.1+cu124
 --extra-index-url https://pypi.org/simple
 --extra-index-url https://pypi.nvidia.com
 
-uv pip compile requirements.in -o requirements.txt --python /opt/conda/bin/python3 --no-build-isolation --index-strategy unsafe-best-match
+uv pip compile requirements.in -o requirements.out \
+    --no-build-isolation \
+    --index-strategy unsafe-best-match
+
+uv pip compile requirements.in -o requirements.out \
+    --index-strategy unsafe-best-match
+
+    --python /usr/bin/python3 \
+
+uv pip compile requirements.in -o requirements.out --python /usr/bin/python3 --no-build-isolation --index-strategy unsafe-best-match
 
 uv pip compile requirements.in -o requirements.txt --python /opt/conda/bin/python3 --index-strategy unsafe-best-match
 
