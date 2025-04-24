@@ -9,7 +9,7 @@ export IMAGE_NAME=gayrat/comfy-union:FLUX_PulID_II
 
 python3 vast-search-py2.py --ram 32000 --gpu1 "RTX 5090"
 
-python3 vast-search-py2.py --ram 32000
+python3 vast-search-py3.py --ram 32000 --gpu1 "RTX 3090" --gpu2 "RTX 4090"
 
 source vast-contract.sh 17539339 $IMAGE_NAME
 
