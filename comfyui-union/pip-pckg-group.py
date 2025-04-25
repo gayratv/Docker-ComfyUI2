@@ -15,12 +15,14 @@ def group_packages(packages):
     groups = {
         "nvidia": [],
         "torch": [],
+        "xformers": [],
         "other": []
     }
 
     for package in packages:
         # Извлекаем название пакета и версию
-        match = re.match(r'^([\w-]+)==([\d\.]+)', package)
+        # match = re.match(r'^([\w-]+)==([\d\.]+)', package)
+        match = re.match(r'^([^=]+)==(.+)$', package)
         if not match:
             continue  # Пропускаем некорректные строки
         name, version = match.groups()
@@ -30,6 +32,8 @@ def group_packages(packages):
             groups["nvidia"].append(f"{name}=={version}")
         elif name.startswith("torch"):
             groups["torch"].append(f"{name}=={version}")
+        elif name.startswith("xformers"):
+            groups["xformers"].append(f"{name}=={version}")
         else:
             groups["other"].append(f"{name}=={version}")
 
@@ -47,7 +51,7 @@ def write_groups(groups, output_dir):
 
 # Основная функция
 def main():
-    input_file = "requirements.txt"  # Файл с полным списком пакетов
+    input_file = "requirements.out"  # Файл с полным списком пакетов
     output_dir = "."  # Директория для сохранения групп
 
     # Шаги

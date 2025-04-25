@@ -133,18 +133,66 @@ RUN echo "cd /workspace/aria2/templates" >> /root/.bashrc \
 
 WORKDIR /workspace/ComfyUI
 
+COPY pip-pckg-group.py .
+
 #    --no-build-isolation \
 RUN uv pip compile requirements.in -o requirements.out \
-    --index-strategy unsafe-best-match
+    --index-strategy unsafe-best-match \
+#    разбить скомпилированные пакеты на группы
+    && python3 pip-pckg-group.py
 
-#COPY requirements.out .
+# ==== Установка зависимостей по группам
+# Установка NVIDIA-зависимостей
+
 RUN --mount=type=cache,target=/root/pip-cache \
     uv pip install \
     --link-mode=copy \
     --system \
     --cache-dir=/root/pip-cache \
-    -r requirements.out \
-    && rm -rf ~/.cache/pip
+    -r nvidia_requirements.txt \
+    && rm -rf /root/.cache/pip
+
+# Установка xformers-зависимостей
+
+RUN --mount=type=cache,target=/root/pip-cache \
+    uv pip install \
+    --link-mode=copy \
+    --system \
+    --cache-dir=/root/pip-cache \
+    -r xformers_requirements.txt \
+    && rm -rf /root/.cache/pip
+
+# Установка Torch-зависимостей
+
+RUN --mount=type=cache,target=/root/pip-cache \
+    uv pip install \
+    --link-mode=copy \
+    --system \
+    --cache-dir=/root/pip-cache \
+    -r torch_requirements.txt \
+    && rm -rf /root/.cache/pip
+
+# Установка остальных зависимостей
+
+RUN --mount=type=cache,target=/root/pip-cache \
+    uv pip install \
+    --link-mode=copy \
+    --system \
+    --cache-dir=/root/pip-cache \
+    -r other_requirements.txt \
+    && rm -rf /root/.cache/pip
+
+
+#RUN --mount=type=cache,target=/root/pip-cache \
+#    uv pip install \
+#    --link-mode=copy \
+#    --system \
+#    --cache-dir=/root/pip-cache \
+#    -r requirements.out \
+#    && rm -rf ~/.cache/pip
+
+
+
 
 #
 # ========= POSTINSTALL
@@ -161,7 +209,8 @@ RUN --mount=type=cache,target=/root/pip-cache \
         ./"${POST_INSTALL_SH}"; \
     fi
 
-WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI-UNO-Wrapper
-COPY configs/UNO/config.json .
+# для UNO
+#WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI-UNO-Wrapper
+#COPY configs/UNO/config.json .
 
 CMD ["bash"]
