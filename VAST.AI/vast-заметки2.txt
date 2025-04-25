@@ -2,16 +2,14 @@ wsl
 clear
 cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
 source /mnt/f/_prg/python/Docker-ComfyUI/.venv-wsl/bin/activate
-export IMAGE_NAME=gayrat/comfy-union:FLUX_HIRES_Artur
+export IMAGE_NAME=gayrat/comfy-union:SUPIR-v2-MaskTile
 
+export IMAGE_NAME=gayrat/comfy-union:FLUX_HIRES_Artur
 export IMAGE_NAME=gayrat/comfy-union:FLUX_PulID_II
 
+python3 vast-search-py3.py --ram 32000 --gpu1 "RTX 4090" --gpu2 "RTX 3090"
 
-python3 vast-search-py2.py --ram 32000 --gpu1 "RTX 5090"
-
-python3 vast-search-py3.py --ram 32000 --gpu1 "RTX 3090" --gpu2 "RTX 4090"
-
-source vast-contract.sh 17539339 $IMAGE_NAME
+source vast-contract.sh 19460127 $IMAGE_NAME
 
 ./vast-wait.sh
 source vast-env-run.sh
@@ -20,6 +18,7 @@ cmd.exe /c start chrome "http://$VAST_PUBLIC_IPADDR:$VAST_COMFY"
 ssh -p $VAST_SSH "root@$VAST_PUBLIC_IPADDR" -i ~/.ssh/mvps/ud_rsa
 
 tmux-s-bash.sh
+./dl_common.sh SUPIR-v2-MaskTile
 ./dl_common.sh FLUX_HIRES_Artur
 ./dl_common.sh FLUX_PulID_II
 ./dl_common.sh HunyuanVideo

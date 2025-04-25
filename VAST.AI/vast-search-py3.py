@@ -3,6 +3,7 @@ import json
 from urllib.parse import urlencode
 import argparse
 from PY_mysql.vast_offers_to_sql import OfferImporter
+from PY_mysql.vast_offers_display import DisplayOffers
 
 # Указываем путь к JSON файлу
 file_path_json = 'vast-search.json'
@@ -78,6 +79,9 @@ if __name__ == "__main__":
         inserted2=0
 
     print(f"inserted1: {inserted1}, inserted2: {inserted2}")
+    with DisplayOffers(batch_number1) as display:
+        display.display_results()
+
 
 
     #  python script.py --gpu "RTX 3090" --ram 32000

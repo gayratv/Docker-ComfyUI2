@@ -15,12 +15,20 @@ export NODES="nodes-FLUX_генерация_HIRES_Artur.txt"
 export ACE_PLUS_NODE_INSTALL="false"
 export COMFYUI_VERSION=""
 
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union
+export IMAGE_NAME="comfy-union"
+export VERSION="SUPIR-v2-MaskTile"
+export BASE_IMAGE="cuda-12-4:v1.2-NV-runtime"
+export NODES="nodes-SUPIR-v2-MaskTile.txt"
+export ACE_PLUS_NODE_INSTALL="false"
+export COMFYUI_VERSION=""
+
 
 ===================================
 
 ./db.sh
-./dr.sh
 ./dp.sh
+./dr.sh
 
 docker build --progress=plain \
     --build-arg BASE_IMAGE="$BASE_IMAGE" \

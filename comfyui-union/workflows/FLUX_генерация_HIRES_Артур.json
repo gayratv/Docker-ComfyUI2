@@ -694,61 +694,6 @@
       "bgcolor": "#353"
     },
     {
-      "id": 14,
-      "type": "CR Upscale Image",
-      "pos": [
-        4850,
-        5110
-      ],
-      "size": [
-        315,
-        222
-      ],
-      "flags": {},
-      "order": 12,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 20
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            21,
-            27
-          ]
-        },
-        {
-          "name": "show_help",
-          "type": "STRING",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "ComfyUI_Comfyroll_CustomNodes",
-        "ver": "d78b780ae43fcf8c6b7c6505e6ffb4584281ceca",
-        "Node name for S&R": "CR Upscale Image",
-        "aux_id": "Suzie1/ComfyUI_Comfyroll_CustomNodes",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "4x_NMKD-Siax_200k.pth",
-        "rescale",
-        1.5000000000000002,
-        1024,
-        "lanczos",
-        "true",
-        8
-      ],
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
       "id": 17,
       "type": "KSampler",
       "pos": [
@@ -921,6 +866,61 @@
       "widgets_values": [
         "Flux/flux1-dev-fp8-e4m3fn.safetensors",
         "fp8_e4m3fn"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 14,
+      "type": "CR Upscale Image",
+      "pos": [
+        4850,
+        5110
+      ],
+      "size": [
+        315,
+        222
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 20
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            21,
+            27
+          ]
+        },
+        {
+          "name": "show_help",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI_Comfyroll_CustomNodes",
+        "ver": "d78b780ae43fcf8c6b7c6505e6ffb4584281ceca",
+        "Node name for S&R": "CR Upscale Image",
+        "aux_id": "Suzie1/ComfyUI_Comfyroll_CustomNodes",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "4x_NMKD-Siax_200k.pth",
+        "rescale",
+        1.5000000000000002,
+        1024,
+        "lanczos",
+        "true",
+        8
       ],
       "color": "#232",
       "bgcolor": "#353"
@@ -1156,10 +1156,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.6856156811797082,
+      "scale": 0.9090909090909091,
       "offset": [
-        -3248.388834635417,
-        -4225.444218432419
+        -3660.117082984146,
+        -4548.289812171219
       ]
     },
     "ue_links": [],

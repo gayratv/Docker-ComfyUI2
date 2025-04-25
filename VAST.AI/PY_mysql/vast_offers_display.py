@@ -9,6 +9,7 @@ from mysql.connector.connection import MySQLConnection
 from mysql.connector.cursor import MySQLCursor
 from mysql.connector import Error
 from .db_connection import create_db_connection
+from tabulate import tabulate
 
 
 class DisplayOffers:
@@ -78,23 +79,58 @@ class DisplayOffers:
         Отображает результаты запроса к таблице offers.
         """
         query = """
-                SELECT id, \
+                SELECT offers.id as id, \
                        search_totalHour          AS "$/HR", \
                        internet_down_cost_per_tb AS "idown$/TB", \
                        inet_down, \
                        geolocation, \
                        gpu_name, \
-                       host_id
-                FROM offers
-                WHERE batch_number = %s
+                       host_id, \
+                       vericode
+                FROM offers 
+                    left join  
+                     vast.bad_machines bm 
+                        on offers.machine_id = bm.machine_id
+                WHERE batch_number = %s and vericode < 2 and bm.id is null
                 ORDER BY search_totalHour \
                 """
 
+
         params = (self.batch_num_param,)
         result = self.execute_query(query, params)
+
+        # Определяем заголовки для таблицы
+        headers = ["ID", "$/HR", "idown$/TB", "inet_down", "geolocation", "gpu_name", "host_id", "vericode"]
+
         if result:
-            for row in result:
-                print(row)
+            formatted_result = [
+                (
+                    row[0],  # ID
+                    round(row[1], 2),  # $/HR
+                    round(row[2], 2),  # idown$/TB
+                    row[3],  # inet_down
+                    row[4],  # geolocation
+                    row[5],  # gpu_name
+                    row[6],
+                    row[7]
+                )
+                for row in result
+            ]
+
+            # # Форматируем заголовки с разделителями
+            # header_row = " | ".join(f"{header:^10}" for header in headers)
+            # print(header_row)
+            # print("-" * len(header_row))  # Разделитель под заголовками
+            #
+            # # Форматируем строки данных с разделителями
+            # for row in formatted_result:
+            #     data_row = " | ".join(f"{str(value):^10}" for value in row)
+            #     print(data_row)
+
+            # table = tabulate(formatted_result, headers=headers, tablefmt="grid")
+            table = tabulate(formatted_result, headers=headers, tablefmt="simple")
+            print(table)
+
         else:
             print("Запрос не вернул результатов или произошла ошибка.")
 
