@@ -161,4 +161,7 @@ RUN --mount=type=cache,target=/root/pip-cache \
         ./"${POST_INSTALL_SH}"; \
     fi
 
+WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI-UNO-Wrapper
+COPY configs/UNO/config.json .
+
 CMD ["bash"]
