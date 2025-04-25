@@ -1,23 +1,14 @@
 wsl
 clear
-cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
-source /mnt/f/_prg/python/Docker-ComfyUI/.venv-wsl/bin/activate
-export IMAGE_NAME=gayrat/comfy-union:SUPIR-v2-MaskTile
 
-export IMAGE_NAME=gayrat/comfy-union:FLUX_HIRES_Artur
-export IMAGE_NAME=gayrat/comfy-union:FLUX_PulID_II
+source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfy-union:UNO"
 
-python3 vast-search-py3.py --ram 32000 --gpu1 "RTX 4090" --gpu2 "RTX 3090"
+source vast-contract.sh 18338208 $IMAGE_NAME
 
-source vast-contract.sh 19460127 $IMAGE_NAME
-
-./vast-wait.sh
-source vast-env-run.sh
-echo "http://$VAST_PUBLIC_IPADDR:$VAST_COMFY"
-cmd.exe /c start chrome "http://$VAST_PUBLIC_IPADDR:$VAST_COMFY"
-ssh -p $VAST_SSH "root@$VAST_PUBLIC_IPADDR" -i ~/.ssh/mvps/ud_rsa
+source ./vs.sh
 
 tmux-s-bash.sh
+./dl_common.sh UNO
 ./dl_common.sh SUPIR-v2-MaskTile
 ./dl_common.sh FLUX_HIRES_Artur
 ./dl_common.sh FLUX_PulID_II
@@ -52,3 +43,18 @@ ssh -p 9081 root@50.35.45.243 -L 8080:localhost:8080
 
 
 vastai set api-key xx
+
+=========
+
+export IMAGE_NAME=gayrat/comfy-union:FLUX_HIRES_Artur
+export IMAGE_NAME=gayrat/comfy-union:FLUX_PulID_II
+
+
+==
+
+#### ./vast-wait.sh
+
+source vast-env-run.sh
+echo "http://$VAST_PUBLIC_IPADDR:$VAST_COMFY"
+cmd.exe /c start chrome "http://$VAST_PUBLIC_IPADDR:$VAST_COMFY"
+ssh -p $VAST_SSH "root@$VAST_PUBLIC_IPADDR" -i ~/.ssh/mvps/ud_rsa

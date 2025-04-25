@@ -21,6 +21,15 @@ export VERSION="SUPIR-v2-MaskTile"
 export BASE_IMAGE="cuda-12-4:v1.2-NV-runtime"
 export NODES="nodes-SUPIR-v2-MaskTile.txt"
 export ACE_PLUS_NODE_INSTALL="false"
+export POST_INSTALL_SH="SUPIR-v2-MaskTile.sh"
+export COMFYUI_VERSION=""
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union
+export IMAGE_NAME="comfy-union"
+export VERSION="UNO"
+export BASE_IMAGE="cuda-12-4:v1.2-NV-runtime"
+export NODES="nodes-UNO.txt"
+export ACE_PLUS_NODE_INSTALL="false"
 export COMFYUI_VERSION=""
 
 

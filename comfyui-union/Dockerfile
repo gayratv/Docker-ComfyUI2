@@ -146,5 +146,19 @@ RUN --mount=type=cache,target=/root/pip-cache \
     -r requirements.out \
     && rm -rf ~/.cache/pip
 
+#
+# ========= POSTINSTALL
+#
+ARG POST_INSTALL_SH
+
+WORKDIR /workspace
+COPY additional-setup/*.sh ./
+RUN chmod +x *.sh
+
+RUN --mount=type=cache,target=/root/pip-cache \
+    if [ -n "${POST_INSTALL_SH}" ]; then \
+        chmod +x *.sh ; \
+        ./"${POST_INSTALL_SH}"; \
+    fi
 
 CMD ["bash"]
