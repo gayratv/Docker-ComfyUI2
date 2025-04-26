@@ -145,6 +145,9 @@ WORKDIR /workspace/ComfyUI
 
 COPY pip-pckg-group.py .
 
+# Генерация requirements.in и завершение сборки
+RUN stop-build.sh
+
 #    --no-build-isolation \
 RUN uv pip compile requirements.in -o requirements.out \
     --index-strategy unsafe-best-match \
@@ -191,18 +194,6 @@ RUN --mount=type=cache,target=/root/pip-cache \
     --cache-dir=/root/pip-cache \
     -r other_requirements.txt \
     && rm -rf /root/.cache/pip
-
-
-#RUN --mount=type=cache,target=/root/pip-cache \
-#    uv pip install \
-#    --link-mode=copy \
-#    --system \
-#    --cache-dir=/root/pip-cache \
-#    -r requirements.out \
-#    && rm -rf ~/.cache/pip
-
-
-
 
 #
 # ========= POSTINSTALL
