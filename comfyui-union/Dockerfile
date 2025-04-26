@@ -12,11 +12,21 @@ WORKDIR /workspace
 ARG COMFYUI_VERSION
 ARG CUDA_VER="12.4"
 
-RUN git clone https://github.com/comfyanonymous/ComfyUI \
-    && if [ -n "$COMFYUI_VERSION" ]; then \
-        cd ComfyUI \
-        && git checkout "$COMFYUI_VERSION"; \
+# Определяем переменную для тега релиза
+ARG RELEASE_TAG=latest
+
+# Клонируем репозиторий и переключаемся на нужный релиз
+RUN if [ "$RELEASE_TAG" = "latest" ]; then \
+        git clone https://github.com/comfyanonymous/ComfyUI; \
+    else \
+        git clone --branch $RELEASE_TAG https://github.com/comfyanonymous/ComfyUI; \
     fi
+
+#RUN git clone https://github.com/comfyanonymous/ComfyUI \
+#    && if [ -n "$COMFYUI_VERSION" ]; then \
+#        cd ComfyUI \
+#        && git checkout "$COMFYUI_VERSION"; \
+#    fi
 
 WORKDIR /workspace/ComfyUI
 
