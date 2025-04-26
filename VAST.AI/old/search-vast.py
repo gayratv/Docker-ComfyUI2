@@ -14,5 +14,5 @@ response = requests.request("PUT", url, headers=headers, data=payload)
 
 
 # print(response.text)
-with open("vast-search.json", "w", encoding="utf-8") as file:
+with open("../vast-search.json", "w", encoding="utf-8") as file:
    file.write(response.text)

@@ -13,13 +13,13 @@ ARG COMFYUI_VERSION
 ARG CUDA_VER="12.4"
 
 # Определяем переменную для тега релиза
-ARG RELEASE_TAG=latest
+ARG COMFY_RELEASE_TAG=latest
 
 # Клонируем репозиторий и переключаемся на нужный релиз
-RUN if [ "$RELEASE_TAG" = "latest" ]; then \
+RUN if [ "$COMFY_RELEASE_TAG" = "latest" ]; then \
         git clone https://github.com/comfyanonymous/ComfyUI; \
     else \
-        git clone --branch $RELEASE_TAG https://github.com/comfyanonymous/ComfyUI; \
+        git clone --branch $COMFY_RELEASE_TAG https://github.com/comfyanonymous/ComfyUI; \
     fi
 
 WORKDIR /workspace/ComfyUI
@@ -32,30 +32,6 @@ RUN --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
     && chmod +x *.sh \
     && ./process_repos-install-req.sh nodes.txt false
-
-
-#RUN --mount=type=cache,target=/root/pip-cache \
-#    --mount=type=cache,target=/root/repo-cache \
-#    PIP_CACHE_DIR=/root/pip-cache \
-#    && echo -e "\033[0;31m \n\n Установка дополнительных пакетов \033[0m" \
-#    && uv pip install \
-#    --link-mode=copy \
-#    --system \
-#    --cache-dir=/root/pip-cache-comfy-base \
-#    onnxruntime onnxruntime-gpu pip-tools \
-#    && echo -e "\033[0;31m \n\n Установка torch torchvision torchaudio \033[0m" \
-#    && if [ "$CUDA_VER" = "12.8" ]; then \
-#        pip install \
-#        --cache-dir=/root/pip-cache-comfy-base \
-#        --pre \
-#        --index-url https://download.pytorch.org/whl/nightly/cu128 \
-#        torch torchvision torchaudio; \
-#    else \
-#        pip install \
-#        --cache-dir=/root/pip-cache-comfy-base \
-#        torch torchvision torchaudio; \
-#    fi \
-#    && rm -rf ~/.cache/pip
 
 
 WORKDIR /usr/local/bin
@@ -72,7 +48,7 @@ RUN echo "cd /workspace" >> /root/.bashrc
 
 WORKDIR /workspace/ComfyUI
 # шаг 11
-COPY nodes.txt python-packages-to-add.txt ./
+COPY nodes.txt ./
 COPY ./custom-nodes/nodes*.txt ./
 
 # Создаем ARG для передачи списка файлов
@@ -106,37 +82,29 @@ COPY aria2 .
 RUN chmod +x *.sh \
     && chmod +x ./templates/*.sh
 
-#WORKDIR /workspace
-#RUN echo -e "\n========= ACE 23-24===============\n"
-## 21
-#ARG ACE_PLUS_NODE_INSTALL
-#RUN --mount=type=cache,target=/root/pip-cache \
-#    if [ "$ACE_PLUS_NODE_INSTALL" = "true" ]; then \
-#        echo "Running ace-plus-node-install.sh"; \
-#        PIP_CACHE_DIR=/root/pip-cache; \
-#        ace-plus-node-install.sh; \
-#    else \
-#        echo "Skipping ace-plus-node-install.sh"; \
-#    fi
-
 WORKDIR /workspace/ComfyUI
 COPY union-requiere.py requirements-edit.py ./
-#
+# 32
+ARG FRONTEND_VER
+RUN pip3 install requests
+
+#python-packages-to-add \
+ARG PY_PACKAGE_ADD
+COPY ./requirments-modify ./requirments-modify
+
 # удалить версию frontend
-RUN  python3 requirements-edit.py \
+RUN  python3 requirements-edit.py --add_package $PY_PACKAGE_ADD --frontend_ver="\"$FRONTEND_VER\"" \
   && python3 union-requiere.py \
   && rm union-requiere.py
 
-# получим файл requirements.out
-
+#RUN exit 1
 
 RUN echo "cd /workspace/aria2/templates" >> /root/.bashrc \
   && echo "set -g mouse on" >> ~/.tmux.conf
 
 WORKDIR /workspace/ComfyUI
 
-COPY pip-pckg-group.py process-req-in.py ./requirments-modify ./
-COPY ./requirments-modify ./requirments-modify
+COPY pip-pckg-group.py process-req-in.py ./
 
 ARG REQ_MODIFY
 
@@ -147,13 +115,6 @@ RUN if [ -n "$REQ_MODIFY" ]; then \
             --prefixes-file "./requirments-modify/$REQ_MODIFY/remove-lines.txt" \
             --additional-lines-file "./requirments-modify/$REQ_MODIFY/add-lines.txt"; \
     fi
-
-#RUN uv pip compile requirements.modify.in -o requirements.out \
-#    --index-strategy unsafe-best-match \
-#    --extra-index-url https://download.pytorch.org/whl/cu124 \
-##    разбить скомпилированные пакеты на группы
-#    && python3 pip-pckg-group.py \
-#    && rm pip-pckg-group.py process-req-in.py
 
 # Определение ARG для передачи нескольких --extra-index-url
 ARG EXTRA_INDEX_URLS
@@ -166,7 +127,7 @@ RUN echo "$EXTRA_INDEX_URLS" | tr ',' '\n' | xargs -I {} echo "--extra-index-url
     && echo "Generated extra index arguments:" \
     && cat /tmp/extra_index_args
 
-RUN echo "========================="
+RUN echo "========== cat /tmp/extra_index_args ==============="
 
     # Компиляция requirements с использованием переданных URL
 RUN uv pip compile requirements.modify.in -o requirements.out \
@@ -180,6 +141,16 @@ RUN python3 pip-pckg-group.py && \
 
 
 # ==== Установка зависимостей по группам
+# Установка остальных зависимостей
+
+RUN --mount=type=cache,target=/root/pip-cache \
+    uv pip install \
+    --link-mode=copy \
+    --system \
+    --cache-dir=/root/pip-cache \
+    -r other_requirements.txt \
+    && rm -rf /root/.cache/pip
+
 # Установка NVIDIA-зависимостей
 
 RUN --mount=type=cache,target=/root/pip-cache \
@@ -214,16 +185,7 @@ RUN --mount=type=cache,target=/root/pip-cache \
     -r torch_requirements.txt \
     && rm -rf /root/.cache/pip
 
-# Установка остальных зависимостей
 
-RUN --mount=type=cache,target=/root/pip-cache \
-    uv pip install \
-    --link-mode=copy \
-    --system \
-    $(cat /tmp/extra_index_args) \
-    --cache-dir=/root/pip-cache \
-    -r other_requirements.txt \
-    && rm -rf /root/.cache/pip
 
 #
 # ========= POSTINSTALL

@@ -50,6 +50,13 @@ def remove_and_add_lines(input_file, output_file, prefixes_to_remove, additional
     :param prefixes_to_remove: Список префиксов строк для удаления
     :param additional_lines: Список строк для добавления
     """
+
+    # print(f"аргументы input_file {input_file}")
+    # print(f"output_file {output_file}")
+    # print(f"prefixes_to_remove {prefixes_to_remove}")
+    # print(f"additional_lines {additional_lines}")
+
+
     try:
         # Читаем содержимое файла
         with open(input_file, 'r', encoding='utf-8') as file:

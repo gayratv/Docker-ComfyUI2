@@ -38,10 +38,23 @@ export VERSION="Backgound-replacer2"
 export REQ_MODIFY="Backgound-replacer2"
 export BASE_IMAGE="cuda-12-4:v1.2-NV-runtime"
 export NODES="nodes-Backgound-replacer2.txt"
-export ACE_PLUS_NODE_INSTALL="false"
 export EXTRA_INDEX_URLS="https://download.pytorch.org/whl/cu124,https://pypi.nvidia.com"
+export COMFY_RELEASE_TAG="v0.3.30"
+export FRONTEND_VER=""
+export PY_PACKAGE_ADD="./requirments-modify/Backgound-replacer2/python-packages-to-add.txt"
 
---build-arg EXTRA_INDEX_URLS="https://download.pytorch.org/whl/cu124,https://another-index.com/simple"
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union
+export IMAGE_NAME="comfy-union"
+export VERSION="Backgound-remover3"
+export REQ_MODIFY=""
+export BASE_IMAGE="cuda-12-4:v1.2-NV-runtime"
+export NODES="nodes-Backgound-remover3.txt"
+export EXTRA_INDEX_URLS="https://download.pytorch.org/whl/cu124,https://pypi.nvidia.com"
+export COMFY_RELEASE_TAG="v0.3.30"
+export FRONTEND_VER=""
+
+
+export FRONTEND_VER="1.17.0"
 
 
 ===================================
@@ -97,3 +110,43 @@ export REQ_MODIFY="Backgound-replacer2"
             --requirements-file "requirements.in" \
             --prefixes-file "./$REQ_MODIFY/remove-lines.txt" \
             --additional-lines-file "./$REQ_MODIFY/add-lines.txt"
+
+
+uv pip compile requirements.modify.in -o requirements.out \
+        --index-strategy unsafe-best-match \
+        $(cat /tmp/extra_index_args)
+
+
+uv pip compile requirements.modify.in -o requirements.out \
+        --index-strategy unsafe-best-match \
+        --system \
+--extra-index-url https://download.pytorch.org/whl/cu124 --extra-index-url https://pypi.nvidia.com
+
+uv pip compile r1.in -o requirements.out \
+        --index-strategy unsafe-best-match \
+        --system \
+        --extra-index-url https://download.pytorch.org/whl/cu124 \
+        --extra-index-url https://pypi.nvidia.com
+
+cd /workspace/ComfyUI
+Failed to build `deepspeed==0.4.0`
+transparent-background
+timm
+
+uv pip compile requirements.modify.in -o requirements.out \
+
+uv pip compile r2.in -o requirements.out \
+        --index-strategy unsafe-best-match \
+        --system \
+     --extra-index-url https://pypi.nvidia.com         --extra-index-url https://download.pytorch.org/whl/cu124
+
+/workspace/ComfyUI/requirements.in
+
+cd /workspace/ComfyUI
+
+REQ_MODIFY="Backgound-replacer2"
+echo "PROCESS requirements.in"; \
+        python3 process-req-in.py \
+            --requirements-file "requirements.in" \
+            --prefixes-file "./requirments-modify/$REQ_MODIFY/remove-lines.txt" \
+            --additional-lines-file "./requirments-modify/$REQ_MODIFY/add-lines.txt";

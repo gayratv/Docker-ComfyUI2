@@ -59,7 +59,7 @@ docker build --progress=plain \
     --build-arg REQ_MODIFY=$REQ_MODIFY \
     --build-arg EXTRA_INDEX_URLS=$EXTRA_INDEX_URLS \
     --build-arg PY_PACKAGE_ADD=$PY_PACKAGE_ADD \
-    -f /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union/Dockerfile \
+    -f /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union/Dockerfile1 \
     -t $IMAGE_NAME:$VERSION \
     /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union
 echo -e "\nсобран образ $IMAGE_NAME:$VERSION"
