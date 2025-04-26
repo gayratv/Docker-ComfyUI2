@@ -4,7 +4,10 @@ ARG BASE_IMAGE="gayrat/comfyui-base-cuda-12-4:v2.0"
 FROM ${BASE_IMAGE}
 
 #RUN rm -rf /root/pip-cache \
+#    rm -rf /root/pip-cache-uv \
 #    rm -rf /root/repo-cache
+#RUN uv cache clean --cache-dir=/root/pip-cache-uv
+#RUN uv cache clean
 
 WORKDIR /workspace
 
@@ -63,14 +66,14 @@ RUN --mount=type=cache,target=/root/repo-cache \
         && rm -rf root/.cache/pip; \
     fi
 
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    if [ -d "./custom_nodes/cg-use-everywhere" ]; then \
-        cd ./custom_nodes/cg-use-everywhere  \
-        && git checkout frontend1.16; \
-    else \
-        echo "Directory cg-use-everywhere does not exist, skipping git checkout."; \
-    fi
+#RUN --mount=type=cache,target=/root/repo-cache \
+#    --mount=type=cache,target=/root/pip-cache \
+#    if [ -d "./custom_nodes/cg-use-everywhere" ]; then \
+#        cd ./custom_nodes/cg-use-everywhere  \
+#        && git checkout frontend1.16; \
+#    else \
+#        echo "Directory cg-use-everywhere does not exist, skipping git checkout."; \
+#    fi
 
 
 WORKDIR /workspace/ComfyUI
@@ -93,7 +96,7 @@ ARG PY_PACKAGE_ADD
 COPY ./requirments-modify ./requirments-modify
 
 # удалить версию frontend
-RUN  python3 requirements-edit.py --add_package $PY_PACKAGE_ADD --frontend_ver="\"$FRONTEND_VER\"" \
+RUN  python3 requirements-edit.py --add_package $PY_PACKAGE_ADD --frontend_ver=$FRONTEND_VER \
   && python3 union-requiere.py \
   && rm union-requiere.py
 
@@ -106,15 +109,14 @@ WORKDIR /workspace/ComfyUI
 
 COPY pip-pckg-group.py process-req-in.py ./
 
-ARG REQ_MODIFY
+ARG REQ_MODIFY="0"
 
-RUN if [ -n "$REQ_MODIFY" ]; then \
-        echo "PROCESS requirements.in"; \
-        python3 process-req-in.py \
+RUN echo "PROCESS requirements.in"; \
+    python3 process-req-in.py \
             --requirements-file "requirements.in" \
             --prefixes-file "./requirments-modify/$REQ_MODIFY/remove-lines.txt" \
-            --additional-lines-file "./requirments-modify/$REQ_MODIFY/add-lines.txt"; \
-    fi
+            --additional-lines-file "./requirments-modify/$REQ_MODIFY/add-lines.txt";
+
 
 # Определение ARG для передачи нескольких --extra-index-url
 ARG EXTRA_INDEX_URLS
@@ -132,7 +134,11 @@ RUN echo "========== cat /tmp/extra_index_args ==============="
     # Компиляция requirements с использованием переданных URL
 RUN uv pip compile requirements.modify.in -o requirements.out \
         --index-strategy unsafe-best-match \
-        $(cat /tmp/extra_index_args)
+        --extra-index-url https://download.pytorch.org/whl/cu124 \
+        --extra-index-url https://pypi.nvidia.com
+
+#        --index-strategy unsafe-best-match \
+#        $(cat /tmp/extra_index_args)
 
      # Разбиение скомпилированных пакетов на группы
 RUN python3 pip-pckg-group.py && \
@@ -141,50 +147,53 @@ RUN python3 pip-pckg-group.py && \
 
 
 # ==== Установка зависимостей по группам
-# Установка остальных зависимостей
-
-RUN --mount=type=cache,target=/root/pip-cache \
-    uv pip install \
-    --link-mode=copy \
-    --system \
-    --cache-dir=/root/pip-cache \
-    -r other_requirements.txt \
-    && rm -rf /root/.cache/pip
 
 # Установка NVIDIA-зависимостей
 
-RUN --mount=type=cache,target=/root/pip-cache \
+RUN --mount=type=cache,target=/root/pip-cache-uv \
     uv pip install \
     --link-mode=copy \
     --system \
-    --cache-dir=/root/pip-cache \
-    $(cat /tmp/extra_index_args) \
+    --cache-dir=/root/pip-cache-uv \
+    --index-strategy unsafe-best-match \
+    --extra-index-url https://pypi.nvidia.com \
     -r nvidia_requirements.txt \
-    && rm -rf /root/.cache/pip
-
-# Установка xformers-зависимостей
-
-RUN --mount=type=cache,target=/root/pip-cache \
-    uv pip install \
-    --link-mode=copy \
-    --system \
-    --cache-dir=/root/pip-cache \
-    $(cat /tmp/extra_index_args) \
-    -r xformers_requirements.txt \
     && rm -rf /root/.cache/pip
 
 # Установка Torch-зависимостей
 
-RUN --mount=type=cache,target=/root/pip-cache \
+RUN --mount=type=cache,target=/root/pip-cache-uv \
     uv pip install \
     --link-mode=copy \
     --system \
+    --index-strategy unsafe-best-match \
     --extra-index-url https://download.pytorch.org/whl/cu124 \
-    $(cat /tmp/extra_index_args) \
-    --cache-dir=/root/pip-cache \
+    --cache-dir=/root/pip-cache-uv \
     -r torch_requirements.txt \
     && rm -rf /root/.cache/pip
 
+# Установка xformers-зависимостей
+
+RUN --mount=type=cache,target=/root/pip-cache-uv \
+    uv pip install \
+    --link-mode=copy \
+    --system \
+    --cache-dir=/root/pip-cache-uv \
+    --index-strategy unsafe-best-match \
+    --extra-index-url https://download.pytorch.org/whl/cu124 \
+    -r xformers_requirements.txt \
+    && rm -rf /root/.cache/pip
+
+# Установка остальных зависимостей
+
+RUN --mount=type=cache,target=/root/pip-cache-uv \
+    uv pip install \
+    --link-mode=copy \
+    --system \
+    --index-strategy unsafe-best-match \
+    --cache-dir=/root/pip-cache-uv \
+    -r other_requirements.txt \
+    && rm -rf /root/.cache/pip
 
 
 #

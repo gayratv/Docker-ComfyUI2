@@ -3,18 +3,21 @@ from get_pyth_pckg_last_ver import get_latest_version
 
 def process_files(frontend_ver, additional_packages):
     file_path = "requirements.txt"
+    print(f">>>>> frontend_ver : {frontend_ver}")
 
     # Создаем регулярное выражение для точного совпадения с началом строки
 
     with open(file_path, "r") as file:
         lines = file.readlines()
 
-    if additional_packages :
-        with open(additional_packages, "r") as file:
-            lines_add = file.readlines()
-
-    lines.append("\n")
-    lines.extend(lines_add)
+    if additional_packages:
+        try:
+            with open(additional_packages, "r") as file:
+                lines_add = file.readlines()
+            lines.append("\n")
+            lines.extend(lines_add)
+        except FileNotFoundError:
+            print(f"Файл {additional_packages} не найден. Пропускаем добавление пакетов.")
 
     with open(file_path, "w") as file:
         for line in lines:
@@ -37,25 +40,28 @@ if __name__ == "__main__":
     parser.add_argument(
         "--add_package",
         # default="python-packages-to-add.txt",
+        default=None,
         help="Путь к дополнительному файлу с пакетами. По умолчанию: python-packages-to-add.txt."
     )
 
     parser.add_argument(
         "--frontend_ver",
+        default=None,
         help="Путь к дополнительному файлу с пакетами. По умолчанию: python-packages-to-add.txt."
     )
 
     # Парсим аргументы командной строки
     args = parser.parse_args()
 
-    print(f"------- args.frontend_ver |{args.frontend_ver}|")
+    # print(f"------- args.frontend_ver |{args.frontend_ver}|")
 
-    if args.frontend_ver and args.frontend_ver !='""' :
+    if args.frontend_ver and args.frontend_ver !="0" :
         frontend_ver = args.frontend_ver
     else:
         frontend_ver = get_latest_version("comfyui-frontend-package")
 
-    print("frontend_ver:", frontend_ver)
+    # print("frontend_ver:", frontend_ver)
+    # print("args.add_package:", args.add_package)
 
     # Вызываем функцию для обработки файлов
     process_files(frontend_ver,args.add_package)
