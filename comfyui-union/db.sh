@@ -23,6 +23,8 @@ docker build --progress=plain \
     --build-arg ACE_PLUS_NODE_INSTALL=$ACE_PLUS_NODE_INSTALL \
     --build-arg POST_INSTALL_SH=$POST_INSTALL_SH \
     --build-arg RELEASE_TAG=$LATEST_RELEASE \
+    --build-arg REQ_MODIFY=$REQ_MODIFY \
+    --build-arg EXTRA_INDEX_URLS=$EXTRA_INDEX_URLS \
     -f /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union/Dockerfile \
     -t $IMAGE_NAME:$VERSION \
     /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union

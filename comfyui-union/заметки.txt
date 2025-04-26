@@ -35,10 +35,13 @@ export COMFYUI_VERSION=""
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union
 export IMAGE_NAME="comfy-union"
 export VERSION="Backgound-replacer2"
+export REQ_MODIFY="Backgound-replacer2"
 export BASE_IMAGE="cuda-12-4:v1.2-NV-runtime"
 export NODES="nodes-Backgound-replacer2.txt"
 export ACE_PLUS_NODE_INSTALL="false"
-export COMFYUI_VERSION=""
+export EXTRA_INDEX_URLS="https://download.pytorch.org/whl/cu124,https://pypi.nvidia.com"
+
+--build-arg EXTRA_INDEX_URLS="https://download.pytorch.org/whl/cu124,https://another-index.com/simple"
 
 
 ===================================
@@ -56,6 +59,8 @@ H:\ComfyUI\custom_nodes
 
 docker cp "$IMAGE_NAME":/workspace/ComfyUI/user/default/comfy.settings.json ./user/default/
 docker cp "$IMAGE_NAME":/workspace/ComfyUI/requirements.in ./old/
+docker cp "$IMAGE_NAME":/workspace/ComfyUI/requirements.modify.in ./old/
+
 docker cp "$IMAGE_NAME":/workspace/ComfyUI/requirements.out ./old/
 
 http://127.0.0.1:8188
@@ -79,3 +84,16 @@ aria2c --input-file="$NEW_MODEL_FILE" \
     --continue=true \
     --max-connection-per-server=4 \
     --conditional-get=true
+
+>->->->->->->->->->->->->->->->->->->->->->->->-
+python3 process-req-in.py \
+        --requirements-file "./old/requirements.in" \
+        --prefixes-file "./requirments-modufy/Backgound-replacer2/remove-lines.txt" \
+        --additional-lines-file "./requirments-modufy/Backgound-replacer2/add-lines.txt"
+
+
+export REQ_MODIFY="Backgound-replacer2"
+        python3 process-req-in.py \
+            --requirements-file "requirements.in" \
+            --prefixes-file "./$REQ_MODIFY/remove-lines.txt" \
+            --additional-lines-file "./$REQ_MODIFY/add-lines.txt"

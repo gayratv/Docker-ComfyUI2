@@ -22,12 +22,6 @@ RUN if [ "$RELEASE_TAG" = "latest" ]; then \
         git clone --branch $RELEASE_TAG https://github.com/comfyanonymous/ComfyUI; \
     fi
 
-#RUN git clone https://github.com/comfyanonymous/ComfyUI \
-#    && if [ -n "$COMFYUI_VERSION" ]; then \
-#        cd ComfyUI \
-#        && git checkout "$COMFYUI_VERSION"; \
-#    fi
-
 WORKDIR /workspace/ComfyUI
 
 COPY *.sh nodes.txt *.py ./
@@ -82,17 +76,15 @@ COPY nodes.txt python-packages-to-add.txt ./
 COPY ./custom-nodes/nodes*.txt ./
 
 # Создаем ARG для передачи списка файлов
-ARG NODES="nodes1.txt"
+ARG NODES
 
 # шаг 12 Кэшируем зависимости и выполняем установку для каждого файла
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
-    if [ "$NODES" != "nodes1.txt" ]; then \
+    if [ -n "$NODES" ]; then \
         PIP_CACHE_DIR=/root/pip-cache \
         process_repos-install-req.sh "$NODES" false \
         && rm -rf root/.cache/pip; \
-    else \
-        echo "Skipping RUN because NODES is set to 'nodes1.txt'"; \
     fi
 
 RUN --mount=type=cache,target=/root/repo-cache \
@@ -143,16 +135,49 @@ RUN echo "cd /workspace/aria2/templates" >> /root/.bashrc \
 
 WORKDIR /workspace/ComfyUI
 
-COPY pip-pckg-group.py .
+COPY pip-pckg-group.py process-req-in.py ./requirments-modify ./
+COPY ./requirments-modify ./requirments-modify
 
-# Генерация requirements.in и завершение сборки
-RUN stop-build.sh
+ARG REQ_MODIFY
 
-#    --no-build-isolation \
-RUN uv pip compile requirements.in -o requirements.out \
-    --index-strategy unsafe-best-match \
-#    разбить скомпилированные пакеты на группы
-    && python3 pip-pckg-group.py
+RUN if [ -n "$REQ_MODIFY" ]; then \
+        echo "PROCESS requirements.in"; \
+        python3 process-req-in.py \
+            --requirements-file "requirements.in" \
+            --prefixes-file "./requirments-modify/$REQ_MODIFY/remove-lines.txt" \
+            --additional-lines-file "./requirments-modify/$REQ_MODIFY/add-lines.txt"; \
+    fi
+
+#RUN uv pip compile requirements.modify.in -o requirements.out \
+#    --index-strategy unsafe-best-match \
+#    --extra-index-url https://download.pytorch.org/whl/cu124 \
+##    разбить скомпилированные пакеты на группы
+#    && python3 pip-pckg-group.py \
+#    && rm pip-pckg-group.py process-req-in.py
+
+# Определение ARG для передачи нескольких --extra-index-url
+ARG EXTRA_INDEX_URLS
+
+# Разделение EXTRA_INDEX_URLS на отдельные --extra-index-url
+RUN echo "$EXTRA_INDEX_URLS" | tr ',' '\n' | xargs -I {} echo "--extra-index-url {}" > /tmp/extra_index_args2 \
+    # Объединение всех строк в одну строку
+    && tr '\n' ' ' < /tmp/extra_index_args2 > /tmp/extra_index_args \
+    # Отладочная информация: вывод содержимого /tmp/extra_index_args
+    && echo "Generated extra index arguments:" \
+    && cat /tmp/extra_index_args
+
+RUN echo "========================="
+
+    # Компиляция requirements с использованием переданных URL
+RUN uv pip compile requirements.modify.in -o requirements.out \
+        --index-strategy unsafe-best-match \
+        $(cat /tmp/extra_index_args)
+
+     # Разбиение скомпилированных пакетов на группы
+RUN python3 pip-pckg-group.py && \
+    # Удаление временных файлов
+    rm pip-pckg-group.py process-req-in.py
+
 
 # ==== Установка зависимостей по группам
 # Установка NVIDIA-зависимостей
@@ -162,6 +187,7 @@ RUN --mount=type=cache,target=/root/pip-cache \
     --link-mode=copy \
     --system \
     --cache-dir=/root/pip-cache \
+    $(cat /tmp/extra_index_args) \
     -r nvidia_requirements.txt \
     && rm -rf /root/.cache/pip
 
@@ -172,6 +198,7 @@ RUN --mount=type=cache,target=/root/pip-cache \
     --link-mode=copy \
     --system \
     --cache-dir=/root/pip-cache \
+    $(cat /tmp/extra_index_args) \
     -r xformers_requirements.txt \
     && rm -rf /root/.cache/pip
 
@@ -181,6 +208,8 @@ RUN --mount=type=cache,target=/root/pip-cache \
     uv pip install \
     --link-mode=copy \
     --system \
+    --extra-index-url https://download.pytorch.org/whl/cu124 \
+    $(cat /tmp/extra_index_args) \
     --cache-dir=/root/pip-cache \
     -r torch_requirements.txt \
     && rm -rf /root/.cache/pip
@@ -191,6 +220,7 @@ RUN --mount=type=cache,target=/root/pip-cache \
     uv pip install \
     --link-mode=copy \
     --system \
+    $(cat /tmp/extra_index_args) \
     --cache-dir=/root/pip-cache \
     -r other_requirements.txt \
     && rm -rf /root/.cache/pip
