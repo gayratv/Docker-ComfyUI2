@@ -104,18 +104,18 @@ COPY aria2 .
 RUN chmod +x *.sh \
     && chmod +x ./templates/*.sh
 
-WORKDIR /workspace
-RUN echo -e "\n========= ACE 23-24===============\n"
-# 21
-ARG ACE_PLUS_NODE_INSTALL
-RUN --mount=type=cache,target=/root/pip-cache \
-    if [ "$ACE_PLUS_NODE_INSTALL" = "true" ]; then \
-        echo "Running ace-plus-node-install.sh"; \
-        PIP_CACHE_DIR=/root/pip-cache; \
-        ace-plus-node-install.sh; \
-    else \
-        echo "Skipping ace-plus-node-install.sh"; \
-    fi
+#WORKDIR /workspace
+#RUN echo -e "\n========= ACE 23-24===============\n"
+## 21
+#ARG ACE_PLUS_NODE_INSTALL
+#RUN --mount=type=cache,target=/root/pip-cache \
+#    if [ "$ACE_PLUS_NODE_INSTALL" = "true" ]; then \
+#        echo "Running ace-plus-node-install.sh"; \
+#        PIP_CACHE_DIR=/root/pip-cache; \
+#        ace-plus-node-install.sh; \
+#    else \
+#        echo "Skipping ace-plus-node-install.sh"; \
+#    fi
 
 WORKDIR /workspace/ComfyUI
 COPY union-requiere.py requirements-edit.py ./
