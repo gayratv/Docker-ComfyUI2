@@ -1,0 +1,61 @@
+#!/bin/bash
+
+if [ -f ".env" ]; then
+    source .env
+else
+    echo "Файл .env не найден!"
+    exit 1
+fi
+
+# Проверяем, что переменная GITHUB_TOKEN установлена
+if [ -z "$GITHUB_TOKEN" ]; then
+    echo "Переменная GITHUB_TOKEN не найдена в .env файле!"
+    exit 1
+fi
+
+# Функция для вывода справки
+usage() {
+    echo "Usage: $0 --GET_RELEASE=<true|false>"
+    exit 1
+}
+
+# Проверяем, соответствует ли первый аргумент формату --GET_RELEASE=*
+if [[ "$1" == --GET_RELEASE=* ]]; then
+    GET_RELEASE="${1#*=}"  # Извлекаем значение после "="
+fi
+
+LATEST_RELEASE="$COMFYUI_VERSION"
+FORMATTED_DATE="2025"
+
+if [[ "$GET_RELEASE" == "true" ]]; then
+  # Получаем тег последнего релиза
+  # Получаем информацию о последнем релизе
+
+  # Получаем тег последнего релиза
+  RELEASE_INFO=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
+       https://api.github.com/repos/comfyanonymous/ComfyUI/releases/latest)
+
+  # Извлекаем тег релиза
+  LATEST_RELEASE=$(echo "$RELEASE_INFO" | jq -r '.tag_name')
+
+  # Извлекаем дату публикации
+  RELEASE_DATE=$(echo "$RELEASE_INFO" | jq -r '.published_at')
+
+  # Форматируем дату
+  FORMATTED_DATE=$(date -d "$RELEASE_DATE" "+%Y-%m-%d")
+fi
+
+
+echo -e "\e[34mBuilding COMFYUI with release tag: $LATEST_RELEASE date: $FORMATTED_DATE \e[0m"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
+
+#    --no-cache \
+docker build --progress=plain \
+    --build-arg BASE_IMAGE="$BASE_IMAGE" \
+    --build-arg COMFYUI_VERSION="$LATEST_RELEASE" \
+    -f /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base/Dockerfile \
+    -t $IMAGE_NAME:$VERSION \
+    /mnt/f/_prg/python/Docker-ComfyUI/comfyui-base
+echo -e "\nсобран образ $IMAGE_NAME:$VERSION"
+

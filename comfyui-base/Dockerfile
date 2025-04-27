@@ -4,92 +4,76 @@ ARG BASE_IMAGE="comfyui-base-cuda"
 # Используем аргумент в качестве имени образа
 FROM ${BASE_IMAGE}
 
-# Удалить кеш pip перед установкой:
-# RUN rm -rf /root/pip-cache-comfy-base/*
+#RUN rm -rf /root/pip-cache \
+#    rm -rf /root/pip-cache-uv \
+#    rm -rf /root/repo-cache
+#RUN uv cache clean --cache-dir=/root/pip-cache-uv
 
-# Создание рабочей директории
+WORKDIR /usr/local/bin
+COPY *.sh ./
+RUN chmod +x ./*.sh
+
 WORKDIR /workspace
-# Создание виртуального окружения
-# RUN python -m venv /workspace/.venv --system-site-packages
-
-ARG COMFYUI_VERSION
+ARG COMFYUI_VERSION="latest"
 ARG CUDA_VER="12.4"
 
-RUN git clone https://github.com/comfyanonymous/ComfyUI \
-    && if [ -n "$COMFYUI_VERSION" ]; then \
-        cd ComfyUI \
-        && git checkout "$COMFYUI_VERSION"; \
+RUN if [ "$COMFYUI_VERSION" = "latest" ]; then \
+        git clone https://github.com/comfyanonymous/ComfyUI; \
+    else \
+        git clone --branch $COMFYUI_VERSION https://github.com/comfyanonymous/ComfyUI; \
     fi
 
 WORKDIR /workspace/ComfyUI
 
-COPY *.sh cloudflare.py nodes.txt *.py ./
+COPY cloudflare.py nodes.txt *.py ./
 
-# удаляет пакеты и версию frontend
-#packages_to_remove = {
-#    "torch",
-#    "torchvision",
-#    "torchaudio",
-#    "numpy"
-#}
-# 12
-#RUN python3 requirements-edit-full.py
-#RUN rm requirements-edit-full.py
-
-RUN --mount=type=cache,target=/root/pip-cache-comfy-base \
+ARG NODES="nodes.txt"
+RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    && chmod +x *.sh \
-    && if [ -z "$COMFYUI_VERSION" ]; then python3 requirements-edit-full.py; fi \
-    && pip install \
-    --cache-dir=/root/pip-cache-comfy-base -r \
-    requirements.txt \
-    && ./process_repos-install-req.sh nodes.txt \
-    && rm -rf ~/.cache/pip
+    process_repos-install-req.sh "$NODES" false \
+    && rm -rf root/.cache/pip
 
-RUN --mount=type=cache,target=/root/pip-cache-comfy-base \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    && echo -e "\033[0;31m \n\n Установка дополнительных пакетов \033[0m" \
-    && uv pip install \
+ARG REQ_MODIFY="base-CUDA-12.4"
+COPY requirements-modify ./requirements-modify
+
+RUN  python3 union-requiere.py \
+     && python3 process-req-in.py \
+            --requirements-file "requirements.in" \
+            --prefixes-file "./requirements-modify/$REQ_MODIFY/remove-lines.txt" \
+            --additional-lines-file "./requirements-modify/$REQ_MODIFY/add-lines.txt";
+
+RUN uv pip compile requirements.modify.in -o requirements.out \
+        --index-strategy unsafe-best-match \
+        --extra-index-url https://download.pytorch.org/whl/cu124 \
+        --extra-index-url https://pypi.nvidia.com
+
+     # Разбиение скомпилированных пакетов на группы
+RUN python3 pip-pckg-group.py
+
+RUN --mount=type=cache,target=/root/pip-cache-uv \
+    uv pip install \
     --link-mode=copy \
     --system \
-    --cache-dir=/root/pip-cache-comfy-base \
-    onnxruntime onnxruntime-gpu pip-tools \
-    && echo -e "\033[0;31m \n\n Установка torch torchvision torchaudio \033[0m" \
-    && if [ "$CUDA_VER" = "12.8" ]; then \
-        pip install \
-        --cache-dir=/root/pip-cache-comfy-base \
-        --pre \
-        --index-url https://download.pytorch.org/whl/nightly/cu128 \
-        torch torchvision torchaudio; \
-    else \
-        pip install \
-        --cache-dir=/root/pip-cache-comfy-base \
-        torch torchvision torchaudio; \
-    fi \
-    && rm -rf ~/.cache/pip
-
-
-# uv pip install \
-#        --link-mode=copy \
-#        --system \
-#        --cache-dir=/root/pip-cache-comfy-base \
-#        --pre \
-
-# Устанавливаем переменную окружения для пути
-ENV DOWNLOADS_DIR=/usr/local/bin
-
-# Копируем необходимые файлы в указанную директорию
-COPY *.sh $DOWNLOADS_DIR/
-
-RUN chmod +x $DOWNLOADS_DIR/*.sh
-
-COPY nodes*.txt ./
+    --cache-dir=/root/pip-cache-uv \
+    --index-strategy unsafe-best-match \
+    --extra-index-url https://download.pytorch.org/whl/cu124 \
+    --extra-index-url https://pypi.nvidia.com \
+    -r requirements.out \
+#    && rm -rf /root/.cache/pip
+    && echo "RUN UV2 --------" \
+#RUN --mount=type=cache,target=/root/pip-cache-uv \
+    && uv pip install \
+    --upgrade \
+    --system \
+    --cache-dir=/root/pip-cache-uv \
+    --index-strategy unsafe-best-match \
+    --extra-index-url https://download.pytorch.org/whl/cu124 \
+    --extra-index-url https://pypi.nvidia.com \
+    numpy \
+    && rm -rf /root/.cache/pip
 
 WORKDIR /workspace/ComfyUI
-
-#COPY comfy.settings.json user/default/
 
 RUN echo "cd /workspace" >> /root/.bashrc
 

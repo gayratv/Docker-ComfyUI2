@@ -11,6 +11,10 @@ packages_to_remove = {
     "numpy"
 }
 
+BLUE = "\033[94m"  # Код для синего цвета
+RESET = "\033[0m"  # Сброс цвета
+print(f"{BLUE}Запуск requirements-edit-full.py для удаления лишних пакетов{RESET}")
+
 # Создаем регулярное выражение для точного совпадения с началом строки
 pattern = re.compile(r"^(?:{})(?:$|[^a-zA-Z0-9])".format("|".join(re.escape(pkg) for pkg in packages_to_remove)))
 

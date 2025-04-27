@@ -7,9 +7,12 @@ BASE_INSTALL_DIR="/workspace/ComfyUI/custom_nodes/"
 
 # Получение файла со списком репозиториев из аргумента или установка значения по умолчанию
 NODES_FILE="${1:-nodes.txt}"
+INSTALL_REQ="${2:-false}"
+
 
 #echo "DEBUG: Checking for file at path: $NODES_FILE"
 #ls -l "$NODES_FILE"
+# echo -e "\n\033[34mDEBUG\033[0m: =======NODES_FILE = $NODES_FILE\n"
 
 # Проверка наличия файла nodes.txt
 if [ ! -f "$NODES_FILE" ]; then
@@ -53,13 +56,13 @@ for GIT_REPO in "${INSTALL_DATA[@]}"; do
     # Проверяем, есть ли уже склонированный репозиторий в кэше
     if [ -d "/root/repo-cache/$REPO_NAME" ]; then
         echo -e "\e[1;34mINFO: copy from cache\e[0m"
+        mkdir -p "/root/repo-cache/$REPO_NAME"
         cp -r "/root/repo-cache/$REPO_NAME" "./$REPO_NAME"
     else
         git clone --recurse-submodules "$GIT_REPO"
         echo "DEBUG: Checking if /root/repo-cache exists..."
         ls -la /root/repo-cache
         echo -e "\e[1;31mDEBUG: Caching repository to /root/repo-cache/$REPO_NAME...\e[0m"
-        mkdir -p "/root/repo-cache/$REPO_NAME"
         cp -r "./$REPO_NAME" "/root/repo-cache/$REPO_NAME"
         echo "DEBUG: Copied $REPO_NAME to /root/repo-cache"
         ls -la /root/repo-cache
@@ -73,22 +76,29 @@ for GIT_REPO in "${INSTALL_DATA[@]}"; do
     cd "$REPO_DIR" || { echo "ERROR: Failed to change directory to $REPO_DIR"; exit 1; }
 
     # Проверка наличия файла requirements.txt
-    if [ -f "requirements.txt" ]; then
+    if [ "$INSTALL_REQ" = "true" ] && [ -f "requirements.txt" ]; then
         echo "Installing Python dependencies from requirements.txt (excluding torch)..."
 
-#        # Создаем временный файл
-#        TMP_REQ=$(mktemp)
-#        grep -v '^torch' requirements.txt | grep -v '^#' | grep . > "$TMP_REQ"
-#
+        # Создаем временный файл
+        TMP_REQ=$(mktemp)
+        grep -v '^torch' requirements.txt | grep -v '^#' | grep . > "$TMP_REQ"
+
         # Устанавливаем зависимости из временного файла
-        pip install --cache-dir "${PIP_CACHE_DIR:-/root/pip-cache}" -r requirements.txt 2> pip_error.log || {
+        pip install --cache-dir "${PIP_CACHE_DIR:-/root/pip-cache}" -r "$TMP_REQ" 2> pip_error.log || {
             echo "ERROR: Failed to install dependencies. Check pip_error.log for details."
-#            rm "$TMP_REQ"
+            rm "$TMP_REQ"
+            exit 1
+        }
+
+#        pip install --cache-dir "${PIP_CACHE_DIR:-/root/pip-cache}" -r requirements.txt 2> pip_error.log || {
+        pip install --cache-dir "${PIP_CACHE_DIR:-/root/pip-cache}" -r "$TMP_REQ" 2> pip_error.log || {
+            echo "ERROR: Failed to install dependencies. Check pip_error.log for details."
+            rm "$TMP_REQ"
             exit 1
         }
 
         # Удаляем временный файл
-#        rm "$TMP_REQ"
+        rm "$TMP_REQ"
     else
         echo "No requirements.txt found in $REPO_DIR."
     fi

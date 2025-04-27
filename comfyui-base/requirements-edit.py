@@ -1,21 +1,43 @@
-# script.py
-import re
+import argparse
 
-file_path = "requirements.txt"
+def process_files(additional_packages):
+    file_path = "requirements.txt"
 
-# Создаем регулярное выражение для точного совпадения с началом строки
+    # Создаем регулярное выражение для точного совпадения с началом строки
 
-with open(file_path, "r") as file:
-    lines = file.readlines()
+    with open(file_path, "r") as file:
+        lines = file.readlines()
 
-with open(file_path, "w") as file:
-    for line in lines:
-        stripped_line = line.strip()
+    if additional_packages:
+        try:
+            with open(additional_packages, "r") as file:
+                lines_add = file.readlines()
+            lines.append("\n")
+            lines.extend(lines_add)
+        except FileNotFoundError:
+            print(f"Файл {additional_packages} не найден. Пропускаем добавление пакетов.")
 
-        # Если строка содержит 'comfyui-frontend-package==', заменяем её
-        if stripped_line.startswith("comfyui-frontend-package"):
-            file.write("comfyui-frontend-package\n")
-            continue
+    with open(file_path, "w") as file:
+        for line in lines:
+            stripped_line = line.strip()
 
-        # Иначе записываем строку как есть
-        file.write(line)
+            # Иначе записываем строку как есть
+            file.write(line)
+
+
+if __name__ == "__main__":
+    # Настройка парсера аргументов командной строки
+    parser = argparse.ArgumentParser(description="Объединяет содержимое requirements.txt и дополнительного файла.")
+
+    # Добавляем аргумент --add_package
+    parser.add_argument(
+        "--add_package",
+        # default="python-packages-to-add.txt",
+        default=None,
+        help="Путь к дополнительному файлу с пакетами. По умолчанию: python-packages-to-add.txt."
+    )
+
+    args = parser.parse_args()
+
+    process_files(args.add_package)
+
