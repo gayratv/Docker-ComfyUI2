@@ -44,16 +44,25 @@ RUN chmod +x *.sh \
     && chmod +x ./templates/*.sh
 
 WORKDIR /workspace
-RUN echo -e "\n========= ACE 23-24===============\n"
+RUN echo -e "\n========= POST_INSTALL ===============\n"
 # 21
-ARG ACE_PLUS_NODE_INSTALL
+
+ARG POST_INSTALL
+RUN echo -e "\n\nPOST_INSTALL =|$POST_INSTALL|"
+
+RUN if [ -n "$POST_INSTALL" ]; then \
+        cp "post-install/$POST_INSTALL" ./; \
+    fi
+#COPY "post-install/$POST_INSTALL" ./
+
 RUN --mount=type=cache,target=/root/pip-cache \
-    if [ "$ACE_PLUS_NODE_INSTALL" = "true" ]; then \
-        echo "Running ace-plus-node-install.sh"; \
+    if [ -n "$POST_INSTALL"  ]; then \
+        chmod +x "$POST_INSTALL" && \
+        echo "Running $POST_INSTALL./"; \
         PIP_CACHE_DIR=/root/pip-cache; \
-        ace-plus-node-install.sh; \
+        ./"$POST_INSTALL"; \
     else \
-        echo "Skipping ace-plus-node-install.sh"; \
+        echo "Skipping post-install script"; \
     fi
 
 WORKDIR /workspace/ComfyUI/custom_nodes

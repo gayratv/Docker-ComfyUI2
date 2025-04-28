@@ -86,7 +86,8 @@ class DisplayOffers:
                        geolocation, \
                        gpu_name, \
                        host_id, \
-                       vericode
+                       vericode, \
+                       cuda_max_good 
                 FROM offers 
                     left join  
                      vast.bad_machines bm 
@@ -100,7 +101,7 @@ class DisplayOffers:
         result = self.execute_query(query, params)
 
         # Определяем заголовки для таблицы
-        headers = ["ID", "$/HR", "idown$/TB", "inet_down", "geolocation", "gpu_name", "host_id", "vericode"]
+        headers = ["ID", "$/HR", "idown$/TB", "inet_down", "geolocation", "gpu_name", "host_id", "vericode","cuda_max_good"]
 
         if result:
             formatted_result = [
@@ -112,7 +113,8 @@ class DisplayOffers:
                     row[4],  # geolocation
                     row[5],  # gpu_name
                     row[6],
-                    row[7]
+                    row[7],
+                    row[8]
                 )
                 for row in result
             ]

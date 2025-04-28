@@ -1,0 +1,1072 @@
+{
+  "id": "dddc28e6-8649-499a-86d9-8657e4ca5a4d",
+  "revision": 0,
+  "last_node_id": 21,
+  "last_link_id": 42,
+  "nodes": [
+    {
+      "id": 13,
+      "type": "LoadRembgByBiRefNetModel",
+      "pos": [
+        288.6904296875,
+        883.5382080078125
+      ],
+      "size": [
+        315,
+        130
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "BIREFNET",
+          "slot_index": 0,
+          "links": []
+        }
+      ],
+      "properties": {
+        "aux_id": "lldacing/ComfyUI_BiRefNet_ll",
+        "ver": "617827cee90a137a5c770394a47e162b6fbde041",
+        "Node name for S&R": "LoadRembgByBiRefNetModel"
+      },
+      "widgets_values": [
+        "BiRefNet-DIS-epoch_590.pth",
+        "AUTO",
+        false,
+        "float32"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "VHS_LoadVideo",
+      "pos": [
+        287.6904296875,
+        1084.5380859375
+      ],
+      "size": [
+        270.8154602050781,
+        310
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "meta_batch",
+          "name": "meta_batch",
+          "shape": 7,
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "label": "vae",
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            14
+          ]
+        },
+        {
+          "label": "frame_count",
+          "name": "frame_count",
+          "type": "INT",
+          "slot_index": 1,
+          "links": [
+            7
+          ]
+        },
+        {
+          "label": "audio",
+          "name": "audio",
+          "type": "AUDIO",
+          "links": null
+        },
+        {
+          "label": "video_info",
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Kosinkadink/ComfyUI-VideoHelperSuite",
+        "ver": "a7ce59e381934733bfae03b1be029756d6ce936d",
+        "Node name for S&R": "VHS_LoadVideo"
+      },
+      "widgets_values": {
+        "video": "v_2.mp4",
+        "force_rate": 0,
+        "custom_width": 0,
+        "custom_height": 0,
+        "frame_load_cap": 0,
+        "skip_first_frames": 0,
+        "select_every_nth": 50,
+        "format": "AnimateDiff",
+        "choose video to upload": "image",
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "frame_load_cap": 0,
+            "skip_first_frames": 0,
+            "force_rate": 0,
+            "select_every_nth": 50,
+            "filename": "v_2.mp4",
+            "type": "input",
+            "format": "video/mp4"
+          },
+          "muted": false
+        }
+      }
+    },
+    {
+      "id": 12,
+      "type": "AutoDownloadBiRefNetModel",
+      "pos": [
+        670.6904296875,
+        888.5382080078125
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "BIREFNET",
+          "slot_index": 0,
+          "links": [
+            17
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "lldacing/ComfyUI_BiRefNet_ll",
+        "ver": "617827cee90a137a5c770394a47e162b6fbde041",
+        "Node name for S&R": "AutoDownloadBiRefNetModel"
+      },
+      "widgets_values": [
+        "General",
+        "AUTO",
+        "float32"
+      ]
+    },
+    {
+      "id": 14,
+      "type": "RembgByBiRefNet",
+      "pos": [
+        721.6904296875,
+        1110.5380859375
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "BIREFNET",
+          "link": 17
+        },
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 14
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            16
+          ]
+        },
+        {
+          "label": "mask",
+          "name": "mask",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "properties": {
+        "aux_id": "lldacing/ComfyUI_BiRefNet_ll",
+        "ver": "617827cee90a137a5c770394a47e162b6fbde041",
+        "Node name for S&R": "RembgByBiRefNet"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 10,
+      "type": "ShowInt",
+      "pos": [
+        680,
+        1252
+      ],
+      "size": [
+        315,
+        100
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "INT",
+          "name": "INT",
+          "type": "INT",
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "label": "INT",
+          "name": "INT",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "lldacing/comfyui-easyapi-nodes",
+        "ver": "1c932a49ba7c9c0f7eb1c0d504cdc0114f39e445",
+        "Node name for S&R": "ShowInt"
+      },
+      "widgets_values": [
+        0
+      ]
+    },
+    {
+      "id": 9,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        1208,
+        1117
+      ],
+      "size": [
+        249.66293334960938,
+        238
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 16
+        },
+        {
+          "label": "audio",
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "label": "meta_batch",
+          "name": "meta_batch",
+          "shape": 7,
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "label": "vae",
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Filenames",
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null
+        },
+        {
+          "label": "info",
+          "name": "info",
+          "type": "INFO",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "Kosinkadink/ComfyUI-VideoHelperSuite",
+        "ver": "a7ce59e381934733bfae03b1be029756d6ce936d",
+        "Node name for S&R": "VHS_VideoCombine"
+      },
+      "widgets_values": {
+        "frame_rate": 8,
+        "loop_count": 0,
+        "filename_prefix": "birefnet",
+        "format": "image/gif",
+        "pingpong": false,
+        "save_output": true,
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "birefnet_00002.gif",
+            "subfolder": "",
+            "type": "output",
+            "format": "image/gif",
+            "frame_rate": 8
+          },
+          "muted": false
+        }
+      }
+    },
+    {
+      "id": 21,
+      "type": "MaskPreview+",
+      "pos": [
+        1385.37060546875,
+        532.4774780273438
+      ],
+      "size": [
+        365.199951171875,
+        246
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "mask",
+          "name": "mask",
+          "type": "MASK",
+          "link": 36
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "aux_id": "cubiq/ComfyUI_essentials",
+        "ver": "9d9f4bedfc9f0321c19faf71855e228c93bd0dc9",
+        "Node name for S&R": "MaskPreview+"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 20,
+      "type": "MaskPreview+",
+      "pos": [
+        1385.37060546875,
+        241.9310302734375
+      ],
+      "size": [
+        365.199951171875,
+        246
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "mask",
+          "name": "mask",
+          "type": "MASK",
+          "link": 35
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "aux_id": "cubiq/ComfyUI_essentials",
+        "ver": "9d9f4bedfc9f0321c19faf71855e228c93bd0dc9",
+        "Node name for S&R": "MaskPreview+"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 2,
+      "type": "MaskPreview+",
+      "pos": [
+        1385.37060546875,
+        -35.93315505981445
+      ],
+      "size": [
+        365.199951171875,
+        246
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "mask",
+          "name": "mask",
+          "type": "MASK",
+          "link": 1
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "aux_id": "cubiq/ComfyUI_essentials",
+        "ver": "9d9f4bedfc9f0321c19faf71855e228c93bd0dc9",
+        "Node name for S&R": "MaskPreview+"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 3,
+      "type": "PreviewImage",
+      "pos": [
+        955.1781616210938,
+        -35.93315505981445
+      ],
+      "size": [
+        378.5118408203125,
+        246
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 2
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 17,
+      "type": "PreviewImage",
+      "pos": [
+        955.1781616210938,
+        532.4774780273438
+      ],
+      "size": [
+        378.5118408203125,
+        246
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 33
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 15,
+      "type": "GetMaskByBiRefNet",
+      "pos": [
+        340.82122802734375,
+        511.5667724609375
+      ],
+      "size": [
+        249.39996337890625,
+        150
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "BIREFNET",
+          "link": 41
+        },
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 31
+        }
+      ],
+      "outputs": [
+        {
+          "label": "mask",
+          "name": "mask",
+          "type": "MASK",
+          "slot_index": 0,
+          "links": [
+            32,
+            36
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "lldacing/ComfyUI_BiRefNet_ll",
+        "ver": "617827cee90a137a5c770394a47e162b6fbde041",
+        "Node name for S&R": "GetMaskByBiRefNet"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        "bilinear",
+        0
+      ]
+    },
+    {
+      "id": 6,
+      "type": "LoadRembgByBiRefNetModel",
+      "pos": [
+        287.657470703125,
+        -19.4490909576416
+      ],
+      "size": [
+        315,
+        130
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "BIREFNET",
+          "slot_index": 0,
+          "links": []
+        }
+      ],
+      "properties": {
+        "aux_id": "lldacing/ComfyUI_BiRefNet_ll",
+        "ver": "617827cee90a137a5c770394a47e162b6fbde041",
+        "Node name for S&R": "LoadRembgByBiRefNetModel"
+      },
+      "widgets_values": [
+        "BiRefNet-DIS-epoch_590.pth",
+        "AUTO",
+        true,
+        "float32"
+      ]
+    },
+    {
+      "id": 19,
+      "type": "PreviewImage",
+      "pos": [
+        969.0626831054688,
+        256.4764404296875
+      ],
+      "size": [
+        378.5118408203125,
+        246
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 34
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 5,
+      "type": "RembgByBiRefNet",
+      "pos": [
+        665.2196655273438,
+        129.4429931640625
+      ],
+      "size": [
+        257.3285827636719,
+        46
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "BIREFNET",
+          "link": 40
+        },
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 9
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            2
+          ]
+        },
+        {
+          "label": "mask",
+          "name": "mask",
+          "type": "MASK",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "lldacing/ComfyUI_BiRefNet_ll",
+        "ver": "617827cee90a137a5c770394a47e162b6fbde041",
+        "Node name for S&R": "RembgByBiRefNet"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 18,
+      "type": "RembgByBiRefNetAdvanced",
+      "pos": [
+        674.657470703125,
+        212.50473022460938
+      ],
+      "size": [
+        257.3285827636719,
+        246
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "BIREFNET",
+          "link": 42
+        },
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 38
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            34
+          ]
+        },
+        {
+          "label": "mask",
+          "name": "mask",
+          "type": "MASK",
+          "slot_index": 1,
+          "links": [
+            35
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "lldacing/ComfyUI_BiRefNet_ll",
+        "ver": "617827cee90a137a5c770394a47e162b6fbde041",
+        "Node name for S&R": "RembgByBiRefNetAdvanced"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        "bilinear",
+        91,
+        7,
+        false,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [
+        290.5783996582031,
+        134.23895263671875
+      ],
+      "size": [
+        315,
+        314
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "IMAGE",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            9,
+            31,
+            38,
+            39
+          ]
+        },
+        {
+          "label": "MASK",
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 1,
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "Снимок экрана 2025-04-10 215304.png",
+        "image"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "AutoDownloadBiRefNetModel",
+      "pos": [
+        674.657470703125,
+        -15.449089050292969
+      ],
+      "size": [
+        257.3285827636719,
+        106
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "BIREFNET",
+          "slot_index": 0,
+          "links": [
+            40,
+            41,
+            42
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "lldacing/ComfyUI_BiRefNet_ll",
+        "ver": "617827cee90a137a5c770394a47e162b6fbde041",
+        "Node name for S&R": "AutoDownloadBiRefNetModel"
+      },
+      "widgets_values": [
+        "Portrait",
+        "AUTO",
+        "float32"
+      ]
+    },
+    {
+      "id": 16,
+      "type": "BlurFusionForegroundEstimation",
+      "pos": [
+        674.657470703125,
+        508.48162841796875
+      ],
+      "size": [
+        257.3285827636719,
+        150
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "images",
+          "name": "images",
+          "type": "IMAGE",
+          "link": 39
+        },
+        {
+          "label": "masks",
+          "name": "masks",
+          "type": "MASK",
+          "link": 32
+        }
+      ],
+      "outputs": [
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            33
+          ]
+        },
+        {
+          "label": "mask",
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "lldacing/ComfyUI_BiRefNet_ll",
+        "ver": "617827cee90a137a5c770394a47e162b6fbde041",
+        "Node name for S&R": "BlurFusionForegroundEstimation"
+      },
+      "widgets_values": [
+        91,
+        7,
+        false,
+        0
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      5,
+      1,
+      2,
+      0,
+      "MASK"
+    ],
+    [
+      2,
+      5,
+      0,
+      3,
+      0,
+      "IMAGE"
+    ],
+    [
+      7,
+      8,
+      1,
+      10,
+      0,
+      "INT"
+    ],
+    [
+      9,
+      1,
+      0,
+      5,
+      1,
+      "IMAGE"
+    ],
+    [
+      14,
+      8,
+      0,
+      14,
+      1,
+      "IMAGE"
+    ],
+    [
+      16,
+      14,
+      0,
+      9,
+      0,
+      "IMAGE"
+    ],
+    [
+      17,
+      12,
+      0,
+      14,
+      0,
+      "BiRefNetMODEL"
+    ],
+    [
+      31,
+      1,
+      0,
+      15,
+      1,
+      "IMAGE"
+    ],
+    [
+      32,
+      15,
+      0,
+      16,
+      1,
+      "MASK"
+    ],
+    [
+      33,
+      16,
+      0,
+      17,
+      0,
+      "IMAGE"
+    ],
+    [
+      34,
+      18,
+      0,
+      19,
+      0,
+      "IMAGE"
+    ],
+    [
+      35,
+      18,
+      1,
+      20,
+      0,
+      "MASK"
+    ],
+    [
+      36,
+      15,
+      0,
+      21,
+      0,
+      "MASK"
+    ],
+    [
+      38,
+      1,
+      0,
+      18,
+      1,
+      "IMAGE"
+    ],
+    [
+      39,
+      1,
+      0,
+      16,
+      0,
+      "IMAGE"
+    ],
+    [
+      40,
+      4,
+      0,
+      5,
+      0,
+      "BiRefNetMODEL"
+    ],
+    [
+      41,
+      4,
+      0,
+      15,
+      0,
+      "BiRefNetMODEL"
+    ],
+    [
+      42,
+      4,
+      0,
+      18,
+      0,
+      "BiRefNetMODEL"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Group",
+      "bounding": [
+        277.657470703125,
+        -99.9610824584961,
+        1487.7606201171875,
+        897.8088989257812
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Group",
+      "bounding": [
+        277,
+        809,
+        1190,
+        812
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9090909090909091,
+      "offset": [
+        202.26483249542753,
+        108.18944754625046
+      ]
+    },
+    "frontendVersion": "1.17.11",
+    "workspace_info": {
+      "id": "mJpqWc0YMHXCo6Wl7romf",
+      "saveLock": false,
+      "cloudID": null,
+      "coverMediaPath": null
+    },
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

@@ -1,13 +1,14 @@
 wsl
 clear
 
-source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfy-union:UNO"
+source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui:Backgound-remover3-v0.3.30"
 
-source vast-contract.sh 19394482 $IMAGE_NAME
+source vast-contract.sh 18338208 $IMAGE_NAME
 
 source ./vs.sh
 
 tmux-s-bash.sh
+./dl_common.sh Backgound-remover3
 ./dl_common.sh UNO
 ./dl_common.sh SUPIR-v2-MaskTile
 ./dl_common.sh FLUX_HIRES_Artur

@@ -45,7 +45,35 @@ export VERSION="v1.0-HunyuanVideo"
 export BASE_IMAGE="comfyui-base-cuda-12-8:v1.3-CUDA-12.8"
 export NODES="nodes-hunian-video.txt"
 export ACE_PLUS_NODE_INSTALL="false"
-===================================
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+export IMAGE_NAME="comfyui"
+export VERSION="Backgound-remover3-v0.3.10"
+export BASE_IMAGE="comfyui-base-cuda-12-4:nvidia-v0.3.10"
+export NODES="nodes-Backgound-remover3.txt"
+export ACE_PLUS_NODE_INSTALL="false"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+export IMAGE_NAME="comfyui"
+export VERSION="Backgound-remover3-v0.3.30"
+export BASE_IMAGE="comfyui-base-cuda-12-4:nvidia-v0.3.30"
+export NODES="nodes-Backgound-remover3.txt"
+export ACE_PLUS_NODE_INSTALL="false"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+export IMAGE_NAME="comfyui"
+export VERSION="product-photography-v2-relight-customized-placement-detail-retention-v0.3.30"
+export BASE_IMAGE="comfyui-base-cuda-12-4:nvidia-v0.3.30"
+export NODES="nodes-product-photography-v2-relight-customized-placement-detail-retention.txt"
+export POST_INSTALL="product-photography-v2-relight-customized-placement-detail-retention.sh"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+export IMAGE_NAME="comfyui"
+export VERSION="lldacing_BiRefNet_ll-v0.3.30"
+export BASE_IMAGE="comfyui-base-cuda-12-4:nvidia-v0.3.30"
+export NODES="nodes-lldacing_BiRefNet_ll.txt"
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
 docker build --progress=plain \
     --build-arg BASE_IMAGE="$BASE_IMAGE" \
