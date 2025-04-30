@@ -4,6 +4,9 @@ ARG BASE_IMAGE="gayrat/comfyui-base-cuda-12-4:v2.0"
 # Используем аргумент в качестве имени образа
 FROM ${BASE_IMAGE}
 
+#RUN rm -rf /root/repo-cache \
+#    && rm -rf /root/pip-cache
+
 ENV DOWNLOADS_DIR=/usr/local/bin
 COPY *.sh $DOWNLOADS_DIR/
 RUN chmod +x $DOWNLOADS_DIR/*.sh
@@ -56,9 +59,6 @@ RUN echo -e "\n========= POST_INSTALL ===============\n"
 ARG POST_INSTALL
 RUN echo -e "\n\nPOST_INSTALL =|$POST_INSTALL|"
 
-#RUN if [ -n "$POST_INSTALL" ]; then \
-#        cp "post-install/$POST_INSTALL" ./; \
-#    fi
 COPY post-install/ ./post-install
 
 RUN --mount=type=cache,target=/root/pip-cache \
