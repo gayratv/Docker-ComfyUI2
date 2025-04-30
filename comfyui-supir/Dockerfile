@@ -42,7 +42,9 @@ COPY input  ./
 WORKDIR /workspace/aria2
 COPY aria2 .
 RUN chmod +x *.sh \
-    && chmod +x ./templates/*.sh
+    && chmod +x ./templates/*.sh \
+    && rm -f ./templates/.env
+
 WORKDIR /workspace/aria2/templates/models
 ARG MODELS="nunchaku"
 RUN for dir in */; do [ "$dir" != "nunchaku/" ] && rm -r "$dir"; done
