@@ -30,7 +30,8 @@ RUN --mount=type=cache,target=/root/repo-cache \
 
 
 WORKDIR /workspace/ComfyUI
-COPY workflows/ user/default/workflows/
+ARG WORKFLOW_TO_COPY="supir"
+COPY workflows/$WORKFLOW_TO_COPY user/default/workflows/$WORKFLOW_TO_COPY
 COPY ./user/default/comfy.settings.json user/default/
 
 COPY union-requiere.py VPS-copy  ./
@@ -42,6 +43,9 @@ WORKDIR /workspace/aria2
 COPY aria2 .
 RUN chmod +x *.sh \
     && chmod +x ./templates/*.sh
+WORKDIR /workspace/aria2/templates/models
+ARG MODELS="nunchaku"
+RUN for dir in */; do [ "$dir" != "nunchaku/" ] && rm -r "$dir"; done
 
 WORKDIR /workspace
 RUN echo -e "\n========= POST_INSTALL ===============\n"
@@ -50,17 +54,17 @@ RUN echo -e "\n========= POST_INSTALL ===============\n"
 ARG POST_INSTALL
 RUN echo -e "\n\nPOST_INSTALL =|$POST_INSTALL|"
 
-RUN if [ -n "$POST_INSTALL" ]; then \
-        cp "post-install/$POST_INSTALL" ./; \
-    fi
-#COPY "post-install/$POST_INSTALL" ./
+#RUN if [ -n "$POST_INSTALL" ]; then \
+#        cp "post-install/$POST_INSTALL" ./; \
+#    fi
+COPY post-install/ ./post-install
 
 RUN --mount=type=cache,target=/root/pip-cache \
     if [ -n "$POST_INSTALL"  ]; then \
-        chmod +x "$POST_INSTALL" && \
+        chmod +x "./post-install/$POST_INSTALL" && \
         echo "Running $POST_INSTALL./"; \
         PIP_CACHE_DIR=/root/pip-cache; \
-        ./"$POST_INSTALL"; \
+        ./post-install/"$POST_INSTALL"; \
     else \
         echo "Skipping post-install script"; \
     fi

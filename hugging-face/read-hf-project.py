@@ -1,7 +1,7 @@
 from huggingface_hub import HfApi, hf_hub_url
 import os
 
-def get_download_info(repo_id, repo_type="model", revision="main", download_dir="/workspace/ComfyUI/models/"):
+def get_download_info(repo_id, repo_type="model", revision="main", download_dir="models/"):
     api = HfApi()
     repo_info = api.repo_info(repo_id=repo_id, repo_type=repo_type, revision=revision)
 
@@ -15,8 +15,8 @@ def get_download_info(repo_id, repo_type="model", revision="main", download_dir=
     return entries
 
 if __name__ == "__main__":
-    repo_id = "lllyasviel/ControlNet"
-    entries = get_download_info(repo_id)
+    repo_id = "mit-han-lab/svdq-int4-flux.1-depth-dev"
+    entries = get_download_info(repo_id,download_dir="models/models/diffusion_models/svdq-int4-flux.1-depth-dev")
 
     for entry in entries:
         print(entry)
