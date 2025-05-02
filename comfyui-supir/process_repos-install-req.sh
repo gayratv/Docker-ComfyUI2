@@ -19,9 +19,17 @@ if [ ! -f "$NODES_FILE" ]; then
 fi
 
 # Чтение списка репозиториев из файла
-mapfile -t INSTALL_DATA < "$NODES_FILE"
+#NODES_FILE="nodes-nunchaku.txt"
+mapfile -t INSTALL_DATA < <(
+    sed '
+        s/^[[:space:]]*//;      # удалить начальные пробелы
+        s/[[:space:]]*$//;      # удалить концевые пробелы
+        /^$/d;                  # удалить пустые строки
+        /^#/d                   # удалить комментарии
+    ' "$NODES_FILE"
+)
 
-#cd "$BASE_INSTALL_DIR"
+
 
 echo "DEBUG: Processing the following repositories from $NODES_FILE:"
 for GIT_REPO in "${INSTALL_DATA[@]}"; do

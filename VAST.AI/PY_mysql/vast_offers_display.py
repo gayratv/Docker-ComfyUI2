@@ -79,7 +79,7 @@ class DisplayOffers:
         Отображает результаты запроса к таблице offers.
         """
         query = """
-                SELECT offers.id as id, \
+                SELECT o.id as id, \
                        search_totalHour          AS "$/HR", \
                        internet_down_cost_per_tb AS "idown$/TB", \
                        inet_down, \
@@ -88,11 +88,11 @@ class DisplayOffers:
                        host_id, \
                        vericode, \
                        cuda_max_good 
-                FROM offers 
+                FROM offers o
                     left join  
                      vast.bad_machines bm 
-                        on offers.machine_id = bm.machine_id
-                WHERE batch_number = %s and vericode < 2 and bm.id is null
+                        on o.machine_id = bm.machine_id
+                WHERE batch_number = %s and vericode < 2 and bm.id is null and o.internet_down_cost_per_tb < 6
                 ORDER BY search_totalHour \
                 """
 

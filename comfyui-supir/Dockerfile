@@ -7,6 +7,9 @@ FROM ${BASE_IMAGE}
 #RUN rm -rf /root/repo-cache \
 #    && rm -rf /root/pip-cache
 
+# Создаём кэширующие директории явно
+RUN mkdir -p /root/pip-cache/wheels
+
 ENV DOWNLOADS_DIR=/usr/local/bin
 COPY *.sh $DOWNLOADS_DIR/
 RUN chmod +x $DOWNLOADS_DIR/*.sh
@@ -24,7 +27,7 @@ RUN --mount=type=cache,target=/root/repo-cache \
     if [ "$NODES" != "nodes1.txt" ]; then \
         PIP_CACHE_DIR=/root/pip-cache \
         process_repos-install-req.sh "$NODES" \
-        && rm -rf ~/.cache/pip; \
+        && rm -rf /root/.cache/pip; \
     else \
         echo "Skipping RUN because NODES is set to 'nodes1.txt'"; \
     fi
@@ -50,7 +53,7 @@ RUN chmod +x *.sh \
 
 WORKDIR /workspace/aria2/templates/models
 ARG MODELS="nunchaku"
-RUN for dir in */; do [ "$dir" != "nunchaku/" ] && rm -r "$dir"; done
+#RUN for dir in */; do [ "$dir" != "nunchaku/" ] && rm -r "$dir"; done
 
 WORKDIR /workspace
 RUN echo -e "\n========= POST_INSTALL ===============\n"
@@ -65,11 +68,14 @@ RUN --mount=type=cache,target=/root/pip-cache \
     if [ -n "$POST_INSTALL"  ]; then \
         chmod +x "./post-install/$POST_INSTALL" && \
         echo "Running $POST_INSTALL./"; \
-        PIP_CACHE_DIR=/root/pip-cache; \
         ./post-install/"$POST_INSTALL"; \
+        echo -e "--------- ls -la /root/pip-cache/wheels; "; \
+#        ls -la /root/pip-cache/wheels; \
     else \
         echo "Skipping post-install script"; \
     fi
+#    && echo "Checking cache contents:" \
+#    && find /root/pip-cache/wheels -type f -name "*.whl" -exec ls -lh {} \;
 
 WORKDIR /workspace/ComfyUI/custom_nodes
 COPY union-requiere.py .
@@ -80,5 +86,6 @@ RUN python3 union-requiere.py \
 RUN echo "cd /workspace/aria2/templates" >> /root/.bashrc \
   && echo "set -g mouse on" >> ~/.tmux.conf
 #  tmux source-file ~/.tmux.conf
+
 
 CMD ["bash"]

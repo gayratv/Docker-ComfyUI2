@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #    --no-cache \
+#    --cache-from $IMAGE_NAME:$VERSION \
 docker build --progress=plain \
     --build-arg BASE_IMAGE="$BASE_IMAGE" \
     --build-arg NODES="$NODES" \
