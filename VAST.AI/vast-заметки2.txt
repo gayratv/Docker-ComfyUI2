@@ -2,12 +2,14 @@ wsl
 clear
 
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui:nunchaku-v0.3.30"
-source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui:reactor-flux"
 
-source vast-contract.sh 19363095 $IMAGE_NAME
+source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui:FLUX_Ace_PP_FaseSwap_and_objects-v0.3.30"
+
+source vast-contract.sh 19708822 $IMAGE_NAME
 source ./vs.sh
 
 tmux-s-bash.sh
+./dl_common.sh FLUX_Ace_PP_FaseSwap_and_objects
 ./dl_common.sh character-changeBg
 ./dl_common.sh flux-pullid-reactor-depth
 ./dl_common.sh nunchaku
