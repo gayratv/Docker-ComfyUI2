@@ -8,6 +8,7 @@ source vast-contract.sh 19363095 $IMAGE_NAME
 source ./vs.sh
 
 tmux-s-bash.sh
+./dl_common.sh character-changeBg
 ./dl_common.sh flux-pullid-reactor-depth
 ./dl_common.sh nunchaku
 ./dl_common.sh nunchaku2
