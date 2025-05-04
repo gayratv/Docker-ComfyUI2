@@ -1,0 +1,52 @@
+# 🌟 CLIP 🌟
+# clip_l.safetensors
+https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors
+    dir=models/clip
+    out=FLUX/clip_l.safetensors
+
+# Flux-Main/t5xxl_fp8_e4m3fn.safetensors
+https://huggingface.co/OreX/Models/resolve/main/Flux-Main/t5xxl_fp8_e4m3fn.safetensors
+    dir=models/clip
+    out=FLUX/t5xxl_fp8_e4m3fn.safetensors
+
+
+# 🌟 VAE dev 🌟
+https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/vae/diffusion_pytorch_model.safetensors
+  dir=models/vae/FLUX/
+  out=flux.vae.safetensors
+
+# 🌟 LORA 🌟
+https://huggingface.co/ali-vilab/ACE_Plus/resolve/main/portrait/comfyui_portrait_lora64.safetensors
+    dir=models/loras/ace/
+    out=comfyui_portrait_lora64.safetensors
+https://huggingface.co/ali-vilab/ACE_Plus/resolve/main/subject/comfyui_subject_lora16.safetensors
+    dir=models/loras/ace/
+    out=comfyui_subject_lora16.safetensors
+https://huggingface.co/ali-vilab/ACE_Plus/resolve/main/local_editing/comfyui_local_lora16.safetensors
+    dir=models/loras/ace/
+    out=comfyui_local_lora16.safetensors
+
+# model_file /workspace/ComfyUI/models/insightface/inswapper_128.onnx should exist
+https://huggingface.co/thebiglaskowski/inswapper_128.onnx/resolve/main/inswapper_128.onnx
+    dir=models/insightface
+    out=inswapper_128.onnx
+
+# 🌟 Flux fill 🌟
+# 🌟 boricuapab/flux1-fill-dev-fp8 🌟
+https://huggingface.co/boricuapab/flux1-fill-dev-fp8/resolve/main/flux1-fill-dev-fp8.safetensors
+  dir=models/diffusion_models/FLUX1/
+  out=flux1-fill-dev-fp8.safetensors
+
+
+# 🌟 ostris/Flex.1-alpha-Redux  🌟
+# flex1_redux_siglip2_512.safetensors
+https://huggingface.co/ostris/Flex.1-alpha-Redux/resolve/main/flex1_redux_siglip2_512.safetensors
+    out=flex1_redux_siglip2_512.safetensors
+    dir=models/style_models/Flux
+
+
+# ostris/ComfyUI-Advanced-Vision
+https://huggingface.co/ostris/ComfyUI-Advanced-Vision/resolve/main/clip_vision/siglip2_so400m_patch16_512.safetensors
+    out=siglip2_so400m_patch16_512.safetensors
+    dir=models/clip_vision
+

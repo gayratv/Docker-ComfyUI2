@@ -114,6 +114,27 @@ export NODES="nodes-FLUX_Ace_PP_FaseSwap_and_objects.txt"
 export WORKFLOW_TO_COPY="FLUX_Ace_PP_FaseSwap_and_objects"
 export MODELS="FLUX_Ace_PP_FaseSwap_and_objects"
 
+https://boosty.to/stabledif/posts/8478095a-bf65-443e-96af-6cbd5288db2e
+ТОЧНЫЙ ПЕРЕНОС ОДЕЖДЫ, ЛОГО, ТАТУ, ОБЪЕКТОВ
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+export IMAGE_NAME="comfyui"
+export VERSION="Ace-Subject-Redux-v0.3.30"
+export BASE_IMAGE="comfyui-base-cuda-12-4:nvidia-v0.3.30"
+export NODES="nodes-Ace-Subject-Redux.txt"
+export WORKFLOW_TO_COPY="Ace-Subject-Redux"
+export MODELS="Ace-Subject-Redux"
+
+
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+export MODELS="Flex2"
+export WORKFLOW_TO_COPY=$MODELS
+export VERSION="$MODELS-v0.3.30"
+export NODES="nodes-$MODELS.txt"
+export IMAGE_NAME="comfyui"
+export BASE_IMAGE="comfyui-base-cuda-12-4:nvidia-v0.3.30"
+
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
