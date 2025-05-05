@@ -1,0 +1,37 @@
+# Flex 2 fp8 & GGUF -
+# https://huggingface.co/Eviation/Flex.2-preview/tree/main
+
+https://huggingface.co/Eviation/Flex.2-preview/resolve/main/Flex.2-preview-fp8_e4m3fn.safetensors
+    out=Flex.2-preview-fp8_e4m3fn.safetensors
+    dir=models/diffusion_models/Flex2/
+
+# 🌟 CLIP 🌟
+https://huggingface.co/city96/t5-v1_1-xxl-encoder-gguf/resolve/main/t5-v1_1-xxl-encoder-Q8_0.gguf
+    dir=models/clip
+    out=t5-v1_1-xxl-encoder-Q8_0.gguf
+
+https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors
+    dir=models/clip
+    out=clip_l_flux.safetensors
+
+# 🌟 VAE 🌟
+https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/vae/diffusion_pytorch_model.safetensors
+    out=vae.safetensors
+    dir=models/vae/Flux
+
+# 🌟 Controlnet depth Midas 3.1 🌟
+# https://github.com/isl-org/MiDaS?tab=readme-ov-file
+https://github.com/isl-org/MiDaS/releases/download/v3_1/dpt_beit_large_512.pt
+    dir=models/controlnet/
+    out=depth_l_512.pt
+
+# TencentARC/t2i-adapter-depth-midas-sdxl-1.0
+# diffusion_pytorch_model.safetensors
+https://huggingface.co/TencentARC/t2i-adapter-depth-midas-sdxl-1.0/resolve/main/diffusion_pytorch_model.safetensors
+    dir=models/controlnet/
+    out=controlnet-depth-sdxl-midas.safetensors
+
+# https://huggingface.co/spaces/LiheYoung/Depth-Anything/blob/main/checkpoints/depth_anything_vitl14.pth
+https://huggingface.co/spaces/LiheYoung/Depth-Anything/resolve/main/checkpoints/depth_anything_vitl14.pth
+    dir=models/controlnet/
+    out=depth_anything_vitl14.pth

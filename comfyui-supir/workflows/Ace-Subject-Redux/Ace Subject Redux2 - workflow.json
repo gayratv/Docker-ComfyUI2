@@ -2,7 +2,7 @@
   "id": "03f27014-c3db-477f-9e11-83bd7cf0c5b6",
   "revision": 0,
   "last_node_id": 163,
-  "last_link_id": 3078,
+  "last_link_id": 3142,
   "nodes": [
     {
       "id": 97,
@@ -37,6 +37,7 @@
         "Node name for S&R": "Anything Everywhere",
         "group_restricted": 0,
         "color_restricted": 0,
+        "aux_id": "chrisgoringe/cg-use-everywhere",
         "widget_ue_connectable": {}
       },
       "widgets_values": [],
@@ -57,7 +58,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 13,
+      "order": 12,
       "mode": 0,
       "inputs": [
         {
@@ -76,6 +77,7 @@
         "Node name for S&R": "Anything Everywhere",
         "group_restricted": 0,
         "color_restricted": 0,
+        "aux_id": "chrisgoringe/cg-use-everywhere",
         "widget_ue_connectable": {}
       },
       "widgets_values": [],
@@ -115,6 +117,7 @@
         "Node name for S&R": "Anything Everywhere?",
         "group_restricted": 0,
         "color_restricted": 0,
+        "aux_id": "chrisgoringe/cg-use-everywhere",
         "widget_ue_connectable": {
           "title_regex": true,
           "input_regex": true,
@@ -143,7 +146,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 15,
+      "order": 14,
       "mode": 0,
       "inputs": [
         {
@@ -162,6 +165,7 @@
         "Node name for S&R": "Anything Everywhere",
         "group_restricted": 0,
         "color_restricted": 0,
+        "aux_id": "chrisgoringe/cg-use-everywhere",
         "widget_ue_connectable": {}
       },
       "widgets_values": [],
@@ -182,7 +186,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 14,
+      "order": 13,
       "mode": 0,
       "inputs": [
         {
@@ -201,6 +205,7 @@
         "Node name for S&R": "Anything Everywhere",
         "group_restricted": 0,
         "color_restricted": 0,
+        "aux_id": "chrisgoringe/cg-use-everywhere",
         "widget_ue_connectable": {}
       },
       "widgets_values": [],
@@ -221,7 +226,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 12,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
@@ -240,6 +245,7 @@
         "Node name for S&R": "Anything Everywhere",
         "group_restricted": 0,
         "color_restricted": 0,
+        "aux_id": "chrisgoringe/cg-use-everywhere",
         "widget_ue_connectable": {}
       },
       "widgets_values": [],
@@ -474,6 +480,7 @@
         "cnr_id": "comfyui-crystools",
         "ver": "72e2e9af4a6b9a58ca5d753cacff37ba1ff9bfa8",
         "Node name for S&R": "Get resolution [Crystools]",
+        "aux_id": "crystian/ComfyUI-Crystools",
         "widget_ue_connectable": {}
       },
       "color": "#2a363b",
@@ -521,9 +528,9 @@
         "cnr_id": "comfyui-crystools",
         "ver": "72e2e9af4a6b9a58ca5d753cacff37ba1ff9bfa8",
         "Node name for S&R": "Get resolution [Crystools]",
+        "aux_id": "crystian/ComfyUI-Crystools",
         "widget_ue_connectable": {}
       },
-      "widgets_values": [],
       "color": "#2a363b",
       "bgcolor": "#3f5159"
     },
@@ -636,6 +643,7 @@
         "cnr_id": "comfyui_layerstyle",
         "ver": "a085d8ca3cf3e3e8624ac0bb37a474d9d329e60e",
         "Node name for S&R": "LayerUtility: ImageScaleByAspectRatio V2",
+        "aux_id": "chflame163/ComfyUI_LayerStyle",
         "widget_ue_connectable": {
           "aspect_ratio": true,
           "proportional_width": true,
@@ -692,6 +700,7 @@
         "cnr_id": "comfyui_layerstyle_advance",
         "ver": "7d599ea867d9c9562660136ba72fcbb11ab6763f",
         "Node name for S&R": "LayerMask: LoadBiRefNetModelV2",
+        "aux_id": "chflame163/ComfyUI_LayerStyle_Advance",
         "widget_ue_connectable": {
           "version": true
         }
@@ -821,6 +830,7 @@
         "cnr_id": "efficiency-nodes-comfyui",
         "ver": "3ead4afd120833f3bffdefeca0d6545df8051798",
         "Node name for S&R": "Image Overlay",
+        "aux_id": "jags111/efficiency-nodes-comfyui",
         "widget_ue_connectable": {
           "overlay_resize": true,
           "resize_method": true,
@@ -890,91 +900,6 @@
       "widgets_values": [],
       "color": "#233",
       "bgcolor": "#355"
-    },
-    {
-      "id": 159,
-      "type": "LayerUtility: CropByMask V2",
-      "pos": [
-        1516.78271484375,
-        766.34326171875
-      ],
-      "size": [
-        380.4000244140625,
-        262
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 16,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 1797
-        },
-        {
-          "name": "mask",
-          "type": "MASK",
-          "link": 1798
-        },
-        {
-          "name": "crop_box",
-          "shape": 7,
-          "type": "BOX",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "croped_image",
-          "type": "IMAGE",
-          "links": [
-            1800
-          ]
-        },
-        {
-          "name": "croped_mask",
-          "type": "MASK",
-          "links": [
-            1801
-          ]
-        },
-        {
-          "name": "crop_box",
-          "type": "BOX",
-          "links": null
-        },
-        {
-          "name": "box_preview",
-          "type": "IMAGE",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui_layerstyle",
-        "ver": "7b326d13e43fc4022cd80e472c7af67027409b1e",
-        "Node name for S&R": "LayerUtility: CropByMask V2",
-        "widget_ue_connectable": {
-          "invert_mask": true,
-          "detect": true,
-          "top_reserve": true,
-          "bottom_reserve": true,
-          "left_reserve": true,
-          "right_reserve": true,
-          "round_to_multiple": true
-        }
-      },
-      "widgets_values": [
-        false,
-        "min_bounding_rect",
-        20,
-        20,
-        20,
-        20,
-        "8"
-      ],
-      "color": "rgba(38, 73, 116, 0.7)"
     },
     {
       "id": 50,
@@ -1218,6 +1143,7 @@
         "cnr_id": "comfyui_layerstyle",
         "ver": "a085d8ca3cf3e3e8624ac0bb37a474d9d329e60e",
         "Node name for S&R": "LayerUtility: ImageScaleByAspectRatio V2",
+        "aux_id": "chflame163/ComfyUI_LayerStyle",
         "widget_ue_connectable": {
           "aspect_ratio": true,
           "proportional_width": true,
@@ -1273,72 +1199,6 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": []
-    },
-    {
-      "id": 62,
-      "type": "image concat mask",
-      "pos": [
-        2951.03515625,
-        1395.1268310546875
-      ],
-      "size": [
-        277.20001220703125,
-        66
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 31,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "image1",
-          "type": "IMAGE",
-          "link": 102
-        },
-        {
-          "name": "image2",
-          "shape": 7,
-          "type": "IMAGE",
-          "link": 156
-        },
-        {
-          "name": "mask",
-          "shape": 7,
-          "type": "MASK",
-          "link": 155
-        }
-      ],
-      "outputs": [
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "slot_index": 0,
-          "links": [
-            85,
-            164
-          ]
-        },
-        {
-          "name": "mask",
-          "type": "MASK",
-          "slot_index": 1,
-          "links": [
-            86,
-            165
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "ComfyUI-Addoor",
-        "ver": "157136fca967371ed98b8c4eedc5a90056cf2d70",
-        "Node name for S&R": "image concat mask",
-        "aux_id": "Eagle-CN/ComfyUI-Addoor",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [],
-      "color": "#2a363b",
-      "bgcolor": "#3f5159"
     },
     {
       "id": 114,
@@ -1447,6 +1307,7 @@
         "cnr_id": "comfyui_essentials",
         "ver": "unknown",
         "Node name for S&R": "MaskPreview+",
+        "aux_id": "cubiq/ComfyUI_essentials",
         "ttNbgOverride": {
           "bgcolor": "#353",
           "groupcolor": "#8A8",
@@ -1557,6 +1418,7 @@
       "properties": {
         "cnr_id": "comfyui-custom-scripts",
         "ver": "9f7b3215e6af317603056a9a1666bf6e83e28835",
+        "aux_id": "pythongosssss/ComfyUI-Custom-Scripts",
         "Node name for S&R": "MathExpression|pysssss",
         "ttNbgOverride": {
           "bgcolor": "#353",
@@ -1686,6 +1548,7 @@
       "properties": {
         "cnr_id": "comfyui-kjnodes",
         "ver": "1.0.5",
+        "aux_id": "kijai/ComfyUI-KJNodes",
         "widget_ue_connectable": {}
       },
       "widgets_values": [
@@ -1811,56 +1674,6 @@
       ],
       "color": "#223",
       "bgcolor": "#335"
-    },
-    {
-      "id": 150,
-      "type": "easy showAnything",
-      "pos": [
-        4170.81884765625,
-        1400.517333984375
-      ],
-      "size": [
-        320.2049865722656,
-        427.8687438964844
-      ],
-      "flags": {},
-      "order": 40,
-      "mode": 0,
-      "inputs": [
-        {
-          "label": "anything",
-          "name": "anything",
-          "shape": 7,
-          "type": "*",
-          "link": 1902
-        }
-      ],
-      "outputs": [
-        {
-          "label": "output",
-          "name": "output",
-          "type": "*",
-          "links": [
-            1903
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-easy-use",
-        "ver": "9292f2286207928cfdade99ad1634103470c0799",
-        "Node name for S&R": "easy showAnything",
-        "ttNbgOverride": {
-          "bgcolor": "#353",
-          "groupcolor": "#8A8",
-          "color": "#232"
-        },
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "The clothing in the image is a black short-sleeved T-shirt featuring a vibrant, multicolored space-themed pattern, including neon colors and geometric shapes. The word \"SPACE\" is prominently displayed on the front in large, white metallic letters. The T-shirt has a round neckline and appears to be made of a comfortable, slightly textured fabric. The shirt also has fur accents on the shoulders, adding a touch of elegance and warmth. The overall style is modern and casual, suitable for everyday wear or casual outdoor activities."
-      ],
-      "color": "#232",
-      "bgcolor": "#353"
     },
     {
       "id": 116,
@@ -2390,42 +2203,6 @@
       "bgcolor": "#3f5159"
     },
     {
-      "id": 125,
-      "type": "SaveImage",
-      "pos": [
-        3604.53759765625,
-        239.45770263671875
-      ],
-      "size": [
-        364.1383972167969,
-        384.7702941894531
-      ],
-      "flags": {},
-      "order": 61,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 257
-        }
-      ],
-      "outputs": [],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.30",
-        "Node name for S&R": "SaveImage",
-        "widget_ue_connectable": {
-          "filename_prefix": true
-        }
-      },
-      "widgets_values": [
-        "ComfyUI"
-      ],
-      "color": "#2a363b",
-      "bgcolor": "#3f5159"
-    },
-    {
       "id": 121,
       "type": "Reroute",
       "pos": [
@@ -2537,7 +2314,7 @@
         }
       },
       "widgets_values": [
-        333496080801051,
+        323278624647587,
         "randomize",
         20,
         1,
@@ -2680,6 +2457,7 @@
         "cnr_id": "ComfyUI_MingNodes_Mingsky",
         "ver": "afaee2c3edb40bc0d585f0597ba234dcd1041657",
         "Node name for S&R": "ImitationHueNode",
+        "aux_id": "mingsky-ai/ComfyUI-MingNodes",
         "ttNbgOverride": {
           "bgcolor": "#353",
           "groupcolor": "#8A8",
@@ -2764,6 +2542,7 @@
         "cnr_id": "ComfyUI_LayerStyle_Advance",
         "ver": "fe35b54bd2781206994176f8913db4afabffcdb1",
         "Node name for S&R": "LayerMask: BiRefNetUltraV2",
+        "aux_id": "chflame163/ComfyUI_LayerStyle_Advance",
         "widget_ue_connectable": {
           "detail_method": true,
           "detail_erode": true,
@@ -2851,7 +2630,7 @@
         82
       ],
       "flags": {},
-      "order": 11,
+      "order": 15,
       "mode": 0,
       "inputs": [
         {
@@ -2884,51 +2663,6 @@
       "bgcolor": "#335"
     },
     {
-      "id": 83,
-      "type": "UNETLoader",
-      "pos": [
-        597.5909423828125,
-        380.9538879394531
-      ],
-      "size": [
-        315,
-        82
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "slot_index": 0,
-          "links": [
-            1584
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.18",
-        "Node name for S&R": "UNETLoader",
-        "enableTabs": false,
-        "tabWidth": 65,
-        "tabXOffset": 10,
-        "hasSecondTab": false,
-        "secondTabText": "Send Back",
-        "secondTabOffset": 80,
-        "secondTabWidth": 65,
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "FLUX1/flux1-fill-dev-fp8.safetensors",
-        "default"
-      ],
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
       "id": 103,
       "type": "DualCLIPLoader",
       "pos": [
@@ -2940,7 +2674,7 @@
         130
       ],
       "flags": {},
-      "order": 4,
+      "order": 3,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -2984,7 +2718,7 @@
         58
       ],
       "flags": {},
-      "order": 5,
+      "order": 4,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -3028,7 +2762,7 @@
         58
       ],
       "flags": {},
-      "order": 6,
+      "order": 5,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -3072,7 +2806,7 @@
         71.11390686035156
       ],
       "flags": {},
-      "order": 7,
+      "order": 6,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -3105,11 +2839,259 @@
       "bgcolor": "#3f5159"
     },
     {
+      "id": 62,
+      "type": "image concat mask",
+      "pos": [
+        2951.03515625,
+        1395.1268310546875
+      ],
+      "size": [
+        277.20001220703125,
+        66
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 102
+        },
+        {
+          "name": "image2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 156
+        },
+        {
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": 155
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            85,
+            164
+          ]
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "slot_index": 1,
+          "links": [
+            86,
+            165
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-Addoor",
+        "ver": "157136fca967371ed98b8c4eedc5a90056cf2d70",
+        "Node name for S&R": "image concat mask",
+        "aux_id": "Eagle-CN/ComfyUI-Addoor",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 159,
+      "type": "LayerUtility: CropByMask V2",
+      "pos": [
+        1514.8468017578125,
+        796.3512573242188
+      ],
+      "size": [
+        380.4000244140625,
+        262
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 1797
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 1798
+        },
+        {
+          "name": "crop_box",
+          "shape": 7,
+          "type": "BOX",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "croped_image",
+          "type": "IMAGE",
+          "links": [
+            1800
+          ]
+        },
+        {
+          "name": "croped_mask",
+          "type": "MASK",
+          "links": [
+            1801
+          ]
+        },
+        {
+          "name": "crop_box",
+          "type": "BOX",
+          "links": null
+        },
+        {
+          "name": "box_preview",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_layerstyle",
+        "ver": "7b326d13e43fc4022cd80e472c7af67027409b1e",
+        "Node name for S&R": "LayerUtility: CropByMask V2",
+        "aux_id": "chflame163/ComfyUI_LayerStyle",
+        "widget_ue_connectable": {
+          "invert_mask": true,
+          "detect": true,
+          "top_reserve": true,
+          "bottom_reserve": true,
+          "left_reserve": true,
+          "right_reserve": true,
+          "round_to_multiple": true
+        }
+      },
+      "widgets_values": [
+        false,
+        "min_bounding_rect",
+        20,
+        20,
+        20,
+        20,
+        "8"
+      ],
+      "color": "rgba(38, 73, 116, 0.7)"
+    },
+    {
+      "id": 83,
+      "type": "UNETLoader",
+      "pos": [
+        597.5909423828125,
+        380.9538879394531
+      ],
+      "size": [
+        315,
+        82
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            1584
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.18",
+        "Node name for S&R": "UNETLoader",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65,
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Flux/flux1-fill-dev-FP8.safetensors",
+        "default"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 150,
+      "type": "easy showAnything",
+      "pos": [
+        4170.81884765625,
+        1400.517333984375
+      ],
+      "size": [
+        320.2049865722656,
+        427.8687438964844
+      ],
+      "flags": {},
+      "order": 40,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "anything",
+          "name": "anything",
+          "shape": 7,
+          "type": "*",
+          "link": 1902
+        }
+      ],
+      "outputs": [
+        {
+          "label": "output",
+          "name": "output",
+          "type": "*",
+          "links": [
+            1903
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-easy-use",
+        "ver": "9292f2286207928cfdade99ad1634103470c0799",
+        "Node name for S&R": "easy showAnything",
+        "aux_id": "yolain/ComfyUI-Easy-Use",
+        "ttNbgOverride": {
+          "bgcolor": "#353",
+          "groupcolor": "#8A8",
+          "color": "#232"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "The clothing item showcased is a vibrant, multicolored t-shirt. The primary color of the shirt is navy blue, but it's adorned with a lively pattern of neon-colored shapes and abstract designs. The word \"SPACE\" is prominently displayed in the center of the shirt, utilizing a bold, block-style white font, which contrasts sharply against the dark background, making it stand out. The shirt has short sleeves and appears to be made from a soft, jersey-like material, suggesting a casual and comfortable fit."
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
       "id": 48,
       "type": "LoadImage",
       "pos": [
-        1425.9456787109375,
-        821.5137939453125
+        1415.2974853515625,
+        833.1298828125
       ],
       "size": [
         315,
@@ -3151,11 +3133,47 @@
         }
       },
       "widgets_values": [
-        "clipspace/clipspace-mask-312073.5.png [input]",
+        "clipspace/clipspace-mask-620289.099999994.png [input]",
         "image"
       ],
       "color": "#327bdc",
       "bgcolor": "#1e67c8"
+    },
+    {
+      "id": 125,
+      "type": "SaveImage",
+      "pos": [
+        3604.53759765625,
+        239.45770263671875
+      ],
+      "size": [
+        364.1383972167969,
+        384.7702941894531
+      ],
+      "flags": {},
+      "order": 61,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 257
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "SaveImage",
+        "widget_ue_connectable": {
+          "filename_prefix": true
+        }
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
     },
     {
       "id": 39,
@@ -3204,7 +3222,7 @@
         }
       },
       "widgets_values": [
-        "clipspace/clipspace-mask-353283.png [input]",
+        "clipspace/clipspace-mask-958870.3000000119.png [input]",
         "image"
       ],
       "color": "#2e65e5",
@@ -3909,10 +3927,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.513158118230707,
+      "scale": 0.3186308177103567,
       "offset": [
-        -2456.872249095912,
-        -507.7690165025115
+        -906.4064687823387,
+        209.28703438619326
       ]
     },
     "frontendVersion": "1.17.11",
@@ -4007,14 +4025,14 @@
       "ComfyUI-Advanced-Vision": "a0d6e805fb3623a321c210c0dd1501fe5923eeb1"
     },
     "links_added_by_ue": [
-      3071,
-      3072,
-      3073,
-      3074,
-      3075,
-      3076,
-      3077,
-      3078
+      3135,
+      3136,
+      3137,
+      3138,
+      3139,
+      3140,
+      3141,
+      3142
     ],
     "VHS_latentpreview": true,
     "VHS_latentpreviewrate": 0,
