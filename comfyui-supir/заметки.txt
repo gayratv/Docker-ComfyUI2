@@ -137,6 +137,28 @@ export NODES="nodes-$MODELS.txt"
 export IMAGE_NAME="comfyui"
 export BASE_IMAGE="comfyui-base-cuda-12-4:nvidia-v0.3.30"
 
+------------------------
+Flux Upscale Workflow
+https://www.youtube.com/watch?v=G2m3vzg5bn8
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
+export MODELS="Flux_Upscale_Workflow"
+export WORKFLOW_TO_COPY=$MODELS
+export VERSION="$MODELS-v0.3.30"
+export NODES="nodes-$MODELS.txt"
+export IMAGE_NAME="comfyui"
+export BASE_IMAGE="comfyui-base-cuda-12-4:nvidia-v0.3.30"
+
+------------------------
+------------------------
+------------------------
+------------------------
+------------------------
+------------------------
+------------------------
+
+
+
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
