@@ -7,6 +7,7 @@ BASE_INSTALL_DIR="/workspace/ComfyUI/custom_nodes/"
 
 # Получение файла со списком репозиториев из аргумента или установка значения по умолчанию
 NODES_FILE="${1:-nodes.txt}"
+INSTALL_REQ="${2:-false}"
 
 #echo "DEBUG: Checking for file at path: $NODES_FILE"
 #ls -l "$NODES_FILE"
@@ -82,7 +83,7 @@ for GIT_REPO in "${INSTALL_DATA[@]}"; do
     cd "$REPO_DIR" || { echo "ERROR: Failed to change directory to $REPO_DIR"; exit 1; }
 
     # Проверка наличия файла requirements.txt
-    if [ -f "requirements.txt" ]; then
+    if [ "$INSTALL_REQ" = "true" ] && [ -f "requirements.txt" ]; then
         echo "Installing Python dependencies from requirements.txt (excluding torch)..."
 
         # Создаем временный файл

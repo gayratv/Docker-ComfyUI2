@@ -1,15 +1,11 @@
 #!/bin/bash
 
-# Установка базовой директории
-BASE_INSTALL_DIR="/workspace/ComfyUI/custom_nodes/"
-#BASE_INSTALL_DIR="/mnt/d/test-pip/ComfyUI/custom_nodes/"
-
-
-# Получение файла со списком репозиториев из аргумента или установка значения по умолчанию
+# Получение файла со списком репозиториев из первого аргумента или значение по умолчанию
 NODES_FILE="${1:-nodes.txt}"
 
-#echo "DEBUG: Checking for file at path: $NODES_FILE"
-#ls -l "$NODES_FILE"
+# Получение BASE_INSTALL_DIR из второго аргумента или значение по умолчанию
+BASE_INSTALL_DIR="${2:-/workspace/ComfyUI/custom_nodes/}"
+
 
 # Проверка наличия файла nodes.txt
 if [ ! -f "$NODES_FILE" ]; then
@@ -20,8 +16,7 @@ fi
 # Чтение списка репозиториев из файла
 mapfile -t INSTALL_DATA < "$NODES_FILE"
 
-#cd "$BASE_INSTALL_DIR"
-
+echo "DEBUG: Using BASE_INSTALL_DIR: $BASE_INSTALL_DIR"
 echo "DEBUG: Processing the following repositories from $NODES_FILE:"
 for GIT_REPO in "${INSTALL_DATA[@]}"; do
     echo "DEBUG: $GIT_REPO"
@@ -63,12 +58,4 @@ for GIT_REPO in "${INSTALL_DATA[@]}"; do
         echo "DEBUG: Copied $REPO_NAME to /root/repo-cache"
         ls -la /root/repo-cache
     fi
-
-    # Переход во вновь созданную директорию
-    # Извлекаем имя директории из URL репозитория
-    REPO_DIR=$(basename "$GIT_REPO" .git | sed 's/\r$//')
-    echo "DEBUG: Cloned repository directory: $REPO_DIR"
-
-    cd "$REPO_DIR" || { echo "ERROR: Failed to change directory to $REPO_DIR"; exit 1; }
-
 done

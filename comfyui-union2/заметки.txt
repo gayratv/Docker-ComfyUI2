@@ -1,22 +1,18 @@
 
-cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
-export MODELS="nunchaku"
-export WORKFLOW_TO_COPY=$MODELS
-export VERSION="$MODELS-v0.3.30"
-export NODES="nodes-$MODELS.txt"
-export IMAGE_NAME="comfyui-union2"
-export BASE_IMAGE="comfyui-base-cuda-12-4:nvidia-v0.3.30"
-export POST_INSTALL="nunchaku.sh"
 
-cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir
-export VERSION="v1.0-HunyuanVideo"
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 export MODELS="framepack-1f"
 export WORKFLOW_TO_COPY=$MODELS
 export VERSION="$MODELS-v1.0"
 export NODES="nodes-$MODELS.txt"
 export IMAGE_NAME="comfyui-union2"
-export BASE_IMAGE="comfyui-base-cuda-12-4:nvidia-v0.3.30"
+export COMFYUI_VERSION="v0.3.32"
+export BASE_IMAGE="cuda-12-4:v1.2-NV-runtime"
 
+
+
+export COMFYUI_VERSION="latest"
+export COMFYUI_VERSION="v0.3.32"
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
