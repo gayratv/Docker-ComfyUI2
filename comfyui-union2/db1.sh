@@ -10,7 +10,7 @@ docker build --progress=plain \
     --build-arg WORKFLOW_TO_COPY=$WORKFLOW_TO_COPY \
     --build-arg MODELS=$MODELS \
     --build-arg COMFYUI_VERSION=$COMFYUI_VERSION \
-    -f /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/Dockerfile1 \
+    -f /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/Dockerfile2 \
     -t $IMAGE_NAME:$VERSION \
     /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 

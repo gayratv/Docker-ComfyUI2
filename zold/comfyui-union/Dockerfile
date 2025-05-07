@@ -77,8 +77,8 @@ RUN --mount=type=cache,target=/root/repo-cache \
 
 
 WORKDIR /workspace/ComfyUI
-COPY workflows/ user/default/workflows/
-COPY ./user/default/comfy.settings.json user/default/
+COPY workflows user/default/workflows/
+COPY user/default/comfy.settings.json user/default/
 
 WORKDIR /workspace/aria2
 COPY aria2 .
@@ -93,7 +93,7 @@ RUN pip3 install requests
 
 #python-packages-to-add \
 ARG PY_PACKAGE_ADD
-COPY ./requirments-modify ./requirments-modify
+COPY requirments-modify ./requirments-modify
 
 # удалить версию frontend
 RUN  python3 requirements-edit.py --add_package $PY_PACKAGE_ADD --frontend_ver=$FRONTEND_VER \

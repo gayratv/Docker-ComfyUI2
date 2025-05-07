@@ -1,8 +1,6 @@
-# Определяем аргумент для базового образа
+# ====== Stage 1: Builder ======
 ARG BASE_IMAGE="gayrat/comfyui-base-cuda-12-4:v2.0"
-
-# Используем аргумент в качестве имени образа
-FROM ${BASE_IMAGE}
+FROM ${BASE_IMAGE} AS builder
 
 WORKDIR /usr/local/bin
 COPY *.sh ./
@@ -11,16 +9,17 @@ RUN chmod +x ./*.sh
 WORKDIR /workspace
 ARG COMFYUI_VERSION="latest"
 ARG CUDA_VER="12.4"
-ARG COMFYUI_VERSION
 
-# очистка кеширующей директории
-# RUN --mount=type=cache,target=/root/repo-cache rm -rf /root/repo-cache/*
+ARG COLOR_GREEN='\033[32m'
+ARG COLOR_RED='\033[31m'
+ARG COLOR_YELLOW='\033[33m'
+ARG COLOR_BOLD_GREEN='\033[1;32m'
+ARG COLOR_RESET='\033[0m'
 
-# #13
+# Очистка директории и клонирование ComfyUI
 RUN --mount=type=cache,target=/root/repo-cache \
     rm -rf /workspace/* && \
-    git-clone-checkout.sh "https://github.com/comfyanonymous/ComfyUI" "$COMFYUI_VERSION" "/root/repo-cache" \
-    && ls /root/repo-cache
+    git-clone-checkout.sh "https://github.com/comfyanonymous/ComfyUI" "$COMFYUI_VERSION" "/root/repo-cache"
 
 WORKDIR /workspace/ComfyUI
 
@@ -30,28 +29,25 @@ RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
     process_repos-install-req.sh "$NODES" false \
-    && rm -rf root/.cache/pip
+    && rm -rf /root/.cache/pip
 
 ARG REQ_MODIFY="base-CUDA-12.4"
 COPY requirements-modify ./requirements-modify
 
-
-RUN  python3 union-requiere.py \
+RUN python3 union-requiere.py \
      && python3 process-req-in.py \
             --requirements-file "requirements.in" \
             --prefixes-file "./requirements-modify/$REQ_MODIFY/remove-lines.txt" \
-            --additional-lines-file "./requirements-modify/$REQ_MODIFY/add-lines.txt";
-
+            --additional-lines-file "./requirements-modify/$REQ_MODIFY/add-lines.txt"
 
 RUN uv pip compile requirements.modify.in -o requirements.out \
         --index-strategy unsafe-best-match \
         --extra-index-url https://download.pytorch.org/whl/cu124 \
         --extra-index-url https://pypi.nvidia.com
 
-  # Разбиение скомпилированных пакетов на группы
 RUN python3 pip-pckg-group.py
 
-
+# Установка пакетов в системную директорию Python 3.11
 RUN --mount=type=cache,target=/root/pip-cache-uv \
     uv pip install \
     --link-mode=copy \
@@ -63,8 +59,76 @@ RUN --mount=type=cache,target=/root/pip-cache-uv \
     -r requirements.out \
     && rm -rf /root/.cache/pip
 
+#>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=
+# ====== Stage 2: Final image ======
+#>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=
+RUN echo -e "\n\n${COLOR_GREEN}===== Вторая стадия сборки ========${COLOR_RESET}\n"
+FROM ${BASE_IMAGE}
+
+# Копируем установленные системные Python-пакеты
+RUN echo -e "Копируем установленные системные Python-пакеты"
+COPY --from=builder /usr/local/lib/python3.11/dist-packages /usr/local/lib/python3.11/dist-packages
+
+# Копируем рабочую директорию
+RUN echo -e "Копируем рабочую директорию"
+COPY --from=builder /workspace /workspace
+
+ENV DOWNLOADS_DIR=/usr/local/bin
+COPY *.sh $DOWNLOADS_DIR/
+RUN chmod +x $DOWNLOADS_DIR/*.sh
+
+WORKDIR /workspace/ComfyUI
+COPY ./custom-nodes/nodes*.txt ./
+
+ARG NODES
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    if [ -n "$NODES" ]; then \
+        PIP_CACHE_DIR=/root/pip-cache \
+        process_repos-install-req.sh "$NODES" \
+        && rm -rf /root/.cache/pip; \
+    else \
+        echo "Skipping RUN because NODES is set to 'nodes1.txt'"; \
+    fi
+
+ARG WORKFLOW_TO_COPY="supir"
+COPY workflows/$WORKFLOW_TO_COPY user/default/workflows/$WORKFLOW_TO_COPY
+COPY ./user/default/comfy.settings.json user/default/
+
+WORKDIR /workspace/ComfyUI/input
+COPY input  ./
+
+WORKDIR /workspace/aria2
+COPY aria2 .
+RUN chmod +x *.sh \
+    && chmod +x ./templates/*.sh \
+    && rm -f ./templates/.env
+
+WORKDIR /workspace/templates/models
+ARG MODELS
+#RUN for dir in */; do [ "$dir" != "$MODELS/" ] && rm -r "$dir"; done
+
+WORKDIR /workspace
+RUN echo -e "\n========= POST_INSTALL ===============\n"
+
+ARG POST_INSTALL
+RUN echo -e "\n\nPOST_INSTALL =|$POST_INSTALL|"
+
+COPY post-install/ ./post-install
+
+RUN --mount=type=cache,target=/root/pip-cache \
+    if [ -n "$POST_INSTALL" ]; then \
+        chmod +x "./post-install/$POST_INSTALL" && \
+        echo "Running $POST_INSTALL./"; \
+        ./post-install/"$POST_INSTALL"; \
+    else \
+        echo "Skipping post-install script"; \
+    fi
+
 WORKDIR /workspace/ComfyUI
 
-RUN echo "cd /workspace" >> /root/.bashrc
+RUN echo "cd /workspace/aria2/templates" >> /root/.bashrc \
+  && echo "set -g mouse on" >> ~/.tmux.conf
 
 CMD ["bash"]
