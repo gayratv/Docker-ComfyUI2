@@ -89,9 +89,12 @@ COPY --from=builder /workspace /workspace
 
 ENV DOWNLOADS_DIR=/usr/local/bin
 
+WORKDIR /usr/local/bin
 COPY ./bash-scripts/build/*.sh $DOWNLOADS_DIR/
-#COPY *.sh $DOWNLOADS_DIR/
+COPY ./bash-scripts/*.sh $DOWNLOADS_DIR/
+COPY *.sh $DOWNLOADS_DIR/
 RUN chmod +x $DOWNLOADS_DIR/*.sh
+
 
 WORKDIR /workspace/ComfyUI
 COPY ./custom-nodes/*.txt ./
