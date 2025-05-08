@@ -4,13 +4,16 @@ clear
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui:nunchaku-v0.3.30"
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui:FLUX_Ace_PP_FaseSwap_and_objects-v0.3.30"
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui:Flex2-v0.3.30"
-
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui:Ace-Subject-Redux-v0.3.30"
+source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui-union2:framepack-1f-v1.0"
+
+source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui-union2:framepack-1f-CUDA12.6" "12.6"
 
 source vast-contract.sh 19708822 $IMAGE_NAME
 source ./vs.sh
 
 tmux-s-bash.sh
+./dl_common.sh framepack-1f
 ./dl_common.sh Ace-Subject-Redux
 ./dl_common.sh Flex2
 ./dl_common.sh FLUX_Ace_PP_FaseSwap_and_objects
@@ -70,3 +73,10 @@ source vast-env-run.sh
 echo "http://$VAST_PUBLIC_IPADDR:$VAST_COMFY"
 cmd.exe /c start chrome "http://$VAST_PUBLIC_IPADDR:$VAST_COMFY"
 ssh -p $VAST_SSH "root@$VAST_PUBLIC_IPADDR" -i ~/.ssh/mvps/ud_rsa
+
+
+ssh -i ~/.ssh/mvps/ud_rsa -p 25004 root@185.126.158.178
+tmux ls
+tmux attach -t comfy
+
+ssh -i ~/.ssh/mvps/ud_rsa -p 25025 root@185.126.158.178

@@ -1,18 +1,25 @@
-
-
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 export MODELS="framepack-1f"
 export WORKFLOW_TO_COPY=$MODELS
 export VERSION="$MODELS-v1.0"
 export NODES="nodes-$MODELS.txt"
 export IMAGE_NAME="comfyui-union2"
-export COMFYUI_VERSION="v0.3.32"
+export COMFYUI_VERSION="v0.3.30"
 export BASE_IMAGE="cuda-12-4:v1.2-NV-runtime"
+export POST_INSTALL="framepack-1f.sh"
 
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+export MODELS="framepack-1f"
+export WORKFLOW_TO_COPY=$MODELS
+export VERSION="$MODELS-CUDA12.6"
+export NODES="nodes-$MODELS.txt"
+export IMAGE_NAME="comfyui-union2"
+export COMFYUI_VERSION="v0.3.30"
+export BASE_IMAGE="cuda-12-6:nvidia-runtime"
+export POST_INSTALL="framepack-1f.sh"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
+export REQ_MODIFY="base-CUDA-12.6"
 
-
-export COMFYUI_VERSION="latest"
-export COMFYUI_VERSION="v0.3.32"
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 

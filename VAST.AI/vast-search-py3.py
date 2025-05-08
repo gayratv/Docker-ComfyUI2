@@ -8,7 +8,7 @@ from PY_mysql.vast_offers_display import DisplayOffers
 # Указываем путь к JSON файлу
 file_path_json = 'vast-search.json'
 
-def fetch_vast_data(gpu_name1, cpu_ram):
+def fetch_vast_data(gpu_name1, cpu_ram,cuda_max_good):
     # URL для запроса
     url = "https://cloud.vast.ai/api/v0/search/asks/"
 
@@ -22,7 +22,7 @@ def fetch_vast_data(gpu_name1, cpu_ram):
             "cpu_ram": {"gte": str(cpu_ram)},
             "inet_down": {"gte": "800.0"},
             "disk_space": {"gte": "100.0"},
-            "cuda_max_good": {"gte": "12.4"},
+            "cuda_max_good": {"gte": cuda_max_good},
         })
     }
 
@@ -62,18 +62,19 @@ if __name__ == "__main__":
     parser.add_argument("--gpu1", type=str, default="RTX 3090", help="Модель GPU (например, 'RTX 3090')")
     parser.add_argument("--gpu2", type=str)
     parser.add_argument("--ram", type=int, default=32000, help="Минимальный объем оперативной памяти в МБ (например, 32000)")
+    parser.add_argument("--cuda_max_good", type=str, default="12.4", help="CUDA VER")
 
     args = parser.parse_args()
 
     # Выполняем запрос к API
-    fetch_vast_data(args.gpu1, args.ram)
+    fetch_vast_data(args.gpu1, args.ram,args.cuda_max_good)
 
     importer = OfferImporter(json_file="vast-search.json")
     inserted1, batch_number1 = importer.insert_offers()
 
     if args.gpu2:
         print(f"===== args.gpu2: {args.gpu2}")
-        fetch_vast_data(args.gpu2, args.ram)
+        fetch_vast_data(args.gpu2, args.ram,args.cuda_max_good)
         inserted2, batch_number2 = importer.insert_offers(batch_number1)
     else:
         inserted2=0

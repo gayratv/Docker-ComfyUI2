@@ -38,7 +38,7 @@ RUN --mount=type=cache,target=/root/repo-cache \
 WORKDIR /workspace/ComfyUI
 ARG WORKFLOW_TO_COPY="supir"
 COPY workflows/$WORKFLOW_TO_COPY user/default/workflows/$WORKFLOW_TO_COPY
-COPY ./user/default/comfy.settings.json user/default/
+COPY user/default/comfy.settings.json user/default/
 
 COPY union-requiere.py VPS-copy  ./
 
@@ -62,7 +62,7 @@ RUN echo -e "\n========= POST_INSTALL ===============\n"
 ARG POST_INSTALL
 RUN echo -e "\n\nPOST_INSTALL =|$POST_INSTALL|"
 
-COPY post-install/ ./post-install
+COPY post-install ./post-install
 
 RUN --mount=type=cache,target=/root/pip-cache \
     if [ -n "$POST_INSTALL"  ]; then \

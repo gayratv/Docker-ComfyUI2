@@ -1,35 +1,101 @@
-# Определяем аргумент для базового образа
+# ====== Stage 1: Builder ======
 ARG BASE_IMAGE="gayrat/comfyui-base-cuda-12-4:v2.0"
+FROM ${BASE_IMAGE} AS builder
 
-# Используем аргумент в качестве имени образа
+WORKDIR /usr/local/bin
+COPY *.sh ./
+RUN chmod +x ./*.sh
+
+WORKDIR /workspace
+ARG COMFYUI_VERSION="latest"
+ARG CUDA_VER="12.4"
+
+ARG COLOR_GREEN='\033[32m'
+ARG COLOR_RED='\033[31m'
+ARG COLOR_YELLOW='\033[33m'
+ARG COLOR_BOLD_GREEN='\033[1;32m'
+ARG COLOR_RESET='\033[0m'
+
+#RUN --mount=type=cache,target=/root/repo-cache \
+#    --mount=type=cache,target=/root/pip-cache \
+#    --mount=type=cache,target=/root/pip-cache-uv \
+#    rm -rf /root/repo-cache/* && \
+#    rm -rf /root/pip-cache/* && \
+#    rm -rf /root/pip-cache-uv/*
+#RUN exit 1
+
+# Очистка директории и клонирование ComfyUI
+RUN --mount=type=cache,target=/root/repo-cache \
+    rm -rf /workspace/* && \
+    git-clone-checkout.sh "https://github.com/comfyanonymous/ComfyUI" "$COMFYUI_VERSION" "/root/repo-cache"
+
+WORKDIR /workspace/ComfyUI
+
+COPY nodes.txt *.py ./
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_repos-install-req.sh "$NODES" false \
+    && rm -rf /root/.cache/pip
+
+ARG REQ_MODIFY="base-CUDA-12.4"
+COPY requirements-modify ./requirements-modify
+
+ARG PYTORCH_WHEEL="https://download.pytorch.org/whl/cu124"
+
+RUN python3 union-requiere.py \
+     && python3 process-req-in.py \
+            --requirements-file "requirements.in" \
+            --prefixes-file "./requirements-modify/$REQ_MODIFY/remove-lines.txt" \
+            --additional-lines-file "./requirements-modify/$REQ_MODIFY/add-lines.txt"
+
+RUN uv pip compile requirements.modify.in -o requirements.out \
+        --index-strategy unsafe-best-match \
+        --extra-index-url "$PYTORCH_WHEEL" \
+        --extra-index-url https://pypi.nvidia.com
+
+RUN python3 pip-pckg-group.py
+
+
+# Установка пакетов в системную директорию Python 3.11
+RUN --mount=type=cache,target=/root/pip-cache-uv \
+    uv pip install \
+    --link-mode=copy \
+    --system \
+    --cache-dir=/root/pip-cache-uv \
+    --index-strategy unsafe-best-match \
+    --extra-index-url "$PYTORCH_WHEEL" \
+    --extra-index-url https://pypi.nvidia.com \
+    -r requirements.out \
+    && rm -rf /root/.cache/pip
+
+#>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=
+# ====== Stage 2: Final image ======
+#>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=
+RUN echo -e "\n\n${COLOR_GREEN}===== Вторая стадия сборки ========${COLOR_RESET}\n"
 FROM ${BASE_IMAGE}
 
-#===============================
-#===============================
-#===============================
+# Копируем установленные системные Python-пакеты
+RUN echo -e "Копируем установленные системные Python-пакеты"
+COPY --from=builder /usr/local/lib/python3.11/dist-packages /usr/local/lib/python3.11/dist-packages
 
-
-#RUN rm -rf /root/repo-cache \
-#    && rm -rf /root/pip-cache
-
-# Создаём кэширующие директории явно
-RUN mkdir -p /root/pip-cache/wheels
+# Копируем рабочую директорию
+RUN echo -e "Копируем рабочую директорию"
+COPY --from=builder /workspace /workspace
 
 ENV DOWNLOADS_DIR=/usr/local/bin
 COPY *.sh $DOWNLOADS_DIR/
 RUN chmod +x $DOWNLOADS_DIR/*.sh
 
 WORKDIR /workspace/ComfyUI
-# шаг 11
 COPY ./custom-nodes/nodes*.txt ./
 
-# Создаем ARG для передачи списка файлов
-ARG NODES="nodes1.txt"
+ARG NODES
 
-# шаг 12 Кэшируем зависимости и выполняем установку для каждого файла
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
-    if [ "$NODES" != "nodes1.txt" ]; then \
+    if [ -n "$NODES" ]; then \
         PIP_CACHE_DIR=/root/pip-cache \
         process_repos-install-req.sh "$NODES" \
         && rm -rf /root/.cache/pip; \
@@ -37,15 +103,9 @@ RUN --mount=type=cache,target=/root/repo-cache \
         echo "Skipping RUN because NODES is set to 'nodes1.txt'"; \
     fi
 
-#        process_repos-git-clone.sh "$NODES" \
-
-
-WORKDIR /workspace/ComfyUI
 ARG WORKFLOW_TO_COPY="supir"
 COPY workflows/$WORKFLOW_TO_COPY user/default/workflows/$WORKFLOW_TO_COPY
 COPY ./user/default/comfy.settings.json user/default/
-
-COPY union-requiere.py VPS-copy  ./
 
 WORKDIR /workspace/ComfyUI/input
 COPY input  ./
@@ -56,41 +116,35 @@ RUN chmod +x *.sh \
     && chmod +x ./templates/*.sh \
     && rm -f ./templates/.env
 
-WORKDIR /workspace/aria2/templates/models
-ARG MODELS="nunchaku"
-#RUN for dir in */; do [ "$dir" != "nunchaku/" ] && rm -r "$dir"; done
+WORKDIR /workspace/templates/models
+ARG MODELS
+#RUN for dir in */; do [ "$dir" != "$MODELS/" ] && rm -r "$dir"; done
 
 WORKDIR /workspace
 RUN echo -e "\n========= POST_INSTALL ===============\n"
-# 21
 
 ARG POST_INSTALL
-RUN echo -e "\n\nPOST_INSTALL =|$POST_INSTALL|"
 
 COPY post-install/ ./post-install
 
 RUN --mount=type=cache,target=/root/pip-cache \
-    if [ -n "$POST_INSTALL"  ]; then \
+    if [ -n "$POST_INSTALL" ]; then \
         chmod +x "./post-install/$POST_INSTALL" && \
-        echo "Running $POST_INSTALL./"; \
+        echo -e "$COLOR_YELLOW\n\n========= Running $POST_INSTALL ==========$COLOR_RESET"; \
         ./post-install/"$POST_INSTALL"; \
-        echo -e "--------- ls -la /root/pip-cache/wheels; "; \
-#        ls -la /root/pip-cache/wheels; \
     else \
         echo "Skipping post-install script"; \
     fi
-#    && echo "Checking cache contents:" \
-#    && find /root/pip-cache/wheels -type f -name "*.whl" -exec ls -lh {} \;
 
-WORKDIR /workspace/ComfyUI/custom_nodes
-COPY union-requiere.py .
-RUN python3 union-requiere.py \
-  && rm union-requiere.py
+#RUN echo -e "\n\n===========FF========\n" && \
+#  ls -la /workspace/ComfyUI/user/default && \
+#  ls -la /workspace/ComfyUI/user/default/ComfyUI-Manager
+#
+#RUN sed -i 's/^security_level = normal/security_level = weak/' /workspace/ComfyUI/user/default/ComfyUI-Manager/config.ini
 
+WORKDIR /workspace/ComfyUI
 
 RUN echo "cd /workspace/aria2/templates" >> /root/.bashrc \
   && echo "set -g mouse on" >> ~/.tmux.conf
-#  tmux source-file ~/.tmux.conf
-
 
 CMD ["bash"]

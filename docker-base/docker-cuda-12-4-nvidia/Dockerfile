@@ -66,6 +66,8 @@ ENV PATH="/root/.local/bin:$PATH"
 # Установка алиасов
 RUN printf "alias py='python3'\nalias python='python3'\nalias ptest='cd /workspace/VPS-copy && py pytorch-test.py'\n" >> ~/.bashrc
 
+RUN python3 -m pip install --upgrade pip
+
 # Рабочая директория
 WORKDIR /workspace
 COPY VPS-copy .
