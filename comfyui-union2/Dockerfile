@@ -3,7 +3,8 @@ ARG BASE_IMAGE="gayrat/comfyui-base-cuda-12-4:v2.0"
 FROM ${BASE_IMAGE} AS builder
 
 WORKDIR /usr/local/bin
-COPY *.sh ./
+COPY ./bash-scripts/build/*.sh ./
+#COPY *.sh ./
 RUN chmod +x ./*.sh
 
 WORKDIR /workspace
@@ -31,7 +32,7 @@ RUN --mount=type=cache,target=/root/repo-cache \
 
 WORKDIR /workspace/ComfyUI
 
-COPY nodes.txt *.py ./
+COPY nodes.txt  ./
 
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
@@ -44,8 +45,10 @@ COPY requirements-modify ./requirements-modify
 
 ARG PYTORCH_WHEEL="https://download.pytorch.org/whl/cu124"
 
-RUN python3 union-requiere.py \
-     && python3 process-req-in.py \
+COPY ./python-prg/*.py ./gayrat_py/
+
+RUN python3 gayrat_py/union-requiere.py \
+     && python3 ./gayrat_py/process-req-in.py \
             --requirements-file "requirements.in" \
             --prefixes-file "./requirements-modify/$REQ_MODIFY/remove-lines.txt" \
             --additional-lines-file "./requirements-modify/$REQ_MODIFY/add-lines.txt"
@@ -55,7 +58,7 @@ RUN uv pip compile requirements.modify.in -o requirements.out \
         --extra-index-url "$PYTORCH_WHEEL" \
         --extra-index-url https://pypi.nvidia.com
 
-RUN python3 pip-pckg-group.py
+RUN python3 ./gayrat_py/pip-pckg-group.py
 
 
 # Установка пакетов в системную директорию Python 3.11
@@ -85,11 +88,13 @@ RUN echo -e "Копируем рабочую директорию"
 COPY --from=builder /workspace /workspace
 
 ENV DOWNLOADS_DIR=/usr/local/bin
-COPY *.sh $DOWNLOADS_DIR/
+
+COPY ./bash-scripts/build/*.sh $DOWNLOADS_DIR/
+#COPY *.sh $DOWNLOADS_DIR/
 RUN chmod +x $DOWNLOADS_DIR/*.sh
 
 WORKDIR /workspace/ComfyUI
-COPY ./custom-nodes/nodes*.txt ./
+COPY ./custom-nodes/*.txt ./
 
 ARG NODES
 
