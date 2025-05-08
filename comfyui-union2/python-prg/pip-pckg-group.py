@@ -52,7 +52,7 @@ def write_groups(groups, output_dir):
 # Основная функция
 def main():
     input_file = "requirements.out"  # Файл с полным списком пакетов
-    output_dir = "."  # Директория для сохранения групп
+    output_dir = ".."  # Директория для сохранения групп
 
     # Шаги
     packages = read_packages(input_file)
