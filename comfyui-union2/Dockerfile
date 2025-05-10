@@ -152,6 +152,11 @@ RUN --mount=type=cache,target=/root/pip-cache \
 #
 #RUN sed -i 's/^security_level = normal/security_level = weak/' /workspace/ComfyUI/user/default/ComfyUI-Manager/config.ini
 
+# УБРАТЬ !!!!
+WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI_IPAdapter_plus
+COPY ./_temp/utils.py ./
+
+
 WORKDIR /workspace/ComfyUI
 
 RUN echo "cd /workspace/aria2/templates" >> /root/.bashrc \

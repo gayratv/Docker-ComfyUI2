@@ -12,4 +12,36 @@ export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu124"
 export REQ_MODIFY="base-CUDA-12.4"
 export POST_INSTALL="IPAdapter_plus.sh"
 
-docker cp /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir/old/1 "$IMAGE_NAME":/workspace/ComfyUI/custom_nodes/ComfyUI-CLIPSeg/
+export HOST_DIR=/mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/_temp
+export IPADAPTER_DIR=/workspace/ComfyUI/custom_nodes/ComfyUI_IPAdapter_plus
+
+docker cp comfyui-union2:"$IPADAPTER_DIR/image_proj_models.py" "$HOST_DIR/"
+
+
+docker cp comfyui-union2:"$IPADAPTER_DIR/IPAdapterPlus.py" "$HOST_DIR/"
+docker cp comfyui-union2:"$IPADAPTER_DIR/utils.py" "$HOST_DIR/"
+
+docker cp  "$HOST_DIR/IPAdapterPlus.py" comfyui-union2:"$IPADAPTER_DIR/IPAdapterPlus.py"
+docker cp  "$HOST_DIR/utils.py" comfyui-union2:"$IPADAPTER_DIR/utils.py"
+
+clip -vision
+
+ViT.bigG.14.*39B.b160k
+        ViT.bigG.14.*39B.b160k|ipadapter.*sdxl|sdxl.*model)\.(bin|safetensors)'
+
+        ViT.H.14.*s32B.b79K|ipadapter.*sd15|sd1.?5.*model)\.(bin|safetensors)'
+
+
+    ip.adapter.sdxl.vit.h
+    ip.adapter.sdxl
+    plus.sdxl.vit.h
+    plus.face.sdxl.vit.h
+    portrait.sdxl
+
+    faceid.sdxl\.(safetensors|bin)$'
+            lora_pattern = r'faceid.sdxl.lora
+
+faceid.plusv2.sdxl\.(safetensors|bin)$'
+            lora_pattern = r'faceid.plusv2.sdxl.lora
+
+plus.composition.sdxl
