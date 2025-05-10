@@ -15,8 +15,8 @@ def get_download_info(repo_id, repo_type="model", revision="main", download_dir=
     return entries
 
 if __name__ == "__main__":
-    repo_id = "mit-han-lab/svdq-int4-flux.1-depth-dev"
-    entries = get_download_info(repo_id,download_dir="models/models/diffusion_models/svdq-int4-flux.1-depth-dev")
+    repo_id = "Gayrat1968/buffalo_l"
+    entries = get_download_info(repo_id,download_dir="models/insightface/models/buffalo_l")
 
     for entry in entries:
         print(entry)

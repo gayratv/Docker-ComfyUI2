@@ -73,6 +73,8 @@ RUN --mount=type=cache,target=/root/pip-cache-uv \
     -r requirements.out \
     && rm -rf /root/.cache/pip
 
+RUN python3 /workspace/ComfyUI/gayrat_py/remove_lines.py
+
 #>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=
 # ====== Stage 2: Final image ======
 #>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=

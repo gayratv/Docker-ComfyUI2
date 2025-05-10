@@ -27,13 +27,14 @@ https://github.com/cubiq/ComfyUI_IPAdapter_plus
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 export MODELS="IPAdapter_plus"
 export WORKFLOW_TO_COPY=$MODELS
-export VERSION="$MODELS-CUDA12.6"
+export VERSION="$MODELS-CUDA12.4"
 export NODES="$MODELS.txt"
 export IMAGE_NAME="comfyui-union2"
 export COMFYUI_VERSION="v0.3.30"
-export BASE_IMAGE="cuda-12-6:nvidia-runtime"
-export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
-export REQ_MODIFY="base-CUDA-12.6"
+export BASE_IMAGE="cuda-12-4:v1.2-NV-runtime"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu124"
+export REQ_MODIFY="base-CUDA-12.4"
+export POST_INSTALL="IPAdapter_plus.sh"
 
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->

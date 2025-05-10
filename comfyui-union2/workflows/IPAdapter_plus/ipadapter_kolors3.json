@@ -1,45 +1,9 @@
 {
-  "id": "45153f00-1a20-40db-87e9-c194f50f3e63",
+  "id": "7bef2e9d-9fe9-4455-ae27-7b4308b47102",
   "revision": 0,
-  "last_node_id": 88,
-  "last_link_id": 132,
+  "last_node_id": 93,
+  "last_link_id": 142,
   "nodes": [
-    {
-      "id": 9,
-      "type": "EmptyLatentImage",
-      "pos": [
-        1710,
-        620
-      ],
-      "size": [
-        368.5347900390625,
-        106
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "label": "Latent",
-          "name": "LATENT",
-          "type": "LATENT",
-          "links": [
-            108
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.30",
-        "Node name for S&R": "EmptyLatentImage"
-      },
-      "widgets_values": [
-        968,
-        1152,
-        1
-      ]
-    },
     {
       "id": 80,
       "type": "VAEDecode",
@@ -52,7 +16,7 @@
         46
       ],
       "flags": {},
-      "order": 11,
+      "order": 12,
       "mode": 0,
       "inputs": [
         {
@@ -95,7 +59,7 @@
         1301.6563720703125
       ],
       "flags": {},
-      "order": 12,
+      "order": 13,
       "mode": 0,
       "inputs": [
         {
@@ -113,76 +77,37 @@
       "widgets_values": []
     },
     {
-      "id": 75,
-      "type": "IPAdapterAdvanced",
+      "id": 78,
+      "type": "CLIPVisionLoader",
       "pos": [
-        1919,
-        -273
+        1511,
+        -127
       ],
       "size": [
-        291.9587097167969,
-        278
+        315,
+        58
       ],
       "flags": {},
-      "order": 7,
+      "order": 0,
       "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 132
-        },
-        {
-          "name": "ipadapter",
-          "type": "IPADAPTER",
-          "link": 130
-        },
-        {
-          "name": "image",
-          "type": "IMAGE",
-          "link": 102
-        },
-        {
-          "name": "image_negative",
-          "shape": 7,
-          "type": "IMAGE",
-          "link": null
-        },
-        {
-          "name": "attn_mask",
-          "shape": 7,
-          "type": "MASK",
-          "link": null
-        },
-        {
-          "name": "clip_vision",
-          "shape": 7,
-          "type": "CLIP_VISION",
-          "link": 131
-        }
-      ],
+      "inputs": [],
       "outputs": [
         {
-          "name": "MODEL",
-          "type": "MODEL",
+          "name": "CLIP_VISION",
+          "type": "CLIP_VISION",
           "slot_index": 0,
           "links": [
-            105
+            131
           ]
         }
       ],
       "properties": {
-        "cnr_id": "comfyui_ipadapter_plus",
-        "ver": "a0f451a5113cf9becb0847b92884cb10cbdec0ef",
-        "Node name for S&R": "IPAdapterAdvanced"
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "CLIPVisionLoader"
       },
       "widgets_values": [
-        1,
-        "style transfer precise",
-        "concat",
-        0,
-        1,
-        "V only"
+        "clip-vit-large-patch14-336.bin"
       ]
     },
     {
@@ -197,7 +122,7 @@
         262
       ],
       "flags": {},
-      "order": 10,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
@@ -288,10 +213,47 @@
       "properties": {
         "cnr_id": "comfyui-kolors-mz",
         "ver": "43ec2701a1390259a17ef3bea6244a3134aa5153",
-        "Node name for S&R": "MZ_ChatGLM3"
+        "Node name for S&R": "MZ_ChatGLM3",
+        "aux_id": "MinusZoneAI/ComfyUI-Kolors-MZ"
       },
       "widgets_values": [
         "a fierce red hair warrior woman wearing a white and gold armor with purple decorations. Highly detailed digital illustration, high quality, detailed, intricate"
+      ]
+    },
+    {
+      "id": 66,
+      "type": "MZ_ChatGLM3Loader",
+      "pos": [
+        1140,
+        180
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "chatglm3_model",
+          "name": "chatglm3_model",
+          "type": "CHATGLM3MODEL",
+          "links": [
+            84,
+            86
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-kolors-mz",
+        "ver": "43ec2701a1390259a17ef3bea6244a3134aa5153",
+        "Node name for S&R": "MZ_ChatGLM3Loader",
+        "aux_id": "MinusZoneAI/ComfyUI-Kolors-MZ"
+      },
+      "widgets_values": [
+        "chatglm3-8bit.safetensors"
       ]
     },
     {
@@ -336,61 +298,152 @@
       "properties": {
         "cnr_id": "comfyui-kolors-mz",
         "ver": "43ec2701a1390259a17ef3bea6244a3134aa5153",
-        "Node name for S&R": "MZ_ChatGLM3"
+        "Node name for S&R": "MZ_ChatGLM3",
+        "aux_id": "MinusZoneAI/ComfyUI-Kolors-MZ"
       },
       "widgets_values": [
         ""
       ]
     },
     {
-      "id": 77,
-      "type": "LoadImage",
+      "id": 75,
+      "type": "IPAdapterAdvanced",
       "pos": [
-        1137,
-        -329
+        1919,
+        -273
       ],
       "size": [
-        237.2888641357422,
-        323.4468994140625
+        291.9587097167969,
+        278
       ],
       "flags": {},
-      "order": 1,
+      "order": 10,
       "mode": 0,
-      "inputs": [],
-      "outputs": [
+      "inputs": [
         {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            102
-          ]
+          "name": "model",
+          "type": "MODEL",
+          "link": 132
         },
         {
-          "name": "MASK",
+          "name": "ipadapter",
+          "type": "IPADAPTER",
+          "link": 130
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 141
+        },
+        {
+          "name": "image_negative",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "attn_mask",
+          "shape": 7,
           "type": "MASK",
-          "links": null
+          "link": null
+        },
+        {
+          "name": "clip_vision",
+          "shape": 7,
+          "type": "CLIP_VISION",
+          "link": 131
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            105
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_ipadapter_plus",
+        "ver": "a0f451a5113cf9becb0847b92884cb10cbdec0ef",
+        "Node name for S&R": "IPAdapterAdvanced",
+        "aux_id": "cubiq/ComfyUI_IPAdapter_plus"
+      },
+      "widgets_values": [
+        1,
+        "style transfer precise",
+        "concat",
+        0,
+        1,
+        "V only"
+      ]
+    },
+    {
+      "id": 9,
+      "type": "EmptyLatentImage",
+      "pos": [
+        1710,
+        620
+      ],
+      "size": [
+        368.5347900390625,
+        106
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "ss",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 134
+        },
+        {
+          "label": "11",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 135
+        }
+      ],
+      "outputs": [
+        {
+          "label": "Latent",
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            108
+          ]
         }
       ],
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.30",
-        "Node name for S&R": "LoadImage"
+        "Node name for S&R": "EmptyLatentImage"
       },
       "widgets_values": [
-        "8MK9GTV9F7D45F21CWP2CAVPP0.jpeg",
-        "image"
+        968,
+        1152,
+        1
       ]
     },
     {
-      "id": 76,
-      "type": "IPAdapterModelLoader",
+      "id": 91,
+      "type": "SizeFromPresetsSDXL",
       "pos": [
-        1541,
-        -383
+        106.43162536621094,
+        385.69384765625
       ],
       "size": [
         315,
-        58
+        78
       ],
       "flags": {},
       "order": 2,
@@ -398,90 +451,28 @@
       "inputs": [],
       "outputs": [
         {
-          "name": "IPADAPTER",
-          "type": "IPADAPTER",
-          "slot_index": 0,
+          "name": "w",
+          "type": "INT",
           "links": [
-            130
+            134
           ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui_ipadapter_plus",
-        "ver": "a0f451a5113cf9becb0847b92884cb10cbdec0ef",
-        "Node name for S&R": "IPAdapterModelLoader"
-      },
-      "widgets_values": [
-        "Kolors_ip_adapter_plus_general.bin"
-      ]
-    },
-    {
-      "id": 78,
-      "type": "CLIPVisionLoader",
-      "pos": [
-        1511,
-        -127
-      ],
-      "size": [
-        315,
-        58
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
+        },
         {
-          "name": "CLIP_VISION",
-          "type": "CLIP_VISION",
-          "slot_index": 0,
+          "name": "h",
+          "type": "INT",
           "links": [
-            131
+            135
           ]
         }
       ],
       "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.30",
-        "Node name for S&R": "CLIPVisionLoader"
+        "cnr_id": "comfyui-sizefrompresets",
+        "ver": "05d2d9cd430c64e303a2561b0d9b6e49fec1bbea",
+        "Node name for S&R": "SizeFromPresetsSDXL",
+        "aux_id": "nkchocoai/ComfyUI-SizeFromPresets"
       },
       "widgets_values": [
-        "clip-vit-large-patch14-336.bin"
-      ]
-    },
-    {
-      "id": 66,
-      "type": "MZ_ChatGLM3Loader",
-      "pos": [
-        1140,
-        180
-      ],
-      "size": [
-        315,
-        58
-      ],
-      "flags": {},
-      "order": 4,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "label": "chatglm3_model",
-          "name": "chatglm3_model",
-          "type": "CHATGLM3MODEL",
-          "links": [
-            84,
-            86
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-kolors-mz",
-        "ver": "43ec2701a1390259a17ef3bea6244a3134aa5153",
-        "Node name for S&R": "MZ_ChatGLM3Loader"
-      },
-      "widgets_values": [
-        "chatglm3-8bit.safetensors"
+        " 896 x 1152"
       ]
     },
     {
@@ -496,7 +487,7 @@
         78
       ],
       "flags": {},
-      "order": 5,
+      "order": 3,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -523,7 +514,8 @@
       "properties": {
         "cnr_id": "comfyui-kolors-mz",
         "ver": "43ec2701a1390259a17ef3bea6244a3134aa5153",
-        "Node name for S&R": "MZ_KolorsUNETLoader"
+        "Node name for S&R": "MZ_KolorsUNETLoader",
+        "aux_id": "MinusZoneAI/ComfyUI-Kolors-MZ"
       },
       "widgets_values": [
         "kolors/kolors.fp16.safetensors"
@@ -541,7 +533,7 @@
         58
       ],
       "flags": {},
-      "order": 6,
+      "order": 4,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -560,7 +552,81 @@
         "Node name for S&R": "VAELoader"
       },
       "widgets_values": [
-        "diffusion_pytorch_model.fp16.bin"
+        "diffusion_pytorch_model.fp16.safetensors"
+      ]
+    },
+    {
+      "id": 76,
+      "type": "IPAdapterModelLoader",
+      "pos": [
+        1541,
+        -383
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IPADAPTER",
+          "type": "IPADAPTER",
+          "slot_index": 0,
+          "links": [
+            130
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_ipadapter_plus",
+        "ver": "a0f451a5113cf9becb0847b92884cb10cbdec0ef",
+        "Node name for S&R": "IPAdapterModelLoader",
+        "aux_id": "cubiq/ComfyUI_IPAdapter_plus"
+      },
+      "widgets_values": [
+        "Kolors_ip_adapter_plus_general.bin"
+      ]
+    },
+    {
+      "id": 77,
+      "type": "LoadImage",
+      "pos": [
+        264.36712646484375,
+        -417.4364318847656
+      ],
+      "size": [
+        237.2888641357422,
+        323.4468994140625
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            141
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "bringkoss_httpss.mj.runNGFFxpi2_Gc_A_beautiful_blonde_woman_i_296fd0b9-12b8-4683-ab73-2c0c147b24cf_0.png",
+        "image"
       ]
     }
   ],
@@ -596,14 +662,6 @@
       67,
       1,
       "TorchLinear"
-    ],
-    [
-      102,
-      77,
-      0,
-      75,
-      2,
-      "IMAGE"
     ],
     [
       105,
@@ -684,16 +742,40 @@
       75,
       0,
       "MODEL"
+    ],
+    [
+      134,
+      91,
+      0,
+      9,
+      0,
+      "INT"
+    ],
+    [
+      135,
+      91,
+      1,
+      9,
+      1,
+      "INT"
+    ],
+    [
+      141,
+      77,
+      0,
+      75,
+      2,
+      "IMAGE"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.7513148009015781,
+      "scale": 0.3855432894295318,
       "offset": [
-        -907.5934266990195,
-        554.0424119914189
+        970.610870341774,
+        1206.0772674979714
       ]
     },
     "frontendVersion": "1.17.11"
