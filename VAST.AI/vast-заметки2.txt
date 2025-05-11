@@ -7,13 +7,15 @@ source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui:Flex2-v
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui:Ace-Subject-Redux-v0.3.30"
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui-union2:framepack-1f-v1.0"
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui-union2:framepack-1f-CUDA12.6" "12.6"
-
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui-union2:IPAdapter_plus-CUDA12.4" "12.4"
 
-source vast-contract.sh 19394424 $IMAGE_NAME
+source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui-union2:PuLID_flux-CUDA12.6" "12.6"
+
+source vast-contract.sh 19708822 $IMAGE_NAME
 source ./vs.sh
 
 tmux-s-bash.sh
+./dl_common.sh PuLID_flux
 ./dl_common.sh IPAdapter_plus_no_kolors
 ./dl_common.sh IPAdapter_plus
 ./dl_common.sh framepack-1f

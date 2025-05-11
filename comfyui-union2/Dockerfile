@@ -73,6 +73,14 @@ RUN --mount=type=cache,target=/root/pip-cache-uv \
     -r requirements.out \
     && rm -rf /root/.cache/pip
 
+#в файле
+#/workspace/ComfyUI/custom_nodes/ComfyUI-Manager/glob/cnr_utils.py #есть фрагмент кода
+#            if page % 5 == 0:
+#                print(f"FETCH ComfyRegistry Data: {page}/{sub_json_obj['totalPages']}")
+#надо найти и удалить его
+
+RUN sed -i '/if page % 5 == 0:/,+1d' /workspace/ComfyUI/custom_nodes/ComfyUI-Manager/glob/cnr_utils.py
+
 RUN python3 /workspace/ComfyUI/gayrat_py/remove_lines.py
 
 #>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=
@@ -153,8 +161,8 @@ RUN --mount=type=cache,target=/root/pip-cache \
 #RUN sed -i 's/^security_level = normal/security_level = weak/' /workspace/ComfyUI/user/default/ComfyUI-Manager/config.ini
 
 # УБРАТЬ !!!!
-WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI_IPAdapter_plus
-COPY ./_temp/utils.py ./
+#WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI_IPAdapter_plus
+#COPY ./_temp/utils.py ./
 
 
 WORKDIR /workspace/ComfyUI
