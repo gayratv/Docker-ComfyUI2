@@ -164,6 +164,9 @@ RUN --mount=type=cache,target=/root/pip-cache \
 #WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI_IPAdapter_plus
 #COPY ./_temp/utils.py ./
 
+# только для узла Laeyer
+#WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI_LayerStyle_Advance/py
+#COPY python-prg/ComfyUI_LayerStyle_Advance/py/gemini.py ./
 
 WORKDIR /workspace/ComfyUI
 
