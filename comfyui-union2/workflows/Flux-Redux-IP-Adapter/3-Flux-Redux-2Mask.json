@@ -2,7 +2,7 @@
   "id": "296903fe-3ad9-4ec2-9d8e-292f98a09aa1",
   "revision": 0,
   "last_node_id": 205,
-  "last_link_id": 333,
+  "last_link_id": 342,
   "nodes": [
     {
       "id": 185,
@@ -18,7 +18,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 12,
+      "order": 15,
       "mode": 0,
       "inputs": [
         {
@@ -32,11 +32,12 @@
       ],
       "outputs": [],
       "properties": {
-        "aux_id": "chrisgoringe/cg-use-everywhere",
+        "cnr_id": "cg-use-everywhere",
         "ver": "5ae64f462ec24fc0100a309c42c3def6aae18d7b",
         "Node name for S&R": "Anything Everywhere",
         "group_restricted": 0,
         "color_restricted": 0,
+        "aux_id": "chrisgoringe/cg-use-everywhere",
         "widget_ue_connectable": {}
       },
       "widgets_values": [],
@@ -57,7 +58,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 13,
+      "order": 14,
       "mode": 0,
       "inputs": [
         {
@@ -71,11 +72,12 @@
       ],
       "outputs": [],
       "properties": {
-        "aux_id": "chrisgoringe/cg-use-everywhere",
+        "cnr_id": "cg-use-everywhere",
         "ver": "5ae64f462ec24fc0100a309c42c3def6aae18d7b",
         "Node name for S&R": "Anything Everywhere",
         "group_restricted": 0,
         "color_restricted": 0,
+        "aux_id": "chrisgoringe/cg-use-everywhere",
         "widget_ue_connectable": {}
       },
       "widgets_values": [],
@@ -96,7 +98,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 16,
+      "order": 13,
       "mode": 0,
       "inputs": [
         {
@@ -110,11 +112,12 @@
       ],
       "outputs": [],
       "properties": {
-        "aux_id": "chrisgoringe/cg-use-everywhere",
+        "cnr_id": "cg-use-everywhere",
         "ver": "5ae64f462ec24fc0100a309c42c3def6aae18d7b",
         "Node name for S&R": "Anything Everywhere",
         "group_restricted": 0,
         "color_restricted": 0,
+        "aux_id": "chrisgoringe/cg-use-everywhere",
         "widget_ue_connectable": {}
       },
       "widgets_values": [],
@@ -135,7 +138,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 14,
+      "order": 16,
       "mode": 0,
       "inputs": [
         {
@@ -149,11 +152,12 @@
       ],
       "outputs": [],
       "properties": {
-        "aux_id": "chrisgoringe/cg-use-everywhere",
+        "cnr_id": "cg-use-everywhere",
         "ver": "5ae64f462ec24fc0100a309c42c3def6aae18d7b",
         "Node name for S&R": "Anything Everywhere",
         "group_restricted": 0,
         "color_restricted": 0,
+        "aux_id": "chrisgoringe/cg-use-everywhere",
         "widget_ue_connectable": {}
       },
       "widgets_values": [],
@@ -174,7 +178,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 15,
+      "order": 17,
       "mode": 0,
       "inputs": [
         {
@@ -188,11 +192,12 @@
       ],
       "outputs": [],
       "properties": {
-        "aux_id": "chrisgoringe/cg-use-everywhere",
+        "cnr_id": "cg-use-everywhere",
         "ver": "5ae64f462ec24fc0100a309c42c3def6aae18d7b",
         "Node name for S&R": "Anything Everywhere",
         "group_restricted": 0,
         "color_restricted": 0,
+        "aux_id": "chrisgoringe/cg-use-everywhere",
         "widget_ue_connectable": {}
       },
       "widgets_values": [],
@@ -246,156 +251,6 @@
       "bgcolor": "#533"
     },
     {
-      "id": 191,
-      "type": "VAELoader",
-      "pos": [
-        -568.838134765625,
-        454.6531066894531
-      ],
-      "size": [
-        287.0804748535156,
-        58
-      ],
-      "flags": {},
-      "order": 1,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "VAE",
-          "type": "VAE",
-          "slot_index": 0,
-          "links": [
-            306
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.30",
-        "Node name for S&R": "VAELoader",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "Flux-vae.safetensors"
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
-      "id": 192,
-      "type": "DualCLIPLoaderGGUF",
-      "pos": [
-        -578.838134765625,
-        294.6513977050781
-      ],
-      "size": [
-        305.7923889160156,
-        106
-      ],
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "slot_index": 0,
-          "links": [
-            307
-          ]
-        }
-      ],
-      "properties": {
-        "aux_id": "city96/ComfyUI-GGUF",
-        "ver": "a2b75978fd50c0227a58316619b79d525b88e570",
-        "Node name for S&R": "DualCLIPLoaderGGUF",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "clip_l.safetensors",
-        "t5-v1_1-xxl-encoder-Q4_K_S.gguf",
-        "flux"
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 193,
-      "type": "CLIPVisionLoader",
-      "pos": [
-        -568.838134765625,
-        584.6528930664062
-      ],
-      "size": [
-        295.0495300292969,
-        58
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "CLIP_VISION",
-          "type": "CLIP_VISION",
-          "slot_index": 0,
-          "links": [
-            309
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.30",
-        "Node name for S&R": "CLIPVisionLoader",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "flux_clip_vision_patch14_384.safetensors"
-      ],
-      "color": "#2a363b",
-      "bgcolor": "#3f5159"
-    },
-    {
-      "id": 194,
-      "type": "StyleModelLoader",
-      "pos": [
-        -558.8381958007812,
-        684.6527709960938
-      ],
-      "size": [
-        281.9339599609375,
-        58
-      ],
-      "flags": {},
-      "order": 4,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "STYLE_MODEL",
-          "type": "STYLE_MODEL",
-          "slot_index": 0,
-          "links": [
-            310
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.30",
-        "Node name for S&R": "StyleModelLoader",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "flux1-redux-dev.safetensors"
-      ],
-      "color": "#2a363b",
-      "bgcolor": "#3f5159"
-    },
-    {
       "id": 195,
       "type": "Anything Everywhere?",
       "pos": [
@@ -422,11 +277,12 @@
       ],
       "outputs": [],
       "properties": {
-        "aux_id": "chrisgoringe/cg-use-everywhere",
+        "cnr_id": "cg-use-everywhere",
         "ver": "5ae64f462ec24fc0100a309c42c3def6aae18d7b",
         "Node name for S&R": "Anything Everywhere?",
         "group_restricted": 0,
         "color_restricted": 0,
+        "aux_id": "chrisgoringe/cg-use-everywhere",
         "widget_ue_connectable": {}
       },
       "widgets_values": [
@@ -436,44 +292,6 @@
       ],
       "color": "#322",
       "bgcolor": "#533"
-    },
-    {
-      "id": 196,
-      "type": "UNETLoader",
-      "pos": [
-        -588.838134765625,
-        154.65200805664062
-      ],
-      "size": [
-        315,
-        82
-      ],
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "slot_index": 0,
-          "links": [
-            308
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.30",
-        "Node name for S&R": "UNETLoader",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "flux1-dev-fp8-e4m3fn.safetensors",
-        "default"
-      ],
-      "color": "#223",
-      "bgcolor": "#335"
     },
     {
       "id": 197,
@@ -487,7 +305,7 @@
         106
       ],
       "flags": {},
-      "order": 17,
+      "order": 12,
       "mode": 0,
       "inputs": [
         {
@@ -650,9 +468,10 @@
         }
       ],
       "properties": {
-        "aux_id": "jags111/efficiency-nodes-comfyui",
+        "cnr_id": "efficiency-nodes-comfyui",
         "ver": "9e3c5aa4976ad457065ef06a0dfdfc66e17c59ee",
         "Node name for S&R": "KSampler (Efficient)",
+        "aux_id": "jags111/efficiency-nodes-comfyui",
         "widget_ue_connectable": {}
       },
       "widgets_values": [
@@ -684,7 +503,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 6,
+      "order": 1,
       "mode": 0,
       "inputs": [
         {
@@ -715,97 +534,6 @@
       ],
       "color": "#322",
       "bgcolor": "#533"
-    },
-    {
-      "id": 156,
-      "type": "LoadImage",
-      "pos": [
-        387.913818359375,
-        816.982666015625
-      ],
-      "size": [
-        315,
-        314
-      ],
-      "flags": {},
-      "order": 7,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "slot_index": 0,
-          "links": [
-            290
-          ]
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "slot_index": 1,
-          "links": [
-            293
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.30",
-        "Node name for S&R": "LoadImage",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "clipspace/clipspace-mask-2888422.5.png [input]",
-        "image"
-      ],
-      "color": "#233",
-      "bgcolor": "#355"
-    },
-    {
-      "id": 155,
-      "type": "LoadImage",
-      "pos": [
-        16.150876998901367,
-        795.2196044921875
-      ],
-      "size": [
-        315,
-        314
-      ],
-      "flags": {},
-      "order": 8,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            289
-          ]
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "slot_index": 1,
-          "links": [
-            292
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.30",
-        "Node name for S&R": "LoadImage",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "clipspace/clipspace-mask-2480823.png [input]",
-        "image"
-      ],
-      "color": "#2a363b",
-      "bgcolor": "#3f5159"
     },
     {
       "id": 41,
@@ -911,9 +639,10 @@
         }
       ],
       "properties": {
-        "aux_id": "kaibioinfo/ComfyUI_AdvancedRefluxControl",
+        "cnr_id": "ComfyUI_AdvancedRefluxControl",
         "ver": "2b95c2c866399ca1914b4da486fe52808f7a9c60",
         "Node name for S&R": "ReduxAdvanced",
+        "aux_id": "kaibioinfo/ComfyUI_AdvancedRefluxControl",
         "widget_ue_connectable": {}
       },
       "widgets_values": [
@@ -938,7 +667,7 @@
         248.8363494873047
       ],
       "flags": {},
-      "order": 9,
+      "order": 2,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1050,9 +779,10 @@
         }
       ],
       "properties": {
-        "aux_id": "kaibioinfo/ComfyUI_AdvancedRefluxControl",
+        "cnr_id": "ComfyUI_AdvancedRefluxControl",
         "ver": "2b95c2c866399ca1914b4da486fe52808f7a9c60",
         "Node name for S&R": "ReduxAdvanced",
+        "aux_id": "kaibioinfo/ComfyUI_AdvancedRefluxControl",
         "widget_ue_connectable": {}
       },
       "widgets_values": [
@@ -1077,7 +807,7 @@
         200
       ],
       "flags": {},
-      "order": 10,
+      "order": 3,
       "mode": 0,
       "inputs": [
         {
@@ -1103,14 +833,294 @@
       "properties": {
         "aux_id": "gayratv/ComfyUI_Gayrat",
         "ver": "2f1f980ec6734d0bb78b28ee1ed8fd86a2086080",
-        "widget_ue_connectable": {},
-        "Node name for S&R": "GoogleTranslateCLIPTextEncode"
+        "Node name for S&R": "GoogleTranslateCLIPTextEncode",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "auto",
         "en",
         "автомобиль на фоне гор"
       ]
+    },
+    {
+      "id": 196,
+      "type": "UNETLoader",
+      "pos": [
+        -588.838134765625,
+        154.65200805664062
+      ],
+      "size": [
+        315,
+        82
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            308
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "UNETLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "FLUX/flux1-dev-fp8-e4m3fn.safetensors",
+        "default"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 192,
+      "type": "DualCLIPLoaderGGUF",
+      "pos": [
+        -578.838134765625,
+        294.6513977050781
+      ],
+      "size": [
+        305.7923889160156,
+        106
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            307
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "ComfyUI-GGUF",
+        "ver": "a2b75978fd50c0227a58316619b79d525b88e570",
+        "Node name for S&R": "DualCLIPLoaderGGUF",
+        "aux_id": "city96/ComfyUI-GGUF",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "FLUX/clip_l.safetensors",
+        "FLUX/t5xxl_fp8_e4m3fn.safetensors",
+        "flux"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 191,
+      "type": "VAELoader",
+      "pos": [
+        -568.838134765625,
+        454.6531066894531
+      ],
+      "size": [
+        287.0804748535156,
+        58
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            306
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "VAELoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "FLUX/flux.vae.safetensors"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 193,
+      "type": "CLIPVisionLoader",
+      "pos": [
+        -568.838134765625,
+        584.6528930664062
+      ],
+      "size": [
+        295.0495300292969,
+        58
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP_VISION",
+          "type": "CLIP_VISION",
+          "slot_index": 0,
+          "links": [
+            309
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "CLIPVisionLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "sigclip_vision_patch14_384.safetensors"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 194,
+      "type": "StyleModelLoader",
+      "pos": [
+        -558.8381958007812,
+        684.6527709960938
+      ],
+      "size": [
+        281.9339599609375,
+        58
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STYLE_MODEL",
+          "type": "STYLE_MODEL",
+          "slot_index": 0,
+          "links": [
+            310
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "StyleModelLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Flux/flux1-redux-dev.safetensors"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 155,
+      "type": "LoadImage",
+      "pos": [
+        16.150876998901367,
+        795.2196044921875
+      ],
+      "size": [
+        315,
+        314
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            289
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 1,
+          "links": [
+            292
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "8MK9GTV9F7D45F21CWP2CAVPP0.jpeg",
+        "image"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 156,
+      "type": "LoadImage",
+      "pos": [
+        387.913818359375,
+        816.982666015625
+      ],
+      "size": [
+        315,
+        314
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            290
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 1,
+          "links": [
+            293
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "1659866873_3-kartinkin-net-p-oboi-na-glavnuyu-stranitsu-yandeksa-krasiv-3.jpg",
+        "image"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
     }
   ],
   "links": [
@@ -1383,10 +1393,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.9849732675808129,
+      "scale": 0.8954302432552844,
       "offset": [
-        749.2804178898198,
-        -97.55664477790883
+        29.66417009503097,
+        -35.75164955843917
       ]
     },
     "ue_links": [
@@ -1463,7 +1473,18 @@
         "type": "CLIP"
       }
     ],
-    "frontendVersion": "1.17.11"
+    "frontendVersion": "1.17.11",
+    "links_added_by_ue": [
+      334,
+      335,
+      336,
+      337,
+      338,
+      339,
+      340,
+      341,
+      342
+    ]
   },
   "version": 0.4
 }

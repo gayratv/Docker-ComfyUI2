@@ -1,0 +1,30 @@
+# ====== Stage 1: Builder ======
+ARG BASE_IMAGE="gayrat/comfyui-base-cuda-12-4:v2.0"
+FROM ${BASE_IMAGE} AS builder
+
+WORKDIR /usr/local/bin
+COPY ./bash-scripts/build/*.sh ./
+#COPY *.sh ./
+RUN chmod +x ./*.sh
+
+WORKDIR /workspace
+ARG COMFYUI_VERSION="latest"
+ARG CUDA_VER="12.4"
+
+ARG COLOR_GREEN='\033[32m'
+ARG COLOR_RED='\033[31m'
+ARG COLOR_YELLOW='\033[33m'
+ARG COLOR_BOLD_GREEN='\033[1;32m'
+ARG COLOR_RESET='\033[0m'
+
+COPY bash-scripts/build/check_hashes.sh  /usr/local/bin/check_hashes.sh
+RUN chmod +x /usr/local/bin/check_hashes.sh
+
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    --mount=type=cache,target=/root/pip-cache-uv \
+    check_hashes.sh
+
+
+RUN exit 1

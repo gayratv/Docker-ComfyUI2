@@ -1,4 +1,5 @@
 #!/bin/bash
+# comfyui-union2/bash-scripts/build/process_repos-install-req.sh
 
 # Установка базовой директории
 BASE_INSTALL_DIR="/workspace/ComfyUI/custom_nodes/"
