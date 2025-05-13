@@ -8,8 +8,9 @@ source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui:Ace-Sub
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui-union2:framepack-1f-v1.0"
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui-union2:framepack-1f-CUDA12.6" "12.6"
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui-union2:IPAdapter_plus-CUDA12.4" "12.4"
-
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui-union2:PuLID_flux-CUDA12.6" "12.6"
+
+source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/Flux-Redux-IP-Adapter-CUDA12.6" "12.6"
 
 source vast-contract.sh 19708822 $IMAGE_NAME
 source ./vs.sh
