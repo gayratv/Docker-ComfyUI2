@@ -25,6 +25,12 @@ ARG COLOR_RESET='\033[0m'
 #    rm -rf /root/pip-cache-uv/*
 #RUN exit 1
 
+#RUN --mount=type=cache,target=/root/repo-cache \
+#    rm -rf /root/repo-cache/*
+#RUN exit 1
+
+
+
 # Очистка директории и клонирование ComfyUI
 RUN --mount=type=cache,target=/root/repo-cache \
     rm -rf /workspace/* && \
@@ -115,7 +121,7 @@ RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     if [ -n "$NODES" ]; then \
         PIP_CACHE_DIR=/root/pip-cache \
-        process_repos-install-req.sh "$NODES" \
+        process_repos-install-req.sh "$NODES" true \
         && rm -rf /root/.cache/pip; \
     else \
         echo "Skipping RUN because NODES is set to 'nodes1.txt'"; \
