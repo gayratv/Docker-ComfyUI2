@@ -12,6 +12,7 @@ if [ ! -f "$NODES_FILE" ]; then
     exit 1
 fi
 
+# читаем список репозиториев, убираем пустые строки и комментарии
 mapfile -t INSTALL_DATA < <(
     sed '
         s/^[[:space:]]*//;
@@ -56,19 +57,26 @@ for GIT_REPO in "${INSTALL_DATA[@]}"; do
 
     if [ "$USE_CACHE" = true ]; then
         echo -e "\e[1;34mINFO: Copying $REPO_NAME from cache\e[0m"
-        cp -r "$CACHE_DIR" "./$REPO_NAME"
+        # создаём папку назначения и копируем _только_ содержимое кеша
+        mkdir -p "./$REPO_NAME"
+        cp -r "$CACHE_DIR/." "./$REPO_NAME/"
     else
         echo "DEBUG: Cloning repository $GIT_REPO..."
         git clone --recurse-submodules "$GIT_REPO"
+
         echo -e "\e[1;31mDEBUG: Caching repository to $CACHE_DIR...\e[0m"
+        # сбрасываем старый кеш, чтобы не было вложенной папки
+        rm -rf "$CACHE_DIR"
         mkdir -p "$CACHE_DIR"
-        cp -r "./$REPO_NAME" "$CACHE_DIR"
+        # копируем все файлы из клона в кеш
+        cp -r "./$REPO_NAME/." "$CACHE_DIR/"
         echo "$REMOTE_HASH" > "$CACHED_HASH_FILE"
     fi
 
-    # Переходим внутрь и устанавливаем зависимости
+    # Переходим внутрь репозитория
     cd "$REPO_NAME" || { echo "ERROR: cannot cd to $REPO_NAME"; exit 1; }
 
+    # Устанавливаем зависимости, если нужно
     if [ "$INSTALL_REQ" = "true" ] && [ -f "requirements.txt" ]; then
         echo "Installing Python dependencies from requirements.txt (excluding torch)…"
         TMP_REQ=$(mktemp)

@@ -43,7 +43,7 @@ COPY nodes.txt  ./
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_repos-install-req.sh "$NODES" false \
+    process_repos-install-req-hash.sh "$NODES" false \
     && rm -rf /root/.cache/pip
 
 ARG REQ_MODIFY="base-CUDA-12.4"
@@ -121,7 +121,7 @@ RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     if [ -n "$NODES" ]; then \
         PIP_CACHE_DIR=/root/pip-cache \
-        process_repos-install-req.sh "$NODES" true \
+        process_repos-install-req-hash.sh "$NODES" true \
         && rm -rf /root/.cache/pip; \
     else \
         echo "Skipping RUN because NODES is set to 'nodes1.txt'"; \

@@ -103,6 +103,37 @@ export POST_INSTALL="${MODELS}.sh"
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
+
+Change Background ++ （Redraw background, clothes, hair, face…and Generate foregrounds）
+https://openart.ai/workflows/grinlau/change-background-redraw-background-clothes-hair-faceand-generate-foregrounds/DoiYOkLj6ikwIbygd4gY
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+export MODELS="Change_Background_redraw_bg_clothers"
+mkdir -p "./workflows/${MODELS}"
+mkdir -p "./aria2/templates/models/${MODELS}"
+mkdir -p "./workflow-descr/${MODELS}"
+touch  "./custom-nodes/${MODELS}.txt"
+cp ./post-install/ImageResize.sh "./post-install/${MODELS}.sh"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+export MODELS="Change_Background_redraw_bg_clothers"
+export WORKFLOW_TO_COPY=$MODELS
+export VERSION="$MODELS-CUDA12.6"
+export NODES="$MODELS.txt"
+export IMAGE_NAME="comfyui-union2"
+export COMFYUI_VERSION="v0.3.30"
+export BASE_IMAGE="cuda-12-6:nvidia-runtime"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
+export REQ_MODIFY="base-CUDA-12.6"
+export POST_INSTALL="${MODELS}.sh"
+
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+
 ./db.sh
 ./dp.sh
 
