@@ -68,9 +68,5 @@ RUN printf "alias py='python3'\nalias python='python3'\nalias ptest='cd /workspa
 
 RUN python3 -m pip install --upgrade pip
 
-# Рабочая директория
-WORKDIR /workspace
-COPY VPS-copy .
-
 # Команда по умолчанию
 CMD ["bash"]

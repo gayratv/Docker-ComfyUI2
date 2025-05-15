@@ -11,9 +11,11 @@ source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui-union2:
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui-union2:PuLID_flux-CUDA12.6" "12.6"
 
 export IMAGE_NAME="gayrat/comfyui-union2:Flux-Redux-IP-Adapter-CUDA12.6"
+
+export IMAGE_NAME="gayrat/comfyui-union2:raw-comfy-CUDA12.6"
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.6"
 
-source vast-contract.sh 16729301 $IMAGE_NAME
+source vast-contract.sh 19726999 $IMAGE_NAME
 source ./vs.sh
 
 tmux-s-bash.sh

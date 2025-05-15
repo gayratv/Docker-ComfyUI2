@@ -29,6 +29,8 @@ vastai create instance "$INSTANCE_ID" \
     --env '-p 8188:8188' \
     > vast-create-instance.txt
 
+echo -e "\n\033[33mVAST contract открыт\033[0m"
+
 # Проверяем, существует ли файл
 if [[ -f "vast-create-instance.txt" ]]; then
     # Извлекаем число после 'new_contract': с помощью grep и sed

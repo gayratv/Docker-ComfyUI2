@@ -223,7 +223,7 @@ tmux-s-bash.sh
 docker builder prune --all
 
 
-cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-supir/aria2/templates
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/aria2/templates
 source ../load-env.sh
 echo $CIVITAI_TOKEN
 ./dl_common.sh ACE-plus-portrait /mnt/d/1/3
@@ -231,8 +231,10 @@ echo $CIVITAI_TOKEN
 
 
 
-docker cp /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/.env imageresize:/workspace/aria2/templates/.env
+docker cp /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/.env comfyui-union2:/workspace/aria2/templates/.env
 source ../load-env.sh
+echo $CIVITAI_TOKEN
+./dl_common.sh raw-comfy
 ./dl_common.sh ImageResize /workspace/ComfyUI/custom_nodes/ComfyUI_LayerStyle/
 ./dl_common.sh Flux_Upscale
 ./dl_common.sh Flex2

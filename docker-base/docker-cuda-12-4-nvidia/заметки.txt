@@ -1,17 +1,23 @@
 cd /mnt/f/_prg/python/Docker-ComfyUI/docker-base/docker-cuda-12-4-nvidia
 export IMAGE_NAME="cuda-12-4"
 export BASE_IMAGE="nvidia/cuda:12.4.1-cudnn-devel-ubuntu22.04"
-export VERSION="v1.2-NV-devel"
+export VERSION="nvidia-devel"
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/docker-base/docker-cuda-12-4-nvidia
 export IMAGE_NAME="cuda-12-4"
 export BASE_IMAGE="nvidia/cuda:12.4.1-cudnn-runtime-ubuntu22.04"
-export VERSION="v1.2-NV-runtime"
+export VERSION="nvidia-runtime"
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/docker-base/docker-cuda-12-4-nvidia
 export IMAGE_NAME="cuda-12-6"
 export BASE_IMAGE="nvidia/cuda:12.6.3-cudnn-runtime-ubuntu22.04"
 export VERSION="nvidia-runtime"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/docker-base/docker-cuda-12-4-nvidia
+export IMAGE_NAME="cuda-12-8"
+export VERSION="nvidia-runtime"
+export BASE_IMAGE="nvidia/cuda:12.8.1-cudnn-runtime-ubuntu22.04"
+
 
 
 
