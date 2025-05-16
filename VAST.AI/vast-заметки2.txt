@@ -19,6 +19,7 @@ source vast-contract.sh 19726999 $IMAGE_NAME
 source ./vs.sh
 
 tmux-s-bash.sh
+./dl_common.sh raw-comfy
 ./dl_common.sh Flux-Redux-IP-Adapter
 ./dl_common.sh PuLID_flux
 ./dl_common.sh IPAdapter_plus_no_kolors

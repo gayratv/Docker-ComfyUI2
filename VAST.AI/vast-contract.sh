@@ -21,6 +21,7 @@ INSTANCE_ID=$1
 IMAGE_NAME=$2
 
 # Создаем инстанс с использованием переданного имени образа
+echo -e "\n\033[33m vastai create instance \033[0m"
 vastai create instance "$INSTANCE_ID" \
     --image "$IMAGE_NAME" \
     --disk 100 \
