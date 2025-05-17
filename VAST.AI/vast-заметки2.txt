@@ -13,13 +13,18 @@ source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui-union2:
 export IMAGE_NAME="gayrat/comfyui-union2:Flux-Redux-IP-Adapter-CUDA12.6"
 export IMAGE_NAME="gayrat/comfyui-union2:raw-comfy-CUDA12.6"
 
-export IMAGE_NAME="gayrat/comfyui-union2:wan-2.1-CUDA12.6"
+export IMAGE_NAME_BASE="InfiniteYou"
+export CUDA="CUDA12.6"
+export IMAGE_NAME="gayrat/comfyui-union2:${IMAGE_NAME_BASE}-${CUDA}"
+echo -e "IMAGE_NAME : ${IMAGE_NAME}"
+
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.6"
 
-source vast-contract.sh 19521342 $IMAGE_NAME
+source vast-contract.sh 19394482 $IMAGE_NAME
 source ./vs.sh
 
 tmux-s-bash.sh
+./dl_common.sh InfiniteYou
 ./dl_common.sh wan-2.1
 ./dl_common.sh raw-comfy
 ./dl_common.sh Flux-Redux-IP-Adapter
