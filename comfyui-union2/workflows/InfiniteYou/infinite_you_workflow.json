@@ -1,0 +1,991 @@
+{
+  "id": "c1a3d0d1-f0cb-4369-83ae-273696df248c",
+  "revision": 0,
+  "last_node_id": 116,
+  "last_link_id": 185,
+  "nodes": [
+    {
+      "id": 52,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -568.8687133789062,
+        687.748046875
+      ],
+      "size": [
+        397.7880859375,
+        150.98748779296875
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 94
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "shape": 3,
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            65,
+            132,
+            159
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (EMPTY)",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 110,
+      "type": "ExtractIDEmbedding",
+      "pos": [
+        -565.7846069335938,
+        778.5155639648438
+      ],
+      "size": [
+        367.79998779296875,
+        86
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "face_detector",
+          "type": "MODEL",
+          "link": 172
+        },
+        {
+          "name": "arcface_model",
+          "type": "MODEL",
+          "link": 173
+        },
+        {
+          "name": "image_proj_model",
+          "type": "MODEL",
+          "link": 174
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 175
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            176
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ExtractIDEmbedding"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 45,
+      "type": "SaveImage",
+      "pos": [
+        668.8138427734375,
+        288.35491943359375
+      ],
+      "size": [
+        688.4625244140625,
+        863.3844604492188
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 60
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "ComfyUI",
+        ""
+      ]
+    },
+    {
+      "id": 44,
+      "type": "VAEDecode",
+      "pos": [
+        315.2570495605469,
+        300.6652526855469
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 58
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 59
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            60
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 109,
+      "type": "InfuseNetApply",
+      "pos": [
+        278.14422607421875,
+        803.1834716796875
+      ],
+      "size": [
+        315,
+        206
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 169
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 159
+        },
+        {
+          "name": "id_embedding",
+          "type": "CONDITIONING",
+          "link": 176
+        },
+        {
+          "name": "control_net",
+          "type": "CONTROL_NET",
+          "link": 166
+        },
+        {
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 180
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": 170
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            163
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            164
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "InfuseNetApply"
+      },
+      "widgets_values": [
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 43,
+      "type": "EmptyLatentImage",
+      "pos": [
+        -138.02438354492188,
+        463.6690368652344
+      ],
+      "size": [
+        242.7444610595703,
+        106
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            66
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        864,
+        1152,
+        1
+      ]
+    },
+    {
+      "id": 92,
+      "type": "PrimitiveNode",
+      "pos": [
+        -140.0155487060547,
+        623.6337890625
+      ],
+      "size": [
+        268.72747802734375,
+        82
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "links": [
+            127
+          ]
+        }
+      ],
+      "title": "seed",
+      "properties": {
+        "Run widget replace on values": false
+      },
+      "widgets_values": [
+        1117450117680779,
+        "randomize"
+      ]
+    },
+    {
+      "id": 106,
+      "type": "ExtractFacePoseImage",
+      "pos": [
+        -125.12596130371094,
+        1233.2313232421875
+      ],
+      "size": [
+        315,
+        102
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "face_detector",
+          "type": "MODEL",
+          "link": 150
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 151
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            156
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ExtractFacePoseImage"
+      },
+      "widgets_values": [
+        864,
+        1152
+      ]
+    },
+    {
+      "id": 105,
+      "type": "EmptyImage",
+      "pos": [
+        -125.57537841796875,
+        1033.876220703125
+      ],
+      "size": [
+        315,
+        130
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            178
+          ]
+        }
+      ],
+      "title": "Empty Pose Image",
+      "properties": {
+        "Node name for S&R": "EmptyImage"
+      },
+      "widgets_values": [
+        864,
+        1152,
+        1,
+        0
+      ]
+    },
+    {
+      "id": 46,
+      "type": "VAELoader",
+      "pos": [
+        -128.3144073486328,
+        269.4505615234375
+      ],
+      "size": [
+        210,
+        58
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "shape": 3,
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            59,
+            137,
+            161,
+            170
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "ae.safetensors"
+      ]
+    },
+    {
+      "id": 51,
+      "type": "KSampler",
+      "pos": [
+        278.04345703125,
+        418.0480041503906
+      ],
+      "size": [
+        210,
+        238
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 185
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 163
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 164
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 66
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": 127
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "shape": 3,
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            58
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        1117450117680779,
+        "fixed",
+        4,
+        1,
+        "euler",
+        "beta",
+        1
+      ]
+    },
+    {
+      "id": 48,
+      "type": "DualCLIPLoader",
+      "pos": [
+        -987.113525390625,
+        476.66717529296875
+      ],
+      "size": [
+        356.2766418457031,
+        130
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "shape": 3,
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            93,
+            94
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DualCLIPLoader"
+      },
+      "widgets_values": [
+        "t5xxl_fp8_e4m3fn.safetensors",
+        "clip_l.safetensors",
+        "flux",
+        "default"
+      ]
+    },
+    {
+      "id": 108,
+      "type": "InfuseNetLoader",
+      "pos": [
+        -128.15025329589844,
+        920.6913452148438
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CONTROL_NET",
+          "type": "CONTROL_NET",
+          "links": [
+            157,
+            166
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "InfuseNetLoader"
+      },
+      "widgets_values": [
+        "aes_stage2/infusenet_aes_fp8e4m3fn.safetensors"
+      ]
+    },
+    {
+      "id": 97,
+      "type": "LoadImage",
+      "pos": [
+        -985.9622802734375,
+        981.4930419921875
+      ],
+      "size": [
+        315,
+        314
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            139,
+            144,
+            167,
+            175
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "title": "Load ID Image",
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "woman.jpg",
+        "image",
+        ""
+      ]
+    },
+    {
+      "id": 107,
+      "type": "LoadImage",
+      "pos": [
+        -558.5816650390625,
+        982.09228515625
+      ],
+      "size": [
+        315,
+        314
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            151
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "title": "Load Control Image",
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "woman.jpg",
+        "image",
+        ""
+      ]
+    },
+    {
+      "id": 102,
+      "type": "IDEmbeddingModelLoader",
+      "pos": [
+        -999.3194580078125,
+        746.9200439453125
+      ],
+      "size": [
+        374.6639709472656,
+        170.36888122558594
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "FACE_DETECTOR",
+          "type": "MODEL",
+          "links": [
+            140,
+            150,
+            172
+          ]
+        },
+        {
+          "name": "ARCFACE_MODEL",
+          "type": "MODEL",
+          "links": [
+            141,
+            173
+          ]
+        },
+        {
+          "name": "IMAGE_PROJ_MODEL",
+          "type": "MODEL",
+          "links": [
+            142,
+            174
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "IDEmbeddingModelLoader"
+      },
+      "widgets_values": [
+        "aes_stage2/image_proj_model.bin",
+        8,
+        "CUDA",
+        "AUTO"
+      ]
+    },
+    {
+      "id": 50,
+      "type": "CLIPTextEncodeFlux",
+      "pos": [
+        -572.113525390625,
+        265.6330871582031
+      ],
+      "size": [
+        357.9499816894531,
+        361.7095031738281
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 93
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "shape": 3,
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            64,
+            133,
+            169
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncodeFlux"
+      },
+      "widgets_values": [
+        "A young woman holding a sign with the text \"InfiniteYou\", \"Infinite\" in black and \"You\" in red, pure background",
+        "A young woman holding a sign with the text \"InfiniteYou\", \"Infinite\" in black and \"You\" in red, pure background",
+        3.5
+      ]
+    },
+    {
+      "id": 47,
+      "type": "UNETLoader",
+      "pos": [
+        -980.1280517578125,
+        264.6694030761719
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "shape": 3,
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            149,
+            184,
+            185
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "flux1-schnell-fp8-e4m3fn.safetensors",
+        "fp8_e4m3fn_fast"
+      ]
+    }
+  ],
+  "links": [
+    [
+      58,
+      51,
+      0,
+      44,
+      0,
+      "LATENT"
+    ],
+    [
+      59,
+      46,
+      0,
+      44,
+      1,
+      "VAE"
+    ],
+    [
+      60,
+      44,
+      0,
+      45,
+      0,
+      "IMAGE"
+    ],
+    [
+      66,
+      43,
+      0,
+      51,
+      3,
+      "LATENT"
+    ],
+    [
+      93,
+      48,
+      0,
+      50,
+      0,
+      "CLIP"
+    ],
+    [
+      94,
+      48,
+      0,
+      52,
+      0,
+      "CLIP"
+    ],
+    [
+      127,
+      92,
+      0,
+      51,
+      4,
+      "INT"
+    ],
+    [
+      150,
+      102,
+      0,
+      106,
+      0,
+      "MODEL"
+    ],
+    [
+      151,
+      107,
+      0,
+      106,
+      1,
+      "IMAGE"
+    ],
+    [
+      159,
+      52,
+      0,
+      109,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      163,
+      109,
+      0,
+      51,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      164,
+      109,
+      1,
+      51,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      166,
+      108,
+      0,
+      109,
+      3,
+      "CONTROL_NET"
+    ],
+    [
+      169,
+      50,
+      0,
+      109,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      170,
+      46,
+      0,
+      109,
+      5,
+      "VAE"
+    ],
+    [
+      172,
+      102,
+      0,
+      110,
+      0,
+      "MODEL"
+    ],
+    [
+      173,
+      102,
+      1,
+      110,
+      1,
+      "MODEL"
+    ],
+    [
+      174,
+      102,
+      2,
+      110,
+      2,
+      "MODEL"
+    ],
+    [
+      175,
+      97,
+      0,
+      110,
+      3,
+      "IMAGE"
+    ],
+    [
+      176,
+      110,
+      0,
+      109,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      180,
+      105,
+      0,
+      109,
+      4,
+      "IMAGE"
+    ],
+    [
+      184,
+      47,
+      0,
+      51,
+      0,
+      "MODEL"
+    ],
+    [
+      185,
+      47,
+      0,
+      51,
+      0,
+      "MODEL"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7400249944258194,
+      "offset": [
+        1149.8946398425187,
+        572.9878718971356
+      ]
+    }
+  },
+  "version": 0.4
+}

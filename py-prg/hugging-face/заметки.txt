@@ -1,3 +1,7 @@
 cd /mnt/f/_prg/python/Docker-ComfyUI/hugging-face
 source /mnt/f/_prg/python/Docker-ComfyUI/.venv-wsl/bin/activate
-python3 read-hf-project.py  >kwai.txt
+
+
+python3 read-hf-project.py  \
+    --repo_id ByteDance/InfiniteYou \
+    --download_dir models/infinite_you/
