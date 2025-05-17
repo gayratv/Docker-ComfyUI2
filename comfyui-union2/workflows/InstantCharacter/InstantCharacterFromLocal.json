@@ -1,0 +1,204 @@
+{
+  "id": "895d842a-8b76-4258-a17b-9047cbbc6de3",
+  "revision": 0,
+  "last_node_id": 13,
+  "last_link_id": 4,
+  "nodes": [
+    {
+      "id": 6,
+      "type": "SaveImage",
+      "pos": [
+        926.482666015625,
+        333.0054016113281
+      ],
+      "size": [
+        315,
+        270
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 3
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27"
+      },
+      "widgets_values": [
+        "ComfyUI",
+        ""
+      ]
+    },
+    {
+      "id": 5,
+      "type": "LoadImage",
+      "pos": [
+        -148.6251678466797,
+        517.7960205078125
+      ],
+      "size": [
+        315,
+        314
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            2
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27"
+      },
+      "widgets_values": [
+        "spider.png",
+        "image",
+        ""
+      ]
+    },
+    {
+      "id": 2,
+      "type": "InstantCharacterGenerate",
+      "pos": [
+        442.3385314941406,
+        341.07720947265625
+      ],
+      "size": [
+        400,
+        276
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "pipe",
+          "type": "INSTANTCHAR_PIPE",
+          "link": 4
+        },
+        {
+          "name": "subject_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "InstantCharacterGenerate",
+        "aux_id": "jax-explorer/ComfyUI-InstantCharacter",
+        "ver": "0a0b09f7ff699237a081aa80a553292ab2106325"
+      },
+      "widgets_values": [
+        "The American animated IP, Spider-Man 2099, wearing a futuristic suit, leaps between cybernetic cityscapes with neon lights crisscrossing the background, exuding a strong sense of technology.",
+        1024,
+        1024,
+        3.5,
+        28,
+        1049281553832103,
+        "randomize",
+        0.9
+      ]
+    },
+    {
+      "id": 7,
+      "type": "InstantCharacterLoadModelFromLocal",
+      "pos": [
+        -133.9701690673828,
+        192.62173461914062
+      ],
+      "size": [
+        340.20001220703125,
+        154
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INSTANTCHAR_PIPE",
+          "type": "INSTANTCHAR_PIPE",
+          "links": [
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "InstantCharacterLoadModel"
+      },
+      "widgets_values": [
+        "models/FLUX.1-dev",
+        "models/google/siglip-so400m-patch14-384",
+        "models/facebook/dinov2-giant",
+        "models/InstantCharacter/instantcharacter_ip-adapter.bin",
+        false
+      ]
+    }
+  ],
+  "links": [
+    [
+      2,
+      5,
+      0,
+      2,
+      1,
+      "IMAGE"
+    ],
+    [
+      3,
+      2,
+      0,
+      6,
+      0,
+      "IMAGE"
+    ],
+    [
+      4,
+      7,
+      0,
+      2,
+      0,
+      "INSTANTCHAR_PIPE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.1,
+      "offset": [
+        486.6873837530304,
+        34.905245727143566
+      ]
+    }
+  },
+  "version": 0.4
+}

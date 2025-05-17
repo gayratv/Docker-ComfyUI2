@@ -207,6 +207,46 @@ export REQ_MODIFY="base-CUDA-12.6"
 
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+InstantCharacter
+https://github.com/Tencent/InstantCharacter
+https://www.patreon.com/posts/how-to-run-by-128780210
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+./workflow-new-image.sh "InstantCharacter"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+export MODELS="InstantCharacter"
+export WORKFLOW_TO_COPY=$MODELS
+export VERSION="$MODELS-CUDA12.6"
+export NODES="$MODELS.txt"
+export IMAGE_NAME="comfyui-union2"
+export COMFYUI_VERSION="v0.3.34"
+export BASE_IMAGE="cuda-12-6:nvidia-runtime"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
+export REQ_MODIFY="base-CUDA-12.6"
+
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+Inpainting with Flux & Segment Anything 2
+https://www.patreon.com/posts/inpainting-with-110331040
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+./workflow-new-image.sh "Inpainting-Flux-Segment-Anything"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+export MODELS="Inpainting-Flux-Segment-Anything"
+export WORKFLOW_TO_COPY=$MODELS
+export VERSION="$MODELS-CUDA12.6"
+export NODES="$MODELS.txt"
+export IMAGE_NAME="comfyui-union2"
+export COMFYUI_VERSION="v0.3.34"
+export BASE_IMAGE="cuda-12-6:nvidia-runtime"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
+export REQ_MODIFY="base-CUDA-12.6"
+
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->

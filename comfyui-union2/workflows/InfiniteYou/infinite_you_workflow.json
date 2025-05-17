@@ -18,7 +18,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 11,
+      "order": 12,
       "mode": 0,
       "inputs": [
         {
@@ -30,7 +30,6 @@
       "outputs": [
         {
           "name": "CONDITIONING",
-          "shape": 3,
           "type": "CONDITIONING",
           "slot_index": 0,
           "links": [
@@ -42,6 +41,8 @@
       ],
       "title": "CLIP Text Encode (EMPTY)",
       "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.34",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
@@ -60,7 +61,7 @@
         86
       ],
       "flags": {},
-      "order": 13,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
@@ -94,7 +95,10 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ExtractIDEmbedding"
+        "cnr_id": "infiniteyou",
+        "ver": "96710270ffee0b52c9b8d94dd43dfd2e0646ac3b",
+        "Node name for S&R": "ExtractIDEmbedding",
+        "aux_id": "bytedance/ComfyUI_InfiniteYou"
       },
       "widgets_values": []
     },
@@ -112,7 +116,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 15,
+      "order": 17,
       "mode": 0,
       "inputs": [
         {
@@ -123,11 +127,12 @@
       ],
       "outputs": [],
       "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.34",
         "Node name for S&R": "SaveImage"
       },
       "widgets_values": [
-        "ComfyUI",
-        ""
+        "ComfyUI"
       ]
     },
     {
@@ -144,7 +149,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 14,
+      "order": 16,
       "mode": 0,
       "inputs": [
         {
@@ -169,6 +174,8 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.34",
         "Node name for S&R": "VAEDecode"
       },
       "widgets_values": []
@@ -185,7 +192,7 @@
         206
       ],
       "flags": {},
-      "order": 17,
+      "order": 14,
       "mode": 0,
       "inputs": [
         {
@@ -210,7 +217,6 @@
         },
         {
           "name": "image",
-          "shape": 7,
           "type": "IMAGE",
           "link": 180
         },
@@ -238,7 +244,10 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "InfuseNetApply"
+        "cnr_id": "infiniteyou",
+        "ver": "96710270ffee0b52c9b8d94dd43dfd2e0646ac3b",
+        "Node name for S&R": "InfuseNetApply",
+        "aux_id": "bytedance/ComfyUI_InfiniteYou"
       },
       "widgets_values": [
         1,
@@ -274,6 +283,8 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.34",
         "Node name for S&R": "EmptyLatentImage"
       },
       "widgets_values": [
@@ -316,7 +327,7 @@
         "Run widget replace on values": false
       },
       "widgets_values": [
-        1117450117680779,
+        969676247301678,
         "randomize"
       ]
     },
@@ -332,7 +343,7 @@
         102
       ],
       "flags": {},
-      "order": 12,
+      "order": 13,
       "mode": 0,
       "inputs": [
         {
@@ -356,7 +367,10 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ExtractFacePoseImage"
+        "cnr_id": "infiniteyou",
+        "ver": "96710270ffee0b52c9b8d94dd43dfd2e0646ac3b",
+        "Node name for S&R": "ExtractFacePoseImage",
+        "aux_id": "bytedance/ComfyUI_InfiniteYou"
       },
       "widgets_values": [
         864,
@@ -385,12 +399,15 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            178
+            178,
+            180
           ]
         }
       ],
       "title": "Empty Pose Image",
       "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.34",
         "Node name for S&R": "EmptyImage"
       },
       "widgets_values": [
@@ -398,6 +415,185 @@
         1152,
         1,
         0
+      ]
+    },
+    {
+      "id": 108,
+      "type": "InfuseNetLoader",
+      "pos": [
+        -128.15025329589844,
+        920.6913452148438
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CONTROL_NET",
+          "type": "CONTROL_NET",
+          "links": [
+            157,
+            166
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "infiniteyou",
+        "ver": "96710270ffee0b52c9b8d94dd43dfd2e0646ac3b",
+        "Node name for S&R": "InfuseNetLoader",
+        "aux_id": "bytedance/ComfyUI_InfiniteYou"
+      },
+      "widgets_values": [
+        "aes_stage2/infusenet_aes_fp8e4m3fn.safetensors"
+      ]
+    },
+    {
+      "id": 102,
+      "type": "IDEmbeddingModelLoader",
+      "pos": [
+        -999.3194580078125,
+        746.9200439453125
+      ],
+      "size": [
+        374.6639709472656,
+        170.36888122558594
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "FACE_DETECTOR",
+          "type": "MODEL",
+          "links": [
+            140,
+            150,
+            172
+          ]
+        },
+        {
+          "name": "ARCFACE_MODEL",
+          "type": "MODEL",
+          "links": [
+            141,
+            173
+          ]
+        },
+        {
+          "name": "IMAGE_PROJ_MODEL",
+          "type": "MODEL",
+          "links": [
+            142,
+            174
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "infiniteyou",
+        "ver": "96710270ffee0b52c9b8d94dd43dfd2e0646ac3b",
+        "Node name for S&R": "IDEmbeddingModelLoader",
+        "aux_id": "bytedance/ComfyUI_InfiniteYou"
+      },
+      "widgets_values": [
+        "aes_stage2/image_proj_model.bin",
+        8,
+        "CUDA",
+        "AUTO"
+      ]
+    },
+    {
+      "id": 50,
+      "type": "CLIPTextEncodeFlux",
+      "pos": [
+        -572.113525390625,
+        265.6330871582031
+      ],
+      "size": [
+        357.9499816894531,
+        361.7095031738281
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 93
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            64,
+            133,
+            169
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.34",
+        "Node name for S&R": "CLIPTextEncodeFlux"
+      },
+      "widgets_values": [
+        "A young woman holding a sign with the text \"InfiniteYou\", \"Infinite\" in black and \"You\" in red, pure background",
+        "A young woman holding a sign with the text \"InfiniteYou\", \"Infinite\" in black and \"You\" in red, pure background",
+        3.5
+      ]
+    },
+    {
+      "id": 97,
+      "type": "LoadImage",
+      "pos": [
+        -985.9622802734375,
+        981.4930419921875
+      ],
+      "size": [
+        315,
+        314
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            139,
+            144,
+            167,
+            175
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "title": "Load ID Image",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.34",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "woman20.jpg",
+        "image"
       ]
     },
     {
@@ -412,13 +608,12 @@
         58
       ],
       "flags": {},
-      "order": 3,
+      "order": 6,
       "mode": 0,
       "inputs": [],
       "outputs": [
         {
           "name": "VAE",
-          "shape": 3,
           "type": "VAE",
           "slot_index": 0,
           "links": [
@@ -430,10 +625,50 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.34",
         "Node name for S&R": "VAELoader"
       },
       "widgets_values": [
-        "ae.safetensors"
+        "FLUX/flux.vae.safetensors"
+      ]
+    },
+    {
+      "id": 48,
+      "type": "DualCLIPLoader",
+      "pos": [
+        -987.113525390625,
+        476.66717529296875
+      ],
+      "size": [
+        356.2766418457031,
+        130
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            93,
+            94
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.34",
+        "Node name for S&R": "DualCLIPLoader"
+      },
+      "widgets_values": [
+        "FLUX/t5xxl_fp8_e4m3fn.safetensors",
+        "FLUX/clip_l.safetensors",
+        "flux",
+        "default"
       ]
     },
     {
@@ -444,11 +679,11 @@
         418.0480041503906
       ],
       "size": [
-        210,
-        238
+        296.7422180175781,
+        262
       ],
       "flags": {},
-      "order": 16,
+      "order": 15,
       "mode": 0,
       "inputs": [
         {
@@ -483,7 +718,6 @@
       "outputs": [
         {
           "name": "LATENT",
-          "shape": 3,
           "type": "LATENT",
           "slot_index": 0,
           "links": [
@@ -492,10 +726,12 @@
         }
       ],
       "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.34",
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
-        1117450117680779,
+        969676247301678,
         "fixed",
         4,
         1,
@@ -505,129 +741,56 @@
       ]
     },
     {
-      "id": 48,
-      "type": "DualCLIPLoader",
+      "id": 47,
+      "type": "UNETLoader",
       "pos": [
-        -987.113525390625,
-        476.66717529296875
+        -980.1280517578125,
+        264.6694030761719
       ],
       "size": [
-        356.2766418457031,
-        130
+        346.0003356933594,
+        94.20443725585938
       ],
-      "flags": {},
-      "order": 4,
+      "flags": {
+        "collapsed": false
+      },
+      "order": 8,
       "mode": 0,
       "inputs": [],
       "outputs": [
         {
-          "name": "CLIP",
-          "shape": 3,
-          "type": "CLIP",
+          "name": "MODEL",
+          "type": "MODEL",
           "slot_index": 0,
           "links": [
-            93,
-            94
+            149,
+            185
           ]
         }
       ],
       "properties": {
-        "Node name for S&R": "DualCLIPLoader"
+        "cnr_id": "comfy-core",
+        "ver": "0.3.34",
+        "Node name for S&R": "UNETLoader"
       },
       "widgets_values": [
-        "t5xxl_fp8_e4m3fn.safetensors",
-        "clip_l.safetensors",
-        "flux",
-        "default"
-      ]
-    },
-    {
-      "id": 108,
-      "type": "InfuseNetLoader",
-      "pos": [
-        -128.15025329589844,
-        920.6913452148438
-      ],
-      "size": [
-        315,
-        58
-      ],
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "CONTROL_NET",
-          "type": "CONTROL_NET",
-          "links": [
-            157,
-            166
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "InfuseNetLoader"
-      },
-      "widgets_values": [
-        "aes_stage2/infusenet_aes_fp8e4m3fn.safetensors"
-      ]
-    },
-    {
-      "id": 97,
-      "type": "LoadImage",
-      "pos": [
-        -985.9622802734375,
-        981.4930419921875
-      ],
-      "size": [
-        315,
-        314
-      ],
-      "flags": {},
-      "order": 6,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            139,
-            144,
-            167,
-            175
-          ]
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": null
-        }
-      ],
-      "title": "Load ID Image",
-      "properties": {
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "woman.jpg",
-        "image",
-        ""
+        "FLUX/flux1-schnell-fp8-e4m3fn.safetensors",
+        "fp8_e4m3fn_fast"
       ]
     },
     {
       "id": 107,
       "type": "LoadImage",
       "pos": [
-        -558.5816650390625,
-        982.09228515625
+        -598.580322265625,
+        1014.5235595703125
       ],
       "size": [
         315,
-        314
+        314.00006103515625
       ],
       "flags": {},
-      "order": 7,
+      "order": 9,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -646,147 +809,13 @@
       ],
       "title": "Load Control Image",
       "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.34",
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "woman.jpg",
-        "image",
-        ""
-      ]
-    },
-    {
-      "id": 102,
-      "type": "IDEmbeddingModelLoader",
-      "pos": [
-        -999.3194580078125,
-        746.9200439453125
-      ],
-      "size": [
-        374.6639709472656,
-        170.36888122558594
-      ],
-      "flags": {
-        "collapsed": false
-      },
-      "order": 8,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "FACE_DETECTOR",
-          "type": "MODEL",
-          "links": [
-            140,
-            150,
-            172
-          ]
-        },
-        {
-          "name": "ARCFACE_MODEL",
-          "type": "MODEL",
-          "links": [
-            141,
-            173
-          ]
-        },
-        {
-          "name": "IMAGE_PROJ_MODEL",
-          "type": "MODEL",
-          "links": [
-            142,
-            174
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "IDEmbeddingModelLoader"
-      },
-      "widgets_values": [
-        "aes_stage2/image_proj_model.bin",
-        8,
-        "CUDA",
-        "AUTO"
-      ]
-    },
-    {
-      "id": 50,
-      "type": "CLIPTextEncodeFlux",
-      "pos": [
-        -572.113525390625,
-        265.6330871582031
-      ],
-      "size": [
-        357.9499816894531,
-        361.7095031738281
-      ],
-      "flags": {},
-      "order": 10,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 93
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "shape": 3,
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            64,
-            133,
-            169
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "CLIPTextEncodeFlux"
-      },
-      "widgets_values": [
-        "A young woman holding a sign with the text \"InfiniteYou\", \"Infinite\" in black and \"You\" in red, pure background",
-        "A young woman holding a sign with the text \"InfiniteYou\", \"Infinite\" in black and \"You\" in red, pure background",
-        3.5
-      ]
-    },
-    {
-      "id": 47,
-      "type": "UNETLoader",
-      "pos": [
-        -980.1280517578125,
-        264.6694030761719
-      ],
-      "size": [
-        270,
-        82
-      ],
-      "flags": {
-        "collapsed": false
-      },
-      "order": 9,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "shape": 3,
-          "type": "MODEL",
-          "slot_index": 0,
-          "links": [
-            149,
-            184,
-            185
-          ]
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "UNETLoader"
-      },
-      "widgets_values": [
-        "flux1-schnell-fp8-e4m3fn.safetensors",
-        "fp8_e4m3fn_fast"
+        "beach-bikini-with-multiple-patterns-ktlg6u68t9y7544k.jpg",
+        "image"
       ]
     }
   ],
@@ -960,14 +989,6 @@
       "IMAGE"
     ],
     [
-      184,
-      47,
-      0,
-      51,
-      0,
-      "MODEL"
-    ],
-    [
       185,
       47,
       0,
@@ -982,10 +1003,11 @@
     "ds": {
       "scale": 0.7400249944258194,
       "offset": [
-        1149.8946398425187,
-        572.9878718971356
+        1417.4901706171045,
+        -90.84412221443937
       ]
-    }
+    },
+    "frontendVersion": "1.18.10"
   },
   "version": 0.4
 }
