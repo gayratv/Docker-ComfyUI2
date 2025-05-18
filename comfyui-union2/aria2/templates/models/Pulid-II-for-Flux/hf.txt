@@ -33,7 +33,15 @@ https://huggingface.co/spaces/LiheYoung/Depth-Anything/resolve/main/checkpoints/
     out=depth_anything_vitl14.pth
     dir=models/checkpoints/controlnet
 
-# 🌟 flux1-canny-dev-lora.safetensors  🌟
-https://huggingface.co/black-forest-labs/FLUX.1-Canny-dev-lora/resolve/main/flux1-canny-dev-lora.safetensors
-    out=canny-dev-lora.safetensors
-    dir=models/loras/Flux
+# # 🌟 flux1-canny-dev-lora.safetensors  🌟
+# https://huggingface.co/black-forest-labs/FLUX.1-Canny-dev-lora/resolve/main/flux1-canny-dev-lora.safetensors
+#     out=canny-dev-lora.safetensors
+#     dir=models/loras/Flux
+
+https://huggingface.co/OreX/ControlNet/resolve/main/FLUX%20ControlNet/Flux-Tools-Canny/flux1-canny-dev-FP8.safetensors
+    dir=models/diffusion_models/FLUX/
+    out=flux1-canny-dev-FP8.safetensors
+https://huggingface.co/OreX/ControlNet/resolve/main/FLUX%20ControlNet/Flux-Tools-Depth/flux1-depth-dev-FP8.safetensors
+    dir=models/diffusion_models/FLUX/
+    out=flux1-depth-dev-FP8.safetensors
+
