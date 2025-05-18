@@ -1,0 +1,27 @@
+https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_scribble_fp16.safetensors
+    dir=models/controlnet/1.5
+    out=control_v11p_sd15_scribble_fp16.safetensors
+
+# 🌟 CLIP 🌟
+# clip_l.safetensors
+https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors
+    dir=models/clip
+    out=FLUX/clip_l.safetensors
+
+# Flux-Main/t5xxl_fp8_e4m3fn.safetensors
+https://huggingface.co/OreX/Models/resolve/main/Flux-Main/t5xxl_fp8_e4m3fn.safetensors
+    dir=models/clip
+    out=FLUX/t5xxl_fp8_e4m3fn.safetensors
+
+
+# 🌟 VAE dev 🌟
+https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/vae/diffusion_pytorch_model.safetensors
+  dir=models/vae/FLUX/
+  out=flux.vae.safetensors
+
+
+# 🌟 /Kijai/flux-fp8 🌟
+https://huggingface.co/Kijai/flux-fp8/resolve/main/flux1-dev-fp8-e4m3fn.safetensors
+  dir=models/diffusion_models/FLUX/
+  out=flux1-dev-fp8-e4m3fn.safetensors
+

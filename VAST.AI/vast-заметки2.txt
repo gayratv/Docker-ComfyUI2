@@ -12,6 +12,9 @@ source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui-union2:
 
 export IMAGE_NAME="gayrat/comfyui-union2:Flux-Redux-IP-Adapter-CUDA12.6"
 export IMAGE_NAME="gayrat/comfyui-union2:raw-comfy-CUDA12.6"
+export IMAGE_NAME="gayrat/frame-pack-studio:CU-12.8"
+export IMAGE_NAME="gayrat/comfyui-union2:Inp-Flux-Segment"
+export IMAGE_NAME="gayrat/comfyui-union2:Pulid-II-for-Flux-CUDA12.6"
 
 export IMAGE_NAME_BASE="Inpainting-Flux-Segment-Anything"
 export CUDA="CUDA12.6"
@@ -24,6 +27,7 @@ source vast-contract.sh 19394482 $IMAGE_NAME
 source ./vs.sh
 
 tmux-s-bash.sh
+./dl_common.sh Pulid-II-for-Flux
 ./dl_common.sh Inpainting-Flux-Segment-Anything
 ./dl_common.sh InfiniteYou
 ./dl_common.sh wan-2.1

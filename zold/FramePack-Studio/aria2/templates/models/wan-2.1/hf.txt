@@ -1,0 +1,33 @@
+# 3. wan_2.1_vae: СКАЧАТЬ
+https://huggingface.co/OreX/Models/resolve/main/WAN/wan_2.1_vae.safetensors
+    dir=models/vae
+    out=wan_2.1_vae.safetensors
+
+# 4. clip_vision_h: СКАЧАТЬ
+https://huggingface.co/OreX/Models/resolve/main/WAN/clip_vision_h.safetensors
+    dir=models/clip_vision
+    out=clip_vision_h.safetensors
+
+# 5. umt5: СКАЧАТЬ
+https://huggingface.co/OreX/Models/resolve/main/WAN/umt5_xxl_fp8_e4m3fn_scaled.safetensors
+    dir=models/text_encoders
+    out=umt5_xxl_fp8_e4m3fn_scaled.safetensors
+
+# 6. Модели WAN 2.1:
+# I2V-14B-480p-fp8
+# I2V-14B-720p-fp8
+# I2V-14B-480p-gguf
+# T2V-14B-fp8
+# T2V-1.3B-fp8
+# T2V-1.3B-bf16
+
+# https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1-I2V-14B-480P_fp8_e4m3fn.safetensors
+#     out=Wan2_1-I2V-14B-480P_fp8_e4m3fn.safetensors
+#     dir=models/diffusion_models
+# https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1-I2V-14B-720P_fp8_e4m3fn.safetensors
+#     out=Wan2_1-I2V-14B-720P_fp8_e4m3fn.safetensors
+#     dir=models/diffusion_models
+
+https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1-T2V-14B_fp8_e4m3fn.safetensors
+    out=Wan2_1-T2V-14B_fp8_e4m3fn.safetensors
+    dir=models/diffusion_models

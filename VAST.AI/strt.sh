@@ -20,3 +20,4 @@ source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
 export IMAGE_NAME="$1"
 python3 vast-search-py3.py --ram 32000 --gpu1 "RTX 4090" --gpu2 "RTX 3090" --cuda_max_good "$2"
 #python3 vast-search-py3.py --ram 32000 --gpu1 "RTX 4090" --cuda_max_good "$2"
+#python3 vast-search-py3.py --ram 32000 --gpu1 "RTX 5090" --cuda_max_good "$2"
