@@ -1,30 +1,37 @@
 #!/bin/bash
 
-# Проверяем, передан ли параметр (путь к скрипту)
+# Проверяем аргументы
 if [ -z "$1" ]; then
-  echo "Ошибка: Необходимо указать путь к скрипту как параметр."
-  echo "Пример использования: $0 ComfyUI-Fluxtapoz.sh"
+  echo "Ошибка: Не указано имя модели."
   exit 1
 fi
 
-SCRIPT_PATH="$1"
+MODEL_NAME="$1"
 
-# Создаем директорию для tmux (если нужно)
-# mkdir -p /workspace/tmux-0/
-# chmod 700 -R /workspace/tmux-0
-# export TMUX_TMPDIR=/workspace
-# echo $TMUX_TMPDIR
+# source выполняется ДО создания tmux-сессии
+if [ "$2" = "local" ]; then
+  source ../load-env.sh
+  echo -e "CIVITAI_TOKEN : $CIVITAI_TOKEN \n"
+fi
 
-# Запускаем tmux сессию
-tmux new-session -d -s comfy 'comfy.sh'
+# Убиваем старую сессию
+tmux kill-session -t comfy 2>/dev/null
 
+# Создаём новую фоновую сессию (уже с нужным окружением)
+tmux new-session -d -s comfy
 
+# Первое окно
+tmux send-keys -t comfy:0 "comfy.sh; echo 'Нажми Enter'; read" C-m
 
-tmux new-window -t comfy:1 "bash -c 'cd /workspace/aria2/templates && ./$SCRIPT_PATH'"
+# Второе окно
+tmux new-window -t comfy -n "Download" \
+  "bash -c './dl_common.sh \"$MODEL_NAME\"; echo \"Нажми Enter\"; read'"
 
-# Выбираем первое окно и подключаемся к сессии
+# Третье окно
+tmux new-window -t comfy -n "bash" "bash"
+
+# Подключаемся
 tmux select-window -t comfy:0
 tmux attach-session -t comfy
 
-# nano /usr/local/bin/tmux-s.sh
-# tmux-s.sh ComfyUI-Fluxtapoz.sh
+# tmux-s.sh ControlNet-Flux-Tools-OreX local

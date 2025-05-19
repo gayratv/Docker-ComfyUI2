@@ -29,6 +29,7 @@ source ./vs.sh
 
 ssh -p $VAST_SSH "root@$VAST_PUBLIC_IPADDR" -i ~/.ssh/mvps/ud_rsa
 tmux-s-bash.sh
+./dl_common.sh ControlNet-Flux-Tools-OreX
 ./dl_common.sh FACESWAP-8
 ./dl_common.sh character-v3
 ./dl_common.sh Pulid-II-for-Flux

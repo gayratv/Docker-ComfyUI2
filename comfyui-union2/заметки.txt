@@ -364,33 +364,11 @@ export REQ_MODIFY="base-CUDA-12.6"
 ./db.sh
 ./dr.sh
 
-docker tag "$IMAGE_NAME:$VERSION" gayrat/"$IMAGE_NAME:$VERSION"
-echo "docker push gayrat/$IMAGE_NAME:$VERSION"
-docker push gayrat/"$IMAGE_NAME:$VERSION"
+HOST_PATH=/mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/
+IMAGE_NAME=comfyui-union2
+docker cp  "${HOST_PATH}.env" "$IMAGE_NAME":/workspace/aria2/templates/
+docker cp  "${HOST_PATH}tmux-s.sh" "$IMAGE_NAME":/usr/local/bin/
 
-==== RUN tmux-s-bash.sh
-
-echo "run --name $IMAGE_NAME $IMAGE_NAME:$VERSION"
-docker rm -f "$IMAGE_NAME"
-docker run -it --privileged --gpus all -p 8188:8188 \
-    -v /mnt/h/ComfyUI-data/models:/workspace/ComfyUI/models \
-    --name "$IMAGE_NAME" "$IMAGE_NAME:$VERSION" \
-    tmux-s-bash.sh
-
-====
-
-docker rm -f "$IMAGE_NAME"
-docker run -it --privileged --gpus all -p 8188:8188 \
-    -v /mnt/h/ComfyUI-data/models:/workspace/ComfyUI/models \
-    --name "$IMAGE_NAME" "$IMAGE_NAME:$VERSION" \
-    bash
-
-docker rm -f "$IMAGE_NAME"
-docker run -it --privileged --gpus all -p 8188:8188 \
-    --name "$IMAGE_NAME" "$IMAGE_NAME:$VERSION" \
-    bash
-
-docker exec -it "$IMAGE_NAME" bash
 
 docker cp "$IMAGE_NAME":/workspace/ComfyUI/requirements-common.txt ./requirements-common.txt
 docker cp  "/mnt/f/_prg/ComfyUI/схемы/ACE/ACE examples/workflow/ComfyUI-ACE_Plus/" "$IMAGE_NAME":/workspace/ComfyUI/custom_nodes/
@@ -428,3 +406,4 @@ echo $CIVITAI_TOKEN
 
 export HOST_PATH="/mnt/d/1/ComfyUI_LayerStyle_Advance"
 docker cp "$HOST_PATH/py/gemini.py" imageresize:/workspace/ComfyUI/custom_nodes/ComfyUI_LayerStyle_Advance/py/gemini.py
+

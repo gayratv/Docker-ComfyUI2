@@ -12,4 +12,6 @@ docker run -it --privileged --gpus all -p 8188:8188 -p 1188:1188 \
     -e "google_api_key=$GOOGLE_API" \
     -v /mnt/h/ComfyUI-data/models:/workspace/ComfyUI/models \
     --name "$IMAGE_NAME" "$IMAGE_NAME:$VERSION" \
-    tmux-s-bash.sh
+    bash
+#    tmux-s.sh
+#    tmux-s-bash.sh
