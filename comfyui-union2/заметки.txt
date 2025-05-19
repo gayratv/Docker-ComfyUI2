@@ -311,6 +311,27 @@ export REQ_MODIFY="base-CUDA-12.6"
 
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+FACESWAP 8.json
+200 wf
+https://www.youtube.com/watch?v=pXpsLvtyFfU&t=18s
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+./workflow-new-image.sh "FACESWAP-8"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+export MODELS="FACESWAP-8"
+export WORKFLOW_TO_COPY=$MODELS
+export VERSION="$MODELS-CUDA12.6"
+export NODES="$MODELS.txt"
+export IMAGE_NAME="comfyui-union2"
+export COMFYUI_VERSION="v0.3.34"
+export BASE_IMAGE="cuda-12-6:nvidia-runtime"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
+export REQ_MODIFY="base-CUDA-12.6"
+
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->

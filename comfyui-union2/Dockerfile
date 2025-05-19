@@ -103,6 +103,10 @@ COPY --from=builder /usr/local/lib/python3.11/dist-packages /usr/local/lib/pytho
 RUN echo -e "Копируем рабочую директорию"
 COPY --from=builder /workspace /workspace
 
+WORKDIR /workspace/ComfyUI
+COPY assets-docker/styles.csv ./
+COPY input/ ./input/
+
 ENV DOWNLOADS_DIR=/usr/local/bin
 
 WORKDIR /usr/local/bin
@@ -175,6 +179,8 @@ RUN --mount=type=cache,target=/root/pip-cache \
 #COPY python-prg/ComfyUI_LayerStyle_Advance/py/gemini.py ./
 
 WORKDIR /workspace/ComfyUI
+
+
 
 RUN echo "cd /workspace/aria2/templates" >> /root/.bashrc \
   && echo "set -g mouse on" >> ~/.tmux.conf

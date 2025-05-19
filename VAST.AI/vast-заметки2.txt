@@ -11,7 +11,7 @@ source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui-union2:
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui-union2:PuLID_flux-CUDA12.6" "12.6"
 
 
-export IMAGE_NAME_BASE="Inpainting-Flux-Segment-Anything"
+export IMAGE_NAME_BASE="character-v3"
 export CUDA="CUDA12.6"
 export IMAGE_NAME="gayrat/comfyui-union2:${IMAGE_NAME_BASE}-${CUDA}"
 echo -e "IMAGE_NAME : ${IMAGE_NAME}"
@@ -24,10 +24,11 @@ export IMAGE_NAME="gayrat/comfyui-union2:Pulid-II-for-Flux-CUDA12.6"
 
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.6"
 
-source vast-contract.sh 19394480 $IMAGE_NAME
+source vast-contract.sh 19394482 $IMAGE_NAME
 source ./vs.sh
 
 tmux-s-bash.sh
+./dl_common.sh character-v3
 ./dl_common.sh Pulid-II-for-Flux
 ./dl_common.sh Inpainting-Flux-Segment-Anything
 ./dl_common.sh InfiniteYou
@@ -73,6 +74,11 @@ python3 vast-search-py.py --gpu "RTX 3090" --ram 32000
 python3 vast-search-py.py --gpu "RTX 4090" --ram 32000
 python3 vast-search-py.py --gpu "RTX 5090" --ram 32000
 
+
+ssh -p 45515 root@142.189.181.130 -L 8080:localhost:8080
+mkdir /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/output
+cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/output
+scp -r -P 45515 -i ~/.ssh/mvps/ud_rsa "root@142.189.181.130:'/workspace/ComfyUI/output/CHARACTER V3'" .
 
 
 scp -P 38068 -i ~/.ssh/mvps/ud_rsa root@76.69.199.17:/workspace/ComfyUI/temp/FramePack_00001.mp4 .
