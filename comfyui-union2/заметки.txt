@@ -332,6 +332,27 @@ export REQ_MODIFY="base-CUDA-12.6"
 
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+OreX ControlNet Flux Tools | Flux Canny | Flux Depth
+https://boosty.to/stabledif/posts/48f2e6d3-cb76-42c0-a0ee-5cd524f0170b?comment=8302827&from=email
+
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+./workflow-new-image.sh "ControlNet-Flux-Tools-OreX"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+export MODELS="ControlNet-Flux-Tools-OreX"
+export WORKFLOW_TO_COPY=$MODELS
+export VERSION="$MODELS-CUDA12.6"
+export NODES="$MODELS.txt"
+export IMAGE_NAME="comfyui-union2"
+export COMFYUI_VERSION="v0.3.34"
+export BASE_IMAGE="cuda-12-6:nvidia-runtime"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
+export REQ_MODIFY="base-CUDA-12.6"
+
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
@@ -339,6 +360,9 @@ export REQ_MODIFY="base-CUDA-12.6"
 
 ./db.sh
 ./dp.sh
+
+./db.sh
+./dr.sh
 
 docker tag "$IMAGE_NAME:$VERSION" gayrat/"$IMAGE_NAME:$VERSION"
 echo "docker push gayrat/$IMAGE_NAME:$VERSION"

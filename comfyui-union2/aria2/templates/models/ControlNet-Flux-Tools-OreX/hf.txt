@@ -1,0 +1,35 @@
+# 2.1 Скачать модель Flux CANNY: FP16, FP8, GGUF
+# (models / diffusion_models)
+https://huggingface.co/OreX/ControlNet/resolve/main/FLUX%20ControlNet/Flux-Tools-Canny/flux1-canny-dev-fp16-Q4_0-GGUF.gguf
+    dir=models/diffusion_models/Flux
+    out=flux1-canny-dev-fp16-Q4_0-GGUF.gguf
+
+# https://huggingface.co/OreX/ControlNet/resolve/main/FLUX%20ControlNet/Flux-Tools-Canny/flux1-canny-dev-FP8.safetensors
+#     dir=models/diffusion_models/Flux
+#     out=flux1-canny-dev-FP8.safetensors
+
+# 2.2 Скачать модель Flux DEPTH: FP16, FP8, GGUF
+#
+https://huggingface.co/OreX/ControlNet/resolve/main/FLUX%20ControlNet/Flux-Tools-Depth/flux1-depth-dev-FP8.safetensors
+    dir=models/diffusion_models/Flux
+    out=flux1-depth-dev-FP8.safetensors
+
+https://huggingface.co/OreX/ControlNet/resolve/main/FLUX%20ControlNet/Flux-Tools-Depth/flux1-depth-dev-fp16-Q4_0-GGUF.gguf
+    out=flux1-depth-dev-fp16-Q4_0-GGUF.gguf
+    dir=models/diffusion_models/Flux
+
+
+# 3. Если у вас нет модели T5 от Flux или SD3 то скачайте:
+# FP8-ССЫЛКА, FP16-СКАЧАТЬ, GGUF-СКАЧАТЬ
+https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors
+    dir=models/clip/Flux
+    out=t5xxl_fp8_e4m3fn.safetensors
+
+https://huggingface.co/OreX/Models/resolve/main/Flux-Main/clip_l.safetensors
+    out=clip_l.safetensors
+    dir=models/clip/Flux
+
+# 5. Если у вас нет Flux VAE то скачайте: СКАЧАТЬ
+https://huggingface.co/OreX/Models/resolve/main/Flux-Main/Flux-vae.safetensors
+    dir=models/vae
+    out=Flux-vae.safetensors

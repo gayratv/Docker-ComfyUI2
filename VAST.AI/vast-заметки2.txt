@@ -11,7 +11,7 @@ source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui-union2:
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "gayrat/comfyui-union2:PuLID_flux-CUDA12.6" "12.6"
 
 
-export IMAGE_NAME_BASE="character-v3"
+export IMAGE_NAME_BASE="ControlNet-Flux-Tools-OreX"
 export CUDA="CUDA12.6"
 export IMAGE_NAME="gayrat/comfyui-union2:${IMAGE_NAME_BASE}-${CUDA}"
 echo -e "IMAGE_NAME : ${IMAGE_NAME}"
@@ -27,7 +27,9 @@ source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.6"
 source vast-contract.sh 19394482 $IMAGE_NAME
 source ./vs.sh
 
+ssh -p $VAST_SSH "root@$VAST_PUBLIC_IPADDR" -i ~/.ssh/mvps/ud_rsa
 tmux-s-bash.sh
+./dl_common.sh FACESWAP-8
 ./dl_common.sh character-v3
 ./dl_common.sh Pulid-II-for-Flux
 ./dl_common.sh Inpainting-Flux-Segment-Anything

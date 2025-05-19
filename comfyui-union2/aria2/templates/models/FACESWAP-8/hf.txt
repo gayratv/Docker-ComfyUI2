@@ -1,0 +1,115 @@
+
+# ACE-portrait-lora [584.36MB]
+https://huggingface.co/ali-vilab/ACE_Plus/resolve/main/portrait/comfyui_portrait_lora64.safetensors
+    out=comfyui_portrait_lora64.safetensors
+    dir=models/loras/ACE
+
+# clip l for gguf [234.74MB]
+https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors
+    out=clip_l-for-gguf.safetensors
+    dir=models/clip
+
+# clip-t5xxl fp8 [4667.22MB]
+https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors
+    out=t5xxl_fp8_e4m3fn.safetensors
+    dir=models/clip
+
+# controlnet-union-sdxl-1 [2396.91MB]
+https://huggingface.co/xinsir/controlnet-union-sdxl-1.0/resolve/main/diffusion_pytorch_model_promax.safetensors
+    out=controlnet-union-sdxl-1.0.safetensors
+    dir=models/controlnet
+
+# Flux vae [319.77MB]
+https://huggingface.co/StableDiffusionVN/Flux/resolve/main/Vae/flux_vae.safetensors
+    out=ae.safetensors
+    dir=models/vae/FLUX1
+
+# fluxFillFP8_v10 [11351.14MB]
+https://huggingface.co/jackzheng/flux-fill-FP8/resolve/main/fluxFillFP8_v10.safetensors
+    out=fluxFillFP8_v10.safetensors
+    dir=models/unet
+
+# instanID control net [822.44MB]
+https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/diffusion_pytorch_model.safetensors?download=true
+    out=diffusion_pytorch_model.safetensors
+    dir=models/controlnet
+
+# instantID ip adapter [1612.79MB]
+https://huggingface.co/InstantX/InstantID/resolve/main/ip-adapter.bin?download=true
+    out=ip-adapter.bin
+    dir=models/instantid
+
+# realvisxlV40_v40Lightning [6617.76MB]
+https://huggingface.co/alexgenovese/reica_models/resolve/021e192bd744c48a85f8ae1832662e77beb9aac7/realvisxlV40_v40LightningBakedvae.safetensors
+    out=realvisxlV40_v40LightningBakedvae.safetensors
+    dir=models/checkpoints
+
+# sam_vit_b_01ec64 pth [357.67MB]
+https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/sams/sam_vit_b_01ec64.pth
+    out=sam_vit_b_01ec64.pth
+    dir=models/sams
+
+https://huggingface.co/ezioruan/inswapper_128.onnx/resolve/main/inswapper_128.onnx
+    out=inswapper_128.onnx
+    dir=models/insightface
+
+
+# 🌟Load Style Model🌟
+# Download Link: https://huggingface.co/black-forest-labs/FLUX.1-Redux-dev/tree/main
+# File Name: flux1-redux-dev.safetensors
+# Directory: ComfyUI/models/style_models/
+https://huggingface.co/black-forest-labs/FLUX.1-Redux-dev/resolve/main/flux1-redux-dev.safetensors
+   dir=models/style_models/Flux
+   out=flux1-redux-dev.safetensors
+
+## 🌟 /Kijai/flux-fp8 🌟
+#https://huggingface.co/Kijai/flux-fp8/resolve/main/flux1-dev-fp8-e4m3fn.safetensors
+#  dir=models/diffusion_models/FLUX/
+#  out=flux1-dev-fp8-e4m3fn.safetensors
+
+# 🌟 CLIP 🌟
+# clip_l.safetensors
+https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors
+    dir=models/clip
+    out=FLUX/clip_l.safetensors
+
+# Flux-Main/t5xxl_fp8_e4m3fn.safetensors
+https://huggingface.co/OreX/Models/resolve/main/Flux-Main/t5xxl_fp8_e4m3fn.safetensors
+    dir=models/clip
+    out=FLUX/t5xxl_fp8_e4m3fn.safetensors
+
+
+# 🌟 VAE dev 🌟
+https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/vae/diffusion_pytorch_model.safetensors
+  dir=models/vae/FLUX/
+  out=flux.vae.safetensors
+
+# 🌟 Flux fill 🌟
+https://huggingface.co/OreX/ControlNet/resolve/main/FLUX%20ControlNet/flux1-fill-dev-FP8.safetensors
+  dir=models/diffusion_models/Flux
+  out=flux1-fill-dev-FP8.safetensors
+
+# 🌟 sigclip_vision_384 🌟
+https://huggingface.co/Comfy-Org/sigclip_vision_384/resolve/main/sigclip_vision_patch14_384.safetensors
+    dir=models/clip_vision
+    out=sigclip_vision_patch14_384.safetensors
+
+#========================
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/1k3d68.onnx
+      dir=models/insightface/models/antelopev2
+      out=1k3d68.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/2d106det.onnx
+      dir=models/insightface/models/antelopev2
+      out=2d106det.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/genderage.onnx
+      dir=models/insightface/models/antelopev2
+      out=genderage.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/glintr100.onnx
+      dir=models/insightface/models/antelopev2
+      out=glintr100.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/readme.md
+      dir=models/insightface/models/antelopev2
+      out=readme.md
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/scrfd_10g_bnkps.onnx
+      dir=models/insightface/models/antelopev2
+      out=scrfd_10g_bnkps.onnx
