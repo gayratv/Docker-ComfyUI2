@@ -27,6 +27,9 @@ source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.6"
 source vast-contract.sh 19394482 $IMAGE_NAME
 source ./vs.sh
 
+tmux-s.sh ControlNet-Flux-Tools-OreX
+
+
 ssh -p $VAST_SSH "root@$VAST_PUBLIC_IPADDR" -i ~/.ssh/mvps/ud_rsa
 tmux-s-bash.sh
 ./dl_common.sh ControlNet-Flux-Tools-OreX
