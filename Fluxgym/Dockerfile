@@ -4,6 +4,7 @@ FROM ${BASE_IMAGE} AS builder
 
 WORKDIR /usr/local/bin
 COPY ./bash-scripts/build/*.sh ./
+COPY ./bash-scripts/*.sh ./
 RUN chmod +x ./*.sh
 
 WORKDIR /workspace
@@ -41,6 +42,16 @@ RUN --mount=type=cache,target=/root/repo-cache \
         echo "Skipping RUN because NODES is set to 'nodes1.txt'"; \
     fi
 
+RUN mv /workspace/ComfyUI/custom_nodes/fluxgym /workspace/ \
+  && mv /workspace/ComfyUI/custom_nodes/sd-scripts /workspace/fluxgym/
+
+WORKDIR /workspace/fluxgym/sd-scripts
+
+RUN --mount=type=cache,target=/root/pip-cache \
+    git checkout -b sd3 origin/sd3 \
+    && pip install -r requirements.txt \
+    && rm -rf /root/.cache/pip
+
 RUN --mount=type=cache,target=/root/pip-cache \
   pip uninstall -y xformers torch typing_extensions \
   && pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126 \
@@ -57,12 +68,14 @@ RUN chmod +x *.sh \
     && chmod +x ./templates/*.sh \
     && rm -f ./templates/.env
 
-RUN mv /workspace/ComfyUI/custom_nodes/fluxgym /workspace/ \
-  && mv /workspace/ComfyUI/custom_nodes/sd-scripts /workspace/fluxgym/
 
 WORKDIR /workspace/fluxgym
 
 RUN echo "cd /workspace/aria2/templates" >> /root/.bashrc \
   && echo "set -g mouse on" >> ~/.tmux.conf
+
+EXPOSE 7860
+
+ENV GRADIO_SERVER_NAME="0.0.0.0"
 
 CMD ["bash"]
