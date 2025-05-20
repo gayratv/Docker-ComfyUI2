@@ -21,17 +21,21 @@ export IMAGE_NAME="gayrat/comfyui-union2:raw-comfy-CUDA12.6"
 export IMAGE_NAME="gayrat/frame-pack-studio:CU-12.8"
 export IMAGE_NAME="gayrat/comfyui-union2:Inp-Flux-Segment"
 export IMAGE_NAME="gayrat/comfyui-union2:Pulid-II-for-Flux-CUDA12.6"
+export IMAGE_NAME="gayrat/fluxgym:fluxgym-CUDA12.6"
 
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.6"
 
-source vast-contract.sh 19394482 $IMAGE_NAME
+source vast-contract.sh 19394480 $IMAGE_NAME
 source ./vs.sh
 
 tmux-s.sh ControlNet-Flux-Tools-OreX
+tmux-s-bash.sh
 
 
 ssh -p $VAST_SSH "root@$VAST_PUBLIC_IPADDR" -i ~/.ssh/mvps/ud_rsa
+
 tmux-s-bash.sh
+./dl_common.sh Fluxgym
 ./dl_common.sh ControlNet-Flux-Tools-OreX
 ./dl_common.sh FACESWAP-8
 ./dl_common.sh character-v3

@@ -1,10 +1,11 @@
 # ====== Stage 1: Builder ======
 ARG BASE_IMAGE="gayrat/comfyui-base-cuda-12-4:v2.0"
-FROM ${BASE_IMAGE} AS builder
+FROM ${BASE_IMAGE}
 
 WORKDIR /usr/local/bin
 COPY ./bash-scripts/build/*.sh ./
 COPY ./bash-scripts/*.sh ./
+COPY ./*.sh ./
 RUN chmod +x ./*.sh
 
 WORKDIR /workspace

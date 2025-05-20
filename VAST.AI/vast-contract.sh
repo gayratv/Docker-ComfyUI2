@@ -27,7 +27,7 @@ vastai create instance "$INSTANCE_ID" \
     --disk 100 \
     --ssh --direct \
     --onstart-cmd 'env >> /etc/environment ; tmux source-file ~/.tmux.conf ; touch ~/.no_auto_tmux; ' \
-    --env '-p 8188:8188' \
+    --env '-p 8188:8188 -p 7860:7860' \
     > vast-create-instance.txt
 
 echo -e "\n\033[33mVAST contract открыт\033[0m"
