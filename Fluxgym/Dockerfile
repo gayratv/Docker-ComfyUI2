@@ -43,9 +43,10 @@ RUN --mount=type=cache,target=/root/repo-cache \
 
 RUN --mount=type=cache,target=/root/pip-cache \
   pip uninstall -y xformers torch typing_extensions \
-  pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126 \
-  pip install xformers --index-url https://download.pytorch.org/whl/cu126 \
-  pip install typing_extensions
+  && pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126 \
+  && pip install xformers --index-url https://download.pytorch.org/whl/cu126 \
+  && pip install typing_extensions \
+  && rm -rf /root/.cache/pip
 
 #rem pip install --no-cache-dir --ignore-installed --force-reinstall --no-warn-conflicts xformers==0.0.27.post2 --index-url https://download.pytorch.org/whl/cu121
 
@@ -55,6 +56,9 @@ COPY aria2 .
 RUN chmod +x *.sh \
     && chmod +x ./templates/*.sh \
     && rm -f ./templates/.env
+
+RUN mv /workspace/ComfyUI/custom_nodes/fluxgym /workspace/ \
+  && mv /workspace/ComfyUI/custom_nodes/sd-scripts /workspace/fluxgym/
 
 WORKDIR /workspace/fluxgym
 

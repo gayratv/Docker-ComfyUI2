@@ -1,6 +1,4 @@
 #!/bin/bash
-# comfyui-union2/bash-scripts/build/process_repos-install-req.sh
-
 # данная версия также сравнивает хеш последнего комита
 
 BASE_INSTALL_DIR="/workspace/ComfyUI/custom_nodes/"

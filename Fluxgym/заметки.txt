@@ -16,6 +16,9 @@ export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
 ./db.sh
 ./dr.sh
 
+cd fluxgym
+python app.py
+
 HOST_PATH=/mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/
 IMAGE_NAME=comfyui-union2
 docker cp  "${HOST_PATH}.env" "$IMAGE_NAME":/workspace/aria2/templates/
@@ -46,16 +49,4 @@ echo $CIVITAI_TOKEN
 ./dl_common.sh ACE-plus-portrait /mnt/d/1/3
 
 
-
-
-docker cp /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/.env comfyui-union2:/workspace/aria2/templates/.env
-source ../load-env.sh
-echo $CIVITAI_TOKEN
-./dl_common.sh raw-comfy
-./dl_common.sh ImageResize /workspace/ComfyUI/custom_nodes/ComfyUI_LayerStyle/
-./dl_common.sh Flux_Upscale
-./dl_common.sh Flex2
-
-export HOST_PATH="/mnt/d/1/ComfyUI_LayerStyle_Advance"
-docker cp "$HOST_PATH/py/gemini.py" imageresize:/workspace/ComfyUI/custom_nodes/ComfyUI_LayerStyle_Advance/py/gemini.py
 
