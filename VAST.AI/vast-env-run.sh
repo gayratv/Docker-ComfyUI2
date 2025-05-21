@@ -14,6 +14,7 @@ VAST_ACTUAL_STATUS=$(jq -r '.actual_status' vast-instance-raw.txt)
 VAST_STATUS_MSG=$(jq -r '.status_msg' vast-instance-raw.txt)
 VAST_SSH=$(jq -r '.ports["22/tcp"][0].HostPort' vast-instance-raw.txt)
 VAST_COMFY=$(jq -r '.ports["8188/tcp"][0].HostPort' vast-instance-raw.txt)
+VAST_FLUX_JYM=$(jq -r '.ports["7860/tcp"][0].HostPort' vast-instance-raw.txt)
 
 
 # Экспортируем переменные окружения
@@ -22,6 +23,7 @@ export VAST_ACTUAL_STATUS
 export VAST_STATUS_MSG
 export VAST_SSH
 export VAST_COMFY
+export VAST_FLUX_JYM
 
 # Выводим значения для проверки
 echo "VAST_ACTUAL_STATUS=$VAST_ACTUAL_STATUS"

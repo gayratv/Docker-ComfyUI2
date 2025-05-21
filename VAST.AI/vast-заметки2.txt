@@ -1,10 +1,10 @@
 wsl
 clear
 
-export IMAGE_NAME="gayrat/fluxgym:fluxgym-CUDA12.4"
+export IMAGE_NAME="gayrat/fluxgym:of-repo"
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.4"
 
-source vast-contract.sh 19394480 $IMAGE_NAME
+source vast-contract.sh 19726999 $IMAGE_NAME
 source ./vs.sh
 
 tmux-s-bash.sh
