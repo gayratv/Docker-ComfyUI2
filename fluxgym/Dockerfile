@@ -47,6 +47,8 @@ EXPOSE 7860
 
 ENV GRADIO_SERVER_NAME="0.0.0.0"
 
+COPY *.sh /
+
 WORKDIR /app/fluxgym
 
 # Run fluxgym Python application

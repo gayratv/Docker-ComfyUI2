@@ -8,14 +8,11 @@ source vast-contract.sh 19726999 $IMAGE_NAME
 source ./vs.sh
 
 tmux-s-bash.sh
-tmux-s.sh ControlNet-Flux-Tools-OreX
 
 
-ssh -p $VAST_SSH "root@$VAST_PUBLIC_IPADDR" -i ~/.ssh/mvps/ud_rsa
-
-tmux-s-bash.sh
 ./dl_common.sh Fluxgym /workspace/fluxgym/
 
+ssh -p $VAST_SSH "root@$VAST_PUBLIC_IPADDR" -i ~/.ssh/mvps/ud_rsa
 
 
 vastai destroy instances "$CONTRACT_ID"
