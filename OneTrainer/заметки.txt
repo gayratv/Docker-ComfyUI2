@@ -1,0 +1,52 @@
+export BASE_DOCKER_DIR="/mnt/f/_prg/python/Docker-ComfyUI/OneTrainer"
+export VERSION="v1"
+export IMAGE_NAME="one-trainer"
+export BASE_IMAGE="nvidia/cuda:11.8.0-devel-ubuntu22.04"
+export PYTORCH_WHEEL=""
+cd ${BASE_DOCKER_DIR}
+
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+
+
+./db.sh
+./dp.sh
+
+./db.sh
+./dr.sh
+
+cd fluxgym
+python app.py
+
+HOST_PATH=/mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/
+IMAGE_NAME=comfyui-union2
+docker cp  "${HOST_PATH}.env" "$IMAGE_NAME":/workspace/aria2/templates/
+docker cp  "${HOST_PATH}tmux-s.sh" "$IMAGE_NAME":/usr/local/bin/
+
+
+docker cp "$IMAGE_NAME":/workspace/ComfyUI/requirements-common.txt ./requirements-common.txt
+docker cp  "/mnt/f/_prg/ComfyUI/схемы/ACE/ACE examples/workflow/ComfyUI-ACE_Plus/" "$IMAGE_NAME":/workspace/ComfyUI/custom_nodes/
+H:\ComfyUI\custom_nodes
+
+/workspace/ComfyUI/user/default/comfy.settings.json
+
+docker cp "$IMAGE_NAME":/workspace/ComfyUI/user/default/comfy.settings.json ./user/default/
+
+http://127.0.0.1:8188
+
+tmux-s.sh ComfyUI-Fluxtapoz.sh
+tmux-s-bash.sh
+
+>->->->->->->->->->->->->->->->->->->->->->->->-
+
+docker builder prune --all
+
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/aria2/templates
+source ../load-env.sh
+echo $CIVITAI_TOKEN
+./dl_common.sh ACE-plus-portrait /mnt/d/1/3
+
+
+
