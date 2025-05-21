@@ -35,7 +35,7 @@ tmux-s-bash.sh
 ssh -p $VAST_SSH "root@$VAST_PUBLIC_IPADDR" -i ~/.ssh/mvps/ud_rsa
 
 tmux-s-bash.sh
-./dl_common.sh Fluxgym
+./dl_common.sh Fluxgym /workspace/fluxgym/
 ./dl_common.sh ControlNet-Flux-Tools-OreX
 ./dl_common.sh FACESWAP-8
 ./dl_common.sh character-v3
@@ -101,22 +101,11 @@ vastai set api-key xx
 
 =========
 
-export IMAGE_NAME=gayrat/comfy-union:FLUX_HIRES_Artur
-export IMAGE_NAME=gayrat/comfy-union:FLUX_PulID_II
+ssh -p 45496 root@142.189.181.130
 
+mkdir -p /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/lora/
+cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
 
-==
-
-#### ./vast-wait.sh
-
-source vast-env-run.sh
-echo "http://$VAST_PUBLIC_IPADDR:$VAST_COMFY"
-cmd.exe /c start chrome "http://$VAST_PUBLIC_IPADDR:$VAST_COMFY"
-ssh -p $VAST_SSH "root@$VAST_PUBLIC_IPADDR" -i ~/.ssh/mvps/ud_rsa
-
-
-ssh -i ~/.ssh/mvps/ud_rsa -p 25004 root@185.126.158.178
-tmux ls
-tmux attach -t comfy
-
-ssh -i ~/.ssh/mvps/ud_rsa -p 25025 root@185.126.158.178
+PORT=45496
+IP=142.189.181.130
+scp -P "$PORT" -i ~/.ssh/mvps/ud_rsa -r root@"$IP":/workspace/fluxgym/outputs /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/lora/
