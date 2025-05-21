@@ -1,12 +1,23 @@
-# Base image with CUDA 12.2
-FROM nvidia/cuda:12.2.2-base-ubuntu22.04
+# Base image with CUDA 12.4
+FROM nvidia/cuda:12.4.1-base-ubuntu22.04
 
-# Install pip if not already installed
 RUN apt-get update -y && apt-get install -y \
     python3-pip \
     python3-dev \
     git \
-    build-essential  # Install dependencies for building extensions
+    software-properties-common \
+    curl \
+    wget \
+    aria2 \
+    nano \
+    ffmpeg \
+    locales \
+    tmux \
+    mc \
+    build-essential g++ cmake ninja-build git pkg-config libopenblas-dev libomp-dev \
+    libjpeg-dev libpng-dev libtiff-dev libavcodec-dev libavformat-dev libswscale-dev \
+    libv4l-dev libxvidcore-dev libx264-dev libgtk-3-dev libatlas-base-dev gfortran \
+    && rm -rf /var/lib/apt/lists/*
 
 # Define environment variables for UID and GID and local timezone
 ENV PUID=${PUID:-1000}
@@ -20,34 +31,42 @@ RUN useradd -m -s /bin/sh -u "${PUID}" -g "${PGID}" appuser
 WORKDIR /app
 
 # Get sd-scripts from kohya-ss and install them
-RUN git clone -b sd3 https://github.com/kohya-ss/sd-scripts && \
+RUN --mount=type=cache,target=/root/pip-cache \
+    git clone -b sd3 https://github.com/kohya-ss/sd-scripts && \
     cd sd-scripts && \
-    pip install --no-cache-dir -r ./requirements.txt
+    pip install --cache-dir=/root/pip-cache  -r ./requirements.txt
 
 # Install main application dependencies
 COPY ./requirements.txt ./requirements.txt
-RUN pip install --no-cache-dir -r ./requirements.txt
+RUN --mount=type=cache,target=/root/pip-cache \
+    pip install --cache-dir=/root/pip-cache -r ./requirements.txt
 
-# Install Torch, Torchvision, and Torchaudio for CUDA 12.2
-RUN pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu122/torch_stable.html
+
+# Install Torch, Torchvision, and Torchaudio for CUDA 12.4
+RUN --mount=type=cache,target=/root/pip-cache \
+    pip install --cache-dir=/root/pip-cache  torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 
 RUN chown -R appuser:appuser /app
 
 # delete redundant requirements.txt and sd-scripts directory within the container
-RUN rm -r ./sd-scripts
-RUN rm ./requirements.txt
+#RUN rm -r ./sd-scripts
+#RUN rm ./requirements.txt
 
 #Run application as non-root
-USER appuser
+#USER appuser
 
+WORKDIR /app
 # Copy fluxgym application code
 COPY . ./fluxgym
+
+
+WORKDIR /usr/local/bin
+COPY *.sh ./
+RUN chmod +x ./*.sh
 
 EXPOSE 7860
 
 ENV GRADIO_SERVER_NAME="0.0.0.0"
-
-COPY *.sh /
 
 WORKDIR /app/fluxgym
 
