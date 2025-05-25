@@ -1,5 +1,5 @@
 # Стадия 1: Сборка и установка зависимостей
-ARG BASE_IMAGE="nvidia/cuda:12.8.1-cudnn-runtime-ubuntu22.04"
+ARG BASE_IMAGE="nvidia/cuda:12.6.3-cudnn-runtime-ubuntu22.04"
 FROM ${BASE_IMAGE}
 
 # Установка необходимых пакетов

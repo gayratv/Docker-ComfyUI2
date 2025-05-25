@@ -353,6 +353,33 @@ export REQ_MODIFY="base-CUDA-12.6"
 
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+Wan2.1-VACE
+Wan 2.1 VACE 5 in 1 (t2v, i2v, v2v, video outpaint, FFLF)
+https://github.com/ali-vilab/VACE
+https://www.youtube.com/watch?v=uSQbpnO_PJI&t=1457s
+
+https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite
+https://openart.ai/workflows/ayithedeer/wan-21-vace-5-in-1-t2v-i2v-v2v-video-outpaint-fflf/OQYTVPY1R7cU63I91zSx
+
+
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+./workflow-new-image.sh "Wan2.1-VACE"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+export MODELS="Wan2.1-VACE"
+export WORKFLOW_TO_COPY=$MODELS
+export VERSION="$MODELS-CUDA12.6"
+export NODES="$MODELS.txt"
+export IMAGE_NAME="comfyui-union2"
+export COMFYUI_VERSION="v0.3.34"
+export BASE_IMAGE="cuda-12-6:nvidia-runtime"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
+export REQ_MODIFY="base-CUDA-12.6"
+
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
