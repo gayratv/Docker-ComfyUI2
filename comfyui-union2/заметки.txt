@@ -190,6 +190,7 @@ export REQ_MODIFY="base-CUDA-12.6"
 FREE InfiniteYou ComfyUI Workflow
 
 https://www.patreon.com/posts/free-infiniteyou-128509737
+https://www.patreon.com/posts/free-infiniteyou-128509737
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 ./workflow-new-image.sh "InfiniteYou"
@@ -374,6 +375,49 @@ export VERSION="$MODELS-CUDA12.6"
 export NODES="$MODELS.txt"
 export IMAGE_NAME="comfyui-union2"
 export COMFYUI_VERSION="v0.3.34"
+export BASE_IMAGE="cuda-12-6:nvidia-runtime"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
+export REQ_MODIFY="base-CUDA-12.6"
+
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+How to Use Multiple Personal LoRAs in One Image with ComfyUI
+https://boosty.to/jockerai/posts/4dcb3e2f-f00d-4ba7-a04e-8b1e5e89cb53?share=post_link
+https://www.youtube.com/watch?v=X4-E4EuzSPM
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+./workflow-new-image.sh "LoRAs-Multiple"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+export MODELS="LoRAs-Multiple"
+export WORKFLOW_TO_COPY=$MODELS
+export VERSION="$MODELS-CUDA12.6"
+export NODES="$MODELS.txt"
+export IMAGE_NAME="comfyui-union2"
+export COMFYUI_VERSION="v0.3.38"
+export BASE_IMAGE="cuda-12-6:nvidia-runtime"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
+export REQ_MODIFY="base-CUDA-12.6"
+
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+Florence 2
+https://civitai.com/models/830300?modelVersionId=1821549
+https://www.youtube.com/watch?v=Z1iS9h27XpQ
+
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+./workflow-new-image.sh "Florence2"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+export MODELS="Florence2"
+export WORKFLOW_TO_COPY=$MODELS
+export VERSION="$MODELS-CUDA12.6"
+export NODES="$MODELS.txt"
+export IMAGE_NAME="comfyui-union2"
+export COMFYUI_VERSION="v0.3.38"
 export BASE_IMAGE="cuda-12-6:nvidia-runtime"
 export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
 export REQ_MODIFY="base-CUDA-12.6"
