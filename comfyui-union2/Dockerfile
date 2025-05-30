@@ -68,16 +68,22 @@ RUN python3 ./gayrat_py/pip-pckg-group.py
 
 
 # Установка пакетов в системную директорию Python 3.11
+#    --link-mode=copy \
+#    --cache-dir=/root/pip-cache-uv \
+
+
+# Устанавливаем UV_CACHE_DIR, чтобы uv использовал именно эту директорию для всего своего кеша
+ENV UV_CACHE_DIR=/root/pip-cache-uv
+
 RUN --mount=type=cache,target=/root/pip-cache-uv \
     uv pip install \
-    --link-mode=copy \
     --system \
-    --cache-dir=/root/pip-cache-uv \
     --index-strategy unsafe-best-match \
     --extra-index-url "$PYTORCH_WHEEL" \
     --extra-index-url https://pypi.nvidia.com \
-    -r requirements.out \
-    && rm -rf /root/.cache/pip
+    -r requirements.out
+
+#    && rm -rf /root/.cache/pip
 
 #в файле
 #/workspace/ComfyUI/custom_nodes/ComfyUI-Manager/glob/cnr_utils.py #есть фрагмент кода
@@ -177,6 +183,10 @@ RUN --mount=type=cache,target=/root/pip-cache \
 # только для узла Laeyer
 #WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI_LayerStyle_Advance/py
 #COPY python-prg/ComfyUI_LayerStyle_Advance/py/gemini.py ./
+
+
+RUN python3 /workspace/ComfyUI/gayrat_py/remove-models-dirs.py ${MODELS}
+#RUN python3 /workspace/ComfyUI/gayrat_py/remove-models-dirs.py ${MODELS} --dry-run
 
 WORKDIR /workspace/ComfyUI
 
