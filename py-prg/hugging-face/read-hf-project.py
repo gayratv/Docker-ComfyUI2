@@ -47,7 +47,7 @@ if __name__ == "__main__":
         print(entry)
 
     # Сохраняем в файл
-    with open("../../comfyui-union2/aria2/templates/models/Wan2.1-VACE/hf-dl.txt", "w", encoding="utf-8") as f:
+    with open("hf-dl.txt", "w", encoding="utf-8") as f:
         for entry in entries:
             f.write(entry + "\n\n")
 

@@ -467,6 +467,29 @@ export REQ_MODIFY="base-CUDA-12.6"
 
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+DreamO Comfyui
+
+https://github.com/ToTheBeginning/ComfyUI-DreamO?tab=readme-ov-file
+bytedance/DreamO
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+./workflow-new-image.sh "DreamO"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+export MODELS="DreamO"
+export WORKFLOW_TO_COPY=$MODELS
+export VERSION="$MODELS-CUDA12.6"
+export NODES="$MODELS.txt"
+export IMAGE_NAME="comfyui-union2"
+export COMFYUI_VERSION="v0.3.39"
+export BASE_IMAGE="cuda-12-6:nvidia-runtime"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
+export REQ_MODIFY="base-CUDA-12.6"
+export POST_INSTALL="DreamO.sh"
+
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
