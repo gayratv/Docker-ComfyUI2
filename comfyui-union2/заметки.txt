@@ -517,6 +517,7 @@ echo $CIVITAI_TOKEN
 ./dl_common.sh ImageResize /workspace/ComfyUI/custom_nodes/ComfyUI_LayerStyle/
 ./dl_common.sh Flux_Upscale
 ./dl_common.sh Flex2
+./dl_common.sh FLUX-Multi-LoRA
 
 export HOST_PATH="/mnt/d/1/ComfyUI_LayerStyle_Advance"
 docker cp "$HOST_PATH/py/gemini.py" imageresize:/workspace/ComfyUI/custom_nodes/ComfyUI_LayerStyle_Advance/py/gemini.py

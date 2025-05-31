@@ -33,6 +33,7 @@ tmux-s.sh BG-changer-products
 ssh -p $VAST_SSH "root@$VAST_PUBLIC_IPADDR" -i ~/.ssh/mvps/ud_rsa
 tmux-s-bash.sh
 
+./dl_common.sh FLUX-Multi-LoRA
 ./dl_common.sh BG-changer-products
 ./dl_common.sh LoRAs-Multiple
 ./dl_common.sh ControlNet-Flux-Tools-OreX
