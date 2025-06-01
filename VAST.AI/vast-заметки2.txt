@@ -16,7 +16,7 @@ export IMAGE_NAME="gayrat/comfyui-union2:Inp-Flux-Segment"
 export IMAGE_NAME="gayrat/comfyui-union2:Pulid-II-for-Flux-CUDA12.6"
 
 
-export IMAGE_NAME_BASE="DreamO"
+export IMAGE_NAME_BASE="Inpainting-Flux-Jocker"
 export CUDA="CUDA12.6"
 export IMAGE_NAME="gayrat/comfyui-union2:${IMAGE_NAME_BASE}-${CUDA}"
 echo -e "IMAGE_NAME : ${IMAGE_NAME}"
@@ -24,15 +24,17 @@ echo -e "IMAGE_NAME : ${IMAGE_NAME}"
 
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.6"
 
-source vast-contract.sh 18536445 $IMAGE_NAME
+source vast-contract.sh 20217854 $IMAGE_NAME
 source ./vs.sh
 
-tmux-s.sh DreamO
+tmux-s.sh Inpainting-Flux-Jocker
 
 
 ssh -p $VAST_SSH "root@$VAST_PUBLIC_IPADDR" -i ~/.ssh/mvps/ud_rsa
 tmux-s-bash.sh
 
+./dl_common.sh Inpainting-Flux-Jocker
+./dl_common.sh Upscale-Jocker
 ./dl_common.sh DreamO
 ./dl_common.sh FLUX-Multi-LoRA
 ./dl_common.sh BG-changer-products

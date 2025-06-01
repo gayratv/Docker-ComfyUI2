@@ -1,0 +1,935 @@
+{
+  "last_node_id": 60,
+  "last_link_id": 97,
+  "nodes": [
+    {
+      "id": 11,
+      "type": "DualCLIPLoader",
+      "pos": [
+        21,
+        178
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            81
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DualCLIPLoader"
+      },
+      "widgets_values": [
+        "ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors",
+        "t5xxl_fp16.safetensors",
+        "flux"
+      ]
+    },
+    {
+      "id": 45,
+      "type": "Power Lora Loader (rgthree)",
+      "pos": [
+        25,
+        333
+      ],
+      "size": [
+        303.4781188964844,
+        168.11318969726562
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 82,
+          "dir": 3
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 81,
+          "dir": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            77,
+            78
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "dir": 4
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            79,
+            80
+          ],
+          "slot_index": 1,
+          "shape": 3,
+          "dir": 4
+        }
+      ],
+      "properties": {
+        "Show Strengths": "Single Strength"
+      },
+      "widgets_values": [
+        null,
+        {
+          "type": "PowerLoraLoaderHeaderWidget"
+        },
+        {
+          "on": true,
+          "lora": "Flux-Turbo-8 step.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        null,
+        ""
+      ]
+    },
+    {
+      "id": 26,
+      "type": "UpscaleModelLoader",
+      "pos": [
+        352,
+        639
+      ],
+      "size": [
+        405.95654296875,
+        58
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "UPSCALE_MODEL",
+          "type": "UPSCALE_MODEL",
+          "links": [
+            56
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UpscaleModelLoader"
+      },
+      "widgets_values": [
+        "4x_NMKD-Siax_200k.pth"
+      ]
+    },
+    {
+      "id": 22,
+      "type": "BasicGuider",
+      "pos": [
+        353,
+        851
+      ],
+      "size": [
+        408.8663635253906,
+        51.98228454589844
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 77,
+          "slot_index": 0
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 64,
+          "slot_index": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicGuider"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 10,
+      "type": "VAELoader",
+      "pos": [
+        353,
+        745
+      ],
+      "size": [
+        405.91143798828125,
+        58
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            58
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "ae.safetensors"
+      ]
+    },
+    {
+      "id": 12,
+      "type": "UNETLoader",
+      "pos": [
+        19,
+        52
+      ],
+      "size": [
+        315,
+        82
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            82
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "flux1-dev.safetensors",
+        "fp8_e5m2"
+      ]
+    },
+    {
+      "id": 43,
+      "type": "LoadImage",
+      "pos": [
+        19,
+        553
+      ],
+      "size": [
+        295.56829833984375,
+        356.92218017578125
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            72,
+            75,
+            88
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "originals (3).png",
+        "image"
+      ]
+    },
+    {
+      "id": 37,
+      "type": "CLIPTextEncode",
+      "pos": [
+        367,
+        602
+      ],
+      "size": [
+        396.09979248046875,
+        191.12571716308594
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 80,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            60
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "blurry"
+      ]
+    },
+    {
+      "id": 59,
+      "type": "ShowText|pysssss",
+      "pos": [
+        784,
+        55
+      ],
+      "size": [
+        378.0386047363281,
+        368.4012451171875
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 95,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            96,
+            97
+          ],
+          "slot_index": 0,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        [
+          "sharp image of a digital portrait of a woman's face. The woman has a golden complexion and her eyes are a piercing yellow color. Her hair is styled in a sleek bob and she is wearing a headscarf that covers her head. The background is a gradient of yellow and orange, creating a warm and luxurious feel. The overall color scheme of the image is warm and golden, giving it a luxurious and glamorous look."
+        ],
+        "The image is a black and white portrait of a young woman with her eyes closed. She appears to be in a peaceful and serene state, with her head tilted slightly to the side and her lips slightly parted. Her hair is styled in loose curls that frame her face. Her makeup is dramatic, with a shimmery gold eyeshadow and a bold red lipstick. The background is blurred, making the woman the focal point of the image. The lighting is soft and natural, highlighting her features. The overall mood of the portrait is serene and contemplative."
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 40,
+      "type": "CLIPTextEncodeFlux",
+      "pos": [
+        791,
+        474
+      ],
+      "size": [
+        369.47271728515625,
+        416.50103759765625
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 79
+        },
+        {
+          "name": "clip_l",
+          "type": "STRING",
+          "link": 96,
+          "widget": {
+            "name": "clip_l"
+          }
+        },
+        {
+          "name": "t5xxl",
+          "type": "STRING",
+          "link": 97,
+          "widget": {
+            "name": "t5xxl"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            64,
+            65
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncodeFlux"
+      },
+      "widgets_values": [
+        "in \"Robert Mapplethorpet\" art style: a photograph of \"Mezzotint of stunning, beautiful, ecstatic facial expression, female dreams, well formed, with eyes closed by klimt and titian and bocklin\" black and white",
+        "in \"Robert Mapplethorpet\" art style: a photograph of \"Mezzotint of stunning, beautiful, ecstatic facial expression, female dreams, well formed, with eyes closed by klimt and titian and bocklin\" black and white",
+        3.5
+      ]
+    },
+    {
+      "id": 39,
+      "type": "UltimateSDUpscale",
+      "pos": [
+        1180,
+        58
+      ],
+      "size": [
+        348.44171142578125,
+        614
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 72
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 78
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 65
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 60
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 58
+        },
+        {
+          "name": "upscale_model",
+          "type": "UPSCALE_MODEL",
+          "link": 56
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            62,
+            76
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UltimateSDUpscale"
+      },
+      "widgets_values": [
+        2,
+        311331455851693,
+        "randomize",
+        4,
+        2,
+        "euler",
+        "normal",
+        0.35000000000000003,
+        "Linear",
+        1536,
+        2688,
+        5,
+        32,
+        "None",
+        1,
+        64,
+        8,
+        16,
+        true,
+        false
+      ]
+    },
+    {
+      "id": 29,
+      "type": "SaveImage",
+      "pos": [
+        1189,
+        717
+      ],
+      "size": [
+        328.6220397949219,
+        164.64468383789062
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 62
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 44,
+      "type": "Image Comparer (rgthree)",
+      "pos": [
+        1550,
+        61
+      ],
+      "size": [
+        753.5828857421875,
+        818.6141357421875
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image_a",
+          "type": "IMAGE",
+          "link": 75,
+          "dir": 3
+        },
+        {
+          "name": "image_b",
+          "type": "IMAGE",
+          "link": 76,
+          "dir": 3
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "comparer_mode": "Slide"
+      },
+      "widgets_values": [
+        [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_ilocz_00043_.png&type=temp&subfolder=&rand=0.3816887273022711"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_ilocz_00044_.png&type=temp&subfolder=&rand=0.8384617615162999"
+          }
+        ]
+      ]
+    },
+    {
+      "id": 51,
+      "type": "DownloadAndLoadFlorence2Model",
+      "pos": [
+        366,
+        41
+      ],
+      "size": [
+        398.82781982421875,
+        112.49103546142578
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "lora",
+          "type": "PEFTLORA",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "florence2_model",
+          "type": "FL2MODEL",
+          "links": [
+            86
+          ],
+          "shape": 3
+        }
+      ],
+      "title": "Prompt Generation Model",
+      "properties": {
+        "Node name for S&R": "DownloadAndLoadFlorence2Model",
+        "ttNbgOverride": {
+          "color": "#223",
+          "bgcolor": "#335",
+          "groupcolor": "#88A"
+        }
+      },
+      "widgets_values": [
+        "microsoft/Florence-2-base",
+        "fp16",
+        "sdpa"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 52,
+      "type": "Florence2Run",
+      "pos": [
+        364,
+        196
+      ],
+      "size": [
+        400,
+        357
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 88
+        },
+        {
+          "name": "florence2_model",
+          "type": "FL2MODEL",
+          "link": 86,
+          "slot_index": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": [],
+          "slot_index": 1,
+          "shape": 3
+        },
+        {
+          "name": "caption",
+          "type": "STRING",
+          "links": [
+            95
+          ],
+          "slot_index": 2,
+          "shape": 3
+        },
+        {
+          "name": "data",
+          "type": "JSON",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "title": "Auto Prompt Setting",
+      "properties": {
+        "Node name for S&R": "Florence2Run",
+        "ttNbgOverride": {
+          "color": "#223",
+          "bgcolor": "#335",
+          "groupcolor": "#88A"
+        }
+      },
+      "widgets_values": [
+        "",
+        "more_detailed_caption",
+        true,
+        false,
+        1024,
+        3,
+        true,
+        "",
+        224735764012217,
+        "randomize"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 60,
+      "type": "Note",
+      "pos": [
+        33.53457260131836,
+        -328.7369384765625
+      ],
+      "size": [
+        2261.00634765625,
+        334.72125244140625
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "     ██╗ ██████╗  ██████╗██╗  ██╗███████╗██████╗     █████╗ ██╗\n     ██║██╔═══██╗██╔════╝██║ ██╔╝██╔════╝██╔══██╗   ██╔══██╗██║\n     ██║██║   ██║██║     █████╔╝ █████╗  ██████╔╝   ███████║██║\n██   ██║██║   ██║██║     ██╔═██╗ ██╔══╝  ██╔══██╗   ██╔══██║██║\n╚█████╔╝╚██████╔╝╚██████╗██║  ██╗███████╗██║  ██║██╗██║  ██║██║\n ╚════╝  ╚═════╝  ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═╝\n                                                               \nPatreon : https://www.patreon.com/c/Jockerai\nYoutube : https://www.youtube.com/@UC5sPbE99E31dzGRRm-ccaAg \nTelegram : https://t.me/jokerrai\nCivitai : https://civitai.com/user/jockerai\nSeaArt Ai Apps : https://www.seaart.ai/user/49d100881342c1ba39a8ebfdc930f8d5\n.\nBoosty (for Russian members) : https://boosty.to/jockerai"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    }
+  ],
+  "links": [
+    [
+      56,
+      26,
+      0,
+      39,
+      5,
+      "UPSCALE_MODEL"
+    ],
+    [
+      58,
+      10,
+      0,
+      39,
+      4,
+      "VAE"
+    ],
+    [
+      60,
+      37,
+      0,
+      39,
+      3,
+      "CONDITIONING"
+    ],
+    [
+      62,
+      39,
+      0,
+      29,
+      0,
+      "IMAGE"
+    ],
+    [
+      64,
+      40,
+      0,
+      22,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      65,
+      40,
+      0,
+      39,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      72,
+      43,
+      0,
+      39,
+      0,
+      "IMAGE"
+    ],
+    [
+      75,
+      43,
+      0,
+      44,
+      0,
+      "IMAGE"
+    ],
+    [
+      76,
+      39,
+      0,
+      44,
+      1,
+      "IMAGE"
+    ],
+    [
+      77,
+      45,
+      0,
+      22,
+      0,
+      "MODEL"
+    ],
+    [
+      78,
+      45,
+      0,
+      39,
+      1,
+      "MODEL"
+    ],
+    [
+      79,
+      45,
+      1,
+      40,
+      0,
+      "CLIP"
+    ],
+    [
+      80,
+      45,
+      1,
+      37,
+      0,
+      "CLIP"
+    ],
+    [
+      81,
+      11,
+      0,
+      45,
+      1,
+      "CLIP"
+    ],
+    [
+      82,
+      12,
+      0,
+      45,
+      0,
+      "MODEL"
+    ],
+    [
+      86,
+      51,
+      0,
+      52,
+      1,
+      "FL2MODEL"
+    ],
+    [
+      88,
+      43,
+      0,
+      52,
+      0,
+      "IMAGE"
+    ],
+    [
+      95,
+      52,
+      2,
+      59,
+      0,
+      "STRING"
+    ],
+    [
+      96,
+      59,
+      0,
+      40,
+      1,
+      "STRING"
+    ],
+    [
+      97,
+      59,
+      0,
+      40,
+      2,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.5989500000000004,
+      "offset": [
+        -725.59973839994,
+        654.5787368124439
+      ]
+    },
+    "groupNodes": {},
+    "ue_links": []
+  },
+  "version": 0.4
+}
