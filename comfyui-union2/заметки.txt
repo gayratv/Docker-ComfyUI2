@@ -515,13 +515,6 @@ export REQ_MODIFY="base-CUDA-12.6"
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 Jocker Inpainting
 
-The secret of easy Flux inpainting in ComfyUi - forget about stable diffusion
-https://boosty.to/jockerai/posts/e62b8114-158a-4ce5-98c3-e5b6b19d733e
-
-REVOLUTIONARY FLUX Inpainting in ComfyUi Changes Graphic Design Forever
-https://boosty.to/jockerai/posts/30992e8a-d7cb-4881-a16c-4f8f2ebef29d
-https://boosty.to/jockerai/posts/090c8e23-a5b0-4bad-8321-a23cd0dd016a?share=post_link
-
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 ./workflow-new-image.sh "Inpainting-Flux-Jocker"
 
@@ -532,7 +525,48 @@ export VERSION="$MODELS-CUDA12.6"
 export NODES="$MODELS.txt"
 export IMAGE_NAME="comfyui-union2"
 export COMFYUI_VERSION="v0.3.39"
-export BASE_IMAGE="cuda-12-6:nvidia-runtime"
+export BASE_IMAGE="cuda-12-6:nvidia-devel"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
+export REQ_MODIFY="base-CUDA-12.6"
+
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+Multi Flux Redux - Mix 2 image by flux redux
+
+"F:\_prg\ComfyUI\схемы\Multi Flux Redux - Mix 2 image by flux redux salmonrk-openart.ai.json"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+./workflow-new-image.sh "Flux-Redux-openart"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+export MODELS="Inpainting-Flux-Jocker"
+export WORKFLOW_TO_COPY=$MODELS
+export VERSION="$MODELS-CUDA12.6"
+export NODES="$MODELS.txt"
+export IMAGE_NAME="comfyui-union2"
+export COMFYUI_VERSION="v0.3.39"
+export BASE_IMAGE="cuda-12-6:nvidia-devel"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
+export REQ_MODIFY="base-CUDA-12.6"
+
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+Gayrat test nodes
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+./workflow-new-image.sh "Gayrat-node-test"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+export MODELS="Gayrat-node-test"
+export WORKFLOW_TO_COPY=$MODELS
+export VERSION="$MODELS-CUDA12.6"
+export NODES="$MODELS.txt"
+export IMAGE_NAME="comfyui-union2"
+export COMFYUI_VERSION="v0.3.39"
+export BASE_IMAGE="cuda-12-6:nvidia-devel"
 export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
 export REQ_MODIFY="base-CUDA-12.6"
 
