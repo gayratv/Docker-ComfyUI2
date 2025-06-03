@@ -87,7 +87,7 @@ class DisplayOffers:
                        gpu_name, \
                        host_id, \
                        vericode, \
-                       cuda_max_good 
+                       cuda_max_good , o.machine_id, o.host_id
                 FROM offers o
                     left join  
                      vast.bad_machines bm 
@@ -101,7 +101,7 @@ class DisplayOffers:
         result = self.execute_query(query, params)
 
         # Определяем заголовки для таблицы
-        headers = ["ID", "$/HR", "idown$/TB", "inet_down", "geolocation", "gpu_name", "host_id", "vericode","cuda_max_good"]
+        headers = ["ID", "$/HR", "idown$/TB", "inet_down", "geolocation", "gpu_name", "host_id", "vericode","cuda_max_good","machine_id","host_id"]
 
         if result:
             formatted_result = [
@@ -114,22 +114,13 @@ class DisplayOffers:
                     row[5],  # gpu_name
                     row[6],
                     row[7],
-                    row[8]
+                    row[8],
+                    row[9], # o.machine_id,
+                    row[10] # o.host_id
                 )
                 for row in result
             ]
 
-            # # Форматируем заголовки с разделителями
-            # header_row = " | ".join(f"{header:^10}" for header in headers)
-            # print(header_row)
-            # print("-" * len(header_row))  # Разделитель под заголовками
-            #
-            # # Форматируем строки данных с разделителями
-            # for row in formatted_result:
-            #     data_row = " | ".join(f"{str(value):^10}" for value in row)
-            #     print(data_row)
-
-            # table = tabulate(formatted_result, headers=headers, tablefmt="grid")
             table = tabulate(formatted_result, headers=headers, tablefmt="simple")
             print(table)
 
