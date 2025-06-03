@@ -570,6 +570,9 @@ export BASE_IMAGE="cuda-12-6:nvidia-devel"
 export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
 export REQ_MODIFY="base-CUDA-12.6"
 
+echo $HF_TOKEN
+echo $CIVITAI_TOKEN
+./dl_common.sh Gayrat-node-test
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 

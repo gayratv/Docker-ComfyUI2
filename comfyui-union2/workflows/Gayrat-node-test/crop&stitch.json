@@ -1,0 +1,442 @@
+{
+  "id": "4349a012-819e-4edf-993b-506f9ff9d4cc",
+  "revision": 0,
+  "last_node_id": 17,
+  "last_link_id": 54,
+  "nodes": [
+    {
+      "id": 11,
+      "type": "InpaintCropImproved",
+      "pos": [
+        -774.8829345703125,
+        2528.731201171875
+      ],
+      "size": [
+        348.095703125,
+        626
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 47
+        },
+        {
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": 49
+        },
+        {
+          "name": "optional_context_mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        },
+        {
+          "name": "mask_expand_pixels",
+          "type": "INT",
+          "widget": {
+            "name": "mask_expand_pixels"
+          },
+          "link": 52
+        },
+        {
+          "name": "mask_blend_pixels",
+          "type": "INT",
+          "widget": {
+            "name": "mask_blend_pixels"
+          },
+          "link": 53
+        },
+        {
+          "name": "context_from_mask_extend_factor",
+          "type": "FLOAT",
+          "widget": {
+            "name": "context_from_mask_extend_factor"
+          },
+          "link": 51
+        },
+        {
+          "name": "output_target_width",
+          "type": "INT",
+          "widget": {
+            "name": "output_target_width"
+          },
+          "link": 44
+        },
+        {
+          "name": "output_target_height",
+          "type": "INT",
+          "widget": {
+            "name": "output_target_height"
+          },
+          "link": 45
+        }
+      ],
+      "outputs": [
+        {
+          "name": "stitcher",
+          "type": "STITCHER",
+          "links": null
+        },
+        {
+          "name": "cropped_image",
+          "type": "IMAGE",
+          "links": null
+        },
+        {
+          "name": "cropped_mask",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "lquesada/ComfyUI-Inpaint-CropAndStitch",
+        "ver": "b432b2411cbb7d3192d35953bd3aafea05a0e245",
+        "Node name for S&R": "InpaintCropImproved"
+      },
+      "widgets_values": [
+        "bilinear",
+        "bicubic",
+        false,
+        "ensure minimum resolution",
+        1024,
+        1024,
+        16384,
+        16384,
+        true,
+        0,
+        false,
+        32,
+        0.1,
+        false,
+        1,
+        1,
+        1,
+        1,
+        1.2,
+        true,
+        512,
+        512,
+        "32"
+      ]
+    },
+    {
+      "id": 15,
+      "type": "Show any [Crystools]",
+      "pos": [
+        -1657.4310302734375,
+        3034.59912109375
+      ],
+      "size": [
+        337.0318298339844,
+        148
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "any_value",
+          "shape": 7,
+          "type": "*",
+          "link": null
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "aux_id": "crystian/ComfyUI-Crystools",
+        "ver": "1156ff983b635ef506e7b79659126837a1e9d275",
+        "Node name for S&R": "Show any [Crystools]"
+      }
+    },
+    {
+      "id": 16,
+      "type": "Show any [Crystools]",
+      "pos": [
+        -1253.31298828125,
+        3061.741455078125
+      ],
+      "size": [
+        337.0318298339844,
+        148
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "any_value",
+          "shape": 7,
+          "type": "*",
+          "link": 54
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "aux_id": "crystian/ComfyUI-Crystools",
+        "ver": "1156ff983b635ef506e7b79659126837a1e9d275",
+        "Node name for S&R": "Show any [Crystools]"
+      }
+    },
+    {
+      "id": 14,
+      "type": "Show any [Crystools]",
+      "pos": [
+        -1263.114501953125,
+        2773.732421875
+      ],
+      "size": [
+        337.0318298339844,
+        148
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "any_value",
+          "shape": 7,
+          "type": "*",
+          "link": 46
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "aux_id": "crystian/ComfyUI-Crystools",
+        "ver": "1156ff983b635ef506e7b79659126837a1e9d275",
+        "Node name for S&R": "Show any [Crystools]"
+      }
+    },
+    {
+      "id": 4,
+      "type": "LoadImage",
+      "pos": [
+        -1736.0616455078125,
+        2614.72998046875
+      ],
+      "size": [
+        274.080078125,
+        314
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            48
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            50
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.39",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "clipspace/clipspace-mask-76264.png [input]",
+        "image"
+      ]
+    },
+    {
+      "id": 17,
+      "type": "AdaptiveParamsWithModelChoice",
+      "pos": [
+        -1349.8184814453125,
+        2350.76611328125
+      ],
+      "size": [
+        399.8814392089844,
+        158
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 48
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 50
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image_out",
+          "type": "IMAGE",
+          "links": [
+            47
+          ]
+        },
+        {
+          "name": "mask_out",
+          "type": "MASK",
+          "links": [
+            49
+          ]
+        },
+        {
+          "name": "context_from_mask_extend_factor",
+          "type": "FLOAT",
+          "links": [
+            51
+          ]
+        },
+        {
+          "name": "mask_expand_pixels",
+          "type": "INT",
+          "links": [
+            52,
+            54
+          ]
+        },
+        {
+          "name": "mask_blend_pixels",
+          "type": "INT",
+          "links": [
+            53
+          ]
+        },
+        {
+          "name": "target_size_out",
+          "type": "INT",
+          "links": [
+            44,
+            45,
+            46
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "gayratv/ComfyUI_Gayrat",
+        "ver": "157970f9dbae5a8e91e31d2a5ff0d18a79484a61",
+        "Node name for S&R": "AdaptiveParamsWithModelChoice"
+      },
+      "widgets_values": [
+        "SD 1.5"
+      ]
+    }
+  ],
+  "links": [
+    [
+      44,
+      17,
+      5,
+      11,
+      6,
+      "INT"
+    ],
+    [
+      45,
+      17,
+      5,
+      11,
+      7,
+      "INT"
+    ],
+    [
+      46,
+      17,
+      5,
+      14,
+      0,
+      "*"
+    ],
+    [
+      47,
+      17,
+      0,
+      11,
+      0,
+      "IMAGE"
+    ],
+    [
+      48,
+      4,
+      0,
+      17,
+      0,
+      "IMAGE"
+    ],
+    [
+      49,
+      17,
+      1,
+      11,
+      1,
+      "MASK"
+    ],
+    [
+      50,
+      4,
+      1,
+      17,
+      1,
+      "MASK"
+    ],
+    [
+      51,
+      17,
+      2,
+      11,
+      5,
+      "FLOAT"
+    ],
+    [
+      52,
+      17,
+      3,
+      11,
+      3,
+      "INT"
+    ],
+    [
+      53,
+      17,
+      4,
+      11,
+      4,
+      "INT"
+    ],
+    [
+      54,
+      17,
+      3,
+      16,
+      0,
+      "*"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.0610764609500225,
+      "offset": [
+        1703.42190350433,
+        -2243.515715113224
+      ]
+    },
+    "frontendVersion": "1.20.7"
+  },
+  "version": 0.4
+}
