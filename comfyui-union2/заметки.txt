@@ -598,6 +598,26 @@ echo $CIVITAI_TOKEN
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+Nunchaku
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+./workflow-new-image.sh "Nunchaku"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+export MODELS="Nunchaku"
+export WORKFLOW_TO_COPY=$MODELS
+export VERSION="$MODELS-CUDA12.6"
+export NODES="$MODELS.txt"
+export IMAGE_NAME="comfyui-union2"
+export COMFYUI_VERSION="v0.3.39"
+export BASE_IMAGE="cuda-12-6:nvidia-runtime"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
+export REQ_MODIFY="base-CUDA-12.6"
+export POST_INSTALL="nunchaku.sh"
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
@@ -637,7 +657,18 @@ source ../load-env.sh
 echo $CIVITAI_TOKEN
 ./dl_common.sh ACE-plus-portrait /mnt/d/1/3
 
+export LOCAL_PATH=/mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/_temp_save/
+docker cp  comfyui-union2:/workspace/ComfyUI/output/ ${LOCAL_PATH}
 
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+./dcp.sh
+
+export LOCAL_PATH=/mnt/f/_prg/python/ComfyUI_Gayrat/SaveImageAndMask/
+export REMOTE_PATH=/workspace/ComfyUI/custom_nodes/ComfyUI_Gayrat/SaveImageAndMask/
+docker exec comfyui-union2 rm -rf /workspace/ComfyUI/custom_nodes/ComfyUI_Gayrat/SaveImageAndMask/__pycache__
+docker cp ${LOCAL_PATH}LoadImageWithTrimOptions.py  comfyui-union2:${REMOTE_PATH}
+docker cp ${LOCAL_PATH}save_image_with_alpha.py  comfyui-union2:${REMOTE_PATH}
 
 
 docker cp /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/.env comfyui-union2:/workspace/aria2/templates/.env
