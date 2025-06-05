@@ -16,7 +16,7 @@ export IMAGE_NAME="gayrat/comfyui-union2:Inp-Flux-Segment"
 export IMAGE_NAME="gayrat/comfyui-union2:Pulid-II-for-Flux-CUDA12.6"
 
 
-export IMAGE_NAME_BASE="Gayrat-inpaint"
+export IMAGE_NAME_BASE="Nunchaku"
 export CUDA="CUDA12.6"
 export IMAGE_NAME="gayrat/comfyui-union2:${IMAGE_NAME_BASE}-${CUDA}"
 echo -e "IMAGE_NAME : ${IMAGE_NAME}"
@@ -24,15 +24,16 @@ echo -e "IMAGE_NAME : ${IMAGE_NAME}"
 
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.6"
 
-source vast-contract.sh 19726999 $IMAGE_NAME
+source vast-contract.sh 19394482 $IMAGE_NAME
 source ./vs.sh
 
-tmux-s.sh Gayrat-inpaint
+tmux-s.sh Nunchaku
 
 
 ssh -p $VAST_SSH "root@$VAST_PUBLIC_IPADDR" -i ~/.ssh/mvps/ud_rsa
 tmux-s-bash.sh
 
+./dl_common.sh Nunchaku
 ./dl_common.sh Gayrat-inpaint
 ./dl_common.sh Inpainting-Flux-Jocker
 ./dl_common.sh Upscale-Jocker
