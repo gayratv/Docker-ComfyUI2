@@ -3,5 +3,5 @@ source /mnt/f/_prg/python/Docker-ComfyUI/.venv-wsl/bin/activate
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/py-prg/hugging-face
 python3 read-hf-project.py  \
-    --repo_id ByteDance/DreamO \
-    --download_dir models/loras
+    --repo_id Gayrat1968/svdq-int4-CreArt_Ultimate \
+    --download_dir models/diffusion_models/svdq-int4-CreArt_Ultimate
