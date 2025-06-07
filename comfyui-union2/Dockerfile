@@ -193,6 +193,6 @@ WORKDIR /workspace/ComfyUI
 
 
 RUN echo "cd /workspace/aria2/templates" >> /root/.bashrc \
-  && echo "set -g mouse on" >> ~/.tmux.conf
+  && echo "set -g mouse on" >> /root/.tmux.conf
 
 CMD ["bash"]

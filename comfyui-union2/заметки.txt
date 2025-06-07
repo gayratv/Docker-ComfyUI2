@@ -631,6 +631,12 @@ model_path is /workspace/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/depth
 ./db.sh
 ./dr.sh
 
+>->-> Workflow copy
+HOST_PATH=/mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/_temp_save/
+docker cp  comfyui-union2:/workspace/ComfyUI/user/default/workflows/ "${HOST_PATH}"
+
+>->->->->->->->->->->->->->->->->->->->->->->->-
+
 HOST_PATH=/mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/
 IMAGE_NAME=comfyui-union2
 docker cp  "${HOST_PATH}.env" "$IMAGE_NAME":/workspace/aria2/templates/
