@@ -631,9 +631,22 @@ model_path is /workspace/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/depth
 ./db.sh
 ./dr.sh
 
->->-> Workflow copy
-HOST_PATH=/mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/_temp_save/
-docker cp  comfyui-union2:/workspace/ComfyUI/user/default/workflows/ "${HOST_PATH}"
+>->-> Workflow copy  >->->
+
+docker cp  comfyui-union2:/workspace/ComfyUI/user/default/workflows/ /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/_temp_save/
+
+>->->->->->->->->->->->->->->->->->->->->->->->-
+
+docker exec comfyui-union2 rm -rf /workspace/ComfyUI/custom_nodes/ComfyUI_Gayrat/Samplers/__pycache__
+
+docker cp \
+  /mnt/f/_prg/python/ComfyUI_Gayrat/Samplers/cust_samplers.py \
+  comfyui-union2:/workspace/ComfyUI/custom_nodes/ComfyUI_Gayrat/Samplers
+
+docker cp \
+  /mnt/f/_prg/python/ComfyUI_Gayrat/Samplers/old/test3.py \
+  comfyui-union2:/workspace/ComfyUI/custom_nodes/ComfyUI_Gayrat/Samplers/old
+
 
 >->->->->->->->->->->->->->->->->->->->->->->->-
 

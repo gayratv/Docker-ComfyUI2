@@ -16,7 +16,7 @@ pip install --cache-dir=/root/pip-cache  https://huggingface.co/mit-han-lab/nunc
 
 
 
-pip install --cache-dir=/root/pip-cache  apex numpy==2.0.0
+pip install --cache-dir=/root/pip-cache  apex numpy==2.6.0
 
 rm -rf /root/.cache/pip
 
