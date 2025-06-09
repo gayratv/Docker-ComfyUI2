@@ -635,6 +635,9 @@ model_path is /workspace/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/depth
 
 docker cp  comfyui-union2:/workspace/ComfyUI/user/default/workflows/ /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/_temp_save/
 
+картинки сгенерированные
+docker cp  comfyui-union2:/workspace/ComfyUI/temp/ /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/_temp_save/
+
 >->->->->->->->->->->->->->->->->->->->->->->->-
 
 docker exec comfyui-union2 rm -rf /workspace/ComfyUI/custom_nodes/ComfyUI_Gayrat/Samplers/__pycache__
