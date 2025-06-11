@@ -14,6 +14,7 @@ RUN apt-get update \
     ffmpeg \
     locales \
     tmux \
+    rsync \
     mc \
     build-essential g++ cmake ninja-build git pkg-config libopenblas-dev libomp-dev \
     libjpeg-dev libpng-dev libtiff-dev libavcodec-dev libavformat-dev libswscale-dev \
