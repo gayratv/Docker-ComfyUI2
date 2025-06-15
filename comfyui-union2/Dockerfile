@@ -74,8 +74,14 @@ RUN python3 ./gayrat_py/pip-pckg-group.py
 
 # Устанавливаем UV_CACHE_DIR, чтобы uv использовал именно эту директорию для всего своего кеша
 ENV UV_CACHE_DIR=/root/pip-cache-uv
+ENV PIP_CACHE_DIR=/root/pip-cache-uv2
+ENV UV_NO_CACHE=0
+ENV UV_LINK_MODE=copy
 
-RUN --mount=type=cache,target=/root/pip-cache-uv \
+RUN --mount=type=cache,target=/root/pip-cache-uv,mode=0755,uid=0,gid=0 \
+    --mount=type=cache,target=/root/pip-cache-uv2,mode=0755,uid=0,gid=0 \
+    echo "Cache contents before:" && ls -la /root/pip-cache-uv || true && \
+    echo "Cache contents before:" && ls -la /root/pip-cache-uv2 || true && \
     uv pip install \
     --system \
     --index-strategy unsafe-best-match \
@@ -188,9 +194,13 @@ RUN --mount=type=cache,target=/root/pip-cache \
 RUN python3 /workspace/ComfyUI/gayrat_py/remove-models-dirs.py ${MODELS}
 #RUN python3 /workspace/ComfyUI/gayrat_py/remove-models-dirs.py ${MODELS} --dry-run
 
+WORKDIR /workspace/ComfyUI/custom_nodes/comfyui_controlnet_aux
+COPY assets-docker/config.yaml ./config.yaml
+
 WORKDIR /workspace/ComfyUI
 
-
+# Создайте файл конфигурации
+RUN echo '{"skip_update_check": true}' > /workspace/ComfyUI/custom_nodes/ComfyUI-Manager/.skip_update_check
 
 RUN echo "cd /workspace/aria2/templates" >> /root/.bashrc \
   && echo "set -g mouse on" >> /root/.tmux.conf

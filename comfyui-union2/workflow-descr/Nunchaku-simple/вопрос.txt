@@ -1,0 +1,30 @@
+здравствуйте, помогите пожалуйста понять workflow
+
+Схемой поделился Шумаков.
+
+Что мне никак не удается понять - зачем генерация разбита на две ступени
+Сначала идет обычная генерация с Detail Daemon Sampler
+
+на втором шаге latent с генерации после первого шага подается на вход генерации второго шага
+
+И вот тут происходит непонятная штука - возрастает резкость и детализация изображения.
+Я не могу понять почему это происходит
+В изначальной схеме было по 20 шагов, я поставил 12 и 8
+Тигр обычно получался нормально - но здесь повезло - поплыл глаз - так обычно бывает когда не хватает шагов
+
+Можете объяснить почему на втором шаге резко возрастает резкость и детализация - почему этого нельзя добиться простым увеличение шагов на 1 шаге ?
+Такое впечатление как будто применили upscaler - но его нет :)
+
+Вот список нод:
+https://github.com/gayratv/ComfyUI_Gayrat
+
+https://github.com/mit-han-lab/ComfyUI-nunchaku
+https://github.com/Fannovel16/comfyui_controlnet_aux
+https://github.com/chflame163/ComfyUI_LayerStyle
+# https://github.com/yolain/ComfyUI-Easy-Use
+https://github.com/chrisgoringe/cg-use-everywhere
+
+https://github.com/rgthree/rgthree-comfy
+https://github.com/Jonseed/ComfyUI-Detail-Daemon
+
+Также приложил ссылки на модели

@@ -6,6 +6,7 @@ set -x  # Логирование всех команд
 
 pip install --cache-dir=/root/pip-cache  https://huggingface.co/mit-han-lab/nunchaku/resolve/main/nunchaku-0.3.0%2Btorch2.7-cp311-cp311-linux_x86_64.whl
 
+
 #cd /workspace/
 #git clone https://huggingface.co/mit-han-lab/nunchaku
 #cd nunchaku
@@ -16,7 +17,8 @@ pip install --cache-dir=/root/pip-cache  https://huggingface.co/mit-han-lab/nunc
 
 
 
-pip install --cache-dir=/root/pip-cache  apex numpy==2.2.6
+pip install --cache-dir=/root/pip-cache  apex
+pip install --cache-dir=/root/pip-cache -U "numpy==2.2.3"
 
 rm -rf /root/.cache/pip
 

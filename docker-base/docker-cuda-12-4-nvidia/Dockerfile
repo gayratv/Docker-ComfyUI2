@@ -16,10 +16,30 @@ RUN apt-get update \
     tmux \
     rsync \
     mc \
+    ffmpeg libavutil-dev  \
     build-essential g++ cmake ninja-build git pkg-config libopenblas-dev libomp-dev \
     libjpeg-dev libpng-dev libtiff-dev libavcodec-dev libavformat-dev libswscale-dev \
     libv4l-dev libxvidcore-dev libx264-dev libgtk-3-dev libatlas-base-dev gfortran \
     && rm -rf /var/lib/apt/lists/*
+
+
+# Использование статической сборки FFmpeg
+# Скачайте готовую статическую сборку
+RUN mkdir -p /tmp && \
+    cd /tmp  && \
+    wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz   && \
+# Распакуйте
+    tar xf ffmpeg-release-amd64-static.tar.xz   && \
+# Переместите в систему
+    cd ffmpeg-*-amd64-static/   && \
+    mv ffmpeg /usr/local/bin/   && \
+    mv ffprobe /usr/local/bin/   && \
+# Сделайте исполняемыми
+    chmod +x /usr/local/bin/ffmpeg   && \
+    chmod +x /usr/local/bin/ffprobe   && \
+# Проверьте версию
+    ffmpeg -version
+
 
 # Set non-interactive mode to prevent timezone selection prompts
 ENV DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC
