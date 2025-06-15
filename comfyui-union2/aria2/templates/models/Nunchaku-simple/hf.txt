@@ -133,3 +133,9 @@ https://huggingface.co/black-forest-labs/FLUX.1-Redux-dev/resolve/main/flux1-red
 https://huggingface.co/black-forest-labs/FLUX.1-Canny-dev-lora/resolve/main/flux1-canny-dev-lora.safetensors
      dir=models/loras
      out=flux1-canny-dev-lora.safetensors
+
+# Download Upscale model :
+# https://huggingface.co/gemasai/4x_NMKD-Siax_200k/tree/main
+https://huggingface.co/gemasai/4x_NMKD-Siax_200k/resolve/main/4x_NMKD-Siax_200k.pth
+    out=4x_NMKD-Siax_200k.pth
+    dir=models/upscale_models
