@@ -1,0 +1,27 @@
+#
+# Loras:
+# Detailer by Stable Yogi:
+# https://civitai.com/models/178167/detailersbystableyogi
+# Place in ComfyUI/models/loras
+https://civitai.com/api/download/models/1071060?type=Model&format=SafeTensor
+    dir=models/loras
+    out=Super_Eye_Detailer_By_Stable_Yogi_SDPD0.safetensors
+
+https://civitai.com/api/download/models/1378584?type=Model&format=SafeTensor
+    out=aidmaMJ6.1SDXL-v0.5.safetensors
+    dir=models/loras
+
+# https://civitai.com/models/178480/beautiful-girl-for-sdxl
+# majicmix_style
+# Trigger keyword is "majicmix style" (effective to some extent even without the word).
+# Checkpoint recommended is "realisticStockPhoto_v10.safetensors" (template for Fooocus real).
+https://civitai.com/api/download/models/207269?type=Model&format=SafeTensor
+    out=beautiful_girl_ver2.safetensors
+    dir=models/loras
+
+#
+# Checkpoint:
+# https://civitai.com/models/575395?modelVersionId=1071060
+https://civitai.com/api/download/models/1081768?type=Model&format=SafeTensor&size=full&fp=fp16
+    dir=models/checkpoints/SDXL
+    out=bigLust_v16.safetensors

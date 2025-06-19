@@ -1,0 +1,60 @@
+# In ComfyUI Manager click Model Manager and download the following:
+#
+# ControlNet: xinsir/ControlNet++: All-in-one ControlNet (ProMax model)
+https://huggingface.co/xinsir/controlnet-union-sdxl-1.0/resolve/main/diffusion_pytorch_model_promax.safetensors
+    out=controlnet-union-sdxl-1.0.safetensors
+    dir=models/controlnet/SDXL
+
+
+# https://huggingface.co/xinsir/controlnet-union-sdxl-1.0
+#
+# FaceID Models:
+# https://huggingface.co/h94/IP-Adapter-FaceID
+
+# ip-adapter-faceid-plusv2_sdxl.bin
+https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sdxl.bin
+    dir=models/ipadapter
+    out=ip-adapter-faceid-plusv2_sdxl.bin
+
+# ip-adapter-faceid-plusv2_sdxl_lora.safetensors
+https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sdxl_lora.safetensors
+    dir=models/ipadapter
+    out=ip-adapter-faceid-plusv2_sdxl_lora.safetensors
+
+# CLIPVision model (IP-Adapter) CLIP-ViT-H-14-laion2B-s32B-b79K
+https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors
+    dir=models/clip_vision
+    out=CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors
+
+# CLIPVision model (IP-Adapter) CLIP-ViT-bigG-14-laion2B-39B-b160k
+https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/image_encoder/model.safetensors
+    dir=models/clip_vision
+    out=CLIP-ViT-bigG-14-laion2B-39B-b160k.safetensors
+
+#
+# The following cannot be downloaded from the Model Manager:
+#
+# Detectors:
+# Eye detector can be downloaded here:
+# https://civitai.com/models/150925/eyes-detection-adetailer
+# Place in ComfyUI/models/ultralytics/bbox
+https://huggingface.co/Gayrat1968/detections/resolve/main/Eyes.pt
+    dir=models/ultralytics/bbox
+    out=Eyes.pt
+
+#
+# Upscaler:
+# https://openmodeldb.info/models/4x-LSDIR
+https://huggingface.co/Gayrat1968/Upscale_Models/resolve/main/4xLSDIR.pth
+    dir=models/upscale_models
+    out=4xLSDIR.pth
+
+# https://openmodeldb.info/models/4x-FaceUpDAT
+https://huggingface.co/Gayrat1968/Upscale_Models/resolve/main/4xFaceUpDAT.pth
+    dir=models/upscale_models
+    out=4xFaceUpDAT.pth
+
+# ESRGAN/OmniSR_X2_DIV2K.safetensors
+https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/OmniSR_X2_DIV2K.safetensors
+    dir=models/upscale_models
+    out=OmniSR_X2_DIV2K.safetensors

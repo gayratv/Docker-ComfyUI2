@@ -1,0 +1,297 @@
+{
+  "id": "745e2af5-ac19-4571-8550-55ccbf01252b",
+  "revision": 0,
+  "last_node_id": 1579,
+  "last_link_id": 13795,
+  "nodes": [
+    {
+      "id": 1543,
+      "type": "Anything Everywhere3",
+      "pos": [
+        2195.780517578125,
+        817.5836791992188
+      ],
+      "size": [
+        179.97518920898438,
+        66
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "anything",
+          "name": "anything",
+          "shape": 7,
+          "type": "*",
+          "link": null
+        },
+        {
+          "label": "anything",
+          "name": "anything2",
+          "shape": 7,
+          "type": "*",
+          "link": null
+        },
+        {
+          "color_on": "#FFD500",
+          "label": "CLIP",
+          "name": "anything3",
+          "shape": 7,
+          "type": "*",
+          "link": 13521
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "aux_id": "chrisgoringe/cg-use-everywhere",
+        "ver": "5ae64f462ec24fc0100a309c42c3def6aae18d7b",
+        "Node name for S&R": "Anything Everywhere3",
+        "group_restricted": 0,
+        "color_restricted": 0,
+        "cnr_id": "cg-use-everywhere",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 1576,
+      "type": "GoogleTranslateNode2CLIPTextEncodeNode",
+      "pos": [
+        2384.82421875,
+        1203.825927734375
+      ],
+      "size": [
+        522.5486450195312,
+        300.3587341308594
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            13791
+          ]
+        },
+        {
+          "name": "translated_text",
+          "type": "STRING",
+          "links": [
+            13792
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "gayratv/ComfyUI_Gayrat",
+        "ver": "ded945ced56935f9cf22b605bc37c9a8489d7762",
+        "Node name for S&R": "GoogleTranslateNode2CLIPTextEncodeNode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Завораживающий фотореалистичный портрет Снежной королевы, представленной в образе свирепой, но в то же время неземной фигуры, сидящей верхом на изящной черной пантере, чья блестящая черная шерсть переливается мускулами, когда она крадется с беззвучной грацией, а изумрудно-зеленые глаза светятся первобытной интенсивностью. Фарфорово-бледная кожа Снежной королевы мерцает морозным блеском, как будто покрыта микроскопическими кристаллами льда, отражая свет в тонких призматических оттенках, ее высокие скулы острые и покрыты серебристым инеем. Ее губы глубокого, замерзшего синего цвета, покрыты тонкими линиями обморожения, а ее кристально-голубые глаза, испещренные серебром, блестят, как разбитый лед, излучая ледяную власть. Ее белоснежные волосы ниспадают сложными косами, переплетенными с крошечными сосульками и серебряными цепочками, каждая прядь которых ловит свет, как пряденное стекло. На руках она держит маленького леопарда, его мягкая пятнистая шерсть представляет собой смесь золотисто-коричневого и черного цветов, его широкие, любопытные янтарные глаза контрастируют с холодным поведением королевы, его крошечные лапки болтаются, когда он прижимается к ней. Она носит корону из заостренных осколков льда, преломляющих свет в мягкие радуги, и платье из прозрачного морозно-голубого шелка, поверхность которого похожа на расколотый лед, вышитое вихрящимися серебряными снежинками, ниспадающее на спину пантеры. Ее шею обрамляет плюшевый белый воротник из норки, каждый волосок которого мягко сияет в свете. Сцена освещена с помощью профессиональной трехточечной установки: холодный синий ключевой свет слева под углом 45 градусов, подчеркивающий ее ледяную палитру, мягкий заполняющий свет справа, смягчающий тени, и контурный свет сзади, создающий серебристый ореол, который подчеркивает ее волосы, корону и изящную форму пантеры. Фоном служит заснеженная тундра под сумеречным небом, над которой танцуют слабые зеленые и фиолетовые полярные сияния, дополняя зимнюю магию. Композиция сочетает в себе гиперреалистичные текстуры с мифическим очарованием, запечатлевая замерзшее величие Снежной королевы и ее связь с дикими кошками."
+      ]
+    },
+    {
+      "id": 1395,
+      "type": "Anything Everywhere",
+      "pos": [
+        3177.216552734375,
+        1035.0623779296875
+      ],
+      "size": [
+        239.40000915527344,
+        76
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "color_on": "#FFA931",
+          "label": "CONDITIONING",
+          "name": "anything",
+          "shape": 7,
+          "type": "*",
+          "link": 13791
+        }
+      ],
+      "outputs": [],
+      "title": "Positive prompt",
+      "properties": {
+        "aux_id": "chrisgoringe/cg-use-everywhere",
+        "ver": "887d26c28711813590309bd5d45ad44bb407fc35",
+        "Node name for S&R": "Anything Everywhere",
+        "group_restricted": 0,
+        "color_restricted": 0,
+        "cnr_id": "cg-use-everywhere",
+        "ttNbgOverride": {
+          "color": "#432",
+          "bgcolor": "#653",
+          "groupcolor": "#b58b2a"
+        },
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 1578,
+      "type": "Show any [Crystools]",
+      "pos": [
+        3130.206298828125,
+        1458.2457275390625
+      ],
+      "size": [
+        343.6770935058594,
+        283.8597106933594
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "any_value",
+          "shape": 7,
+          "type": "*",
+          "link": 13792
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "aux_id": "crystian/ComfyUI-Crystools",
+        "ver": "1156ff983b635ef506e7b79659126837a1e9d275",
+        "Node name for S&R": "Show any [Crystools]",
+        "widget_ue_connectable": {}
+      }
+    },
+    {
+      "id": 1574,
+      "type": "NunchakuTextEncoderLoaderV2",
+      "pos": [
+        1762.9107666015625,
+        805.9043579101562
+      ],
+      "size": [
+        317.0367126464844,
+        130
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            13521
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "mit-han-lab/ComfyUI-nunchaku",
+        "ver": "dba78a94a199a1888c43b3c343d0ceec4843afc5",
+        "Node name for S&R": "NunchakuTextEncoderLoaderV2",
+        "cnr_id": "ComfyUI-nunchaku",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "flux.1",
+        "FLUX/ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors",
+        "FLUX/t5xxl_fp8_e4m3fn.safetensors",
+        512
+      ]
+    }
+  ],
+  "links": [
+    [
+      13521,
+      1574,
+      0,
+      1543,
+      2,
+      "CLIP"
+    ],
+    [
+      13791,
+      1576,
+      0,
+      1395,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      13792,
+      1576,
+      1,
+      1578,
+      0,
+      "*"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.5054470284993162,
+      "offset": [
+        -576.9336685274441,
+        -354.74354744039044
+      ]
+    },
+    "frontendVersion": "1.21.7",
+    "ue_links": [
+      {
+        "downstream": 1576,
+        "downstream_slot": 0,
+        "upstream": "1574",
+        "upstream_slot": 0,
+        "controller": 1543,
+        "type": "CLIP"
+      }
+    ],
+    "VHS_latentpreview": true,
+    "VHS_latentpreviewrate": 0,
+    "node_versions": {
+      "comfy-core": "0.3.15",
+      "ComfyUI_essentials": "33ff89fd354d8ec3ab6affb605a79a931b445d99",
+      "comfyui_controlnet_aux": "1e9eac6377c882da8bb360c7544607036904362c",
+      "Comfyui_TTP_Toolset": "13bd85fc5ea8c3c6ecf2170d613c2a099c0c0d5b",
+      "ComfyUI-Impact-Pack": "c6056b132d7e155c3ece42b77e08ea45bde1bfef",
+      "ComfyUI-Impact-Subpack": "74db20c95eca152a6d686c914edc0ef4e4762cb8",
+      "Comfy-WaveSpeed": "3db162bb7ad56b84a452a4778527da63793c0e87",
+      "comfy_mtb": "d87e52ea2c112fd95f257dcd6a54a5db77a34fc3",
+      "ComfyUI-Easy-Use": "aadbb0b38945eba3e15be6099a7f4e5c0327c175",
+      "cg-use-everywhere": "8017bc6b063f45db6b986d9fc8bb76bd3234b838",
+      "ComfyUI-Detail-Daemon": "90e703d3d3f979438471c646a5d030840a2caac3",
+      "rgthree-comfy": "32142fe476878a354dda6e2d4b5ea98960de3ced",
+      "ComfyUI-SD3LatentSelectRes": "f967911f1bcacc90d46719e91cb9a9c39bf091dd",
+      "ComfyUI_LayerStyle": "7b326d13e43fc4022cd80e472c7af67027409b1e",
+      "comfy-image-saver": "65e6903eff274a50f8b5cd768f0f96baf37baea1"
+    },
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true,
+    "links_added_by_ue": [
+      13785,
+      13786,
+      13787,
+      13788,
+      13789,
+      13790
+    ]
+  },
+  "version": 0.4
+}
