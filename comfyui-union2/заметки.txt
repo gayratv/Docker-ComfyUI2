@@ -681,10 +681,11 @@ export WORKFLOW_TO_COPY=$MODELS
 export VERSION="$MODELS-CUDA12.6"
 export NODES="$MODELS.txt"
 export IMAGE_NAME="comfyui-union2"
-export COMFYUI_VERSION="v0.3.40"
+export COMFYUI_VERSION="v0.3.41"
 export BASE_IMAGE="cuda-12-6:nvidia-runtime"
 export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
 export REQ_MODIFY="base-CUDA-12.6"
+export POST_INSTALL="Vlad_Chopin_fitting_room.sh"
 
 ./dl_common.sh Vlad_Chopin_fitting_room
 
