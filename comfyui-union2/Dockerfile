@@ -115,9 +115,11 @@ COPY --from=builder /usr/local/lib/python3.11/dist-packages /usr/local/lib/pytho
 RUN echo -e "Копируем рабочую директорию"
 COPY --from=builder /workspace /workspace
 
+ARG MODELS
+
 WORKDIR /workspace/ComfyUI
 COPY assets-docker/styles.csv ./
-COPY input/ ./input/
+COPY input/${MODELS} ./input/
 
 ENV DOWNLOADS_DIR=/usr/local/bin
 
@@ -157,7 +159,7 @@ RUN chmod +x *.sh \
     && rm -f ./templates/.env
 
 WORKDIR /workspace/templates/models
-ARG MODELS
+
 #RUN for dir in */; do [ "$dir" != "$MODELS/" ] && rm -r "$dir"; done
 
 WORKDIR /workspace

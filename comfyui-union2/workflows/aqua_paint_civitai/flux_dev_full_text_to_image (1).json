@@ -1,0 +1,529 @@
+{
+  "id": "908d0bfb-e192-4627-9b57-147496e6e2dd",
+  "revision": 0,
+  "last_node_id": 46,
+  "last_link_id": 64,
+  "nodes": [
+    {
+      "id": 39,
+      "type": "VAELoader",
+      "pos": [
+        -320,
+        470
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            58
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.40",
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "ae.safetensors",
+            "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn_scaled.safetensors)\\n\\n**VAE**\\n\\n[ae.safetensors](https://huggingface.co/Comfy-Org/Lumina_Image_2.0_Repackaged/resolve/main/split_files/vae/ae.safetensors",
+            "directory": "vae"
+          }
+        ],
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "FLUX/flux.vae.safetensors"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 40,
+      "type": "DualCLIPLoader",
+      "pos": [
+        -320,
+        290
+      ],
+      "size": [
+        270,
+        130
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            59
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.40",
+        "Node name for S&R": "DualCLIPLoader",
+        "models": [
+          {
+            "name": "clip_l.safetensors",
+            "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/blob/main/clip_l.safetensors",
+            "directory": "text_encoders"
+          },
+          {
+            "name": "t5xxl_fp16.safetensors",
+            "url": "https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp16.safetensors",
+            "directory": "text_encoders"
+          }
+        ],
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "FLUX/ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors",
+        "FLUX/t5xxl_fp8_e4m3fn.safetensors",
+        "flux",
+        "default"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 41,
+      "type": "CLIPTextEncodeFlux",
+      "pos": [
+        85.12401580810547,
+        68.18180847167969
+      ],
+      "size": [
+        340,
+        250
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 59
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            60,
+            62
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.40",
+        "Node name for S&R": "CLIPTextEncodeFlux",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "\nClaude Monet mode, beautiful woman",
+        "A romantic classical portrait of a red-haired woman by a vibrant lakeside garden, painted in lush oil strokes. She wears a flowing, vintage white gown patterned with pastel flowers, the off-shoulder cut revealing her collarbones and accentuated by a delicate silver pendant. Her expression is thoughtful, eyes gazing softly at the viewer. Her hair is styled in soft waves, touched by a gentle breeze. She is surrounded by bright summer flowers—pinks, oranges, and reds—blooming at the edge of a serene lake that reflects a clear blue sky. The light plays delicately across her skin and dress, casting warm shadows and giving the entire scene a timeless, idyllic quality. Ideal for an oil painting-style generation emphasizing texture, light, and classical beauty.",
+        3.5
+      ]
+    },
+    {
+      "id": 9,
+      "type": "SaveImage",
+      "pos": [
+        768.4297485351562,
+        105.86778259277344
+      ],
+      "size": [
+        640,
+        660
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 9
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.40",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        589.2564086914062,
+        145.20660400390625
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 52
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 58
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            9
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.40",
+        "Node name for S&R": "VAEDecode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 42,
+      "type": "ConditioningZeroOut",
+      "pos": [
+        125.60272216796875,
+        373.3892517089844
+      ],
+      "size": [
+        200,
+        30
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 62
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            63
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.40",
+        "Node name for S&R": "ConditioningZeroOut",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 31,
+      "type": "KSampler",
+      "pos": [
+        390.9918212890625,
+        465.45458984375
+      ],
+      "size": [
+        315,
+        262
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 61
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 60
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 63
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 64
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            52
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.40",
+        "Node name for S&R": "KSampler",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        621328038502040,
+        "randomize",
+        20,
+        1,
+        "euler",
+        "simple",
+        1
+      ]
+    },
+    {
+      "id": 45,
+      "type": "FluxSDLatentImage",
+      "pos": [
+        56.92790222167969,
+        497.04638671875
+      ],
+      "size": [
+        224.75,
+        238
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            64
+          ]
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "gayratv/ComfyUI_Gayrat",
+        "ver": "3fb5277f531f7858327f8643920b5c96efecef58",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "FluxSDLatentImage"
+      },
+      "widgets_values": [
+        "Flux",
+        "1:1",
+        "1024x1024",
+        1,
+        419284575971074,
+        "fixed"
+      ]
+    },
+    {
+      "id": 38,
+      "type": "UNETLoader",
+      "pos": [
+        -320,
+        150
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            61
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.40",
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "name": "flux1-dev.safetensors",
+            "url": "https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/flux1-dev.safetensors",
+            "directory": "diffusion_models"
+          }
+        ],
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Flux/flux1-dev-fp8-e4m3fn.safetensors",
+        "default"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    }
+  ],
+  "links": [
+    [
+      9,
+      8,
+      0,
+      9,
+      0,
+      "IMAGE"
+    ],
+    [
+      52,
+      31,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      58,
+      39,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      59,
+      40,
+      0,
+      41,
+      0,
+      "CLIP"
+    ],
+    [
+      60,
+      41,
+      0,
+      31,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      61,
+      38,
+      0,
+      31,
+      0,
+      "MODEL"
+    ],
+    [
+      62,
+      41,
+      0,
+      42,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      63,
+      42,
+      0,
+      31,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      64,
+      45,
+      2,
+      31,
+      3,
+      "LATENT"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Step 1 - Load Models Here",
+      "bounding": [
+        -330,
+        80,
+        300,
+        460
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7272727272727345,
+      "offset": [
+        755.2309487600602,
+        125.71403837697876
+      ]
+    },
+    "frontendVersion": "1.21.7",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true,
+    "ue_links": [],
+    "links_added_by_ue": []
+  },
+  "version": 0.4
+}

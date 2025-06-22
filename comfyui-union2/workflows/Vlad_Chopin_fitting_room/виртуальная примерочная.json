@@ -16,7 +16,7 @@
         190
       ],
       "flags": {},
-      "order": 31,
+      "order": 30,
       "mode": 0,
       "inputs": [
         {
@@ -52,9 +52,11 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfyui_ipadapter_plus",
+        "aux_id": "GraceOpenspace/ComfyUI_IPAdapter_plus",
         "ver": "2.0.0",
-        "Node name for S&R": "IPAdapter"
+        "Node name for S&R": "IPAdapter",
+        "cnr_id": "comfyui_ipadapter_plus",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         0.8,
@@ -77,7 +79,7 @@
         222
       ],
       "flags": {},
-      "order": 19,
+      "order": 14,
       "mode": 0,
       "inputs": [
         {
@@ -105,7 +107,9 @@
       "properties": {
         "cnr_id": "comfyui_controlnet_aux",
         "ver": "1.0.7",
-        "Node name for S&R": "DWPreprocessor"
+        "Node name for S&R": "DWPreprocessor",
+        "aux_id": "Fannovel16/comfyui_controlnet_aux",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "enable",
@@ -131,7 +135,7 @@
         78
       ],
       "flags": {},
-      "order": 33,
+      "order": 32,
       "mode": 0,
       "inputs": [
         {
@@ -166,9 +170,11 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfyui_ipadapter_plus",
+        "aux_id": "GraceOpenspace/ComfyUI_IPAdapter_plus",
         "ver": "2.0.0",
-        "Node name for S&R": "IPAdapterUnifiedLoader"
+        "Node name for S&R": "IPAdapterUnifiedLoader",
+        "cnr_id": "comfyui_ipadapter_plus",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "PLUS (high strength)"
@@ -188,7 +194,7 @@
         198
       ],
       "flags": {},
-      "order": 28,
+      "order": 26,
       "mode": 0,
       "inputs": [
         {
@@ -216,7 +222,9 @@
       "properties": {
         "cnr_id": "ComfyUI-AutoCropFaces",
         "ver": "b2139db9a8ffb4707832106a58f519bbd04e6118",
-        "Node name for S&R": "AutoCropFaces"
+        "Node name for S&R": "AutoCropFaces",
+        "aux_id": "liusida/ComfyUI-AutoCropFaces",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         1,
@@ -230,41 +238,6 @@
       "bgcolor": "#335"
     },
     {
-      "id": 19,
-      "type": "ControlNetLoader",
-      "pos": [
-        124.96737670898438,
-        -156.2968292236328
-      ],
-      "size": [
-        400,
-        60
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "CONTROL_NET",
-          "type": "CONTROL_NET",
-          "links": [
-            21
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.36",
-        "Node name for S&R": "ControlNetLoader"
-      },
-      "widgets_values": [
-        "control_v11p_sd15_openpose.pth"
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
-    },
-    {
       "id": 57,
       "type": "ConstrainResolution",
       "pos": [
@@ -276,7 +249,7 @@
         186
       ],
       "flags": {},
-      "order": 12,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
@@ -321,7 +294,9 @@
       "properties": {
         "cnr_id": "constrainresolution",
         "ver": "1.0.1",
-        "Node name for S&R": "ConstrainResolution"
+        "Node name for S&R": "ConstrainResolution",
+        "aux_id": "EnragedAntelope/ComfyUI-ConstrainResolution",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         512,
@@ -343,7 +318,7 @@
         178
       ],
       "flags": {},
-      "order": 23,
+      "order": 18,
       "mode": 0,
       "inputs": [
         {
@@ -381,7 +356,12 @@
       "properties": {
         "cnr_id": "was-ns",
         "ver": "3.0.0",
-        "Node name for S&R": "Image Resize"
+        "Node name for S&R": "Image Resize",
+        "aux_id": "ltdrdata/was-node-suite-comfyui",
+        "widget_ue_connectable": {
+          "resize_width": true,
+          "resize_height": true
+        }
       },
       "widgets_values": [
         "resize",
@@ -406,7 +386,7 @@
         258
       ],
       "flags": {},
-      "order": 30,
+      "order": 29,
       "mode": 0,
       "inputs": [
         {
@@ -419,7 +399,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.40",
-        "Node name for S&R": "PreviewImage"
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [],
       "color": "#222",
@@ -437,7 +418,7 @@
         258
       ],
       "flags": {},
-      "order": 27,
+      "order": 25,
       "mode": 0,
       "inputs": [
         {
@@ -450,7 +431,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.40",
-        "Node name for S&R": "PreviewImage"
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [],
       "color": "#222",
@@ -468,7 +450,7 @@
         258
       ],
       "flags": {},
-      "order": 25,
+      "order": 24,
       "mode": 0,
       "inputs": [
         {
@@ -481,7 +463,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.36",
-        "Node name for S&R": "PreviewImage"
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [],
       "color": "#222",
@@ -499,7 +482,7 @@
         80
       ],
       "flags": {},
-      "order": 13,
+      "order": 19,
       "mode": 0,
       "inputs": [
         {
@@ -534,9 +517,11 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfyui_ipadapter_plus",
+        "aux_id": "GraceOpenspace/ComfyUI_IPAdapter_plus",
         "ver": "2.0.0",
-        "Node name for S&R": "IPAdapterUnifiedLoader"
+        "Node name for S&R": "IPAdapterUnifiedLoader",
+        "cnr_id": "comfyui_ipadapter_plus",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "STANDARD (medium strength)"
@@ -593,7 +578,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.36",
-        "Node name for S&R": "KSampler"
+        "Node name for S&R": "KSampler",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         616089985860993,
@@ -647,7 +633,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.36",
-        "Node name for S&R": "VAEDecode"
+        "Node name for S&R": "VAEDecode",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [],
       "color": "#223",
@@ -665,7 +652,7 @@
         131.228271484375
       ],
       "flags": {},
-      "order": 15,
+      "order": 21,
       "mode": 0,
       "inputs": [
         {
@@ -687,125 +674,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.36",
-        "Node name for S&R": "CLIPTextEncode"
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "(nsfw, naked, nude, deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers:1.4), (deformed, distorted, disfigured:1.3), poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation, text, logo, watermark "
       ],
       "color": "#322",
       "bgcolor": "#533"
-    },
-    {
-      "id": 4,
-      "type": "CheckpointLoaderSimple",
-      "pos": [
-        -2759.7470703125,
-        -527.1419677734375
-      ],
-      "size": [
-        410,
-        100
-      ],
-      "flags": {},
-      "order": 1,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "slot_index": 0,
-          "links": [
-            91,
-            114
-          ]
-        },
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "slot_index": 1,
-          "links": [
-            95
-          ]
-        },
-        {
-          "name": "VAE",
-          "type": "VAE",
-          "slot_index": 2,
-          "links": [
-            8,
-            116
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.36",
-        "Node name for S&R": "CheckpointLoaderSimple"
-      },
-      "widgets_values": [
-        "DreamShaper_8_pruned.safetensors"
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
-    },
-    {
-      "id": 64,
-      "type": "LoraLoader",
-      "pos": [
-        -2202.3525390625,
-        -642.9181518554688
-      ],
-      "size": [
-        270,
-        126
-      ],
-      "flags": {},
-      "order": 7,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 91
-        },
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 95
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            92
-          ]
-        },
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "links": [
-            93,
-            94,
-            110,
-            111
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.40",
-        "Node name for S&R": "LoraLoader"
-      },
-      "widgets_values": [
-        "add_detail.safetensors",
-        0.7000000000000002,
-        1
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
     },
     {
       "id": 72,
@@ -819,7 +695,7 @@
         131.228271484375
       ],
       "flags": {},
-      "order": 17,
+      "order": 23,
       "mode": 0,
       "inputs": [
         {
@@ -841,7 +717,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.36",
-        "Node name for S&R": "CLIPTextEncode"
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "(nsfw, naked, nude, deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers:1.4), (deformed, distorted, disfigured:1.3), poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation, text, logo, watermark "
@@ -861,7 +738,7 @@
         247.28128051757812
       ],
       "flags": {},
-      "order": 32,
+      "order": 33,
       "mode": 0,
       "inputs": [
         {
@@ -874,53 +751,12 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.40",
-        "Node name for S&R": "PreviewImage"
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [],
       "color": "#222",
       "bgcolor": "#000"
-    },
-    {
-      "id": 34,
-      "type": "LoadImage",
-      "pos": [
-        1304.416015625,
-        -2183.14208984375
-      ],
-      "size": [
-        320,
-        314
-      ],
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            43
-          ]
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": null
-        }
-      ],
-      "title": "Top Clothing",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.36",
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "tshirt.jpg",
-        "image"
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
     },
     {
       "id": 30,
@@ -982,9 +818,11 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfyui_ipadapter_plus",
+        "aux_id": "GraceOpenspace/ComfyUI_IPAdapter_plus",
         "ver": "2.0.0",
-        "Node name for S&R": "IPAdapterAdvanced"
+        "Node name for S&R": "IPAdapterAdvanced",
+        "cnr_id": "comfyui_ipadapter_plus",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         1,
@@ -1043,9 +881,11 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfyui_ipadapter_plus",
+        "aux_id": "GraceOpenspace/ComfyUI_IPAdapter_plus",
         "ver": "2.0.0",
-        "Node name for S&R": "IPAdapterUnifiedLoader"
+        "Node name for S&R": "IPAdapterUnifiedLoader",
+        "cnr_id": "comfyui_ipadapter_plus",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "PLUS (high strength)"
@@ -1113,9 +953,11 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfyui_ipadapter_plus",
+        "aux_id": "GraceOpenspace/ComfyUI_IPAdapter_plus",
         "ver": "2.0.0",
-        "Node name for S&R": "IPAdapterAdvanced"
+        "Node name for S&R": "IPAdapterAdvanced",
+        "cnr_id": "comfyui_ipadapter_plus",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         1,
@@ -1140,7 +982,7 @@
         246
       ],
       "flags": {},
-      "order": 22,
+      "order": 17,
       "mode": 0,
       "inputs": [
         {
@@ -1153,7 +995,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.40",
-        "Node name for S&R": "PreviewImage"
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [],
       "color": "#222",
@@ -1185,7 +1028,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.36",
-        "Node name for S&R": "PreviewImage"
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [],
       "color": "#222",
@@ -1203,7 +1047,7 @@
         626
       ],
       "flags": {},
-      "order": 11,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
@@ -1242,7 +1086,9 @@
       "properties": {
         "cnr_id": "comfyui-rmbg",
         "ver": "2.4.0",
-        "Node name for S&R": "ClothesSegment"
+        "Node name for S&R": "ClothesSegment",
+        "aux_id": "1038lab/ComfyUI-RMBG",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         false,
@@ -1334,7 +1180,11 @@
         }
       ],
       "properties": {
-        "Node name for S&R": "ReActorFaceSwap"
+        "cnr_id": "comfyui-reactor",
+        "ver": "48a3ad27f99f775dcf63e61276e0110d256597ef",
+        "Node name for S&R": "ReActorFaceSwap",
+        "aux_id": "Gourieff/ComfyUI-ReActor",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         true,
@@ -1378,7 +1228,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.36",
-        "Node name for S&R": "PreviewImage"
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [],
       "color": "#222",
@@ -1409,7 +1260,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.40",
-        "Node name for S&R": "PreviewImage"
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [],
       "color": "#222",
@@ -1427,7 +1279,7 @@
         626
       ],
       "flags": {},
-      "order": 8,
+      "order": 7,
       "mode": 0,
       "inputs": [
         {
@@ -1466,7 +1318,9 @@
       "properties": {
         "cnr_id": "comfyui-rmbg",
         "ver": "2.4.0",
-        "Node name for S&R": "ClothesSegment"
+        "Node name for S&R": "ClothesSegment",
+        "aux_id": "1038lab/ComfyUI-RMBG",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         false,
@@ -1497,48 +1351,6 @@
       "bgcolor": "#364254"
     },
     {
-      "id": 62,
-      "type": "LoadImage",
-      "pos": [
-        1515.948486328125,
-        -1073.7919921875
-      ],
-      "size": [
-        320,
-        314
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            86
-          ]
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": null
-        }
-      ],
-      "title": "Shoes",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.36",
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "shoe6.jpg",
-        "image"
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
-    },
-    {
       "id": 73,
       "type": "KSampler",
       "pos": [
@@ -1550,7 +1362,7 @@
         262
       ],
       "flags": {},
-      "order": 26,
+      "order": 28,
       "mode": 0,
       "inputs": [
         {
@@ -1587,7 +1399,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.36",
-        "Node name for S&R": "KSampler"
+        "Node name for S&R": "KSampler",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         616089985860999,
@@ -1626,74 +1439,12 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.40",
-        "Node name for S&R": "PreviewImage"
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [],
       "color": "#222",
       "bgcolor": "#000"
-    },
-    {
-      "id": 78,
-      "type": "AILab_LoadImage",
-      "pos": [
-        -314.08697509765625,
-        -1569.3583984375
-      ],
-      "size": [
-        270,
-        470.00006103515625
-      ],
-      "flags": {},
-      "order": 4,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            124,
-            128,
-            129,
-            133
-          ]
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": null
-        },
-        {
-          "name": "MASK_IMAGE",
-          "type": "IMAGE",
-          "links": null
-        },
-        {
-          "name": "WIDTH",
-          "type": "INT",
-          "links": null
-        },
-        {
-          "name": "HEIGHT",
-          "type": "INT",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-rmbg",
-        "ver": "2.4.0",
-        "Node name for S&R": "AILab_LoadImage"
-      },
-      "widgets_values": [
-        "Image_fx (7).jpg",
-        "alpha",
-        1,
-        "longest_side",
-        0,
-        "image"
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
     },
     {
       "id": 18,
@@ -1707,7 +1458,7 @@
         186
       ],
       "flags": {},
-      "order": 24,
+      "order": 27,
       "mode": 0,
       "inputs": [
         {
@@ -1758,7 +1509,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.36",
-        "Node name for S&R": "ControlNetApplyAdvanced"
+        "Node name for S&R": "ControlNetApplyAdvanced",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         0.85,
@@ -1767,49 +1519,6 @@
       ],
       "color": "#332922",
       "bgcolor": "#593930"
-    },
-    {
-      "id": 15,
-      "type": "LoadImage",
-      "pos": [
-        -1903.552001953125,
-        407.9979553222656
-      ],
-      "size": [
-        315,
-        314.00006103515625
-      ],
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "slot_index": 0,
-          "links": [
-            75
-          ]
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": null
-        }
-      ],
-      "title": "Face Image",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.36",
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "Image_fx (3).jpg",
-        "image"
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
     },
     {
       "id": 6,
@@ -1823,7 +1532,7 @@
         137.26577758789062
       ],
       "flags": {},
-      "order": 14,
+      "order": 20,
       "mode": 0,
       "inputs": [
         {
@@ -1845,55 +1554,14 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.36",
-        "Node name for S&R": "CLIPTextEncode"
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "professional photo, closeup portrait of a beautiufl woman, wearing shirt and striped pants, pink snickers, out of focus background, isolated on white background "
       ],
       "color": "#232",
       "bgcolor": "#353"
-    },
-    {
-      "id": 32,
-      "type": "LoadImage",
-      "pos": [
-        1411.8114013671875,
-        -1616.27734375
-      ],
-      "size": [
-        320,
-        314
-      ],
-      "flags": {},
-      "order": 6,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            37
-          ]
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": null
-        }
-      ],
-      "title": "Bottom Clothing",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.36",
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "jeans1.jpg",
-        "image"
-      ],
-      "color": "#323",
-      "bgcolor": "#535"
     },
     {
       "id": 61,
@@ -1941,9 +1609,11 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfyui_ipadapter_plus",
+        "aux_id": "GraceOpenspace/ComfyUI_IPAdapter_plus",
         "ver": "2.0.0",
-        "Node name for S&R": "IPAdapterUnifiedLoader"
+        "Node name for S&R": "IPAdapterUnifiedLoader",
+        "cnr_id": "comfyui_ipadapter_plus",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "PLUS (high strength)"
@@ -2011,9 +1681,11 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfyui_ipadapter_plus",
+        "aux_id": "GraceOpenspace/ComfyUI_IPAdapter_plus",
         "ver": "2.0.0",
-        "Node name for S&R": "IPAdapterAdvanced"
+        "Node name for S&R": "IPAdapterAdvanced",
+        "cnr_id": "comfyui_ipadapter_plus",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         1,
@@ -2038,7 +1710,7 @@
         46
       ],
       "flags": {},
-      "order": 29,
+      "order": 31,
       "mode": 0,
       "inputs": [
         {
@@ -2066,7 +1738,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.36",
-        "Node name for S&R": "VAEDecode"
+        "Node name for S&R": "VAEDecode",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [],
       "color": "#223",
@@ -2084,7 +1757,7 @@
         137.26577758789062
       ],
       "flags": {},
-      "order": 16,
+      "order": 22,
       "mode": 0,
       "inputs": [
         {
@@ -2106,7 +1779,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.36",
-        "Node name for S&R": "CLIPTextEncode"
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "background, backdrop, photo studio, clean white cyclorama"
@@ -2126,7 +1800,7 @@
         186
       ],
       "flags": {},
-      "order": 9,
+      "order": 8,
       "mode": 0,
       "inputs": [
         {
@@ -2171,7 +1845,9 @@
       "properties": {
         "cnr_id": "constrainresolution",
         "ver": "1.0.1",
-        "Node name for S&R": "ConstrainResolution"
+        "Node name for S&R": "ConstrainResolution",
+        "aux_id": "EnragedAntelope/ComfyUI-ConstrainResolution",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         512,
@@ -2193,7 +1869,7 @@
         106
       ],
       "flags": {},
-      "order": 20,
+      "order": 15,
       "mode": 0,
       "inputs": [
         {
@@ -2227,7 +1903,11 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.36",
-        "Node name for S&R": "EmptyLatentImage"
+        "Node name for S&R": "EmptyLatentImage",
+        "widget_ue_connectable": {
+          "width": true,
+          "height": true
+        }
       },
       "widgets_values": [
         768,
@@ -2249,7 +1929,7 @@
         246
       ],
       "flags": {},
-      "order": 18,
+      "order": 13,
       "mode": 0,
       "inputs": [
         {
@@ -2262,7 +1942,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.40",
-        "Node name for S&R": "PreviewImage"
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [],
       "color": "#222",
@@ -2280,7 +1961,7 @@
         246
       ],
       "flags": {},
-      "order": 21,
+      "order": 16,
       "mode": 0,
       "inputs": [
         {
@@ -2293,7 +1974,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.40",
-        "Node name for S&R": "PreviewImage"
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [],
       "color": "#222",
@@ -2311,7 +1993,7 @@
         626
       ],
       "flags": {},
-      "order": 10,
+      "order": 9,
       "mode": 0,
       "inputs": [
         {
@@ -2350,7 +2032,9 @@
       "properties": {
         "cnr_id": "comfyui-rmbg",
         "ver": "2.4.0",
-        "Node name for S&R": "ClothesSegment"
+        "Node name for S&R": "ClothesSegment",
+        "aux_id": "1038lab/ComfyUI-RMBG",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         false,
@@ -2425,7 +2109,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.40",
-        "Node name for S&R": "ImageCompositeMasked"
+        "Node name for S&R": "ImageCompositeMasked",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         0,
@@ -2484,7 +2169,9 @@
       "properties": {
         "cnr_id": "comfyui-rmbg",
         "ver": "2.4.0",
-        "Node name for S&R": "RMBG"
+        "Node name for S&R": "RMBG",
+        "aux_id": "1038lab/ComfyUI-RMBG",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "RMBG-2.0",
@@ -2535,7 +2222,9 @@
       "properties": {
         "cnr_id": "was-ns",
         "ver": "3.0.0",
-        "Node name for S&R": "Image Save"
+        "Node name for S&R": "Image Save",
+        "aux_id": "ltdrdata/was-node-suite-comfyui",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "[time(%Y-%m-%d)]",
@@ -2556,6 +2245,394 @@
       ],
       "color": "#232",
       "bgcolor": "#353"
+    },
+    {
+      "id": 78,
+      "type": "AILab_LoadImage",
+      "pos": [
+        -579.8865966796875,
+        -2660.847412109375
+      ],
+      "size": [
+        270,
+        470.00006103515625
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            124,
+            128,
+            129,
+            133
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        },
+        {
+          "name": "MASK_IMAGE",
+          "type": "IMAGE",
+          "links": null
+        },
+        {
+          "name": "WIDTH",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "HEIGHT",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-rmbg",
+        "ver": "2.4.0",
+        "Node name for S&R": "AILab_LoadImage",
+        "aux_id": "1038lab/ComfyUI-RMBG",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "поза.png",
+        "alpha",
+        1,
+        "longest_side",
+        0,
+        "image"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 34,
+      "type": "LoadImage",
+      "pos": [
+        709.1920166015625,
+        -2782.801513671875
+      ],
+      "size": [
+        320,
+        314
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            43
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "title": "Top Clothing",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.36",
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "футболка.png",
+        "image"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 32,
+      "type": "LoadImage",
+      "pos": [
+        1411.8114013671875,
+        -1616.27734375
+      ],
+      "size": [
+        320,
+        314
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            37
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "title": "Bottom Clothing",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.36",
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "джинсы.png",
+        "image"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 62,
+      "type": "LoadImage",
+      "pos": [
+        1515.948486328125,
+        -1073.7919921875
+      ],
+      "size": [
+        320,
+        314
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            86
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "title": "Shoes",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.36",
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "кроссовки.png",
+        "image"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 15,
+      "type": "LoadImage",
+      "pos": [
+        -588.0957641601562,
+        -1911.6522216796875
+      ],
+      "size": [
+        315,
+        314.00006103515625
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            75
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "title": "Face Image",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.36",
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "лицо.jpg",
+        "image"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 4,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -2759.7470703125,
+        -527.1419677734375
+      ],
+      "size": [
+        410,
+        100
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            91,
+            114
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 1,
+          "links": [
+            95
+          ]
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 2,
+          "links": [
+            8,
+            116
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.36",
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "SD1.5/dreamshaper_8.safetensors"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 64,
+      "type": "LoraLoader",
+      "pos": [
+        -2202.3525390625,
+        -642.9181518554688
+      ],
+      "size": [
+        270,
+        126
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 91
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 95
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            92
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            93,
+            94,
+            110,
+            111
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.40",
+        "Node name for S&R": "LoraLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "add_detail.safetensors",
+        0.7000000000000002,
+        1
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 19,
+      "type": "ControlNetLoader",
+      "pos": [
+        124.96737670898438,
+        -156.2968292236328
+      ],
+      "size": [
+        400,
+        60
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CONTROL_NET",
+          "type": "CONTROL_NET",
+          "links": [
+            21
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.36",
+        "Node name for S&R": "ControlNetLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "1.5/control_v11p_sd15_openpose.pth"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
     }
   ],
   "links": [
@@ -3156,13 +3233,15 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.3059763935755546,
+      "scale": 1.0563134958247171,
       "offset": [
-        2820.745245386852,
-        2667.341185475052
+        1472.5575634407012,
+        870.6693318830681
       ]
     },
-    "frontendVersion": "1.21.7"
+    "frontendVersion": "1.21.7",
+    "ue_links": [],
+    "links_added_by_ue": []
   },
   "version": 0.4
 }

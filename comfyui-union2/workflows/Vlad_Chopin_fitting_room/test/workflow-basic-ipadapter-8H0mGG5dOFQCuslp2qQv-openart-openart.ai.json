@@ -1,0 +1,653 @@
+{
+  "id": "08b65dcf-569c-4313-bdba-d992e0d181b6",
+  "revision": 0,
+  "last_node_id": 19,
+  "last_link_id": 24,
+  "nodes": [
+    {
+      "id": 8,
+      "type": "CLIPTextEncode",
+      "pos": [
+        650,
+        420
+      ],
+      "size": [
+        210.29940795898438,
+        120
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 6
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            9
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "blurry, horror"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 11,
+      "type": "VAEDecode",
+      "pos": [
+        1300,
+        170
+      ],
+      "size": [
+        140,
+        50
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 11
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 21
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            13
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "VAEDecode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 13,
+      "type": "Note",
+      "pos": [
+        131,
+        -270
+      ],
+      "size": [
+        456.8177490234375,
+        273.5598449707031
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "text": "",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "BASIC IPADAPTER\n===============\n\nBe careful when selecting the models!\n\nThe IPAdapter model has to match the CLIP vision encoder and of course the main checkpoint.\n\nAll SD15 models and all models ending with \"vit-h\" use the SD15 CLIP vision.\n\nOne of the SDXL models and all models ending with \"vit-g\" use the SDXL CLIP vision.\n\nPLUS models use more tokens and are stronger. LIGHT models have a very light impact. FACE and FULL-FACE are only to describe faces (they are not face swap!)"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 10,
+      "type": "EmptyLatentImage",
+      "pos": [
+        650,
+        590
+      ],
+      "size": [
+        210,
+        110
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "EmptyLatentImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        512,
+        512,
+        1
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 7,
+      "type": "CLIPTextEncode",
+      "pos": [
+        650,
+        250
+      ],
+      "size": [
+        210.29940795898438,
+        120
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            8
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "beautiful renaissance girl, detailed"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 1,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        210,
+        280
+      ],
+      "size": [
+        370,
+        110
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            19
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 1,
+          "links": [
+            5,
+            6
+          ]
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            21
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "SD1.5/dreamshaper_8.safetensors"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 16,
+      "type": "IPAdapterUnifiedLoader",
+      "pos": [
+        762.8226928710938,
+        -272.1010437011719
+      ],
+      "size": [
+        315,
+        78
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 19
+        },
+        {
+          "name": "ipadapter",
+          "shape": 7,
+          "type": "IPADAPTER",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "links": [
+            20
+          ]
+        },
+        {
+          "name": "ipadapter",
+          "type": "IPADAPTER",
+          "slot_index": 1,
+          "links": [
+            17
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "GraceOpenspace/ComfyUI_IPAdapter_plus",
+        "ver": "2.0.0",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "IPAdapterUnifiedLoader",
+        "cnr_id": "comfyui_ipadapter_plus"
+      },
+      "widgets_values": [
+        "PLUS (high strength)"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 9,
+      "type": "KSampler",
+      "pos": [
+        966.1996459960938,
+        127.4118881225586
+      ],
+      "size": [
+        315,
+        262
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 24
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 8
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 9
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 10
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            11
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "KSampler",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        59068944088538,
+        "randomize",
+        25,
+        6,
+        "ddim",
+        "ddim_uniform",
+        1
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 17,
+      "type": "IPAdapterAdvanced",
+      "pos": [
+        1107.317138671875,
+        -274.6690368652344
+      ],
+      "size": [
+        315,
+        278
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 20
+        },
+        {
+          "name": "ipadapter",
+          "type": "IPADAPTER",
+          "link": 17
+        },
+        {
+          "label": "image_top",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 22
+        },
+        {
+          "name": "image_negative",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "attn_mask_top",
+          "name": "attn_mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        },
+        {
+          "name": "clip_vision",
+          "shape": 7,
+          "type": "CLIP_VISION",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            24
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "GraceOpenspace/ComfyUI_IPAdapter_plus",
+        "ver": "2.0.0",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "IPAdapterAdvanced",
+        "cnr_id": "comfyui_ipadapter_plus"
+      },
+      "widgets_values": [
+        1,
+        "linear",
+        "concat",
+        0,
+        1,
+        "V only"
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 6,
+      "type": "LoadImage",
+      "pos": [
+        -62,
+        69
+      ],
+      "size": [
+        220,
+        320
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            22
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Снимок экрана 2025-06-16 131820.png",
+        "image"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 12,
+      "type": "SaveImage",
+      "pos": [
+        1550.2047119140625,
+        -144.168701171875
+      ],
+      "size": [
+        400,
+        450
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 13
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "IPAdapter"
+      ]
+    }
+  ],
+  "links": [
+    [
+      5,
+      1,
+      1,
+      7,
+      0,
+      "CLIP"
+    ],
+    [
+      6,
+      1,
+      1,
+      8,
+      0,
+      "CLIP"
+    ],
+    [
+      8,
+      7,
+      0,
+      9,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      9,
+      8,
+      0,
+      9,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      10,
+      10,
+      0,
+      9,
+      3,
+      "LATENT"
+    ],
+    [
+      11,
+      9,
+      0,
+      11,
+      0,
+      "LATENT"
+    ],
+    [
+      13,
+      11,
+      0,
+      12,
+      0,
+      "IMAGE"
+    ],
+    [
+      17,
+      16,
+      1,
+      17,
+      1,
+      "IPADAPTER"
+    ],
+    [
+      19,
+      1,
+      0,
+      16,
+      0,
+      "MODEL"
+    ],
+    [
+      20,
+      16,
+      0,
+      17,
+      0,
+      "MODEL"
+    ],
+    [
+      21,
+      1,
+      2,
+      11,
+      1,
+      "VAE"
+    ],
+    [
+      22,
+      6,
+      0,
+      17,
+      2,
+      "IMAGE"
+    ],
+    [
+      24,
+      17,
+      0,
+      9,
+      0,
+      "MODEL"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ue_links": [],
+    "ds": {
+      "scale": 0.7273403076923103,
+      "offset": [
+        115.06299195107728,
+        580.9202004105967
+      ]
+    },
+    "links_added_by_ue": [],
+    "frontendVersion": "1.21.7"
+  },
+  "version": 0.4
+}

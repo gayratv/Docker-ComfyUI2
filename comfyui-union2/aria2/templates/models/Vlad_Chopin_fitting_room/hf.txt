@@ -1,0 +1,125 @@
+# https://huggingface.co/naonovn/Lora/blob/main/add_detail.safetensors
+https://huggingface.co/naonovn/Lora/resolve/main/add_detail.safetensors
+    out=add_detail.safetensors
+    dir=models/loras
+
+# hr16/DWPose-TorchScript-BatchSize5
+# https://huggingface.co/hr16/DWPose-TorchScript-BatchSize5/blob/main/dw-ll_ucoco_384_bs5.torchscript.pt
+# https://huggingface.co/hr16/DWPose-TorchScript-BatchSize5/resolve/main/dw-ll_ucoco_384_bs5.torchscript.pt
+#     out=dw-ll_ucoco_384_bs5.torchscript.pt
+#     dir=models/ultralytics
+
+
+# control_v11p_sd15_openpose.pth
+# https://huggingface.co/lllyasviel/ControlNet-v1-1/blob/main/control_v11p_sd15_openpose.pth
+https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11p_sd15_openpose.pth
+    out=control_v11p_sd15_openpose.pth
+    dir=models/controlnet/1.5
+
+# https://huggingface.co/datasets/Gourieff/ReActor/tree/main/models
+https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/inswapper_128.onnx
+    dir=models/insightface
+    out=inswapper_128.onnx
+https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/reswapper_256.onnx
+    dir=models/insightface
+    out=reswapper_256.onnx
+
+
+https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors
+    dir=models/clip_vision
+    out=CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors
+
+
+https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/image_encoder/model.safetensors
+    out=CLIP-ViT-bigG-14-laion2B-39B-b160k.safetensors
+    dir=models/clip_vision
+
+
+https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15.safetensors
+    out=ip-adapter_sd15.safetensors
+    dir=models/ipadapter
+
+
+# Plus model, very strong
+https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus_sd15.safetensors
+    dir=models/ipadapter
+    out=ip-adapter-plus_sd15.safetensors
+
+# Face model, portraits
+https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus-face_sd15.safetensors
+    dir=models/ipadapter
+    out=ip-adapter-plus-face_sd15.safetensors
+
+# Stronger face model, not necessarily better
+https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-full-face_sd15.safetensors
+    out=ip-adapter-full-face_sd15.safetensors
+    dir=models/ipadapter
+
+# Base model, requires bigG clip vision encoder
+https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15_vit-G.safetensors
+    out=ip-adapter_sd15_vit-G.safetensors
+    dir=models/ipadapter
+
+# SDXL model
+https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter_sdxl_vit-h.safetensors
+    out=ip-adapter_sdxl_vit-h.safetensors
+    dir=models/ipadapter
+
+# SDXL plus model
+https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus_sdxl_vit-h.safetensors
+    out=ip-adapter-plus_sdxl_vit-h.safetensors
+    dir=models/ipadapter
+
+# SDXL face model
+https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus-face_sdxl_vit-h.safetensors
+    out=ip-adapter-plus-face_sdxl_vit-h.safetensors
+    dir=models/ipadapter
+
+# vit-G SDXL model, requires bigG clip vision encoder
+https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter_sdxl.safetensors
+    out=ip-adapter_sdxl.safetensors
+    dir=models/ipadapter
+
+# base FaceID model
+https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sd15.bin
+    out=ip-adapter-faceid_sd15.bin
+    dir=models/ipadapter
+
+# FaceID plus v2
+https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sd15.bin
+    out=ip-adapter-faceid-plusv2_sd15.bin
+    dir=models/ipadapter
+
+# text prompt style transfer for portraits
+https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-portrait-v11_sd15.bin
+    out=ip-adapter-faceid-portrait-v11_sd15.bin
+    dir=models/ipadapter
+
+# SDXL base FaceID
+https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sdxl.bin
+    out=ip-adapter-faceid_sdxl.bin
+    dir=models/ipadapter
+
+# SDXL plus v2
+https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sdxl.bin
+    out=ip-adapter-faceid-plusv2_sdxl.bin
+    dir=models/ipadapter
+
+# SDXL text prompt style transfer
+https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-portrait_sdxl.bin
+    out=ip-adapter-faceid-portrait_sdxl.bin
+    dir=models/ipadapter
+
+# very strong style transfer SDXL only
+https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-portrait_sdxl_unnorm.bin
+    out=ip-adapter-faceid-portrait_sdxl_unnorm.bin
+    dir=models/ipadapter
+
+# https://huggingface.co/Bingsu/adetailer/blob/main/deepfashion2_yolov8s-seg.pt
+https://huggingface.co/Bingsu/adetailer/resolve/main/deepfashion2_yolov8s-seg.pt
+    out=deepfashion2_yolov8s-seg.pt
+    dir=models/ultralytics/bbox
+
+https://huggingface.co/Gayrat1968/SAM/resolve/main/sam_vit_h_4b8939.pth
+    out=sam_vit_h_4b8939.pth
+    dir=models/sams

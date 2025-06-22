@@ -1,8 +1,5 @@
 #!/bin/bash
 
-#CONTRACT_ID=21504586
-vastai show instance --raw "$CONTRACT_ID" > vast-instance-raw.txt
-
 # Проверяем, существует ли файл
 if [[ ! -f "vast-instance-raw.txt" ]]; then
   echo "Файл vast-instance-raw.txt не найден."

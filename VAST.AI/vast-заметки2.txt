@@ -16,7 +16,9 @@ export IMAGE_NAME="gayrat/comfyui-union2:Inp-Flux-Segment"
 export IMAGE_NAME="gayrat/comfyui-union2:Pulid-II-for-Flux-CUDA12.6"
 
 
-export IMAGE_NAME_BASE="Nunchaku-simple"
+export IMAGE_NAME_BASE="aqua_paint_civitai"
+
+export IMAGE_NAME_BASE="Vlad_Chopin_fitting_room"
 export CUDA="CUDA12.6"
 export IMAGE_NAME="gayrat/comfyui-union2:${IMAGE_NAME_BASE}-${CUDA}"
 echo -e "IMAGE_NAME : ${IMAGE_NAME}"
@@ -24,16 +26,20 @@ echo -e "IMAGE_NAME : ${IMAGE_NAME}"
 
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.6"
 
-source vast-contract.sh 19726999 $IMAGE_NAME
+source vast-contract.sh 19394482 $IMAGE_NAME
 source ./vs.sh
 
-tmux-s.sh Nunchaku-simple
+tmux-s.sh Vlad_Chopin_fitting_room
+tmux-s.sh aqua_paint_civitai
+ssh -p 32222 root@70.24.204.248 -L 8080:localhost:8080
+ssh -i ~/.ssh/mvps/ud_rsa -p 32222 root@70.24.204.248
+ssh -p $VAST_SSH "root@$VAST_PUBLIC_IPADDR" -i ~/.ssh/mvps/ud_rsa
 
 
 ssh -p $VAST_SSH "root@$VAST_PUBLIC_IPADDR" -i ~/.ssh/mvps/ud_rsa
 tmux-s-bash.sh
 
-./dl_common.sh Nunchaku-simple
+./dl_common.sh Vlad_Chopin_fitting_room
 ./dl_common.sh Gayrat-inpaint
 ./dl_common.sh Inpainting-Flux-Jocker
 ./dl_common.sh Upscale-Jocker
@@ -80,7 +86,11 @@ vastai destroy instances "$CONTRACT_ID"
 
 ## vastai destroy instances 19259571
 
-
+===================
+копировать картинки
+cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/
+./vast-cp-picts.sh
+===================
 
 python3 vast-search-py2.py --gpu1 "RTX 3090" --gpu2 "RTX 4090" --ram 32000
 python3 vast-search-py2.py --gpu1 "RTX 4090" --ram 32000
@@ -120,9 +130,9 @@ cmd.exe /c start chrome "http://$VAST_PUBLIC_IPADDR:$VAST_COMFY"
 ssh -p $VAST_SSH "root@$VAST_PUBLIC_IPADDR" -i ~/.ssh/mvps/ud_rsa
 
 
-ssh -p 32213 root@70.24.204.248 -L 8080:localhost:8080
+ssh -p 45411 root@142.126.17.164 -L 8080:localhost:8080
 
-ssh -i ~/.ssh/mvps/ud_rsa -p 32213 root@70.24.204.248
+ssh -i ~/.ssh/mvps/ud_rsa -p 45411 root@142.126.17.164
 tmux ls
 tmux attach -t comfy
 
