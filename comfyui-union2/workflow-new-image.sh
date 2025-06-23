@@ -11,6 +11,7 @@ MODELS="$1"
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2 || { echo "Не удалось перейти в директорию"; exit 1; }
 
 mkdir -p "./workflows/${MODELS}"
+mkdir -p "./input/${MODELS}"
 mkdir -p "./aria2/templates/models/${MODELS}"
 mkdir -p "./workflow-descr/${MODELS}"
 touch  "./custom-nodes/${MODELS}.txt"
