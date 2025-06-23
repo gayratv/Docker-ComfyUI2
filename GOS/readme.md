@@ -1,5 +1,7 @@
 https://t.me/gos_comfy/973
+Простенькая схема с IPAdapter и Redux + Reactor
 
+#FLUX #FaceSwappeer #novice
 
 Обновил workflow для работы с FLUX. 
 https://t.me/gos_comfy/971
@@ -45,3 +47,12 @@ https://t.me/gos_comfy/253
 
 https://t.me/gos_comfy/426
  PulID. Главная особенность, отличающая его от других, это то, что ему не требуется готовая картинка, где он сменит лицо. Он работает с латентом, заодно и формируя форму головы. Т.е. лучшая связка - это PulID + Reactor.
+
+
+#Civitai  #novice   Думаю, что будет не лишним дать ссылки и на остальные модели Артура на FLUX. И да, они тоже без цензуры :)
+
+AGFlux - https://civitai.com/models/772865/agflux
+AGFlux GGUF Q4_K_S - https://civitai.com/models/1074120/agflux-gguf-q4ks (у кого немного VRAM)
+workflow_agflux - https://civitai.com/models/1404305/workflowagflux
+AGFlux_Fill_NSFW_fp8 - AGFlux_Fill_NSFW_fp8 (Модель для inpaint и outpaint)
+AGFlux_Schnell_Realistic - https://civitai.com/models/1019433/agfluxschnellrealistic

@@ -1,0 +1,1035 @@
+{
+  "id": "1abf29e3-2298-4c41-8783-c6605024af0a",
+  "revision": 0,
+  "last_node_id": 120,
+  "last_link_id": 272,
+  "nodes": [
+    {
+      "id": 108,
+      "type": "PulidFluxModelLoader",
+      "pos": [
+        -1210,
+        220
+      ],
+      "size": [
+        280,
+        60
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "PULIDFLUX",
+          "name": "PULIDFLUX",
+          "type": "PULIDFLUX",
+          "slot_index": 0,
+          "links": [
+            245
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_pulid_flux_ll",
+        "ver": "ba90657fe6ffa8072ac169a949bfa5e4153bf48a",
+        "Node name for S&R": "PulidFluxModelLoader",
+        "aux_id": "sipie800/ComfyUI-PuLID-Flux-Enhanced",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "pulid_flux_v0.9.1.safetensors"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 110,
+      "type": "PulidFluxInsightFaceLoader",
+      "pos": [
+        -900,
+        220
+      ],
+      "size": [
+        280,
+        60
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "FACEANALYSIS",
+          "name": "FACEANALYSIS",
+          "type": "FACEANALYSIS",
+          "slot_index": 0,
+          "links": [
+            247
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_pulid_flux_ll",
+        "ver": "ba90657fe6ffa8072ac169a949bfa5e4153bf48a",
+        "Node name for S&R": "PulidFluxInsightFaceLoader",
+        "aux_id": "sipie800/ComfyUI-PuLID-Flux-Enhanced",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "CUDA"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 109,
+      "type": "PulidFluxEvaClipLoader",
+      "pos": [
+        -900,
+        340
+      ],
+      "size": [
+        280,
+        30
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "EVA_CLIP",
+          "name": "EVA_CLIP",
+          "type": "EVA_CLIP",
+          "slot_index": 0,
+          "links": [
+            246
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_pulid_flux_ll",
+        "ver": "ba90657fe6ffa8072ac169a949bfa5e4153bf48a",
+        "Node name for S&R": "PulidFluxEvaClipLoader",
+        "aux_id": "sipie800/ComfyUI-PuLID-Flux-Enhanced",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 111,
+      "type": "ApplyPulidFlux",
+      "pos": [
+        -510,
+        210
+      ],
+      "size": [
+        230,
+        366
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 267
+        },
+        {
+          "label": "pulid_flux",
+          "name": "pulid_flux",
+          "type": "PULIDFLUX",
+          "link": 245
+        },
+        {
+          "label": "eva_clip",
+          "name": "eva_clip",
+          "type": "EVA_CLIP",
+          "link": 246
+        },
+        {
+          "label": "face_analysis",
+          "name": "face_analysis",
+          "type": "FACEANALYSIS",
+          "link": 247
+        },
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 252
+        },
+        {
+          "label": "attn_mask",
+          "name": "attn_mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        },
+        {
+          "name": "options",
+          "shape": 7,
+          "type": "OPTIONS",
+          "link": null
+        },
+        {
+          "name": "prior_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            263
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_pulid_flux_ll",
+        "ver": "ba90657fe6ffa8072ac169a949bfa5e4153bf48a",
+        "Node name for S&R": "ApplyPulidFlux",
+        "aux_id": "sipie800/ComfyUI-PuLID-Flux-Enhanced",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        1,
+        0,
+        1
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 115,
+      "type": "KSampler",
+      "pos": [
+        -580,
+        790
+      ],
+      "size": [
+        300,
+        262
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 263
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 272
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 257
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 258
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            260
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "KSampler",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        954366874402966,
+        "randomize",
+        35,
+        1,
+        "euler",
+        "normal",
+        1
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 99,
+      "type": "SDXLEmptyLatentSizePicker+",
+      "pos": [
+        -850,
+        880
+      ],
+      "size": [
+        250,
+        170
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            258
+          ]
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_essentials",
+        "ver": "9d9f4bedfc9f0321c19faf71855e228c93bd0dc9",
+        "Node name for S&R": "SDXLEmptyLatentSizePicker+",
+        "aux_id": "cubiq/ComfyUI_essentials",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "896x1152 (0.78)",
+        1,
+        0,
+        0
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 49,
+      "type": "VAEDecode",
+      "pos": [
+        -500,
+        680
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 260
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 88
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            235
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "VAEDecode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 102,
+      "type": "Note",
+      "pos": [
+        -940,
+        -110
+      ],
+      "size": [
+        660,
+        270
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Инструкция к схеме",
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Инструкция по установке PuLID_Flux_ll тут - https://github.com/lldacing/ComfyUI_PuLID_Flux_ll\n\npulid_flux_v0.9.1 - https://huggingface.co/guozinan/PuLID/resolve/refs%2Fpr%2F10/pulid_flux_v0.9.1.safetensors\nскачать и положить в Models\\pulid \n\nМодель FLUX UNET - flux1-dev-fp8 тут - https://civitai.com/models/622579/flux1-dev-fp8\nили модель Артура - https://civitai.com/api/download/models/1244250?type=Model&format=SafeTensor&size=pruned&fp=fp8 (https://civitai.com/models/772865?modelVersionId=1244250 - pruned model)\nили модель Ольги - https://civitai.com/models/1018060?modelVersionId=1249496\nскачать и положить в Models\\unet\\ \n\nt5xxl_fp8_e4m3fn - https://huggingface.co/stabilityai/stable-diffusion-3-medium/resolve/main/text_encoders/t5xxl_fp8_e4m3fn.safetensors?download=true\nи clip_l - https://huggingface.co/stabilityai/stable-diffusion-3-medium/resolve/main/text_encoders/clip_l.safetensors?download=true\nскачать и положить в Models\\clip\\ \n\nae.sft - https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/ae.sft?download=true\nили flux-vae-bf16 - https://huggingface.co/Kijai/flux-fp8/resolve/main/flux-vae-bf16.safetensors\nскачать и положить в Models\\vae\\ "
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 118,
+      "type": "ApplyFBCacheOnModel",
+      "pos": [
+        -1550,
+        10
+      ],
+      "size": [
+        315,
+        154
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 264
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            266
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "wavespeed",
+        "ver": "16ec6f344f8cecbbf006d374043f85af22b7a51d",
+        "Node name for S&R": "ApplyFBCacheOnModel",
+        "aux_id": "chengzeyi/Comfy-WaveSpeed",
+        "widget_ue_connectable": {
+          "object_to_patch": true,
+          "residual_diff_threshold": true,
+          "start": true,
+          "end": true,
+          "max_consecutive_cache_hits": true
+        }
+      },
+      "widgets_values": [
+        "diffusion_model",
+        0.15,
+        0,
+        1,
+        -1
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 119,
+      "type": "Power Lora Loader (rgthree)",
+      "pos": [
+        -1210,
+        40
+      ],
+      "size": [
+        260,
+        120
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "dir": 3,
+          "name": "model",
+          "type": "MODEL",
+          "link": 266
+        },
+        {
+          "dir": 3,
+          "name": "clip",
+          "type": "CLIP",
+          "link": 268
+        }
+      ],
+      "outputs": [
+        {
+          "dir": 4,
+          "name": "MODEL",
+          "shape": 3,
+          "type": "MODEL",
+          "links": [
+            267
+          ]
+        },
+        {
+          "dir": 4,
+          "name": "CLIP",
+          "shape": 3,
+          "type": "CLIP",
+          "links": [
+            269,
+            270
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "rgthree-comfy",
+        "ver": "1b1a7359bfc0293c3bd472837bfeddd85a11bda3",
+        "Show Strengths": "Single Strength",
+        "aux_id": "rgthree/rgthree-comfy",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        {},
+        {
+          "type": "PowerLoraLoaderHeaderWidget"
+        },
+        {},
+        ""
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 82,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -1150,
+        360
+      ],
+      "size": [
+        300,
+        150
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 270
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            257
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        ""
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -1220,
+        430
+      ],
+      "size": [
+        670,
+        170
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 269
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            271
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Russian Woman 22 yo in red dress walking on sidewalk in front of pedestrian traffic, looking at camera. sidewalk in background with pedestrians walking away from camera."
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 120,
+      "type": "FluxGuidance",
+      "pos": [
+        -840,
+        720
+      ],
+      "size": [
+        211.60000610351562,
+        58
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 271
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            272
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "FluxGuidance",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        3.5
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 10,
+      "type": "VAELoader",
+      "pos": [
+        -1550,
+        530
+      ],
+      "size": [
+        310,
+        60
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            88
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "VAELoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "FLUX/vae.safetensors"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 92,
+      "type": "DualCLIPLoader",
+      "pos": [
+        -1550,
+        350
+      ],
+      "size": [
+        310,
+        130
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            268
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "DualCLIPLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "FLUX/ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors",
+        "FLUX/t5xxl_fp8_e4m3fn.safetensors",
+        "flux",
+        "default"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 91,
+      "type": "UNETLoader",
+      "pos": [
+        -1550,
+        220
+      ],
+      "size": [
+        310,
+        90
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            264
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "UNETLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "FLUX/flux1-dev-fp8-e4m3fn.safetensors",
+        "default"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 100,
+      "type": "SaveImage",
+      "pos": [
+        -1210,
+        640
+      ],
+      "size": [
+        330,
+        410
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 235
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "SaveImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 93,
+      "type": "LoadImage",
+      "pos": [
+        -1550,
+        640
+      ],
+      "size": [
+        310,
+        410
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            252
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "title": "Load Image (оригинальное лицо)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "woman20_resize.jpg",
+        "image"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      88,
+      10,
+      0,
+      49,
+      1,
+      "VAE"
+    ],
+    [
+      235,
+      49,
+      0,
+      100,
+      0,
+      "IMAGE"
+    ],
+    [
+      245,
+      108,
+      0,
+      111,
+      1,
+      "PULIDFLUX"
+    ],
+    [
+      246,
+      109,
+      0,
+      111,
+      2,
+      "EVA_CLIP"
+    ],
+    [
+      247,
+      110,
+      0,
+      111,
+      3,
+      "FACEANALYSIS"
+    ],
+    [
+      252,
+      93,
+      0,
+      111,
+      4,
+      "IMAGE"
+    ],
+    [
+      257,
+      82,
+      0,
+      115,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      258,
+      99,
+      0,
+      115,
+      3,
+      "LATENT"
+    ],
+    [
+      260,
+      115,
+      0,
+      49,
+      0,
+      "LATENT"
+    ],
+    [
+      263,
+      111,
+      0,
+      115,
+      0,
+      "MODEL"
+    ],
+    [
+      264,
+      91,
+      0,
+      118,
+      0,
+      "MODEL"
+    ],
+    [
+      266,
+      118,
+      0,
+      119,
+      0,
+      "MODEL"
+    ],
+    [
+      267,
+      119,
+      0,
+      111,
+      0,
+      "MODEL"
+    ],
+    [
+      268,
+      92,
+      0,
+      119,
+      1,
+      "CLIP"
+    ],
+    [
+      269,
+      119,
+      1,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      270,
+      119,
+      1,
+      82,
+      0,
+      "CLIP"
+    ],
+    [
+      271,
+      6,
+      0,
+      120,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      272,
+      120,
+      0,
+      115,
+      1,
+      "CONDITIONING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1,
+      "offset": [
+        1584.3890531935315,
+        -203.26942902993642
+      ]
+    },
+    "info": {
+      "name": "workflow",
+      "author": "",
+      "description": "",
+      "version": "1",
+      "created": "2025-01-09T15:47:37.441Z",
+      "modified": "2025-01-10T11:11:46.825Z",
+      "software": "ComfyUI"
+    },
+    "node_versions": {
+      "comfy-core": "0.3.10",
+      "cg-use-everywhere": "ce510b97d10e69d5fd0042e115ecd946890d2079",
+      "ComfyUI_PuLID_Flux_ll": "090fd5bb4d49493075202ff9f0259f156aa255ae",
+      "ComfyUI_Patches_ll": "5ed4572786d0cab8e70ce1b67f001ee92ae145d5",
+      "ComfyUI_essentials": "33ff89fd354d8ec3ab6affb605a79a931b445d99"
+    },
+    "controller_panel": {
+      "controllers": {},
+      "hidden": true,
+      "highlight": true,
+      "version": 2,
+      "default_order": []
+    },
+    "ue_links": [],
+    "links_added_by_ue": [],
+    "frontendVersion": "1.21.7",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

@@ -1,58 +1,90 @@
-
-# ACE-portrait-lora [584.36MB]
-https://huggingface.co/ali-vilab/ACE_Plus/resolve/main/portrait/comfyui_portrait_lora64.safetensors
-    out=comfyui_portrait_lora64.safetensors
-    dir=models/loras/ACE
-
-# clip l for gguf [234.74MB]
-https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors
-    out=clip_l-for-gguf.safetensors
-    dir=models/clip
-
+# 🌟 CLIP 🌟
 # clip-t5xxl fp8 [4667.22MB]
 https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors
     out=t5xxl_fp8_e4m3fn.safetensors
-    dir=models/clip
+    dir=models/clip/FLUX
 
-# controlnet-union-sdxl-1 [2396.91MB]
-https://huggingface.co/xinsir/controlnet-union-sdxl-1.0/resolve/main/diffusion_pytorch_model_promax.safetensors
-    out=controlnet-union-sdxl-1.0.safetensors
-    dir=models/controlnet
+https://huggingface.co/zer0int/CLIP-GmP-ViT-L-14/resolve/main/ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors
+    dir=models/clip/FLUX
+    out=ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors
+
 
 # Flux vae [319.77MB]
 https://huggingface.co/StableDiffusionVN/Flux/resolve/main/Vae/flux_vae.safetensors
-    out=ae.safetensors
-    dir=models/vae/FLUX1
-
-# fluxFillFP8_v10 [11351.14MB]
-https://huggingface.co/jackzheng/flux-fill-FP8/resolve/main/fluxFillFP8_v10.safetensors
-    out=fluxFillFP8_v10.safetensors
-    dir=models/unet
-
-# instanID control net [822.44MB]
-https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/diffusion_pytorch_model.safetensors?download=true
-    out=diffusion_pytorch_model.safetensors
-    dir=models/controlnet
-
-# instantID ip adapter [1612.79MB]
-https://huggingface.co/InstantX/InstantID/resolve/main/ip-adapter.bin?download=true
-    out=ip-adapter.bin
-    dir=models/instantid
-
-# realvisxlV40_v40Lightning [6617.76MB]
-https://huggingface.co/alexgenovese/reica_models/resolve/021e192bd744c48a85f8ae1832662e77beb9aac7/realvisxlV40_v40LightningBakedvae.safetensors
-    out=realvisxlV40_v40LightningBakedvae.safetensors
-    dir=models/checkpoints
-
-# sam_vit_b_01ec64 pth [357.67MB]
-https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/sams/sam_vit_b_01ec64.pth
-    out=sam_vit_b_01ec64.pth
-    dir=models/sams
+    out=vae.safetensors
+    dir=models/vae/FLUX
 
 https://huggingface.co/ezioruan/inswapper_128.onnx/resolve/main/inswapper_128.onnx
     out=inswapper_128.onnx
     dir=models/insightface
 
+# 🌟 /Kijai/flux-fp8 🌟
+https://huggingface.co/Kijai/flux-fp8/resolve/main/flux1-dev-fp8-e4m3fn.safetensors
+  dir=models/diffusion_models/FLUX/
+  out=flux1-dev-fp8-e4m3fn.safetensors
+
+# pulid_flux_v0.9.1 -
+https://huggingface.co/guozinan/PuLID/resolve/refs%2Fpr%2F10/pulid_flux_v0.9.1.safetensors
+    dir=models/pulid
+    out=pulid_flux_v0.9.1.safetensors
+
+#=======================
+#Download comfyui_portrait_lora64.safetensors and place in /models/loras/
+# https://huggingface.co/ali-vilab/ACE_Plus/tree/main/portrait
+https://huggingface.co/ali-vilab/ACE_Plus/resolve/main/portrait/comfyui_portrait_lora64.safetensors
+    out=comfyui_portrait_lora64.safetensors
+    dir=models/loras/
+
+
+#====================
+# Модель FLUX UNET - flux1-dev-fp8 тут - https://civitai.com/models/622579/flux1-dev-fp8
+# или модель Артура - https://civitai.com/api/download/models/1244250?type=Model&format=SafeTensor&size=pruned&fp=fp8 (https://civitai.com/models/772865?modelVersionId=1244250 - pruned model)
+# или модель Ольги - https://civitai.com/models/1018060?modelVersionId=1249496
+# скачать и положить в Models\unet\
+
+
+# IPAdapter скачать тут - https://huggingface.co/InstantX/FLUX.1-dev-IP-Adapter/resolve/main/ip-adapter.bin?download=true
+# и положить в Models\ipadapter-flux\
+https://huggingface.co/InstantX/FLUX.1-dev-IP-Adapter/resolve/main/ip-adapter.bin
+    out=ip-adapter.bin
+    dir=models/ipadapter-flux
+
+# Скачать все файлы отсюда https://huggingface.co/google/siglip-so400m-patch14-384/tree/main
+# и положить все файлы в папку Models\clip\google--siglip-so400m-patch14-384\
+
+https://huggingface.co/google/siglip-so400m-patch14-384/resolve/main/config.json
+      dir=models/clip/google--siglip-so400m-patch14-384
+      out=config.json
+
+https://huggingface.co/google/siglip-so400m-patch14-384/resolve/main/model.safetensors
+      dir=models/clip/google--siglip-so400m-patch14-384
+      out=model.safetensors
+
+https://huggingface.co/google/siglip-so400m-patch14-384/resolve/main/preprocessor_config.json
+      dir=models/clip/google--siglip-so400m-patch14-384
+      out=preprocessor_config.json
+
+https://huggingface.co/google/siglip-so400m-patch14-384/resolve/main/special_tokens_map.json
+      dir=models/clip/google--siglip-so400m-patch14-384
+      out=special_tokens_map.json
+
+https://huggingface.co/google/siglip-so400m-patch14-384/resolve/main/spiece.model
+      dir=models/clip/google--siglip-so400m-patch14-384
+      out=spiece.model
+
+https://huggingface.co/google/siglip-so400m-patch14-384/resolve/main/tokenizer.json
+      dir=models/clip/google--siglip-so400m-patch14-384
+      out=tokenizer.json
+
+https://huggingface.co/google/siglip-so400m-patch14-384/resolve/main/tokenizer_config.json
+      dir=models/clip/google--siglip-so400m-patch14-384
+      out=tokenizer_config.json
+
+# Скачать sigclip_vision_patch14_384.safetensors отсюда https://huggingface.co/Comfy-Org/sigclip_vision_384/resolve/main/sigclip_vision_patch14_384.safetensors?download=true и
+# положить в папку ComfyUI\models\clip_vision\
+https://huggingface.co/Comfy-Org/sigclip_vision_384/resolve/main/sigclip_vision_patch14_384.safetensors
+    dir=models/clip_vision
+    out=sigclip_vision_patch14_384.safetensors
 
 # 🌟Load Style Model🌟
 # Download Link: https://huggingface.co/black-forest-labs/FLUX.1-Redux-dev/tree/main
@@ -62,54 +94,19 @@ https://huggingface.co/black-forest-labs/FLUX.1-Redux-dev/resolve/main/flux1-red
    dir=models/style_models/Flux
    out=flux1-redux-dev.safetensors
 
-## 🌟 /Kijai/flux-fp8 🌟
-#https://huggingface.co/Kijai/flux-fp8/resolve/main/flux1-dev-fp8-e4m3fn.safetensors
-#  dir=models/diffusion_models/FLUX/
-#  out=flux1-dev-fp8-e4m3fn.safetensors
 
-# 🌟 CLIP 🌟
-# clip_l.safetensors
-https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors
-    dir=models/clip
-    out=FLUX/clip_l.safetensors
-
-# Flux-Main/t5xxl_fp8_e4m3fn.safetensors
-https://huggingface.co/OreX/Models/resolve/main/Flux-Main/t5xxl_fp8_e4m3fn.safetensors
-    dir=models/clip
-    out=FLUX/t5xxl_fp8_e4m3fn.safetensors
+# Про Reactor читаем тут - https://codeberg.org/Gourieff/comfyui-reactor-node#installation
+# Модели для него скачать отсюда - https://huggingface.co/martintomov/comfy/tree/main/facerestore_models
+# и положить либо в Models\face_restore или Models\facerestore_models (уже не помню точно)
 
 
-# 🌟 VAE dev 🌟
-https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/vae/diffusion_pytorch_model.safetensors
-  dir=models/vae/FLUX/
-  out=flux.vae.safetensors
+# If you don't have the "face_yolov8m.pt" Ultralytics model - you can download it from the Assets and put it into the "ComfyUI\models\ultralytics\bbox" directory
+# As well as "sam_vit_b_01ec64.pth" model - download (if you don't have it) and put it into the "ComfyUI\models\sams" directory;
 
-# 🌟 Flux fill 🌟
-https://huggingface.co/OreX/ControlNet/resolve/main/FLUX%20ControlNet/flux1-fill-dev-FP8.safetensors
-  dir=models/diffusion_models/Flux
-  out=flux1-fill-dev-FP8.safetensors
+https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/detection/bbox/face_yolov8m.pt
+    out=face_yolov8m.pt
+    dir=models/ultralytics/bbox
 
-# 🌟 sigclip_vision_384 🌟
-https://huggingface.co/Comfy-Org/sigclip_vision_384/resolve/main/sigclip_vision_patch14_384.safetensors
-    dir=models/clip_vision
-    out=sigclip_vision_patch14_384.safetensors
-
-#========================
-https://huggingface.co/Gayrat1968/antelopev2/resolve/main/1k3d68.onnx
-      dir=models/insightface/models/antelopev2
-      out=1k3d68.onnx
-https://huggingface.co/Gayrat1968/antelopev2/resolve/main/2d106det.onnx
-      dir=models/insightface/models/antelopev2
-      out=2d106det.onnx
-https://huggingface.co/Gayrat1968/antelopev2/resolve/main/genderage.onnx
-      dir=models/insightface/models/antelopev2
-      out=genderage.onnx
-https://huggingface.co/Gayrat1968/antelopev2/resolve/main/glintr100.onnx
-      dir=models/insightface/models/antelopev2
-      out=glintr100.onnx
-https://huggingface.co/Gayrat1968/antelopev2/resolve/main/readme.md
-      dir=models/insightface/models/antelopev2
-      out=readme.md
-https://huggingface.co/Gayrat1968/antelopev2/resolve/main/scrfd_10g_bnkps.onnx
-      dir=models/insightface/models/antelopev2
-      out=scrfd_10g_bnkps.onnx
+https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/sams/sam_vit_l_0b3195.pth
+    out=sam_vit_l_0b3195.pth
+    dir=models/sams
