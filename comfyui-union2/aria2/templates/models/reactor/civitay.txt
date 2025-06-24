@@ -12,3 +12,13 @@ https://civitai.com/api/download/models/1085456?type=Model&format=SafeTensor&siz
 https://civitai.com/api/download/models/931225?type=Model&format=SafeTensor
     out=perfection-style-hands-feet-face-body-all-in-one.safetensors
     dir=models/loras
+
+# Для Clarity и простого Upscale (4x) используется модель SD1.5 - Juggernaut reborn - https://civitai.com/models/46422?modelVersionId=274039
+https://civitai.com/api/download/models/274039?type=Model&format=SafeTensor&size=pruned&fp=fp16
+    out=juggernaut_reborn.safetensors
+    dir=models/checkpoints/SD1.5
+
+# RealVisXL SDXL
+https://civitai.com/api/download/models/798204?type=Model&format=SafeTensor&size=full&fp=fp16
+    out=realvisxlV50.safetensors
+    dir=models/checkpoints/SDXL

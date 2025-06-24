@@ -110,3 +110,79 @@ https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/detection/b
 https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/sams/sam_vit_l_0b3195.pth
     out=sam_vit_l_0b3195.pth
     dir=models/sams
+
+
+#=====================================
+# Модели для UPSCALE можно скачать отсюда:
+# 4x_foolhardy_Remacri.pth - https://huggingface.co/FacehugmanIII/4x_foolhardy_Remacri/tree/main
+# 4x-UltraSharp.pth  - https://huggingface.co/lokCX/4x-Ultrasharp/blob/main/4x-UltraSharp.pth
+# 4x_NMKD-Siax_200k.pth - https://huggingface.co/gemasai/4x_NMKD-Siax_200k/tree/main
+# 4xFFHQDAT.pth - https://openmodeldb.info/models/4x-FFHQDAT
+# 4xNomos8kHAT-L_otf.pth  - https://openmodeldb.info/models/4x-Nomos8kHAT-L-otf
+# 4xNomosUniDAT_otf.pth - https://huggingface.co/datasets/jibopabo/upscalers/commit/8d2e03c66424b7b98590b541ae4bb6ec66c36b9c
+#
+# Скачанные модели складываются в папку "Models\upscale_models". При необходимости их можно переключать в зеленых нодах в кажой схеме upscale по своему вкусу и необходимости.
+
+https://huggingface.co/FacehugmanIII/4x_foolhardy_Remacri/resolve/main/4x_foolhardy_Remacri.pth
+    out=4x_foolhardy_Remacri.pth
+    dir=models/upscale_models
+https://huggingface.co/lokCX/4x-Ultrasharp/resolve/main/4x-UltraSharp.pth
+    out=4x-UltraSharp.pth
+    dir=models/upscale_models
+https://huggingface.co/gemasai/4x_NMKD-Siax_200k/resolve/main/4x_NMKD-Siax_200k.pth
+    out=4x_NMKD-Siax_200k.pth
+    dir=models/upscale_models
+https://huggingface.co/Gayrat1968/upscalers/resolve/main/4xFFHQDAT.pth
+    out=4xFFHQDAT.pth
+    dir=models/upscale_models
+https://huggingface.co/Gayrat1968/upscalers/resolve/main/4xNomos8kHAT-L_otf.pth
+    out=4xNomos8kHAT-L_otf.pth
+    dir=models/upscale_models
+https://huggingface.co/datasets/jibopabo/upscalers/resolve/main/4xNomosUniDAT_otf.pth
+    out=4xNomosUniDAT_otf.pth
+    dir=models/upscale_models
+https://huggingface.co/Gayrat1968/upscalers/resolve/main/4x-ClearRealityV1.pth
+    out=4x-ClearRealityV1.pth
+    dir=models/upscale_models
+
+
+
+#Лоры к Clarity - https://huggingface.co/naonovn/Lora/blob/main/add_detail.safetensors
+#                 https://huggingface.co/philz1337x/loras/blob/main/SDXLrender_v2.0.safetensors
+https://huggingface.co/naonovn/Lora/resolve/main/add_detail.safetensors
+    dir=models/loras
+    out=add_detail.safetensors
+
+https://huggingface.co/philz1337x/loras/resolve/main/SDXLrender_v2.0.safetensors
+    out=SDXLrender_v2.0.safetensors
+    dir=models/loras
+
+# Модель Контролнет для Clarity  - https://huggingface.co/lllyasviel/ControlNet-v1-1/blob/main/control_v11f1e_sd15_tile.pth
+https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11f1e_sd15_tile.pth
+    out=control_v11f1e_sd15_tile.pth
+    dir=models/controlnet
+
+# Контролнет качать тут - https://huggingface.co/xinsir/controlnet-union-sdxl-1.0/resolve/main/diffusion_pytorch_model_promax.safetensors?download=true
+https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11f1e_sd15_tile.pth
+# Переименовать в xinsir-controlnet-union-sdxl-1.0.safetensors и положить в папку Models\Controlnet
+    out=xinsir-controlnet-union-sdxl-1.0.safetensors
+    dir=models/controlnet
+
+# Модель SDXL на Ваш вкус.
+
+# Репозитарий Reactor тут - https://codeberg.org/Gourieff/comfyui-reactor-node#installation
+
+
+# https://github.com/instantX-research/InstantID
+# https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/config.json
+#     dir=models/controlnet/SDXL/instantid
+#     out=config.json
+https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/diffusion_pytorch_model.safetensors
+    dir=models/controlnet/SDXL
+    out=controlnet_instant_id_sdxl.safetensors
+
+https://huggingface.co/InstantX/InstantID/resolve/main/ip-adapter.bin
+    out=ip-adapter_instant_id_sdxl.bin
+    dir=models/instantid/SDXL
+#    dir=models/ipadapter/SDXL
+# или    instantid/SDXL

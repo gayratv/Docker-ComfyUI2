@@ -1,0 +1,616 @@
+{
+  "id": "fa824b26-fa3b-4f60-89bd-394a164f14ea",
+  "revision": 0,
+  "last_node_id": 227,
+  "last_link_id": 375,
+  "nodes": [
+    {
+      "id": 220,
+      "type": "SaveImage",
+      "pos": [
+        2790,
+        -620
+      ],
+      "size": [
+        590,
+        750
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 361
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "SaveImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 224,
+      "type": "ReActorMaskHelper",
+      "pos": [
+        2390,
+        -600
+      ],
+      "size": [
+        330,
+        454
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 371
+        },
+        {
+          "name": "swapped_image",
+          "type": "IMAGE",
+          "link": 375
+        },
+        {
+          "name": "mask_optional",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            361
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        },
+        {
+          "name": "MASK_PREVIEW",
+          "type": "IMAGE",
+          "links": null
+        },
+        {
+          "name": "SWAPPED_FACE",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "comfyui-reactor-node.git",
+        "ver": "976a8c51bab55fe5443392566ab4e6a9315eed6a",
+        "Node name for S&R": "ReActorMaskHelper",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "bbox/face_yolov8m.pt",
+        0.5,
+        10,
+        3,
+        10,
+        "sam_vit_l_0b3195.pth",
+        0,
+        0.93,
+        0,
+        0.7,
+        "False",
+        "erode",
+        3,
+        9,
+        1
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 222,
+      "type": "ReActorFaceBoost",
+      "pos": [
+        1780,
+        -450
+      ],
+      "size": [
+        250,
+        178
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "FACE_BOOST",
+          "type": "FACE_BOOST",
+          "links": [
+            372
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "comfyui-reactor-node.git",
+        "ver": "976a8c51bab55fe5443392566ab4e6a9315eed6a",
+        "Node name for S&R": "ReActorFaceBoost",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true,
+        "GPEN-BFR-512.onnx",
+        "Bicubic",
+        0.5000000000000001,
+        1,
+        true
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 221,
+      "type": "ReActorSetWeight",
+      "pos": [
+        1780,
+        -600
+      ],
+      "size": [
+        260.3999938964844,
+        98
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input_image",
+          "type": "IMAGE",
+          "link": 370
+        },
+        {
+          "name": "source_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 369
+        },
+        {
+          "name": "face_model",
+          "shape": 7,
+          "type": "FACE_MODEL",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "INPUT_IMAGE",
+          "type": "IMAGE",
+          "links": [
+            357,
+            374
+          ]
+        },
+        {
+          "name": "FACE_MODEL",
+          "type": "FACE_MODEL",
+          "links": [
+            373
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "comfyui-reactor-node.git",
+        "ver": "976a8c51bab55fe5443392566ab4e6a9315eed6a",
+        "Node name for S&R": "ReActorSetWeight",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "100%"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 227,
+      "type": "ReActorFaceSwap",
+      "pos": [
+        2050,
+        -600
+      ],
+      "size": [
+        315,
+        358
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input_image",
+          "type": "IMAGE",
+          "link": 374
+        },
+        {
+          "name": "source_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "face_model",
+          "shape": 7,
+          "type": "FACE_MODEL",
+          "link": 373
+        },
+        {
+          "name": "face_boost",
+          "shape": 7,
+          "type": "FACE_BOOST",
+          "link": 372
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SWAPPED_IMAGE",
+          "type": "IMAGE",
+          "links": [
+            375
+          ]
+        },
+        {
+          "name": "FACE_MODEL",
+          "type": "FACE_MODEL",
+          "links": null
+        },
+        {
+          "name": "ORIGINAL_IMAGE",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "comfyui-reactor-node.git",
+        "ver": "976a8c51bab55fe5443392566ab4e6a9315eed6a",
+        "Node name for S&R": "ReActorFaceSwap",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true,
+        "inswapper_128.onnx",
+        "retinaface_resnet50",
+        "codeformer-v0.1.0.pth",
+        0.7000000000000002,
+        1,
+        "no",
+        "no",
+        "0",
+        "0",
+        1
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 226,
+      "type": "LoadAndResizeImage",
+      "pos": [
+        920,
+        -580
+      ],
+      "size": [
+        380,
+        750
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            369
+          ]
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "image_path",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "Load & Resize Image (Лицо)",
+      "properties": {
+        "aux_id": "kijai/ComfyUI-KJNodes",
+        "ver": "d57154c3a808b8a3f232ed293eaa2d000867c884",
+        "Node name for S&R": "LoadAndResizeImage",
+        "cnr_id": "comfyui-kjnodes",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "woman20.jpg",
+        true,
+        1024,
+        1024,
+        1,
+        true,
+        2,
+        "alpha",
+        "",
+        "image"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 225,
+      "type": "LoadAndResizeImage",
+      "pos": [
+        1340,
+        -590
+      ],
+      "size": [
+        400,
+        760
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            370,
+            371
+          ]
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "image_path",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "Load & Resize Image (фоновая картинка)",
+      "properties": {
+        "aux_id": "kijai/ComfyUI-KJNodes",
+        "ver": "d57154c3a808b8a3f232ed293eaa2d000867c884",
+        "Node name for S&R": "LoadAndResizeImage",
+        "cnr_id": "comfyui-kjnodes",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "3928593831+1.jpg",
+        true,
+        1024,
+        1024,
+        1,
+        true,
+        2,
+        "alpha",
+        "",
+        "image"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      252,
+      156,
+      0,
+      93,
+      0,
+      "IMAGE"
+    ],
+    [
+      253,
+      156,
+      0,
+      93,
+      1,
+      "IMAGE"
+    ],
+    [
+      254,
+      156,
+      0,
+      111,
+      0,
+      "IMAGE"
+    ],
+    [
+      255,
+      153,
+      0,
+      100,
+      0,
+      "MODEL"
+    ],
+    [
+      256,
+      153,
+      2,
+      156,
+      1,
+      "VAE"
+    ],
+    [
+      257,
+      153,
+      0,
+      155,
+      0,
+      "MODEL"
+    ],
+    [
+      258,
+      123,
+      0,
+      155,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      259,
+      123,
+      0,
+      155,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      260,
+      110,
+      0,
+      155,
+      3,
+      "LATENT"
+    ],
+    [
+      261,
+      153,
+      1,
+      123,
+      0,
+      "CLIP"
+    ],
+    [
+      361,
+      224,
+      0,
+      220,
+      0,
+      "IMAGE"
+    ],
+    [
+      369,
+      226,
+      0,
+      221,
+      1,
+      "IMAGE"
+    ],
+    [
+      370,
+      225,
+      0,
+      221,
+      0,
+      "IMAGE"
+    ],
+    [
+      371,
+      225,
+      0,
+      224,
+      0,
+      "IMAGE"
+    ],
+    [
+      372,
+      222,
+      0,
+      227,
+      3,
+      "FACE_BOOST"
+    ],
+    [
+      373,
+      221,
+      1,
+      227,
+      2,
+      "FACE_MODEL"
+    ],
+    [
+      374,
+      221,
+      0,
+      227,
+      0,
+      "IMAGE"
+    ],
+    [
+      375,
+      227,
+      0,
+      224,
+      1,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.1000000000000003,
+      "offset": [
+        -1377.9980352957457,
+        874.0233934171174
+      ]
+    },
+    "ue_links": [],
+    "controller_panel": {
+      "controllers": {},
+      "hidden": true,
+      "highlight": true,
+      "version": 2,
+      "default_order": []
+    },
+    "node_versions": {
+      "comfy-core": "0.3.14",
+      "cg-use-everywhere": "ce510b97d10e69d5fd0042e115ecd946890d2079",
+      "ComfyUI_essentials": "33ff89fd354d8ec3ab6affb605a79a931b445d99",
+      "rgthree-comfy": "5d771b8b56a343c24a26e8cea1f0c87c3d58102f"
+    },
+    "links_added_by_ue": [],
+    "frontendVersion": "1.21.7"
+  },
+  "version": 0.4
+}
