@@ -9,6 +9,7 @@ docker build --progress=plain \
     --build-arg POST_INSTALL=$POST_INSTALL \
     --build-arg WORKFLOW_TO_COPY=$WORKFLOW_TO_COPY \
     --build-arg MODELS=$MODELS \
+    --build-arg DOWNLOAD_MODELS="$DOWNLOAD_MODELS" \
     --build-arg COMFYUI_VERSION=$COMFYUI_VERSION \
     --build-arg PYTORCH_WHEEL=$PYTORCH_WHEEL \
     --build-arg REQ_MODIFY=$REQ_MODIFY \

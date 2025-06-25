@@ -1,0 +1,148 @@
+# 🌟 inswapper_128 🌟
+https://huggingface.co/ezioruan/inswapper_128.onnx/resolve/main/inswapper_128.onnx
+    out=inswapper_128.onnx
+    dir=models/insightface
+
+
+
+https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/detection/bbox/face_yolov8m.pt
+    out=face_yolov8m.pt
+    dir=models/ultralytics/bbox
+
+https://huggingface.co/datasets/Gourieff/ReActor/resolve/main/models/sams/sam_vit_l_0b3195.pth
+    out=sam_vit_l_0b3195.pth
+    dir=models/sams
+
+
+#=====================================
+# Модели для UPSCALE можно скачать отсюда:
+# 4x_foolhardy_Remacri.pth - https://huggingface.co/FacehugmanIII/4x_foolhardy_Remacri/tree/main
+# 4x-UltraSharp.pth  - https://huggingface.co/lokCX/4x-Ultrasharp/blob/main/4x-UltraSharp.pth
+# 4x_NMKD-Siax_200k.pth - https://huggingface.co/gemasai/4x_NMKD-Siax_200k/tree/main
+# 4xFFHQDAT.pth - https://openmodeldb.info/models/4x-FFHQDAT
+# 4xNomos8kHAT-L_otf.pth  - https://openmodeldb.info/models/4x-Nomos8kHAT-L-otf
+# 4xNomosUniDAT_otf.pth - https://huggingface.co/datasets/jibopabo/upscalers/commit/8d2e03c66424b7b98590b541ae4bb6ec66c36b9c
+#
+# Скачанные модели складываются в папку "Models\upscale_models". При необходимости их можно переключать в зеленых нодах в кажой схеме upscale по своему вкусу и необходимости.
+
+https://huggingface.co/FacehugmanIII/4x_foolhardy_Remacri/resolve/main/4x_foolhardy_Remacri.pth
+    out=4x_foolhardy_Remacri.pth
+    dir=models/upscale_models
+https://huggingface.co/lokCX/4x-Ultrasharp/resolve/main/4x-UltraSharp.pth
+    out=4x-UltraSharp.pth
+    dir=models/upscale_models
+https://huggingface.co/gemasai/4x_NMKD-Siax_200k/resolve/main/4x_NMKD-Siax_200k.pth
+    out=4x_NMKD-Siax_200k.pth
+    dir=models/upscale_models
+https://huggingface.co/Gayrat1968/upscalers/resolve/main/4xFFHQDAT.pth
+    out=4xFFHQDAT.pth
+    dir=models/upscale_models
+https://huggingface.co/Gayrat1968/upscalers/resolve/main/4xNomos8kHAT-L_otf.pth
+    out=4xNomos8kHAT-L_otf.pth
+    dir=models/upscale_models
+https://huggingface.co/datasets/jibopabo/upscalers/resolve/main/4xNomosUniDAT_otf.pth
+    out=4xNomosUniDAT_otf.pth
+    dir=models/upscale_models
+https://huggingface.co/Gayrat1968/upscalers/resolve/main/4x-ClearRealityV1.pth
+    out=4x-ClearRealityV1.pth
+    dir=models/upscale_models
+
+
+
+#Лоры к Clarity - https://huggingface.co/naonovn/Lora/blob/main/add_detail.safetensors
+#                 https://huggingface.co/philz1337x/loras/blob/main/SDXLrender_v2.0.safetensors
+https://huggingface.co/naonovn/Lora/resolve/main/add_detail.safetensors
+    dir=models/loras
+    out=add_detail.safetensors
+
+https://huggingface.co/philz1337x/loras/resolve/main/SDXLrender_v2.0.safetensors
+    out=SDXLrender_v2.0.safetensors
+    dir=models/loras
+
+# Модель Контролнет для Clarity  - https://huggingface.co/lllyasviel/ControlNet-v1-1/blob/main/control_v11f1e_sd15_tile.pth
+https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11f1e_sd15_tile.pth
+    out=control_v11f1e_sd15_tile.pth
+    dir=models/controlnet
+
+# Контролнет качать тут - https://huggingface.co/xinsir/controlnet-union-sdxl-1.0/resolve/main/diffusion_pytorch_model_promax.safetensors?download=true
+https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11f1e_sd15_tile.pth
+# Переименовать в xinsir-controlnet-union-sdxl-1.0.safetensors и положить в папку Models\Controlnet
+    out=xinsir-controlnet-union-sdxl-1.0.safetensors
+    dir=models/controlnet
+
+
+# 🌟 instantX controlnet 🌟
+https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/diffusion_pytorch_model.safetensors
+    dir=models/controlnet/SDXL
+    out=controlnet_instant_id_sdxl.safetensors
+
+https://huggingface.co/InstantX/InstantID/resolve/main/ip-adapter.bin
+    out=ip-adapter_instant_id_sdxl.bin
+    dir=models/instantid/SDXL
+
+# 🌟 antelopev2 🌟
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/1k3d68.onnx
+      dir=models/insightface/models/antelopev2
+      out=1k3d68.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/2d106det.onnx
+      dir=models/insightface/models/antelopev2
+      out=2d106det.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/genderage.onnx
+      dir=models/insightface/models/antelopev2
+      out=genderage.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/glintr100.onnx
+      dir=models/insightface/models/antelopev2
+      out=glintr100.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/readme.md
+      dir=models/insightface/models/antelopev2
+      out=readme.md
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/scrfd_10g_bnkps.onnx
+      dir=models/insightface/models/antelopev2
+      out=scrfd_10g_bnkps.onnx
+
+
+# для ip-adpter-plus
+# 🌟  clip_vision  🌟
+https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors
+    dir=models/clip_vision
+    out=CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors
+
+https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/image_encoder/model.safetensors
+    dir=models/clip_vision
+    out=CLIP-ViT-bigG-14-laion2B-39B-b160k.safetensors
+
+
+# 🌟 ip-adapter  🌟
+# ip-adapter-faceid-plusv2_sdxl.bin, SDXL plus v2
+https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sdxl.bin
+    dir=models/ipadapter/SDXL
+    out=ip-adapter-faceid-plusv2_sdxl.bin
+
+# ip-adapter-faceid_sdxl.bin, SDXL base FaceID
+https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sdxl.bin
+    dir=models/ipadapter/SDXL
+    out=ip-adapter-faceid_sdxl.bin
+
+# ip-adapter-faceid-portrait_sdxl.bin, SDXL text prompt style transfer
+https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-portrait_sdxl.bin
+    dir=models/ipadapter/SDXL
+    out=ip-adapter-faceid-portrait_sdxl.bin
+
+# ip-adapter-faceid-portrait_sdxl_unnorm.bin, very strong style transfer SDXL only
+https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-portrait_sdxl_unnorm.bin
+    dir=models/ipadapter/SDXL
+    out=ip-adapter-faceid-portrait_sdxl_unnorm.bin
+
+https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter-plus-face_sdxl_vit-h.safetensors
+    dir=models/ipadapter/SDXL
+    out=ip-adapter-plus-face_sdxl_vit-h.safetensors
+
+# ip-adapter Most FaceID models require a LoRA
+# 🌟  LORA  🌟
+https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sdxl_lora.safetensors
+    dir=models/loras
+    out=ip-adapter-faceid_sdxl_lora.safetensors
+
+https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sdxl_lora.safetensors
+    dir=models/loras
+    out=ip-adapter-faceid-plusv2_sdxl_lora.safetensors

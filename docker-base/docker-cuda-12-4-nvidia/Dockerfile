@@ -65,8 +65,13 @@ RUN apt-get update \
 
 # Устанавливаем python3.11 как основной python
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1 \
-  && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 2 \
+  && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 3 \
   && update-alternatives --set python3 /usr/bin/python3.11
+
+# This RUN instruction should create and manage the /usr/bin/python link
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1 \
+    && update-alternatives --install /usr/bin/python python /usr/bin/python3.11 3 \
+    && update-alternatives --set python /usr/bin/python3.11
 
 # Установка pip и wheel
 RUN python3 -m ensurepip --upgrade \

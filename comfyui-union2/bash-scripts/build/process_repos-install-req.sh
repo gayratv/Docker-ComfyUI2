@@ -92,14 +92,14 @@ for GIT_REPO in "${INSTALL_DATA[@]}"; do
         grep -v '^torch' requirements.txt | grep -v '^#' | grep . > "$TMP_REQ"
 
         # Устанавливаем зависимости из временного файла
-        pip install --cache-dir "${PIP_CACHE_DIR:-/root/pip-cache}" -r "$TMP_REQ" 2> pip_error.log || {
+        python3 -m pip install --cache-dir "${PIP_CACHE_DIR:-/root/pip-cache}" -r "$TMP_REQ" 2> pip_error.log || {
             echo "ERROR: Failed to install dependencies. Check pip_error.log for details."
             rm "$TMP_REQ"
             exit 1
         }
 
 #        pip install --cache-dir "${PIP_CACHE_DIR:-/root/pip-cache}" -r requirements.txt 2> pip_error.log || {
-        pip install --cache-dir "${PIP_CACHE_DIR:-/root/pip-cache}" -r "$TMP_REQ" 2> pip_error.log || {
+        python3 -m pip install --cache-dir "${PIP_CACHE_DIR:-/root/pip-cache}" -r "$TMP_REQ" 2> pip_error.log || {
             echo "ERROR: Failed to install dependencies. Check pip_error.log for details."
             rm "$TMP_REQ"
             exit 1

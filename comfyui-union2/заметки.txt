@@ -746,6 +746,7 @@ cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 export MODELS="reactor"
+export DOWNLOAD_MODELS="reactor reactor2"
 export WORKFLOW_TO_COPY=$MODELS
 export VERSION="$MODELS-CUDA12.6"
 export NODES="$MODELS.txt"
@@ -754,11 +755,34 @@ export COMFYUI_VERSION="v0.3.41"
 export BASE_IMAGE="cuda-12-6:nvidia-runtime"
 export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
 export REQ_MODIFY="base-CUDA-12.6"
-export POST_INSTALL="reactor.sh"
+
+
 
 ./dl_common.sh reactor
 
 https://t.me/gos_comfy/973
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+clarity-upscale
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+./workflow-new-image.sh "clarity-upscale"
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+export MODELS="clarity-upscale"
+export DOWNLOAD_MODELS="clarity-upscale"
+export WORKFLOW_TO_COPY=$MODELS
+export VERSION="$MODELS-CUDA12.6"
+export NODES="$MODELS.txt"
+export IMAGE_NAME="comfyui-union2"
+export COMFYUI_VERSION="v0.3.41"
+export BASE_IMAGE="cuda-12-6:nvidia-runtime"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
+export REQ_MODIFY="base-CUDA-12.6"
+
+
+
+./dl_common.sh clarity-upscale
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
@@ -827,6 +851,9 @@ echo $CIVITAI_TOKEN
 
 export LOCAL_PATH=/mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/_temp_save/
 docker cp  comfyui-union2:/workspace/ComfyUI/output/ ${LOCAL_PATH}
+
+export LOCAL_PATH=/mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/_temp_save/
+docker cp  comfyui-union2:/workspace/prestartup_scripts_content.txt ${LOCAL_PATH}
 
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2

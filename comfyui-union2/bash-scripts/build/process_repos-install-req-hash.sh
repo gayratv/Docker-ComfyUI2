@@ -81,7 +81,7 @@ for GIT_REPO in "${INSTALL_DATA[@]}"; do
         echo "Installing Python dependencies from requirements.txt (excluding torch)…"
         TMP_REQ=$(mktemp)
         grep -v '^torch' requirements.txt | grep -v '^#' | grep . > "$TMP_REQ"
-        pip install --cache-dir "${PIP_CACHE_DIR:-/root/pip-cache}" -r "$TMP_REQ" 2> pip_error.log || {
+        python3 -m pip install --cache-dir "${PIP_CACHE_DIR:-/root/pip-cache}" -r "$TMP_REQ" 2> pip_error.log || {
             echo "ERROR: Failed to install dependencies. See pip_error.log."
             rm "$TMP_REQ"
             exit 1

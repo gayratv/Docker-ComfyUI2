@@ -162,12 +162,30 @@ WORKDIR /workspace/templates/models
 
 #RUN for dir in */; do [ "$dir" != "$MODELS/" ] && rm -r "$dir"; done
 
+RUN echo 'alias python=/usr/local/bin/python3.11' >> /root/.bashrc \
+    source /root/.bashrc
+
+ARG DOWNLAD_MODELS
+#RUN python3 /workspace/ComfyUI/gayrat_py/remove-models-dirs.py ${DOWNLAD_MODELS}
+#RUN python3 /workspace/ComfyUI/gayrat_py/remove-models-dirs.py ${DOWNLAD_MODELS} --dry-run
+
+
+WORKDIR /workspace/ComfyUI
+
+# Создайте файл конфигурации
+RUN echo '{"skip_update_check": true}' > /workspace/ComfyUI/custom_nodes/ComfyUI-Manager/.skip_update_check
+
+RUN echo "cd /workspace/aria2/templates" >> /root/.bashrc \
+  && echo "set -g mouse on" >> /root/.tmux.conf
+
+
 WORKDIR /workspace
 RUN echo -e "\n========= POST_INSTALL ===============\n"
 
 ARG POST_INSTALL
 
 COPY post-install/ ./post-install
+
 
 RUN --mount=type=cache,target=/root/pip-cache \
     if [ -n "$POST_INSTALL" ]; then \
@@ -178,33 +196,12 @@ RUN --mount=type=cache,target=/root/pip-cache \
         echo "Skipping post-install script"; \
     fi
 
-#RUN echo -e "\n\n===========FF========\n" && \
-#  ls -la /workspace/ComfyUI/user/default && \
-#  ls -la /workspace/ComfyUI/user/default/ComfyUI-Manager
-#
-#RUN sed -i 's/^security_level = normal/security_level = weak/' /workspace/ComfyUI/user/default/ComfyUI-Manager/config.ini
-
-# УБРАТЬ !!!!
-#WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI_IPAdapter_plus
-#COPY ./_temp/utils.py ./
-
-# только для узла Laeyer
-#WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI_LayerStyle_Advance/py
-#COPY python-prg/ComfyUI_LayerStyle_Advance/py/gemini.py ./
-
-
-RUN python3 /workspace/ComfyUI/gayrat_py/remove-models-dirs.py ${MODELS}
-#RUN python3 /workspace/ComfyUI/gayrat_py/remove-models-dirs.py ${MODELS} --dry-run
-
-WORKDIR /workspace/ComfyUI/custom_nodes/comfyui_controlnet_aux
-COPY assets-docker/config.yaml ./config.yaml
+RUN echo "===== Финальная проверка Numpy =====" && \
+    python3 -c "import numpy; print('Версия:', numpy.__version__); print('Путь к файлу:', numpy.__file__)"
 
 WORKDIR /workspace/ComfyUI
 
-# Создайте файл конфигурации
-RUN echo '{"skip_update_check": true}' > /workspace/ComfyUI/custom_nodes/ComfyUI-Manager/.skip_update_check
-
-RUN echo "cd /workspace/aria2/templates" >> /root/.bashrc \
-  && echo "set -g mouse on" >> /root/.tmux.conf
+#WORKDIR /workspace/ComfyUI/custom_nodes/comfyui_controlnet_aux
+#COPY assets-docker/config.yaml ./config.yaml
 
 CMD ["bash"]

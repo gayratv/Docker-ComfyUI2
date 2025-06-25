@@ -172,11 +172,7 @@ https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11f1e_sd
 
 # Репозитарий Reactor тут - https://codeberg.org/Gourieff/comfyui-reactor-node#installation
 
-
-# https://github.com/instantX-research/InstantID
-# https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/config.json
-#     dir=models/controlnet/SDXL/instantid
-#     out=config.json
+# 🌟 instantX controlnet 🌟
 https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/diffusion_pytorch_model.safetensors
     dir=models/controlnet/SDXL
     out=controlnet_instant_id_sdxl.safetensors
@@ -186,3 +182,23 @@ https://huggingface.co/InstantX/InstantID/resolve/main/ip-adapter.bin
     dir=models/instantid/SDXL
 #    dir=models/ipadapter/SDXL
 # или    instantid/SDXL
+
+# 🌟 antelopev2 🌟
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/1k3d68.onnx
+      dir=models/insightface/models/antelopev2
+      out=1k3d68.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/2d106det.onnx
+      dir=models/insightface/models/antelopev2
+      out=2d106det.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/genderage.onnx
+      dir=models/insightface/models/antelopev2
+      out=genderage.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/glintr100.onnx
+      dir=models/insightface/models/antelopev2
+      out=glintr100.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/readme.md
+      dir=models/insightface/models/antelopev2
+      out=readme.md
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/scrfd_10g_bnkps.onnx
+      dir=models/insightface/models/antelopev2
+      out=scrfd_10g_bnkps.onnx

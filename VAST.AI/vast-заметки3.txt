@@ -8,12 +8,12 @@ echo -e "IMAGE_NAME : ${IMAGE_NAME}"
 
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.6"
 
-source vast-contract.sh 20833759 $IMAGE_NAME
+source vast-contract.sh 19726999 $IMAGE_NAME
 source ./vs.sh
 
-tmux-s.sh reactor
+tmux-s.sh reactor2
 
-./dl_common.sh reactor
+./dl_common.sh reactor2
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
 ./vast-ssh.sh

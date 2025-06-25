@@ -1,0 +1,1063 @@
+{
+  "id": "9c7c4f9f-7613-46ee-8a12-2a012c3984bb",
+  "revision": 0,
+  "last_node_id": 89,
+  "last_link_id": 288,
+  "nodes": [
+    {
+      "id": 80,
+      "type": "IPAdapter",
+      "pos": [
+        1190,
+        110
+      ],
+      "size": [
+        210,
+        190
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 266
+        },
+        {
+          "label": "ipadapter",
+          "name": "ipadapter",
+          "type": "IPADAPTER",
+          "link": 267
+        },
+        {
+          "label": "image",
+          "name": "image",
+          "type": "IMAGE",
+          "link": 270
+        },
+        {
+          "label": "attn_mask",
+          "name": "attn_mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            271
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "cubiq/ComfyUI_IPAdapter_plus",
+        "ver": "a0f451a5113cf9becb0847b92884cb10cbdec0ef",
+        "Node name for S&R": "IPAdapter",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        1,
+        0,
+        1,
+        "standard"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 74,
+      "type": "CropFace",
+      "pos": [
+        530,
+        780
+      ],
+      "size": [
+        280,
+        58
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 272
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            255
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "mav-rik/facerestore_cf",
+        "ver": "ff4d7a5c102441d8f058dd6135797ffb57b6c6ad",
+        "Node name for S&R": "CropFace",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "retinaface_resnet50"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 75,
+      "type": "PrepImageForClipVision",
+      "pos": [
+        560,
+        620
+      ],
+      "size": [
+        250,
+        110
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 255
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            259
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "cubiq/ComfyUI_IPAdapter_plus",
+        "ver": "a0f451a5113cf9becb0847b92884cb10cbdec0ef",
+        "Node name for S&R": "PrepImageForClipVision",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "LANCZOS",
+        "top",
+        0.1
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 3,
+      "type": "KSampler",
+      "pos": [
+        880,
+        280
+      ],
+      "size": [
+        240,
+        262
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 247
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 248
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 249
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 250
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "KSampler",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        762414632508951,
+        "randomize",
+        8,
+        1.5,
+        "ddpm",
+        "karras",
+        0.8
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        900,
+        620
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 7
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 8
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            19,
+            274
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "VAEDecode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 81,
+      "type": "ReActorFaceSwap",
+      "pos": [
+        1440,
+        -60
+      ],
+      "size": [
+        315,
+        358
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input_image",
+          "type": "IMAGE",
+          "link": 274
+        },
+        {
+          "name": "source_image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 288
+        },
+        {
+          "name": "face_model",
+          "shape": 7,
+          "type": "FACE_MODEL",
+          "link": null
+        },
+        {
+          "name": "face_boost",
+          "shape": 7,
+          "type": "FACE_BOOST",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SWAPPED_IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            275
+          ]
+        },
+        {
+          "name": "FACE_MODEL",
+          "type": "FACE_MODEL",
+          "links": null
+        },
+        {
+          "name": "ORIGINAL_IMAGE",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "gayratv/ComfyUI-ReActor",
+        "ver": "57e7257e0c965b9ce9c1b261d33e641ed84f25f3",
+        "Node name for S&R": "ReActorFaceSwap",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true,
+        "inswapper_128.onnx",
+        "retinaface_resnet50",
+        "codeformer-v0.1.0.pth",
+        1,
+        1,
+        "no",
+        "no",
+        "0",
+        "0",
+        1
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 71,
+      "type": "Note",
+      "pos": [
+        430,
+        -130
+      ],
+      "size": [
+        520,
+        88
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Инструкция по установке",
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Все инструкции по установке здесь - https://github.com/vuongminh1907/ComfyUI_ZenID/tree/main\nIP-Adapter nen - https://github.com/cubiq/ComfyUI_IPAdapter_plus\nReactor тут - https://codeberg.org/Gourieff/comfyui-reactor-node#installation\n"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 15,
+      "type": "PreviewImage",
+      "pos": [
+        1150,
+        360
+      ],
+      "size": [
+        380,
+        480
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 19
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 82,
+      "type": "SaveImage",
+      "pos": [
+        1560,
+        360
+      ],
+      "size": [
+        390,
+        480
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 275
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "SaveImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 72,
+      "type": "ImageScaleBy",
+      "pos": [
+        880,
+        760
+      ],
+      "size": [
+        230,
+        82
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 259
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            253,
+            270,
+            288
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "ImageScaleBy",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "bicubic",
+        1.6
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 79,
+      "type": "IPAdapterUnifiedLoaderFaceID",
+      "pos": [
+        880,
+        110
+      ],
+      "size": [
+        260.3999938964844,
+        126
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "label": "model",
+          "name": "model",
+          "type": "MODEL",
+          "link": 268
+        },
+        {
+          "label": "ipadapter",
+          "name": "ipadapter",
+          "shape": 7,
+          "type": "IPADAPTER",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            266
+          ]
+        },
+        {
+          "label": "ipadapter",
+          "name": "ipadapter",
+          "type": "IPADAPTER",
+          "slot_index": 1,
+          "links": [
+            267
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "cubiq/ComfyUI_IPAdapter_plus",
+        "ver": "a0f451a5113cf9becb0847b92884cb10cbdec0ef",
+        "Node name for S&R": "IPAdapterUnifiedLoaderFaceID",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "FACEID PLUS V2",
+        0.5,
+        "CPU"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 13,
+      "type": "LoadImage",
+      "pos": [
+        70,
+        -10
+      ],
+      "size": [
+        420,
+        350
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            245
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 1,
+          "links": [
+            251
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "clipspace/clipspace-mask-394648.3999999985.png [input]",
+        "image"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 69,
+      "type": "LoadImage",
+      "pos": [
+        70,
+        390
+      ],
+      "size": [
+        420,
+        450
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            272
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "title": "Load Image (Фото лица на замену)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "лицо женское2.png",
+        "image"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 4,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        520,
+        110
+      ],
+      "size": [
+        315.74639892578125,
+        102.47848510742188
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            268
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 1,
+          "links": [
+            243
+          ]
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 2,
+          "links": [
+            8,
+            244
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "SDXL/realvisxlV50_v40Bakedvae.safetensors"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 70,
+      "type": "ApplyZenID",
+      "pos": [
+        510,
+        280
+      ],
+      "size": [
+        340,
+        298
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "control_net",
+          "type": "CONTROL_NET",
+          "link": 241
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 271
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 243
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 244
+        },
+        {
+          "name": "image_source",
+          "type": "IMAGE",
+          "link": 245
+        },
+        {
+          "name": "image_face",
+          "type": "IMAGE",
+          "link": 253
+        },
+        {
+          "name": "mask",
+          "shape": 7,
+          "type": "MASK",
+          "link": 251
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            247
+          ]
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "slot_index": 1,
+          "links": [
+            248
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "slot_index": 2,
+          "links": [
+            249
+          ]
+        },
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "slot_index": 3,
+          "links": [
+            250
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "vuongminh1907/ComfyUI_ZenID",
+        "ver": "21b90a97c530df6e218cdbe5117a0b331708eab6",
+        "Node name for S&R": "ApplyZenID",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "SDXL/ip-adapter_instant_id_sdxl.bin",
+        "CUDA",
+        1,
+        0,
+        0.9,
+        21
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 16,
+      "type": "ControlNetLoader",
+      "pos": [
+        520,
+        -10
+      ],
+      "size": [
+        430,
+        60
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CONTROL_NET",
+          "type": "CONTROL_NET",
+          "slot_index": 0,
+          "links": [
+            241
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "ControlNetLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "SDXL/controlnet_instant_id_sdxl.safetensors"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      7,
+      3,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      8,
+      4,
+      2,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      19,
+      8,
+      0,
+      15,
+      0,
+      "IMAGE"
+    ],
+    [
+      241,
+      16,
+      0,
+      70,
+      0,
+      "CONTROL_NET"
+    ],
+    [
+      243,
+      4,
+      1,
+      70,
+      2,
+      "CLIP"
+    ],
+    [
+      244,
+      4,
+      2,
+      70,
+      3,
+      "VAE"
+    ],
+    [
+      245,
+      13,
+      0,
+      70,
+      4,
+      "IMAGE"
+    ],
+    [
+      247,
+      70,
+      0,
+      3,
+      0,
+      "MODEL"
+    ],
+    [
+      248,
+      70,
+      1,
+      3,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      249,
+      70,
+      2,
+      3,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      250,
+      70,
+      3,
+      3,
+      3,
+      "LATENT"
+    ],
+    [
+      251,
+      13,
+      1,
+      70,
+      6,
+      "MASK"
+    ],
+    [
+      253,
+      72,
+      0,
+      70,
+      5,
+      "IMAGE"
+    ],
+    [
+      255,
+      74,
+      0,
+      75,
+      0,
+      "IMAGE"
+    ],
+    [
+      259,
+      75,
+      0,
+      72,
+      0,
+      "IMAGE"
+    ],
+    [
+      266,
+      79,
+      0,
+      80,
+      0,
+      "MODEL"
+    ],
+    [
+      267,
+      79,
+      1,
+      80,
+      1,
+      "IPADAPTER"
+    ],
+    [
+      268,
+      4,
+      0,
+      79,
+      0,
+      "MODEL"
+    ],
+    [
+      270,
+      72,
+      0,
+      80,
+      2,
+      "IMAGE"
+    ],
+    [
+      271,
+      80,
+      0,
+      70,
+      1,
+      "MODEL"
+    ],
+    [
+      272,
+      69,
+      0,
+      74,
+      0,
+      "IMAGE"
+    ],
+    [
+      274,
+      8,
+      0,
+      81,
+      0,
+      "IMAGE"
+    ],
+    [
+      275,
+      81,
+      0,
+      82,
+      0,
+      "IMAGE"
+    ],
+    [
+      288,
+      72,
+      0,
+      81,
+      1,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.1000000000000005,
+      "offset": [
+        0.5396774485509468,
+        -36.71471489933879
+      ]
+    },
+    "controller_panel": {
+      "controllers": {},
+      "hidden": true,
+      "highlight": true,
+      "version": 2,
+      "default_order": []
+    },
+    "node_versions": {
+      "comfy-core": "0.3.13",
+      "ComfyUI_ZenID": "a03144e5c4dd9d1b7335151c8444b1f7753297ab",
+      "ComfyUI_IPAdapter_plus": "b188a6cb39b512a9c6da7235b880af42c78ccd0d",
+      "facerestore_cf": "67f90bc6be976fb58169866155346b0da13bebee",
+      "comfyui-reactor-node": "c94df09b2544390737ceb507bcfef7af336c6249"
+    },
+    "ue_links": [],
+    "links_added_by_ue": [],
+    "frontendVersion": "1.21.7"
+  },
+  "version": 0.4
+}
