@@ -1,8 +1,8 @@
 {
-  "id": "bf560a00-bc25-4d1f-bf58-63af44cfcbf4",
+  "id": "5457a124-691e-4c80-bb24-d7c1a55808dd",
   "revision": 0,
-  "last_node_id": 42,
-  "last_link_id": 66,
+  "last_node_id": 43,
+  "last_link_id": 70,
   "nodes": [
     {
       "id": 9,
@@ -16,7 +16,7 @@
         1060.3800048828125
       ],
       "flags": {},
-      "order": 10,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
@@ -37,68 +37,6 @@
       ]
     },
     {
-      "id": 31,
-      "type": "KSampler",
-      "pos": [
-        816,
-        192
-      ],
-      "size": [
-        315,
-        262
-      ],
-      "flags": {},
-      "order": 8,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 61
-        },
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "link": 64
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "link": 55
-        },
-        {
-          "name": "latent_image",
-          "type": "LATENT",
-          "link": 51
-        }
-      ],
-      "outputs": [
-        {
-          "name": "LATENT",
-          "type": "LATENT",
-          "slot_index": 0,
-          "links": [
-            52
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.41",
-        "Node name for S&R": "KSampler",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        660933729740653,
-        "randomize",
-        20,
-        1,
-        "euler",
-        "simple",
-        1
-      ]
-    },
-    {
       "id": 8,
       "type": "VAEDecode",
       "pos": [
@@ -110,7 +48,7 @@
         46
       ],
       "flags": {},
-      "order": 9,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
@@ -143,82 +81,6 @@
       "widgets_values": []
     },
     {
-      "id": 41,
-      "type": "VAELoader",
-      "pos": [
-        667.7633056640625,
-        -20.35995864868164
-      ],
-      "size": [
-        270,
-        58
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "VAE",
-          "type": "VAE",
-          "links": [
-            62
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.41",
-        "Node name for S&R": "VAELoader",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "FLUX/flux.vae.safetensors"
-      ]
-    },
-    {
-      "id": 39,
-      "type": "CLIPTextEncodeFlux",
-      "pos": [
-        153.89678955078125,
-        519.4276733398438
-      ],
-      "size": [
-        485.8000183105469,
-        334.3448181152344
-      ],
-      "flags": {},
-      "order": 6,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 66
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "links": [
-            63
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.41",
-        "Node name for S&R": "CLIPTextEncodeFlux",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "medium eyes, detailed eyes, expressive eyes, realistic, disney pixar style, 3d, 3d rendering",
-        "SFW,highest quality,woman,27 year old,backlighting,black choker,blurry background,blush,closed mouth,collarbone,earrings,forehead,freckles,hair over shoulder,jewelry,long hair,looking down,pointy nose,lips glossy,shadow,solo,thick eyebrows,thick eyelashes,upper body, expressive eyes, medium eyes, detailed eyes,blond hair,braids,tattoos,tattoos on arms,black rose tattoos on neck,sun beams,warm light,cozy,((masterpiece)), realistic, disney pixar style, 3d, 3d rendering",
-        3.5
-      ]
-    },
-    {
       "id": 27,
       "type": "EmptySD3LatentImage",
       "pos": [
@@ -230,7 +92,7 @@
         106
       ],
       "flags": {},
-      "order": 1,
+      "order": 0,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -261,15 +123,15 @@
       "id": 33,
       "type": "CLIPTextEncode",
       "pos": [
-        -289.4290771484375,
-        789.1961059570312
+        -391.069091796875,
+        804.9258422851562
       ],
       "size": [
         422.8500061035156,
         164.30999755859375
       ],
       "flags": {
-        "collapsed": true
+        "collapsed": false
       },
       "order": 4,
       "mode": 0,
@@ -304,6 +166,68 @@
       "bgcolor": "#533"
     },
     {
+      "id": 31,
+      "type": "KSampler",
+      "pos": [
+        816,
+        192
+      ],
+      "size": [
+        315,
+        262
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 70
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 64
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 55
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 51
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            52
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "KSampler",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        484278378035962,
+        "randomize",
+        30,
+        1,
+        "euler",
+        "simple",
+        1
+      ]
+    },
+    {
       "id": 38,
       "type": "DualCLIPLoader",
       "pos": [
@@ -315,7 +239,7 @@
         130
       ],
       "flags": {},
-      "order": 2,
+      "order": 1,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -324,7 +248,7 @@
           "type": "CLIP",
           "links": [
             60,
-            65
+            68
           ]
         }
       ],
@@ -342,93 +266,18 @@
       ]
     },
     {
-      "id": 42,
-      "type": "CLIPSetLastLayer",
-      "pos": [
-        -386.17156982421875,
-        396.4017639160156
-      ],
-      "size": [
-        270,
-        58
-      ],
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 65
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "links": [
-            66
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.41",
-        "widget_ue_connectable": {},
-        "Node name for S&R": "CLIPSetLastLayer"
-      },
-      "widgets_values": [
-        -2
-      ]
-    },
-    {
-      "id": 40,
-      "type": "UNETLoader",
-      "pos": [
-        -730.3365478515625,
-        165.1259002685547
-      ],
-      "size": [
-        270,
-        82
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            61
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.41",
-        "Node name for S&R": "UNETLoader",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "Flux/flux1-dev-fp8-e4m3fn.safetensors",
-        "default"
-      ]
-    },
-    {
       "id": 35,
       "type": "FluxGuidance",
       "pos": [
-        73.40182495117188,
-        301.4958190917969
+        337.40179443359375,
+        280.5957946777344
       ],
       "size": [
         211.60000610351562,
         58
       ],
       "flags": {},
-      "order": 7,
+      "order": 8,
       "mode": 0,
       "inputs": [
         {
@@ -455,6 +304,226 @@
       },
       "widgets_values": [
         3.5
+      ]
+    },
+    {
+      "id": 43,
+      "type": "Power Lora Loader (rgthree)",
+      "pos": [
+        -291.9498291015625,
+        -0.4975622296333313
+      ],
+      "size": [
+        324.8211669921875,
+        142
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "dir": 3,
+          "name": "model",
+          "type": "MODEL",
+          "link": 67
+        },
+        {
+          "dir": 3,
+          "name": "clip",
+          "type": "CLIP",
+          "link": 68
+        }
+      ],
+      "outputs": [
+        {
+          "dir": 4,
+          "name": "MODEL",
+          "shape": 3,
+          "type": "MODEL",
+          "links": [
+            70
+          ]
+        },
+        {
+          "dir": 4,
+          "name": "CLIP",
+          "shape": 3,
+          "type": "CLIP",
+          "links": [
+            69
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "rgthree-comfy",
+        "ver": "f754c4765849aa748abb35a1f030a5ed6474a69b",
+        "Show Strengths": "Single Strength",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        {},
+        {
+          "type": "PowerLoraLoaderHeaderWidget"
+        },
+        {
+          "on": false,
+          "lora": "Flux/PinkieIridescentFLUX.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        {},
+        ""
+      ]
+    },
+    {
+      "id": 40,
+      "type": "UNETLoader",
+      "pos": [
+        -847.6092529296875,
+        126.9441146850586
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            67
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "UNETLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Flux/project0_v40ArtRealismFP8.safetensors",
+        "default"
+      ]
+    },
+    {
+      "id": 39,
+      "type": "CLIPTextEncodeFlux",
+      "pos": [
+        153.89678955078125,
+        519.4276733398438
+      ],
+      "size": [
+        485.8000183105469,
+        334.3448181152344
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 66
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            63
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "CLIPTextEncodeFlux",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "mermaid ",
+        "A close-up cinematic shot of a young mermaid reimagined in a Pixar-inspired style. She gazes up toward the shimmering ocean surface, her vibrant red hair flowing gracefully around her in the water. Her wide, curious eyes and expressive face capture a sense of wonder and adventure. The background is filled with beams of sunlight filtering through the water, illuminating vivid coral formations and playful sea creatures. A soft, mystical glow surrounds her, enhancing the enchanting underwater atmosphere",
+        3.5
+      ]
+    },
+    {
+      "id": 42,
+      "type": "CLIPSetLastLayer",
+      "pos": [
+        -221.62612915039062,
+        423.6746520996094
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 69
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            66
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "CLIPSetLastLayer",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        -2
+      ]
+    },
+    {
+      "id": 41,
+      "type": "VAELoader",
+      "pos": [
+        -843.5266723632812,
+        -55.44991683959961
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            62
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "VAELoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "FLUX/flux.vae.safetensors"
       ]
     }
   ],
@@ -500,14 +569,6 @@
       "CLIP"
     ],
     [
-      61,
-      40,
-      0,
-      31,
-      0,
-      "MODEL"
-    ],
-    [
       62,
       41,
       0,
@@ -532,30 +593,54 @@
       "CONDITIONING"
     ],
     [
-      65,
-      38,
-      0,
-      42,
-      0,
-      "CLIP"
-    ],
-    [
       66,
       42,
       0,
       39,
       0,
       "CLIP"
+    ],
+    [
+      67,
+      40,
+      0,
+      43,
+      0,
+      "MODEL"
+    ],
+    [
+      68,
+      38,
+      0,
+      43,
+      1,
+      "CLIP"
+    ],
+    [
+      69,
+      43,
+      1,
+      42,
+      0,
+      "CLIP"
+    ],
+    [
+      70,
+      43,
+      0,
+      31,
+      0,
+      "MODEL"
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.4967370584473267,
+      "scale": 0.49673705844732974,
       "offset": [
-        1351.329366925966,
-        298.82315974116847
+        1104.9672594689766,
+        301.66745998104176
       ]
     },
     "ue_links": [],

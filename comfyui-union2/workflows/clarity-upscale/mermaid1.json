@@ -37,68 +37,6 @@
       ]
     },
     {
-      "id": 31,
-      "type": "KSampler",
-      "pos": [
-        816,
-        192
-      ],
-      "size": [
-        315,
-        262
-      ],
-      "flags": {},
-      "order": 8,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 61
-        },
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "link": 64
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "link": 55
-        },
-        {
-          "name": "latent_image",
-          "type": "LATENT",
-          "link": 51
-        }
-      ],
-      "outputs": [
-        {
-          "name": "LATENT",
-          "type": "LATENT",
-          "slot_index": 0,
-          "links": [
-            52
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.41",
-        "Node name for S&R": "KSampler",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        660933729740653,
-        "randomize",
-        20,
-        1,
-        "euler",
-        "simple",
-        1
-      ]
-    },
-    {
       "id": 8,
       "type": "VAEDecode",
       "pos": [
@@ -174,48 +112,6 @@
       },
       "widgets_values": [
         "FLUX/flux.vae.safetensors"
-      ]
-    },
-    {
-      "id": 39,
-      "type": "CLIPTextEncodeFlux",
-      "pos": [
-        153.89678955078125,
-        519.4276733398438
-      ],
-      "size": [
-        485.8000183105469,
-        334.3448181152344
-      ],
-      "flags": {},
-      "order": 6,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 66
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "links": [
-            63
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.41",
-        "Node name for S&R": "CLIPTextEncodeFlux",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "medium eyes, detailed eyes, expressive eyes, realistic, disney pixar style, 3d, 3d rendering",
-        "SFW,highest quality,woman,27 year old,backlighting,black choker,blurry background,blush,closed mouth,collarbone,earrings,forehead,freckles,hair over shoulder,jewelry,long hair,looking down,pointy nose,lips glossy,shadow,solo,thick eyebrows,thick eyelashes,upper body, expressive eyes, medium eyes, detailed eyes,blond hair,braids,tattoos,tattoos on arms,black rose tattoos on neck,sun beams,warm light,cozy,((masterpiece)), realistic, disney pixar style, 3d, 3d rendering",
-        3.5
       ]
     },
     {
@@ -374,8 +270,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.41",
-        "widget_ue_connectable": {},
-        "Node name for S&R": "CLIPSetLastLayer"
+        "Node name for S&R": "CLIPSetLastLayer",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         -2
@@ -417,6 +313,48 @@
       ]
     },
     {
+      "id": 39,
+      "type": "CLIPTextEncodeFlux",
+      "pos": [
+        153.89678955078125,
+        519.4276733398438
+      ],
+      "size": [
+        485.8000183105469,
+        334.3448181152344
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 66
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            63
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "CLIPTextEncodeFlux",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "medium eyes, detailed eyes, expressive eyes, realistic, disney pixar style, 3d, 3d rendering",
+        "a pixar animated cartoon image of a naked young girl with a slender neck, thin waist, small breasts and wide hips, not muscular, and narrow jawline. strawberry blonde hair, She is looking at the viewer suggestively, showing her breast under the bathrobe. The girl has detailed pale wet skin. The steamy bathroom is lit with colorful intimate lighting with thick steam in the air. light reflects off her wet skin.",
+        3.5
+      ]
+    },
+    {
       "id": 35,
       "type": "FluxGuidance",
       "pos": [
@@ -454,7 +392,69 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        3.5
+        5
+      ]
+    },
+    {
+      "id": 31,
+      "type": "KSampler",
+      "pos": [
+        816,
+        192
+      ],
+      "size": [
+        315,
+        262
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 61
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 64
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 55
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 51
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            52
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "KSampler",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        518858123000572,
+        "randomize",
+        35,
+        1,
+        "euler",
+        "simple",
+        1
       ]
     }
   ],
@@ -552,10 +552,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.4967370584473267,
+      "scale": 0.7272727272727313,
       "offset": [
-        1351.329366925966,
-        298.82315974116847
+        455.1791061771245,
+        72.97835860480576
       ]
     },
     "ue_links": [],

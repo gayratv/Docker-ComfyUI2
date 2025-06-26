@@ -37,68 +37,6 @@
       ]
     },
     {
-      "id": 31,
-      "type": "KSampler",
-      "pos": [
-        816,
-        192
-      ],
-      "size": [
-        315,
-        262
-      ],
-      "flags": {},
-      "order": 8,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 61
-        },
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "link": 64
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "link": 55
-        },
-        {
-          "name": "latent_image",
-          "type": "LATENT",
-          "link": 51
-        }
-      ],
-      "outputs": [
-        {
-          "name": "LATENT",
-          "type": "LATENT",
-          "slot_index": 0,
-          "links": [
-            52
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.41",
-        "Node name for S&R": "KSampler",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        660933729740653,
-        "randomize",
-        20,
-        1,
-        "euler",
-        "simple",
-        1
-      ]
-    },
-    {
       "id": 8,
       "type": "VAEDecode",
       "pos": [
@@ -177,48 +115,6 @@
       ]
     },
     {
-      "id": 39,
-      "type": "CLIPTextEncodeFlux",
-      "pos": [
-        153.89678955078125,
-        519.4276733398438
-      ],
-      "size": [
-        485.8000183105469,
-        334.3448181152344
-      ],
-      "flags": {},
-      "order": 6,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 66
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "links": [
-            63
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.41",
-        "Node name for S&R": "CLIPTextEncodeFlux",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "medium eyes, detailed eyes, expressive eyes, realistic, disney pixar style, 3d, 3d rendering",
-        "SFW,highest quality,woman,27 year old,backlighting,black choker,blurry background,blush,closed mouth,collarbone,earrings,forehead,freckles,hair over shoulder,jewelry,long hair,looking down,pointy nose,lips glossy,shadow,solo,thick eyebrows,thick eyelashes,upper body, expressive eyes, medium eyes, detailed eyes,blond hair,braids,tattoos,tattoos on arms,black rose tattoos on neck,sun beams,warm light,cozy,((masterpiece)), realistic, disney pixar style, 3d, 3d rendering",
-        3.5
-      ]
-    },
-    {
       "id": 27,
       "type": "EmptySD3LatentImage",
       "pos": [
@@ -256,52 +152,6 @@
       ],
       "color": "#323",
       "bgcolor": "#535"
-    },
-    {
-      "id": 33,
-      "type": "CLIPTextEncode",
-      "pos": [
-        -289.4290771484375,
-        789.1961059570312
-      ],
-      "size": [
-        422.8500061035156,
-        164.30999755859375
-      ],
-      "flags": {
-        "collapsed": true
-      },
-      "order": 4,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 60
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            55
-          ]
-        }
-      ],
-      "title": "CLIP Text Encode (Negative Prompt)",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.41",
-        "Node name for S&R": "CLIPTextEncode",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        ""
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
     },
     {
       "id": 38,
@@ -374,8 +224,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.41",
-        "widget_ue_connectable": {},
-        "Node name for S&R": "CLIPSetLastLayer"
+        "Node name for S&R": "CLIPSetLastLayer",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         -2
@@ -417,6 +267,48 @@
       ]
     },
     {
+      "id": 39,
+      "type": "CLIPTextEncodeFlux",
+      "pos": [
+        153.89678955078125,
+        519.4276733398438
+      ],
+      "size": [
+        485.8000183105469,
+        334.3448181152344
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 66
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            63
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "CLIPTextEncodeFlux",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "medium eyes, detailed eyes, expressive eyes, realistic, disney pixar style, 3d, 3d rendering",
+        "(masterpiece, best quality, highres:1.2), (photorealistic:1.2), (intricate and beautiful:1.2), (detailed light:1.2), (soft lighting, side lighting, reflected light), (colorful, dynamic angle), full body shot, glamor photography, (looking at viewer:1.1), facing viewer, (nude girl) (exposed vagina and breast), (girl taking shower), (water, soap, soapsuds, steam), 18 year old girl caught naked in shower, (surprised and embarrassed), blushing, petite body with small breast, dynamic pose, wet hair and skin, light passing through hair, (shower room background), (official art), (perfect skin), (sharp)  <lora:GoodHands-vanilla:1>",
+        3.5
+      ]
+    },
+    {
       "id": 35,
       "type": "FluxGuidance",
       "pos": [
@@ -454,8 +346,116 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        3.5
+        7
       ]
+    },
+    {
+      "id": 31,
+      "type": "KSampler",
+      "pos": [
+        816,
+        192
+      ],
+      "size": [
+        315,
+        262
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 61
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 64
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 55
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 51
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            52
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "KSampler",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        904707947226705,
+        "randomize",
+        40,
+        1,
+        "euler",
+        "simple",
+        1
+      ]
+    },
+    {
+      "id": 33,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -391.069091796875,
+        804.9258422851562
+      ],
+      "size": [
+        422.8500061035156,
+        164.30999755859375
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 60
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            55
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Negative Prompt)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "(worst quality:1.8, low quality:1.8), moles, mole, tears, piercing, freckles, skindentation, cutoffs, shiny skin, lucid skin, pendant, scars on face, interlocked fingers,  bad-hands-5  easynegative, clothing, shoes"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
     }
   ],
   "links": [
@@ -552,10 +552,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.4967370584473267,
+      "scale": 0.7272727272727318,
       "offset": [
-        1351.329366925966,
-        298.82315974116847
+        425.522198589691,
+        128.87859752545194
       ]
     },
     "ue_links": [],

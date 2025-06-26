@@ -8,3 +8,22 @@ https://civitai.com/api/download/models/1725295?type=Model&format=SafeTensor&siz
 https://civitai.com/api/download/models/1397905?type=Model&format=SafeTensor&size=full&fp=fp8
     out=project0_v40ArtRealismFP8.safetensors
     dir=models/diffusion_models/Flux
+
+# design_pixar
+# https://civitai.com/models/614067/designpixar?modelVersionId=764108
+# VAE Included
+# This model requires the following files:
+# ae.safetensors, clip_l.safetensors and t5xxl_fp8_e4m3fn.safetensors
+# triger
+# medium eyes, detailed eyes, expressive eyes, realistic, disney pixar style, 3d, 3d rendering
+https://civitai.com/api/download/models/764108?type=Model&format=SafeTensor&size=full&fp=fp8
+    dir=models/checkpoints/Flux
+    out=designPixar_v20.safetensors
+
+# русалка - Project0 https://civitai.com/images/80920430
+
+# LORA [Pinkie] 🫧Iridescent Dreamer🫧 - [Flux]
+# https://civitai.com/models/836633/pinkie-iridescent-dreamer-flux?modelVersionId=936034
+https://civitai.com/api/download/models/936034?type=Model&format=SafeTensor
+    out=PinkieIridescentFLUX.safetensors
+    dir=models/loras/Flux
