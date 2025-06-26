@@ -200,6 +200,10 @@ RUN echo "===== Финальная проверка Numpy =====" && \
     python3 -c "import numpy; print('Версия:', numpy.__version__); print('Путь к файлу:', numpy.__file__)"
 
 
+WORKDIR /workspace/ComfyUI/models/embeddings
+# для версии numpy
+COPY assets-docker/embeddings/ .
+
 WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI-Manager
 # для версии numpy
 COPY assets-docker/pip_overrides.json .
