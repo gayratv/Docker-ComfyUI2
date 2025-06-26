@@ -1,0 +1,927 @@
+{
+  "id": "9a2d84af-bc97-493c-a38c-6e471bd4d8bf",
+  "revision": 0,
+  "last_node_id": 120,
+  "last_link_id": 151,
+  "nodes": [
+    {
+      "id": 41,
+      "type": "VAEDecode",
+      "pos": [
+        1016.7572631835938,
+        -129.5189666748047
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 62
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 122
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            125,
+            131,
+            150
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "VAEDecode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 104,
+      "type": "CLIPSetLastLayer",
+      "pos": [
+        821.1195068359375,
+        -129.7102508544922
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 116
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            127
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "CLIPSetLastLayer",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        -2
+      ]
+    },
+    {
+      "id": 105,
+      "type": "Note",
+      "pos": [
+        1207.5728759765625,
+        703.1984252929688
+      ],
+      "size": [
+        408.2231140136719,
+        108.32005310058594
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Big Love v.XL3_dmd2_sdxl_4step_lora",
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Steps - 8\ncfg - 1.0\nSampler - lcm\nSheduler - exponential\n\nhttps://civitai.com/models/897413?modelVersionId=1744439\n\nBig Love v.XL3\n\nType - Checkpoint Merge\nPublished - May 6, 2025\nBase Model - SDXL 1.0\nPruned Model fp16 (6.46 GB)\n\ntxt2img Settings:\nCivitai: DPM2 a, 30-50 steps, cfg 4-5, 832x1216\nForge/ComfyUI: DPM++ SDE, Normal/SGM Unifom (Pony), Karras (XL), 20-30 steps, cfg 3-10, clip skip 2, 832x1216 or 1024x1536. For faster generation 2M SDE/3M SDE works too, but lower quality with the Pony version.\n\nHigher Quality & Faster Rendering:\nGood Quality: For more contrast add the SDXL Lightning 8-step lora with DPM++ SDE, SGM Uniform, 8 steps, cfg 1.5-3 (Pony), 1-2.5 (XL), lora strength 1.0, clip skip 2, 832x1216 or 1024x1536\nBest Quality: For a more natural look use the DMD2 lora with LCM Exponential, 8 steps, cfg 1-1.5, lora strength 1.0, clip skip 2, 832x1216 or 1024x1536\n****************************************************************************\n\n1girl, __blonde__, __nsfw-breastsize__, __nsfw-lingerie__, __nsfw-panties__, __pose__, __pop-location__\n\n1girl, solo, __blonde__, __ccsWildcards_v11/CC_female_hairstyle__, __ccsWildcards_v11/CC_body_shape__, __ccsWildcards_v11/CC_breast_size__, __nsfw-lingerie__, __nsfw-panties__, __pose__, __ccsWildcards_v11/CC_beach_background__"
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 113,
+      "type": "SaveImageExtended",
+      "pos": [
+        1650.836181640625,
+        652.0738525390625
+      ],
+      "size": [
+        339.7070007324219,
+        511.2975158691406
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 150
+        },
+        {
+          "name": "positive_text_opt",
+          "shape": 7,
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "negative_text_opt",
+          "shape": 7,
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "save-image-extended-comfyui",
+        "ver": "1fc32e0ad3687329f1aeda8d77556a334f6cc8a0",
+        "Node name for S&R": "SaveImageExtended",
+        "aux_id": "audioscavenger/save-image-extended-comfyui",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "",
+        "1.ckpt_name, 6.width, 6.height, 111.lora_name, 5.cfg, 5.sampler_name, 5.steps, 5.scheduler",
+        "%F/",
+        "1.ckpt_name, ReAct",
+        "-",
+        "disabled",
+        false,
+        "",
+        true,
+        4,
+        "last",
+        true,
+        false,
+        ".png",
+        6,
+        false
+      ]
+    },
+    {
+      "id": 4,
+      "type": "CLIPTextEncode",
+      "pos": [
+        708.9085693359375,
+        416.0704345703125
+      ],
+      "size": [
+        452.3619079589844,
+        175.92935180664062
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 118
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            6
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "censored, (worst quality, low quality:1.4), child, deformed, malformed, bad hands, bad fingers, bad eyes, bad teeth, long body, blurry, duplicated, cloned, duplicate body parts, disfigured, extra limbs, fused fingers, extra fingers, twisted, distorted, malformed hands, malformed fingers, mutated hands and fingers, conjoined, missing limbs, bad anatomy, bad proportions, logo, watermark, text, lowres, mutated, mutilated, blend, artifacts, gross, ugly, depth of field, asian, face defects), embedding:Stable_Yogis_PDXL_Negatives2-neg"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 112,
+      "type": "Note",
+      "pos": [
+        913.3995361328125,
+        812.855712890625
+      ],
+      "size": [
+        375.3835144042969,
+        58
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "💾 Save Image Extended 2.83",
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "https://github.com/audioscavenger/save-image-extended-comfyui"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 106,
+      "type": "Note",
+      "pos": [
+        920,
+        860
+      ],
+      "size": [
+        250.98733520507812,
+        396.9989013671875
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "SUPPORTED RESOLUTIONS",
+      "properties": {
+        "text": "",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "SUPPORTED RESOLUTIONS\n=====================\n\nratio  resolution\n-----------------\n0.5:   704×1408\n0.52:  704×1344\n0.57:  768×1344\n0.6:   768×1280\n0.68:  832×1216\n0.72:  832×1152\n0.78:  896×1152  3584x4608\n0.82:  896×1088\n0.88:  960×1088\n0.94:  960×1024\n1.0:  1024×1024  4096x4096\n1.07:  1024×960\n1.13:  1088×960\n1.21:  1088×896\n1.29:  1152×896\n1.38:  1152×832\n1.46:  1216×832\n1.67:  1280×768\n1.75:  1344×768\n1.91:  1344×704\n2.0:   1408×704\n2.09:  1472×704\n2.4:   1536×640\n2.5:   1600×640\n2.89:  1664×576\n3.0:   1728×576"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 49,
+      "type": "Note",
+      "pos": [
+        920,
+        900
+      ],
+      "size": [
+        431.3671875,
+        588.6849975585938
+      ],
+      "flags": {
+        "collapsed": true,
+        "pinned": false
+      },
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "PROMTs",
+      "properties": {
+        "text": "",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "------------------------------POSITIVI---------------------------\n\n\\(BEST QUALITY\\),\n(masterpiece:1.3), (high quality, best quality:1.2), best image, (high resolution:1.2), (64K:1.1), high definition, high res, \n\n\\(BEST DETAIL\\),\n(High Detail, high-level detail:1.2), (highly detailed:1.1), Hyperdetailed, ultra detailed, extremely detailed, intricate detail,\n\n\\(BEST ILLUMINATION\\),\ndynamic lighting, cinematic lighting, cinematic light,\n\n\\(BEST TEXTURES\\)\n(real textures, realistic textures, detailed textures, detailed texture:1.1), (real textures surface:1.2), (authentic textures:1.1),\n\n\\(BEST CLOTHES\\),\ndetailed clothes features, exquisite details and textures,\n\n\\(BEST SKIN\\)\n(real skin, realistic skin, detailed skin, detailed skin textures:1.1), (real skin surface:1.2), (authentic skin:1.1),\n\n\\(BEST BODY\\),\n(real hands, detailed hands:1.1), (real fingers, detailed fingers:1.1), \n\n\\(BEST NSFW BODY\\),\ndetailed breast, natural breast, \n\n\\(BEST FACE\\)\n(real face, detailed face, detailed facial features, real facial skin, detailed facial skin textures:1.1), (palette of natural skin colors:1.2), (gorgeous hair, detailed hair:1.1),\n\n--------------------------NEGATIVI------------------------------\n\n\\(BAD IMAGE\\),\ncanvas frame, watermark, watermarker:1.2), signature, username, artist name, \n\n\\(BAD QUALITY\\),\n(low quality:1.2), bad quality, worst quality, (low resolution:1.2), bad resolution, (low detail:1.2), bad detail, jpeg artifacts,\n\n\\(BAD TEXTURES\\),\nlow detailed textures, low quality textures, low res textures,\n\n\\(BAD SKIN\\),\n(low detail skin, bad skin texture:1.1),\n\n\\(BAD BODY\\),\n(deformed, distorted, disfigured, malformed:1.3),  ugly, tiling, (bad anatomy, bad proportions:1.3), (cloned face, long neck, elongated body:1.2), \n\n\\(BAD LIMBS\\),\n(floating limbs, extra limbs, disconnected limbs, missing limbs, malformed limbs, mutated limbs:1.1), (missing arms, extra arms, malformed arms, mutated arms:1.2), (missing legs, extra legs, malformed legs, mutated legs:1.2), (malformed hands, mutated hands, fused hands, extra hands, too many hands, missing hands:1.1), (fused fingers, malformed fingers, mutated fingers, too many fingers, missing fingers, extra fingers:1.2), (missing feet, extra feet, deformed feet, malformed feet, fuse feet:1.1),\n\n\\(BAD FACE\\),\n(low detail face:1.1), (wrong lips, weird mouth, bad teeth:1.2), deformed iris, deformed pupils, (bad eyes:1.1), imperfect eyes, skewed eyes, collapsed eyeshadow, multiple eyebrow,\n\n\\(WRONG RACE\\),\n(asian, chinese, korean:1.1),\n\n---------------------FOTOGRAFICO-------------------------------\n\n\\(BEST PHOTO\\),\n(RAW photo, photo, Photographic:1.2), (Realistic, Photorealistic:1.1), ultra realistic, cinematic, cinematic shot, studio photo,\n\n\\(BAD PHOTO\\),\n(high contrast, over saturated:1.2), (glossy, b&w, monochrome, grayscale, cropped, semi-realistic, cropped:1.1), (cartoon, 3d, 3d render, Photoshop, sketch, sketches, video game, draw, paint, painting, render, cgi, computer graphics, anime, manga, 2d art, 3d art, illustration:1.1), \n\n----------------------STILI-----------------------------------\n\n\\(COMICS STYLE\\),\n(comics, comics book style:1.2), sketch, concept art, line art, webtoon, hand drawn, defined lines, simple shades, minimalistic, High contrast, Linear compositions, Scalable artwork, Digital art, High Contrast Shadows, glow effects, humorous illustration, big depth of field, Masterpiece, colors, concept art, trending on artstation, Vivid colors,\n\n\\(VECTOR STYLE\\),\nVector art, Vivid colors, Clean lines, Sharp edges, Minimalist, Precise geometry, Simplistic, Smooth curves, Bold outlines, Crisp shapes, Flat colors, Illustration art piece, High contrast shadows, Technical illustration, Graphic design, Vector graphics, High contrast, Precision artwork, Linear compositions, Scalable artwork, Digital art,\n\n\\(MANGA STYLE\\),\nManga Style, Pencil drawing, (B&W:1.2), sketch, concept art, manga style art, line art, webtoon, manhua, chalk, hand drawn, defined lines, simple shades, simplistic, manga page, minimalistic, High contrast, Precision artwork, Linear compositions, Scalable artwork, High Contrast Shadows,\n\n\\(ANIME STYLE\\),\n(Anime Scene:1.2), (Anime Style, anime Style art:1.3), sketch, concept art, line art, webtoon, manhua, hand drawn, defined lines, simple shades, minimalistic, High contrast, Linear compositions, Scalable artwork, Digital art, High Contrast Shadows, glow effects, humorous illustration, big depth of field, Masterpiece, colors, concept art, trending on artstation, Vivid colors, dramatic,\n\n\\(OIL PAINTING\\),\n(Extremely Detailed Oil Painting:1.2), glow effects, godrays, Hand drawn, render 8k, octane render, cinema 4d, blender, dark, atmospheric 4k ultra detailed, cinematic sensual, Sharp focus, humorous illustration, big depth of field, Masterpiece, colors, 3d octane render, 4k, concept art, trending on artstation, hyperrealistic, Vivid colors, extremely detailed CG unity 8k wallpaper, trending on ArtStation, trending on CGSociety, Intricate, High Detail, dramatic, absurdes,\n\n\\(STUDIO GHIBLI STYLE\\),\n(Studio ghibli style, Art by Hayao Miyazaki:1.2), Anime Style, Manga Style, Hand drawn, cinematic, Sharp focus, humorous illustration, big depth of field, Masterpiece, concept art, trending on artstation, Vivid colors, Simplified style, trending on ArtStation, trending on CGSociety, Intricate, Vibrant colors, Soft Shading, Simplistic Features, Sharp Angles, Playful,\n\n\\(VIDEOGAME INDIE STYLE\\),\nIndie game art, (Vector Art, Borderlands style, Arcane style, Cartoon style), Line art, Disctinct features, Hand drawn, Technical illustration, Graphic design, Vector graphics, High contrast, Precision artwork, Linear compositions, Scalable artwork, Digital art, cinematic sensual, Sharp focus, humorous illustration, big depth of field, Masterpiece, trending on artstation, Vivid colors, trending on ArtStation, trending on CGSociety, Intricate, Low Detail, dramatic,\n\n\\(3D ISOMETRIC\\),\nTiny cute isometric, in a cutaway box, soft smooth lighting, soft colors, 100mm lens, 3d blender render,"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 80,
+      "type": "Note",
+      "pos": [
+        920,
+        950
+      ],
+      "size": [
+        449.1192932128906,
+        105.18405151367188
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "NEGATIVE",
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "censored, (deformed, distorted, disfigured, malformed:1.3),  ugly, tiling, (bad anatomy, bad proportions:1.3), (cloned face, long neck, elongated body:1.2), (low quality:1.2), bad quality, worst quality, (low resolution:1.2), bad resolution, (low detail:1.2), bad detail, jpeg artifacts, canvas frame, watermark, (watermarker:1.2), signature, username, artist name"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 1,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        778.767333984375,
+        -62.695899963378906
+      ],
+      "size": [
+        383.5031433105469,
+        98
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            126
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 1,
+          "links": [
+            100,
+            116
+          ]
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 2,
+          "links": [
+            122
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "SDXL/bigLove_xl3.safetensors"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 5,
+      "type": "KSampler",
+      "pos": [
+        1880.67333984375,
+        -96.54144287109375
+      ],
+      "size": [
+        315,
+        262
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 120
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 143
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 6
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            62
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "KSampler",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        990884521974771,
+        "randomize",
+        8,
+        1,
+        "lcm",
+        "exponential",
+        1
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 6,
+      "type": "EmptyLatentImage",
+      "pos": [
+        1544.8795166015625,
+        -299.85791015625
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "EmptyLatentImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        832,
+        1216,
+        4
+      ],
+      "color": "#2a363b",
+      "bgcolor": "#3f5159"
+    },
+    {
+      "id": 103,
+      "type": "Power Lora Loader (rgthree)",
+      "pos": [
+        1566.683837890625,
+        335.48773193359375
+      ],
+      "size": [
+        384.33111572265625,
+        166
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "dir": 3,
+          "name": "model",
+          "type": "MODEL",
+          "link": 128
+        },
+        {
+          "dir": 3,
+          "name": "clip",
+          "type": "CLIP",
+          "link": 129
+        }
+      ],
+      "outputs": [
+        {
+          "dir": 4,
+          "name": "MODEL",
+          "shape": 3,
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            120
+          ]
+        },
+        {
+          "dir": 4,
+          "name": "CLIP",
+          "shape": 3,
+          "type": "CLIP",
+          "slot_index": 1,
+          "links": [
+            118
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "rgthree-comfy",
+        "ver": "f754c4765849aa748abb35a1f030a5ed6474a69b",
+        "Show Strengths": "Single Strength",
+        "aux_id": "rgthree/rgthree-comfy",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        {},
+        {
+          "type": "PowerLoraLoaderHeaderWidget"
+        },
+        {
+          "on": false,
+          "lora": "--SDXL\\ral-wtrclr-sdxl.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        {
+          "on": false,
+          "lora": "--SDXL\\subtle-rayness2-xl25.safetensors",
+          "strength": 1,
+          "strengthTwo": null
+        },
+        {},
+        ""
+      ]
+    },
+    {
+      "id": 111,
+      "type": "LoraLoader",
+      "pos": [
+        1252.694580078125,
+        14.539566993713379
+      ],
+      "size": [
+        378.7664489746094,
+        129.62828063964844
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 126
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 127
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            128
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 1,
+          "links": [
+            129
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "LoraLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "DMD2/dmd2_sdxl_4step_lora.safetensors",
+        1,
+        1
+      ]
+    },
+    {
+      "id": 110,
+      "type": "SaveImageExtended",
+      "pos": [
+        2137.229248046875,
+        451.6715087890625
+      ],
+      "size": [
+        331.4425354003906,
+        518
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 125
+        },
+        {
+          "name": "positive_text_opt",
+          "shape": 7,
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "negative_text_opt",
+          "shape": 7,
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "save-image-extended-comfyui",
+        "ver": "1fc32e0ad3687329f1aeda8d77556a334f6cc8a0",
+        "Node name for S&R": "SaveImageExtended",
+        "aux_id": "audioscavenger/save-image-extended-comfyui",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "",
+        "1.ckpt_name, 6.width, 6.height, 111.lora_name, 5.cfg, 5.sampler_name, 5.steps, 5.scheduler",
+        "%F/",
+        "1.ckpt_name",
+        "-",
+        "disabled",
+        false,
+        "",
+        true,
+        4,
+        "last",
+        true,
+        false,
+        ".png",
+        8,
+        false
+      ]
+    },
+    {
+      "id": 114,
+      "type": "PreviewImage",
+      "pos": [
+        2549.33740234375,
+        -174.38406372070312
+      ],
+      "size": [
+        409.8325500488281,
+        623.787841796875
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 131
+        }
+      ],
+      "outputs": [],
+      "title": "dmd2_sdxl_4step_lora",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 85,
+      "type": "CLIPTextEncode",
+      "pos": [
+        733.0391235351562,
+        85.4366455078125
+      ],
+      "size": [
+        422.1041564941406,
+        278.85052490234375
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 100
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            143
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.41",
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "NSFW, embedding:Stable_Yogis_PDXL_Positives2,\n\nmasterpiece, high quality, realistic, raw lighting, detailed, (warm colors, tiled walls, Natural skin, godrays). 1girl, Mid thirties, fit and tanned, strong shoulders∙perfect posture, brunette hair, blonde highlights, wavy hair, medium breasts, saggy breasts, erect nipples, completely naked. seductive, supermodel, gorgeous, toned body, [happy]"
+      ],
+      "color": "#364736",
+      "bgcolor": "#223322"
+    }
+  ],
+  "links": [
+    [
+      6,
+      4,
+      0,
+      5,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      7,
+      6,
+      0,
+      5,
+      3,
+      "LATENT"
+    ],
+    [
+      62,
+      5,
+      0,
+      41,
+      0,
+      "LATENT"
+    ],
+    [
+      100,
+      1,
+      1,
+      85,
+      0,
+      "CLIP"
+    ],
+    [
+      116,
+      1,
+      1,
+      104,
+      0,
+      "CLIP"
+    ],
+    [
+      118,
+      103,
+      1,
+      4,
+      0,
+      "CLIP"
+    ],
+    [
+      120,
+      103,
+      0,
+      5,
+      0,
+      "MODEL"
+    ],
+    [
+      122,
+      1,
+      2,
+      41,
+      1,
+      "VAE"
+    ],
+    [
+      125,
+      41,
+      0,
+      110,
+      0,
+      "IMAGE"
+    ],
+    [
+      126,
+      1,
+      0,
+      111,
+      0,
+      "MODEL"
+    ],
+    [
+      127,
+      104,
+      0,
+      111,
+      1,
+      "CLIP"
+    ],
+    [
+      128,
+      111,
+      0,
+      103,
+      0,
+      "MODEL"
+    ],
+    [
+      129,
+      111,
+      1,
+      103,
+      1,
+      "CLIP"
+    ],
+    [
+      131,
+      41,
+      0,
+      114,
+      0,
+      "IMAGE"
+    ],
+    [
+      143,
+      85,
+      0,
+      5,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      150,
+      41,
+      0,
+      113,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.807159738411354,
+      "offset": [
+        -417.27509733876036,
+        497.38466192315684
+      ]
+    },
+    "ue_links": [],
+    "links_added_by_ue": [],
+    "frontendVersion": "1.21.7"
+  },
+  "version": 0.4
+}

@@ -70,44 +70,9 @@ if __name__ == '__main__':
 
     print("Создание демонстрационных файлов: Dockerfile_start, nodes1.txt, Dockerfile_end")
 
-    # Содержимое Dockerfile_start
-    dockerfile_start_content = """FROM 127.0.0.1:5000/comfyui:latest
-
-# setup comfyui
-COPY --chown=1000:1000 comfyui-union2/ /tmp/comfyui-union2/
-RUN --mount=type=cache,target=/root/.cache/pip \\
-    pip install -r /tmp/comfyui-union2/requirements.txt \\
-    && rm -rf /root/.cache/pip
-
-# copy scripts and make them executable
-COPY --chown=1000:1000 comfyui-union2/process_repos-install-req-hash.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/process_repos-install-req-hash.sh
-
-# copy custom nodes list
-COPY --chown=1000:1000 comfyui-union2/nodes1.txt /tmp/nodes1.txt
-
-WORKDIR /opt/ComfyUI"""
-    with open('Dockerfile_start', 'w') as f:
-        f.write(dockerfile_start_content)
-
-    # Содержимое nodes1.txt
-    nodes_content = """https://github.com/ltdrdata/ComfyUI-Manager
-https://github.com/AlekPet/ComfyUI_Custom_Nodes_AlekPet
-https://github.com/BlenderNeko/ComfyUI_Noise
-https://github.com/LEv145/images-grid-comfy-plugin"""
-    with open('nodes1.txt', 'w') as f:
-        f.write(nodes_content)
-
-    # Содержимое Dockerfile_end
-    dockerfile_end_content = """# Final setup
-RUN rm -f /tmp/nodes1.txt"""
-    with open('Dockerfile_end', 'w') as f:
-        f.write(dockerfile_end_content)
 
     print("\\nЗапуск скрипта генерации...")
     create_new_dockerfile()
 
     # Вывод результата
     print(f"\\n--- Содержимое итогового файла 'Dockerfile.generated': ---")
-    with open('Dockerfile.generated', 'r') as f:
-        print(f.read())

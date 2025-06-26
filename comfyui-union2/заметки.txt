@@ -779,7 +779,7 @@ export COMFYUI_VERSION="v0.3.41"
 export BASE_IMAGE="cuda-12-6:nvidia-runtime"
 export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
 export REQ_MODIFY="base-CUDA-12.6"
-
+export POST_INSTALL="clarity-upscale.sh"
 
 
 ./dl_common.sh clarity-upscale

@@ -1,0 +1,497 @@
+{
+  "id": "41c17d9d-6bc3-4e12-a879-63fba0167a35",
+  "revision": 0,
+  "last_node_id": 242,
+  "last_link_id": 587,
+  "nodes": [
+    {
+      "id": 97,
+      "type": "VAELoader",
+      "pos": [
+        833.9826049804688,
+        316.48797607421875
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            258
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.15",
+        "Node name for S&R": "VAELoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ae.sft"
+      ]
+    },
+    {
+      "id": 96,
+      "type": "DualCLIPLoader",
+      "pos": [
+        430.6564636230469,
+        311.5060729980469
+      ],
+      "size": [
+        315,
+        130
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            321
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.15",
+        "Node name for S&R": "DualCLIPLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Clip1.5ClipL_clip_l_00001_.safetensors",
+        "t5xxl_fp16.safetensors",
+        "flux",
+        "default"
+      ]
+    },
+    {
+      "id": 48,
+      "type": "FluxGuidance",
+      "pos": [
+        50.1147346496582,
+        876.045654296875
+      ],
+      "size": [
+        317.4000244140625,
+        58
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 309
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            100
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.15",
+        "Node name for S&R": "FluxGuidance",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        2.8
+      ]
+    },
+    {
+      "id": 159,
+      "type": "SaveImage",
+      "pos": [
+        862.8291625976562,
+        886.1747436523438
+      ],
+      "size": [
+        866.5202026367188,
+        597.9129028320312
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 365
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.15",
+        "Node name for S&R": "SaveImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 17,
+      "type": "KSampler",
+      "pos": [
+        485.0108947753906,
+        1284.5914306640625
+      ],
+      "size": [
+        315,
+        474
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 585
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 100
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 310
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 38
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            69
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.15",
+        "Node name for S&R": "KSampler",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        83234437627526,
+        "randomize",
+        30,
+        1,
+        "euler",
+        "simple",
+        1
+      ]
+    },
+    {
+      "id": 219,
+      "type": "UNETLoader",
+      "pos": [
+        -971.2814331054688,
+        1146.7701416015625
+      ],
+      "size": [
+        659.8055419921875,
+        89.09864044189453
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            585
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.15",
+        "Node name for S&R": "UNETLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Final Project0\\PJ0 v3 Real1sm _ 06062025\\Project0_REAL1SM_V3_FP16_Civi.safetensors",
+        "default"
+      ]
+    },
+    {
+      "id": 127,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -251.74244689941406,
+        420.8287658691406
+      ],
+      "size": [
+        334.0507507324219,
+        209.84962463378906
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 321
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            309,
+            310
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.15",
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {
+          "text": true
+        }
+      },
+      "widgets_values": [
+        "A close-up cinematic shot of a young mermaid reimagined in a Pixar-inspired style. She gazes up toward the shimmering ocean surface, her vibrant red hair flowing gracefully around her in the water. Her wide, curious eyes and expressive face capture a sense of wonder and adventure. The background is filled with beams of sunlight filtering through the water, illuminating vivid coral formations and playful sea creatures. A soft, mystical glow surrounds her, enhancing the enchanting underwater atmosphere "
+      ]
+    },
+    {
+      "id": 18,
+      "type": "EmptyLatentImage",
+      "pos": [
+        -139.63876342773438,
+        1458.44873046875
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            38
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.15",
+        "Node name for S&R": "EmptyLatentImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        1408,
+        1024,
+        1
+      ]
+    },
+    {
+      "id": 35,
+      "type": "VAEDecodeTiled",
+      "pos": [
+        819.65576171875,
+        508.3464050292969
+      ],
+      "size": [
+        315,
+        150
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 69
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 258
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            365
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.15",
+        "Node name for S&R": "VAEDecodeTiled",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        512,
+        64,
+        64,
+        8
+      ]
+    },
+    {
+      "id": 242,
+      "type": "Note",
+      "pos": [
+        -1331.6314697265625,
+        273.19122314453125
+      ],
+      "size": [
+        416.48382568359375,
+        91.69181823730469
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "https://civitai.com/images/80920430"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    }
+  ],
+  "links": [
+    [
+      38,
+      18,
+      0,
+      17,
+      3,
+      "LATENT"
+    ],
+    [
+      69,
+      17,
+      0,
+      35,
+      0,
+      "LATENT"
+    ],
+    [
+      100,
+      48,
+      0,
+      17,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      258,
+      97,
+      0,
+      35,
+      1,
+      "VAE"
+    ],
+    [
+      309,
+      127,
+      0,
+      48,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      310,
+      127,
+      0,
+      17,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      321,
+      96,
+      0,
+      127,
+      0,
+      "CLIP"
+    ],
+    [
+      365,
+      35,
+      0,
+      159,
+      0,
+      "IMAGE"
+    ],
+    [
+      585,
+      219,
+      0,
+      17,
+      0,
+      "MODEL"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6830134553650705,
+      "offset": [
+        2072.0270488894794,
+        186.07545543808965
+      ]
+    },
+    "ue_links": [],
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true,
+    "frontendVersion": "1.21.7"
+  },
+  "version": 0.4
+}

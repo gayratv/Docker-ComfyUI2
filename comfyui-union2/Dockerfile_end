@@ -1,0 +1,61 @@
+
+ARG WORKFLOW_TO_COPY="supir"
+COPY workflows/$WORKFLOW_TO_COPY user/default/workflows/$WORKFLOW_TO_COPY
+COPY ./user/default/comfy.settings.json user/default/
+
+WORKDIR /workspace/ComfyUI/input
+COPY input  ./
+
+WORKDIR /workspace/aria2
+COPY aria2 .
+RUN chmod +x *.sh \
+    && chmod +x ./templates/*.sh \
+    && rm -f ./templates/.env
+
+WORKDIR /workspace/templates/models
+
+#RUN for dir in */; do [ "$dir" != "$MODELS/" ] && rm -r "$dir"; done
+
+RUN echo 'alias python=/usr/local/bin/python3.11' >> /root/.bashrc \
+    source /root/.bashrc
+
+ARG DOWNLAD_MODELS
+#RUN python3 /workspace/ComfyUI/gayrat_py/remove-models-dirs.py ${DOWNLAD_MODELS}
+#RUN python3 /workspace/ComfyUI/gayrat_py/remove-models-dirs.py ${DOWNLAD_MODELS} --dry-run
+
+
+WORKDIR /workspace/ComfyUI
+
+# Создайте файл конфигурации
+RUN echo '{"skip_update_check": true}' > /workspace/ComfyUI/custom_nodes/ComfyUI-Manager/.skip_update_check
+
+RUN echo "cd /workspace/aria2/templates" >> /root/.bashrc \
+  && echo "set -g mouse on" >> /root/.tmux.conf
+
+
+WORKDIR /workspace
+RUN echo -e "\n========= POST_INSTALL ===============\n"
+
+ARG POST_INSTALL
+
+COPY post-install/ ./post-install
+
+
+RUN --mount=type=cache,target=/root/pip-cache \
+    if [ -n "$POST_INSTALL" ]; then \
+        chmod +x "./post-install/$POST_INSTALL" && \
+        echo -e "$COLOR_YELLOW\n\n========= Running $POST_INSTALL ==========$COLOR_RESET"; \
+        ./post-install/"$POST_INSTALL"; \
+    else \
+        echo "Skipping post-install script"; \
+    fi
+
+RUN echo "===== Финальная проверка Numpy =====" && \
+    python3 -c "import numpy; print('Версия:', numpy.__version__); print('Путь к файлу:', numpy.__file__)"
+
+WORKDIR /workspace/ComfyUI
+
+#WORKDIR /workspace/ComfyUI/custom_nodes/comfyui_controlnet_aux
+#COPY assets-docker/config.yaml ./config.yaml
+
+CMD ["bash"]

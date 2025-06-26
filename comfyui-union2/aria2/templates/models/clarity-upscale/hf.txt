@@ -1,0 +1,67 @@
+# 🌟 Модели для UPSCALE 🌟
+https://huggingface.co/FacehugmanIII/4x_foolhardy_Remacri/resolve/main/4x_foolhardy_Remacri.pth
+    out=4x_foolhardy_Remacri.pth
+    dir=models/upscale_models
+https://huggingface.co/lokCX/4x-Ultrasharp/resolve/main/4x-UltraSharp.pth
+    out=4x-UltraSharp.pth
+    dir=models/upscale_models
+https://huggingface.co/gemasai/4x_NMKD-Siax_200k/resolve/main/4x_NMKD-Siax_200k.pth
+    out=4x_NMKD-Siax_200k.pth
+    dir=models/upscale_models
+https://huggingface.co/Gayrat1968/upscalers/resolve/main/4xFFHQDAT.pth
+    out=4xFFHQDAT.pth
+    dir=models/upscale_models
+https://huggingface.co/Gayrat1968/upscalers/resolve/main/4xNomos8kHAT-L_otf.pth
+    out=4xNomos8kHAT-L_otf.pth
+    dir=models/upscale_models
+https://huggingface.co/datasets/jibopabo/upscalers/resolve/main/4xNomosUniDAT_otf.pth
+    out=4xNomosUniDAT_otf.pth
+    dir=models/upscale_models
+https://huggingface.co/Gayrat1968/upscalers/resolve/main/4x-ClearRealityV1.pth
+    out=4x-ClearRealityV1.pth
+    dir=models/upscale_models
+
+# 🌟 Лоры к Clarity 🌟
+https://huggingface.co/naonovn/Lora/resolve/main/add_detail.safetensors
+    dir=models/loras
+    out=add_detail.safetensors
+
+https://huggingface.co/philz1337x/loras/resolve/main/SDXLrender_v2.0.safetensors
+    out=SDXLrender_v2.0.safetensors
+    dir=models/loras
+
+# 🌟 Лора к Silvy    🌟
+https://huggingface.co/digiplay/LORA/resolve/fa075647d8164b327ba07e430bdb3fd02f147a62/more_details.safetensors
+    out=more_details.safetensors
+    dir=models/loras
+
+#==============================
+# 🌟 Модель Контролнет для Clarity 🌟
+https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11f1e_sd15_tile.pth
+    out=control_v11f1e_sd15_tile.pth
+    dir=models/controlnet
+
+# 🌟 Модели контролнет для Silvi  🌟
+https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11p_sd15_inpaint_fp16.safetensors
+    out=control_v11p_sd15_inpaint_fp16.safetensors
+    dir=models/controlnet
+https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11u_sd15_tile_fp16.safetensors
+    out=control_v11u_sd15_tile_fp16.safetensors
+    dir=models/controlnet
+
+# 🌟 Модели контролнет для diffusers_xl_canny_full  🌟
+https://huggingface.co/lllyasviel/sd_control_collection/resolve/d1b278d0d1103a3a7c4f7c2c327d236b082a75b1/diffusers_xl_canny_full.safetensors
+    out=diffusers_xl_canny_full.safetensors
+    dir=models/controlnet
+
+
+# 🌟 Клип для Silvi 🌟
+https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors
+    out=CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors
+    dir=models/clip_vision
+
+# 🌟 ip-adapter-plus_sd15 🌟
+# сама нода IPAdaptera тут - https://github.com/cubiq/ComfyUI_IPAdapter_plus
+https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus_sd15.safetensors
+    out=ip-adapter-plus_sd15.safetensors
+    dir=models/ipAdapter

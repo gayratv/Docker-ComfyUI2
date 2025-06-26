@@ -1,7 +1,7 @@
 wsl
 clear
 
-export IMAGE_NAME_BASE="reactor"
+export IMAGE_NAME_BASE="clarity-upscale"
 export CUDA="CUDA12.6"
 export IMAGE_NAME="gayrat/comfyui-union2:${IMAGE_NAME_BASE}-${CUDA}"
 echo -e "IMAGE_NAME : ${IMAGE_NAME}"
@@ -11,9 +11,9 @@ source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.6"
 source vast-contract.sh 19726999 $IMAGE_NAME
 source ./vs.sh
 
-tmux-s.sh reactor2
+tmux-s.sh clarity-upscale
 
-./dl_common.sh reactor2
+./dl_common.sh flux
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
 ./vast-ssh.sh
