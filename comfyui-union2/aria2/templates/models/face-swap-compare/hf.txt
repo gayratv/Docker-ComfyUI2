@@ -2,7 +2,138 @@
 # 🌟DetectFaces🌟
 # Download Link: https://huggingface.co/bluefoxcreation/FaceAlignment/tree/main
 https://huggingface.co/bluefoxcreation/FaceAlignment/resolve/main/fan2_68_landmark.onnx
-    out=
-File Name: fan2_68_landmark.onnx
+    out=fan2_68_landmark.onnx
+    dir=models/landmarks
 
-Directory: ComfyUI/models/landmarks
+# Group: 3_Load SDXL Models
+# 🌟HyperLoRA Config🌟
+https://huggingface.co/openai/clip-vit-large-patch14/resolve/main/config.json
+    out=config.json
+    dir=models/hyper_lora/clip_processor/clip_vit_large_14_processor
+
+https://huggingface.co/openai/clip-vit-large-patch14/resolve/main/model.safetensors
+    out=model.safetensors
+    dir=models/hyper_lora/clip_processor/clip_vit_large_14_processor
+
+# 🌟 antelopev2 🌟
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/1k3d68.onnx
+      dir=models/insightface/models/antelopev2
+      out=1k3d68.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/2d106det.onnx
+      dir=models/insightface/models/antelopev2
+      out=2d106det.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/genderage.onnx
+      dir=models/insightface/models/antelopev2
+      out=genderage.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/glintr100.onnx
+      dir=models/insightface/models/antelopev2
+      out=glintr100.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/readme.md
+      dir=models/insightface/models/antelopev2
+      out=readme.md
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/scrfd_10g_bnkps.onnx
+      dir=models/insightface/models/antelopev2
+      out=scrfd_10g_bnkps.onnx
+
+# 🌟HyperLoRA Loader🌟
+https://huggingface.co/bytedance-research/HyperLoRA/resolve/main/sdxl_hyper_id_lora_v1_fidelity/hyper_lora_modules.json
+      dir=models/hyper_lora/hyper_lora/sdxl_hyper_id_lora_v1_fidelity
+      out=hyper_lora_modules.json
+
+https://huggingface.co/bytedance-research/HyperLoRA/resolve/main/sdxl_hyper_id_lora_v1_fidelity/hyper_lora_modules.safetensors
+      dir=models/hyper_lora/hyper_lora/sdxl_hyper_id_lora_v1_fidelity
+      out=hyper_lora_modules.safetensors
+
+https://huggingface.co/bytedance-research/HyperLoRA/resolve/main/sdxl_hyper_id_lora_v1_fidelity/id_projector.safetensors
+      dir=models/hyper_lora/hyper_lora/sdxl_hyper_id_lora_v1_fidelity
+      out=id_projector.safetensors
+
+https://huggingface.co/bytedance-research/HyperLoRA/resolve/main/sdxl_hyper_id_lora_v1_fidelity/resampler.safetensors
+      dir=models/hyper_lora/hyper_lora/sdxl_hyper_id_lora_v1_fidelity
+      out=resampler.safetensors
+
+
+#Group: 5_InstantID
+# 🌟Load InstantID Model🌟
+# InstantX/InstantID
+https://huggingface.co/InstantX/InstantID/resolve/main/ip-adapter.bin
+    out=ip-adapter.bin
+    dir=models/instantid
+
+# 🌟Load ControlNet Model🌟
+# Download Link: https://huggingface.co/InstantX/InstantID/tree/main/ControlNetModel
+https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/diffusion_pytorch_model.safetensors
+    dir=models/controlnet/SDXL
+    out=control_instant_id_sdxl.safetensors
+
+
+# 🌟 CLIP 🌟
+https://huggingface.co/zer0int/CLIP-GmP-ViT-L-14/resolve/main/ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors
+    dir=models/clip/Flux
+    out=ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors
+
+# Flux-Main/t5xxl_fp8_e4m3fn.safetensors
+https://huggingface.co/OreX/Models/resolve/main/Flux-Main/t5xxl_fp8_e4m3fn.safetensors
+    dir=models/clip/Flux
+    out=t5xxl_fp8_e4m3fn.safetensors
+
+# 🌟 VAE dev 🌟
+https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/vae/diffusion_pytorch_model.safetensors
+  dir=models/vae/Flux/
+  out=flux.vae.safetensors
+
+# 🌟 /Kijai/flux-fp8 🌟
+# https://huggingface.co/Kijai/flux-fp8/resolve/main/flux1-dev-fp8-e4m3fn.safetensors
+#    dir=models/diffusion_models/Flux/
+#    out=flux1-dev-fp8-e4m3fn.safetensors
+
+# 🌟 Flux fill 🌟
+https://huggingface.co/OreX/ControlNet/resolve/main/FLUX%20ControlNet/flux1-fill-dev-FP8.safetensors
+  dir=models/diffusion_models/Flux
+  out=flux1-fill-dev-FP8.safetensors
+
+# Group: 7_PuLID
+
+# 🌟Load PuLID Flux Model🌟
+https://huggingface.co/guozinan/PuLID/resolve/main/pulid_flux_v0.9.1.safetensors
+    out=pulid_flux_v0.9.1.safetensors
+    dir=models/pulid/Flux
+
+# 🌟Load Eva Clip🌟
+https://huggingface.co/QuanSun/EVA-CLIP/resolve/main/EVA02_CLIP_L_336_psz14_s6B.pt
+    out=EVA02_CLIP_L_336_psz14_s6B.pt
+    dir=models/clip
+
+# 🌟insightface🌟
+https://huggingface.co/ezioruan/inswapper_128.onnx/resolve/main/inswapper_128.onnx
+    out=inswapper_128.onnx
+    dir=models/insightface
+
+# Group: 8_ACE Plus
+# 🌟Load Clip Vision🌟
+https://huggingface.co/Comfy-Org/sigclip_vision_384/resolve/main/sigclip_vision_patch14_384.safetensors
+    out=sigclip_vision_patch14_384.safetensors
+    dir=models/clip_vision
+
+# 🌟Load Style Model🌟
+https://huggingface.co/black-forest-labs/FLUX.1-Redux-dev/resolve/main/flux1-redux-dev.safetensors
+    out=flux1-redux-dev.safetensors
+    dir=models/style_models/Flux
+
+# 🌟LoRA Loader (Model Only)🌟
+https://huggingface.co/ali-vilab/ACE_Plus/resolve/main/portrait/comfyui_portrait_lora64.safetensors
+    out=comfyui_portrait_lora64.safetensors
+    dir=models/loras
+
+# 🌟 comfyui_facetools 🌟
+https://huggingface.co/bluefoxcreation/FaceAlignment/resolve/main/fan2_68_landmark.onnx
+    dir=models/landmarks
+    out=fan2_68_landmark.onnx
+https://huggingface.co/bluefoxcreation/FaceAlignment/resolve/main/landmark_203.pt
+    dir=models/landmarks
+    out=landmark_203.pt
+
+# 🌟  BiSeNet model 🌟
+https://huggingface.co/Gayrat1968/BiSeNet/resolve/main/79999_iter.pth
+    dir=models/bisenet
+    out=79999_iter.pth

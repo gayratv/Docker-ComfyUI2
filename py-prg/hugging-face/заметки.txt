@@ -3,5 +3,5 @@ source /mnt/f/_prg/python/Docker-ComfyUI/.venv-wsl/bin/activate
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/py-prg/hugging-face
 python3 read-hf-project.py  \
-    --repo_id google/siglip-so400m-patch14-384 \
-    --download_dir models/clip/google--siglip-so400m-patch14-384
+    --repo_id bytedance-research/HyperLoRA \
+    --download_dir models/hyper_lora/hyper_lora/sdxl_hyper_id_lora_v1_fidelity
