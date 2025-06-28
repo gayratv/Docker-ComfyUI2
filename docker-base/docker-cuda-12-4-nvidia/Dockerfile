@@ -23,6 +23,51 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 
+# Устанавливаем переменные окружения, чтобы apt не задавал интерактивных вопросов
+ENV DEBIAN_FRONTEND=noninteractive
+
+# 2. Устанавливаем утилиты и добавляем репозиторий NVIDIA
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends wget gnupg ca-certificates && \
+    wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb && \
+    dpkg -i cuda-keyring_1.1-1_all.deb && \
+    rm cuda-keyring_1.1-1_all.deb
+
+# 3. Обновляем список пакетов и устанавливаем ТОЧНУЮ ВЕРСИЮ TensorRT
+#    Это решает конфликт зависимостей.
+RUN apt-get update  \
+#    && export TRT_VERSION="10.12.0.36-1+cuda12.9" && \
+#    export TRT_VERSION="8.6.1.6-1+cuda12.0" && \
+#    apt-get install -y --no-install-recommends \
+#        libnvinfer-headers-dev=${TRT_VERSION} \
+#        libnvinfer-dev=${TRT_VERSION} \
+#        libnvparsers-dev=${TRT_VERSION} \
+#        libnvonnxparsers-dev=${TRT_VERSION} \
+    && apt-get install -y tensorrt \
+    && apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Сбрасываем переменную окружения
+ENV DEBIAN_FRONTEND=
+
+## 4. Настраиваем переменные окружения, чтобы система нашла TensorRT
+##    Это самый важный шаг для исправления текущей ошибки.
+#ENV PATH="/usr/src/tensorrt/bin:${PATH}"
+#ENV LD_LIBRARY_PATH="/usr/src/tensorrt/lib:${LD_LIBRARY_PATH}"
+#
+## 5. --- ФИНАЛЬНЫЙ ШАГ ПРОВЕРКИ ---
+##    Теперь, когда пути настроены, эта проверка должна пройти успешно.
+#RUN echo "Verifying TensorRT installation with new environment..." && \
+#    # Проверяем, что trtexec теперь находится в PATH
+#    which trtexec && \
+#    # Запускаем trtexec. Если он запустится и покажет версию, значит
+#    # он нашел и себя, и все нужные .so библиотеки по пути LD_LIBRARY_PATH.
+#    # Это самая надежная и полная проверка.
+#    trtexec --version
+
+# Запустить утилиту TensorRT (самая лучшая проверка):
+# trtexec
+
 # Использование статической сборки FFmpeg
 # Скачайте готовую статическую сборку
 RUN mkdir -p /tmp && \

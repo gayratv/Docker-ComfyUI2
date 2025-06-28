@@ -6,14 +6,19 @@ https://huggingface.co/bluefoxcreation/FaceAlignment/resolve/main/fan2_68_landma
     dir=models/landmarks
 
 # Group: 3_Load SDXL Models
+https://huggingface.co/openai/clip-vit-large-patch14/resolve/main/preprocessor_config.json
+    out=preprocessor_config.json
+    dir=models/hyper_lora/clip_processor/clip_vit_large_14_processor
+
+
 # 🌟HyperLoRA Config🌟
 https://huggingface.co/openai/clip-vit-large-patch14/resolve/main/config.json
     out=config.json
-    dir=models/hyper_lora/clip_processor/clip_vit_large_14_processor
+    dir=models/hyper_lora/clip_vit/clip_vit_large_14
 
 https://huggingface.co/openai/clip-vit-large-patch14/resolve/main/model.safetensors
     out=model.safetensors
-    dir=models/hyper_lora/clip_processor/clip_vit_large_14_processor
+    dir=models/hyper_lora/clip_vit/clip_vit_large_14
 
 # 🌟 antelopev2 🌟
 https://huggingface.co/Gayrat1968/antelopev2/resolve/main/1k3d68.onnx
