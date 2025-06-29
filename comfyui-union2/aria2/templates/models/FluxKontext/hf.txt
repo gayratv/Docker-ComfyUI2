@@ -1,0 +1,76 @@
+# 🌟 CLIP 🌟
+https://huggingface.co/zer0int/CLIP-GmP-ViT-L-14/resolve/main/ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors
+    dir=models/clip/Flux
+    out=ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors
+
+# Flux-Main/t5xxl_fp8_e4m3fn.safetensors
+https://huggingface.co/OreX/Models/resolve/main/Flux-Main/t5xxl_fp8_e4m3fn.safetensors
+    dir=models/clip/Flux
+    out=t5xxl_fp8_e4m3fn.safetensors
+
+# 🌟 VAE dev 🌟
+https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/vae/diffusion_pytorch_model.safetensors
+  dir=models/vae/Flux
+  out=flux.vae.safetensors
+
+# 🌟 /Kijai/flux-fp8 🌟
+https://huggingface.co/Kijai/flux-fp8/resolve/main/flux1-dev-fp8-e4m3fn.safetensors
+   dir=models/diffusion_models/Flux
+   out=flux1-dev-fp8-e4m3fn.safetensors
+
+# pulid_flux_v0.9.1 -
+https://huggingface.co/guozinan/PuLID/resolve/refs%2Fpr%2F10/pulid_flux_v0.9.1.safetensors
+    dir=models/pulid
+    out=pulid_flux_v0.9.1.safetensors
+
+https://huggingface.co/Comfy-Org/flux1-kontext-dev_ComfyUI/resolve/main/split_files/diffusion_models/flux1-dev-kontext_fp8_scaled.safetensors
+    dir=models/diffusion_models/Flux
+    out=flux1-dev-kontext_fp8_scaled.safetensors
+
+https://huggingface.co/ezioruan/inswapper_128.onnx/resolve/main/inswapper_128.onnx
+    out=inswapper_128.onnx
+    dir=models/insightface
+
+# Lora на раздевание для Flux Kontext
+https://huggingface.co/llama-anon/not-flux-kontext-dev-clothes-remover/resolve/main/clothes_remover_v0.safetensors
+    dir=models/loras/Kontext
+    out=clothes_remover_v0.safetensors
+
+
+#========================
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/1k3d68.onnx
+      dir=models/insightface/models/antelopev2
+      out=1k3d68.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/2d106det.onnx
+      dir=models/insightface/models/antelopev2
+      out=2d106det.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/genderage.onnx
+      dir=models/insightface/models/antelopev2
+      out=genderage.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/glintr100.onnx
+      dir=models/insightface/models/antelopev2
+      out=glintr100.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/readme.md
+      dir=models/insightface/models/antelopev2
+      out=readme.md
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/scrfd_10g_bnkps.onnx
+      dir=models/insightface/models/antelopev2
+      out=scrfd_10g_bnkps.onnx
+
+#================
+#
+# Upscaler:
+# https://openmodeldb.info/models/4x-LSDIR
+https://huggingface.co/Gayrat1968/Upscale_Models/resolve/main/4xLSDIR.pth
+    dir=models/upscale_models
+    out=4xLSDIR.pth
+
+# https://openmodeldb.info/models/4x-FaceUpDAT
+https://huggingface.co/Gayrat1968/Upscale_Models/resolve/main/4xFaceUpDAT.pth
+    dir=models/upscale_models
+    out=4xFaceUpDAT.pth
+
+# ESRGAN/OmniSR_X2_DIV2K.safetensors
+https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/OmniSR_X2_DIV2K.safetensors
+    dir=models/upscale_models
+    out=OmniSR_X2_DIV2K.safetensors
