@@ -142,3 +142,56 @@ https://huggingface.co/bluefoxcreation/FaceAlignment/resolve/main/landmark_203.p
 https://huggingface.co/Gayrat1968/BiSeNet/resolve/main/79999_iter.pth
     dir=models/bisenet
     out=79999_iter.pth
+
+# 🌟 controlnet-union-sdxl 🌟
+# xinsir/controlnet-union-sdxl-1.0
+https://huggingface.co/xinsir/controlnet-union-sdxl-1.0/resolve/main/config.json
+    out=config.json
+    dir=models/controlnet/SDXL/xinsircontrolnet-union
+https://huggingface.co/xinsir/controlnet-union-sdxl-1.0/resolve/main/config_promax.json
+    out=config_promax.json
+    dir=models/controlnet/SDXL/xinsircontrolnet-union
+https://huggingface.co/xinsir/controlnet-union-sdxl-1.0/resolve/main/diffusion_pytorch_model_promax.safetensors
+    out=diffusion_pytorch_model_promax.safetensors
+    dir=models/controlnet/SDXL/xinsircontrolnet-union
+
+# 🌟 BrushNet 🌟
+https://huggingface.co/Gayrat1968/BrushNet/resolve/main/random_mask_brushnet_ckpt/config.json
+      dir=models/inpaint/brushnet/SD1.5/random_mask
+      out=config.json
+
+https://huggingface.co/Gayrat1968/BrushNet/resolve/main/random_mask_brushnet_ckpt/diffusion_pytorch_model.safetensors
+      dir=models/inpaint/brushnet/SD1.5/random_mask
+      out=diffusion_pytorch_model.safetensors
+
+https://huggingface.co/Gayrat1968/BrushNet/resolve/main/random_mask_brushnet_ckpt_sdxl_v0/config.json
+      dir=models/inpaint/brushnet/SDXL/random_mask
+      out=config.json
+
+https://huggingface.co/Gayrat1968/BrushNet/resolve/main/random_mask_brushnet_ckpt_sdxl_v0/diffusion_pytorch_model.safetensors
+      dir=models/inpaint/brushnet/SDXL/random_mask
+      out=diffusion_pytorch_model.safetensors
+
+https://huggingface.co/Gayrat1968/BrushNet/resolve/main/segmentation_mask_brushnet_ckpt/config.json
+      dir=models/inpaint/brushnet/SD1.5/segmentation_mask
+      out=config.json
+
+https://huggingface.co/Gayrat1968/BrushNet/resolve/main/segmentation_mask_brushnet_ckpt/diffusion_pytorch_model.safetensors
+      dir=models/inpaint/brushnet/SD1.5/segmentation_mask
+      out=diffusion_pytorch_model.safetensors
+
+https://huggingface.co/Gayrat1968/BrushNet/resolve/main/segmentation_mask_brushnet_ckpt_sdxl_v1/config.json
+      dir=models/inpaint/brushnet/SDXL/segmentation_mask
+      out=config.json
+
+https://huggingface.co/Gayrat1968/BrushNet/resolve/main/segmentation_mask_brushnet_ckpt_sdxl_v1/diffusion_pytorch_model.safetensors
+      dir=models/inpaint/brushnet/SDXL/segmentation_mask
+      out=diffusion_pytorch_model.safetensors
+
+# 🌟 BrushNet PowerPaint  🌟
+https://huggingface.co/JunhaoZhuang/PowerPaint-v2-1/resolve/main/PowerPaint_Brushnet/diffusion_pytorch_model.safetensors
+      dir=models/inpaint/brushnet/SD1.5/powerpaint
+      out=diffusion_pytorch_model.safetensors
+https://huggingface.co/JunhaoZhuang/PowerPaint-v2-1/resolve/main/PowerPaint_Brushnet/pytorch_model.bin
+      dir=models/inpaint/brushnet/SD1.5/powerpaint
+      out=pytorch_model.bin
