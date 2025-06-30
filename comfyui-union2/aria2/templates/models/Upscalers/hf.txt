@@ -1,0 +1,20 @@
+https://huggingface.co/philz1337x/loras/resolve/main/SDXLrender_v2.0.safetensors
+    out=SDXLrender_v2.0.safetensors
+    dir=models/loras/SD1.5
+
+# Модель Контролнет для Clarity  - https://huggingface.co/lllyasviel/ControlNet-v1-1/blob/main/control_v11f1e_sd15_tile.pth
+https://huggingface.co/lllyasviel/ControlNet-v1-1/resolve/main/control_v11f1e_sd15_tile.pth
+    out=control_v11f1e_sd15_tile.pth
+    dir=models/controlnet/SD1.5
+
+# Phips/4xNomosUniDAT_otf
+https://huggingface.co/Phips/4xNomosUniDAT_otf/resolve/main/4xNomosUniDAT_otf.safetensors
+    dir=models/upscale_models
+    out=4xNomosUniDAT_otf.safetensors
+
+# controlnet-union-sdxl-1 [2396.91MB]
+https://huggingface.co/xinsir/controlnet-union-sdxl-1.0/resolve/main/diffusion_pytorch_model_promax.safetensors
+    out=controlnet-union-sdxl-1.0.safetensors
+    dir=models/controlnet/SDXL
+
+

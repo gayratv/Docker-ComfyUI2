@@ -1,0 +1,28 @@
+# 🌟  Add More Details - Detail Enhancer / Tweaker (细节调整) LoRA 🌟
+# https://civitai.com/models/82098/add-more-details-detail-enhancer-tweaker-lora
+# SD 1.5
+https://civitai.com/api/download/models/87153?type=Model&format=SafeTensor
+    dir=models/loras/SD1.5
+    out=more_details.safetensors
+
+# Для Clarity и простого Upscale (4x) используется модель SD1.5 - Juggernaut reborn - https://civitai.com/models/46422?modelVersionId=274039
+https://civitai.com/api/download/models/274039?type=Model&format=SafeTensor&size=pruned&fp=fp16
+    out=juggernaut_reborn.safetensors
+    dir=models/checkpoints/SD1.5
+
+# AGXL модель от Артура 6GB SDXL
+https://civitai.com/api/download/models/1420441?type=Model&format=SafeTensor&size=full&fp=fp16
+    out=agxl_V2.safetensors
+    dir=models/checkpoints/SDXL
+
+#  🌟 Detail Tweaker XL - add detail SDXL  🌟
+# https://civitai.com/models/122359?modelVersionId=135867
+https://civitai.com/api/download/models/135867?type=Model&format=SafeTensor
+    out=add-detail-xl.safetensors
+    dir=models/loras/SDXL
+
+#  🌟 Juggernaut XL SDXL Ragnarok_by_RunDiffusion
+# https://civitai.green/models/133005?modelVersionId=1759168
+https://civitai.green/api/download/models/1759168?type=Model&format=SafeTensor&size=full&fp=fp16
+    out=juggernautXL_ragnarokBy.safetensors
+    dir=models/checkpoints/SDXL
