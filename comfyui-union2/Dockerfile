@@ -101,6 +101,7 @@ RUN sed -i '/if page % 5 == 0:/,+1d' /workspace/ComfyUI/custom_nodes/ComfyUI-Man
 
 RUN python3 /workspace/ComfyUI/gayrat_py/remove_lines.py
 
+
 #>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=
 # ====== Stage 2: Final image ======
 #>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=
@@ -194,12 +195,6 @@ COPY input/${MODELS} ./input/
 WORKDIR /workspace/ComfyUI
 COPY workflows/$WORKFLOW_TO_COPY user/default/workflows/$WORKFLOW_TO_COPY
 
-WORKDIR /workspace/aria2
-COPY aria2 .
-
-RUN chmod +x *.sh \
-    && chmod +x ./templates/*.sh \
-    && rm -f ./templates/.env
 
 WORKDIR /workspace/ComfyUI/models/embeddings
 # для версии numpy
@@ -213,5 +208,19 @@ WORKDIR /workspace/ComfyUI
 
 #WORKDIR /workspace/ComfyUI/custom_nodes/comfyui_controlnet_aux
 #COPY assets-docker/config.yaml ./config.yaml
+
+# Copy aria2 directory near the end and keep only selected model subfolders
+ARG ARIA2_MODEL_DIRS=""
+WORKDIR /workspace/aria2
+COPY aria2 .
+RUN if [ -n "$ARIA2_MODEL_DIRS" ]; then \
+        for d in $(ls templates/models); do \
+            echo "Checking $d"; \
+            if ! echo " $ARIA2_MODEL_DIRS " | grep -q " $d "; then \
+                rm -rf "templates/models/$d"; \
+            fi; \
+        done; \
+    fi && \
+    chmod +x *.sh && chmod +x ./templates/*.sh && rm -f ./templates/.env
 
 CMD ["bash"]
