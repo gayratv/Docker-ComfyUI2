@@ -10,6 +10,7 @@ docker build --progress=plain \
     --build-arg WORKFLOW_TO_COPY=$WORKFLOW_TO_COPY \
     --build-arg MODELS=$MODELS \
     --build-arg DOWNLOAD_MODELS="$DOWNLOAD_MODELS" \
+    --build-arg ARIA2_MODEL_DIRS="$ARIA2_MODEL_DIRS" \
     --build-arg COMFYUI_VERSION=$COMFYUI_VERSION \
     --build-arg PYTORCH_WHEEL=$PYTORCH_WHEEL \
     --build-arg REQ_MODIFY=$REQ_MODIFY \
@@ -20,3 +21,6 @@ docker build --progress=plain \
 echo -e "\nсобран образ $IMAGE_NAME:$VERSION"
 
 # docker builder prune --all
+
+# Пример запуска:
+#   ARIA2_MODEL_DIRS="dir1 dir2 dir3" ./db.sh
