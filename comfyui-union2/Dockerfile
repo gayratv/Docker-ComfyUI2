@@ -204,11 +204,6 @@ WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI-Manager
 # для версии numpy
 COPY assets-docker/pip_overrides.json .
 
-WORKDIR /workspace/ComfyUI
-
-#WORKDIR /workspace/ComfyUI/custom_nodes/comfyui_controlnet_aux
-#COPY assets-docker/config.yaml ./config.yaml
-
 # Copy aria2 directory near the end and keep only selected model subfolders
 ARG ARIA2_MODEL_DIRS=""
 WORKDIR /workspace/aria2
@@ -222,5 +217,7 @@ RUN if [ -n "$ARIA2_MODEL_DIRS" ]; then \
         done; \
     fi && \
     chmod +x *.sh && chmod +x ./templates/*.sh && rm -f ./templates/.env
+
+WORKDIR /workspace/ComfyUI
 
 CMD ["bash"]

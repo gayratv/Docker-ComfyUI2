@@ -825,7 +825,7 @@ cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 export MODELS="FluxKontext"
-export DOWNLOAD_MODELS="face-swap-compare reactor2"
+export ARIA2_MODEL_DIRS="${MODELS} flux"
 export WORKFLOW_TO_COPY=$MODELS
 export VERSION="$MODELS-CUDA12.6"
 export NODES="$MODELS.txt"
