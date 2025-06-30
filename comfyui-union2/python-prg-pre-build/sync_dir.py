@@ -1,4 +1,6 @@
-# python3 /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/python-prg/sync_dir.py FluxKontext
+# cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/python-prg
+# python3 sync_dir.py "clarity-upscale"
+# python3 sync_dir.py "FluxKontext"
 
 import os
 import shutil
@@ -100,7 +102,27 @@ def process_model_configs(config_path, permanent_root, temp_root, display_path):
 
             if copy_needed:
                 dest_dir = os.path.dirname(dest_file_path)
-                os.makedirs(dest_dir, exist_ok=True)
+
+                # --- ИЗМЕНЕНИЕ ЗДЕСЬ: Создаем директории по одной для надежности ---
+                path_to_create = os.path.relpath(dest_dir, temp_root)
+                current_path = temp_root
+                all_dirs_created = True
+
+                for part in path_to_create.split(os.path.sep):
+                    current_path = os.path.join(current_path, part)
+                    if not os.path.exists(current_path):
+                        try:
+                            os.mkdir(current_path)
+                        except Exception as e:
+                            print(f"  -> ❌ КРИТИЧЕСКАЯ ОШИБКА при создании директории: {current_path}")
+                            print(
+                                f"  -> Проверьте, что родительская директория '{os.path.dirname(current_path)}' существует и доступна для записи.")
+                            print(f"  -> Системная ошибка: {e}")
+                            all_dirs_created = False
+                            break  # Прекращаем попытки создать дочерние директории
+
+                if not all_dirs_created:
+                    continue  # Пропускаем текущий файл и переходим к следующему
 
                 # Используем 1000**3 для GB
                 file_size_gb = source_size / (1000 ** 3)
@@ -140,6 +162,17 @@ def main():
     """
     Главная функция для запуска скрипта.
     """
+    # Проверка существования базовых директорий
+    if not os.path.isdir(PERMANENT_DIR):
+        print(f"❌ КРИТИЧЕСКАЯ ОШИБКА: Постоянная директория не найдена по пути: {PERMANENT_DIR}")
+        print("Пожалуйста, проверьте путь в переменной PERMANENT_DIR в скрипте.")
+        return
+
+    if not os.path.isdir(TEMP_DIR):
+        print(f"❌ КРИТИЧЕСКАЯ ОШИБКА: Временная директория не найдена по пути: {TEMP_DIR}")
+        print("Пожалуйста, проверьте путь в переменной TEMP_DIR или создайте эту директорию.")
+        return
+
     parser = argparse.ArgumentParser(
         description="Синхронизирует файлы моделей на основе конфигурационных файлов hf.txt и civitay.txt в указанной поддиректории.")
     parser.add_argument("subdirectory", nargs='?', default="clarity-upscale",
