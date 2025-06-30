@@ -117,10 +117,6 @@ COPY --from=builder /workspace /workspace
 
 ARG MODELS
 
-WORKDIR /workspace/ComfyUI
-COPY assets-docker/styles.csv ./
-COPY input/${MODELS} ./input/
-
 ENV DOWNLOADS_DIR=/usr/local/bin
 
 WORKDIR /usr/local/bin
@@ -146,26 +142,18 @@ RUN --mount=type=cache,target=/root/repo-cache \
     fi
 
 ARG WORKFLOW_TO_COPY="supir"
-COPY workflows/$WORKFLOW_TO_COPY user/default/workflows/$WORKFLOW_TO_COPY
 COPY ./user/default/comfy.settings.json user/default/
 
 WORKDIR /workspace/ComfyUI/input
 COPY input  ./
 
-WORKDIR /workspace/aria2
-COPY aria2 .
-RUN chmod +x *.sh \
-    && chmod +x ./templates/*.sh \
-    && rm -f ./templates/.env
 
-WORKDIR /workspace/templates/models
-
-#RUN for dir in */; do [ "$dir" != "$MODELS/" ] && rm -r "$dir"; done
 
 RUN echo 'alias python=/usr/local/bin/python3.11' >> /root/.bashrc \
     source /root/.bashrc
 
 ARG DOWNLAD_MODELS
+WORKDIR /workspace/templates/models
 #RUN python3 /workspace/ComfyUI/gayrat_py/remove-models-dirs.py ${DOWNLAD_MODELS}
 #RUN python3 /workspace/ComfyUI/gayrat_py/remove-models-dirs.py ${DOWNLAD_MODELS} --dry-run
 
@@ -199,6 +187,19 @@ RUN --mount=type=cache,target=/root/pip-cache \
 RUN echo "===== Финальная проверка Numpy =====" && \
     python3 -c "import numpy; print('Версия:', numpy.__version__); print('Путь к файлу:', numpy.__file__)"
 
+WORKDIR /workspace/ComfyUI
+COPY assets-docker/styles.csv ./
+COPY input/${MODELS} ./input/
+
+WORKDIR /workspace/ComfyUI
+COPY workflows/$WORKFLOW_TO_COPY user/default/workflows/$WORKFLOW_TO_COPY
+
+WORKDIR /workspace/aria2
+COPY aria2 .
+
+RUN chmod +x *.sh \
+    && chmod +x ./templates/*.sh \
+    && rm -f ./templates/.env
 
 WORKDIR /workspace/ComfyUI/models/embeddings
 # для версии numpy
