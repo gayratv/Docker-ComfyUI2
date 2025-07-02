@@ -336,21 +336,28 @@ export REQ_MODIFY="base-CUDA-12.6"
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 OreX ControlNet Flux Tools | Flux Canny | Flux Depth
 https://boosty.to/stabledif/posts/48f2e6d3-cb76-42c0-a0ee-5cd524f0170b?comment=8302827&from=email
-
+https://boosty.to/stabledif/posts/f8650f46-01a5-4a21-94bd-792f1174359f?isFromFeed=true
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 ./workflow-new-image.sh "ControlNet-Flux-Tools-OreX"
 
+source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 export MODELS="ControlNet-Flux-Tools-OreX"
+export ARIA2_MODEL_DIRS="${MODELS} flux"
 export WORKFLOW_TO_COPY=$MODELS
 export VERSION="$MODELS-CUDA12.6"
 export NODES="$MODELS.txt"
 export IMAGE_NAME="comfyui-union2"
-export COMFYUI_VERSION="v0.3.34"
+export COMFYUI_VERSION="v0.3.43"
 export BASE_IMAGE="cuda-12-6:nvidia-runtime"
 export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
 export REQ_MODIFY="base-CUDA-12.6"
+
+python3 python-prg-pre-build/sync_dir.py "$MODELS"
+
+./clear-comfy-data.sh
+
 
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
@@ -823,6 +830,7 @@ https://chatgpt.com/g/g-685da7d29b9c81919d77d244242f6313-flux-kontext-img2prompt
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 ./workflow-new-image.sh "FluxKontext"
 
+source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 export MODELS="FluxKontext"
 export ARIA2_MODEL_DIRS="${MODELS} flux"
@@ -835,7 +843,9 @@ export BASE_IMAGE="cuda-12-6:nvidia-runtime"
 export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
 export REQ_MODIFY="base-CUDA-12.6"
 
+python3 python-prg-pre-build/sync_dir.py "$MODELS"
 
+./clear-comfy-data.sh
 export POST_INSTALL="FluxKontext.sh"
 
 
@@ -852,6 +862,9 @@ https://boosty.to/blender_razumov/posts/fc2f2118-aca9-4323-9332-e6bd9c0e2171?com
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 ./workflow-new-image.sh "Upscalers"
 
+
+source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
+
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 export MODELS="Upscalers"
 export ARIA2_MODEL_DIRS="${MODELS}"
@@ -863,6 +876,9 @@ export COMFYUI_VERSION="v0.3.43"
 export BASE_IMAGE="cuda-12-6:nvidia-runtime"
 export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
 export REQ_MODIFY="base-CUDA-12.6"
+
+./clear-comfy-data.sh
+python3 python-prg-pre-build/sync_dir.py "$MODELS"
 
 export POST_INSTALL="Upscalers.sh"
 
