@@ -1,18 +1,19 @@
 wsl
 clear
 
-export IMAGE_NAME_BASE="FluxKontext"
+export IMAGE_NAME_BASE="ControlNet-Flux-Tools-OreX"
 export CUDA="CUDA12.6"
 export IMAGE_NAME="gayrat/comfyui-union2:${IMAGE_NAME_BASE}-${CUDA}"
 echo -e "IMAGE_NAME : ${IMAGE_NAME}"
+cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.6"
 
-source vast-contract.sh 19394424 $IMAGE_NAME
+source vast-contract.sh 22424612 $IMAGE_NAME
 source ./vs.sh
 
-tmux-s.sh FluxKontext
+tmux-s.sh ControlNet-Flux-Tools-OreX
 
-./dl_common.sh FluxKontext
+./dl_common.sh ControlNet-Flux-Tools-OreX
 ./dl_common.sh reactor2
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI

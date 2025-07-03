@@ -22,3 +22,28 @@ https://huggingface.co/Kijai/flux-fp8/resolve/main/flux1-dev-fp8-e4m3fn.safetens
 https://huggingface.co/Gayrat1968/Flux_loras/resolve/main/Flux_HDR_v1.safetensors
     out=Flux_HDR_v1.safetensors
     dir=models/loras/Flux
+
+
+# 🌟 Hyper Lora  🌟
+# https://huggingface.co/OreX/Models/blob/main/LORA/FLUX/Hyper-FLUX.1-dev-8steps-lora.safetensors
+https://huggingface.co/OreX/Models/resolve/main/LORA/FLUX/Hyper-FLUX.1-dev-8steps-lora.safetensors
+    out=Hyper-FLUX.1-dev-8steps-lora.safetensors
+    dir=models/loras/Flux
+
+# 🌟 ControlNet-Union-Pro-2.0
+# Shakker-Labs/FLUX.1-dev-ControlNet-Union-Pro-2.0
+# https://huggingface.co/Shakker-Labs/FLUX.1-dev-ControlNet-Union-Pro-2.0/tree/main
+https://huggingface.co/Shakker-Labs/FLUX.1-dev-ControlNet-Union-Pro-2.0/resolve/main/diffusion_pytorch_model.safetensors
+    dir=models/controlnet/Flux
+    out=ControlNet-Union-Pro-2.safetensors
+
+
+# 🌟 Clip Vision
+https://huggingface.co/OreX/ControlNet/resolve/main/FLUX%20ControlNet/Flux-Redux/flux_clip_vision_patch14_384.safetensors
+    out=flux_clip_vision_patch14_384.safetensors
+    dir=models/clip_vision
+
+# 🌟 FLUX Redux
+https://huggingface.co/OreX/ControlNet/resolve/main/FLUX%20ControlNet/Flux-Redux/flux1-redux-dev.safetensors
+    out=flux1-redux-dev.safetensors
+    dir=models/style_models/Flux
