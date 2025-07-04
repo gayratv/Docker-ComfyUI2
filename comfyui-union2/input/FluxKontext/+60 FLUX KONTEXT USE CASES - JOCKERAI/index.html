@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>+60 FLUX KONTEXT USE CASES - JOCKERAI</title>
+    <style>
+        /* Custom Font Definition */
+        @font-face {
+            font-family: 'Roboto Condensed 700';
+            src: url('fonts/roboto-condensed-v25-latin-700.eot'); /* IE9 Compat Modes */
+            src: url('fonts/roboto-condensed-v25-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+                 url('fonts/roboto-condensed-v25-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+                 url('fonts/roboto-condensed-v25-latin-700.woff') format('woff'), /* Modern Browsers */
+                 url('fonts/roboto-condensed-v25-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+                 url('fonts/roboto-condensed-v25-latin-700.svg#RobotoCondensed') format('svg');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap; /* Improves font loading performance */
+        }
+
+        body {
+            font-family: Arial, sans-serif; /* Fallback font */
+            margin: 20px;
+            background-color: #191d24; /* Changed background color */
+            color: #f0f0f0; /* Changed default text color for better readability on dark background */
+        }
+        .main-header {
+            background-color: #5f7a9d;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            font-size: 5em;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-family: 'Roboto Condensed 700', Arial, sans-serif; /* Applied custom font */
+        }
+        .description-box {
+            background-color: #2a303c; /* Adjusted for dark background */
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            line-height: 1.6;
+            text-align: center; /* Centered text */
+            color: #f0f0f0; /* Ensure text is readable */
+            font-size: 2.15em; /* Increased font size slightly more */
+        }
+        .description-box a {
+            color: #8ab4f8; /* A pleasant blue for links */
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .description-box a:hover {
+            text-decoration: underline;
+        }
+
+        .section-title {
+            background-color: #3e4a5e; /* Adjusted for dark background */
+            padding: 10px 15px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-size: 1.5em;
+            color: #f0f0f0; /* Ensure text is readable */
+            font-family: 'Roboto Condensed 700', Arial, sans-serif; /* Applied custom font */
+        }
+        .use-case {
+            background-color: #2a303c; /* Adjusted for dark background */
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            overflow-x: auto; /* Allow horizontal scrolling if content overflows */
+        }
+        .example-container {
+            display: flex;
+            flex-wrap: nowrap; /* Force all items into a single row */
+            align-items: flex-start; /* Align items to the top */
+            gap: 15px; /* Space between main elements */
+            min-width: fit-content; /* Ensure container is wide enough for content */
+            padding-bottom: 10px; /* Space for scrollbar */
+        }
+        .item-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0; /* Prevent items from shrinking */
+        }
+        .image-container {
+            width: 500px; /* Fixed width for images */
+            height: 550px; /* Fixed height for images */
+            overflow: hidden;
+            border: 1px solid #4a5468; /* Adjusted border color */
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #191d24; /* Adjusted for dark background */
+        }
+        .image-container img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* Show entire image, fitting inside container */
+            border-radius: 4px;
+        }
+        .image-label {
+            font-weight: bold;
+            margin-top: 5px;
+            font-size: 0.9em;
+            color: #b0b0b0; /* Adjusted for dark background */
+        }
+        .prompt-box {
+            width: 200px; /* Fixed width for prompt boxes */
+            height: 150px; /* Fixed height to align with images better */
+            padding: 10px;
+            background-color: #3a414e; /* Original background color for prompt boxes */
+            border-radius: 5px;
+            word-break: break-word;
+            flex-shrink: 0;
+            overflow-y: auto; /* Add scroll for long prompts */
+            color: #e0e0e0; /* Ensure text is readable */
+            font-size: 1.05em; /* Increased font size slightly */
+        }
+        .prompt-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #b0b0b0; /* Adjusted for dark background */
+        }
+        .inline-subtitle {
+            background-color: #2d4645; /* New background color for subtitles */
+            color: #f0f0f0; /* Subtitle text color */
+            padding: 5px 10px;
+            border-radius: 4px;
+            white-space: nowrap; /* Prevent text wrapping */
+            font-weight: bold;
+            font-size: 1.1em; /* Increased font size */
+            margin-bottom: 5px; /* Space below subtitle */
+            text-align: center;
+            font-family: 'Roboto Condensed 700', Arial, sans-serif; /* Applied custom font */
+        }
+        .description-note { /* New style for descriptive subtitles */
+            background-color: #4a5468;
+            color: #e0e0e0;
+            padding: 5px 10px;
+            border-radius: 4px;
+            white-space: normal;
+            font-size: 0.9em;
+            text-align: center;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .example-container {
+                flex-wrap: wrap; /* Allow wrapping on smaller screens if too wide */
+                justify-content: center; /* Center items when wrapped */
+            }
+            .item-group {
+                width: 45%; /* Allow items to take up more width when wrapped */
+                max-width: 250px; /* Limit max width */
+            }
+            .image-container, .prompt-box {
+                width: 100%; /* Take full width of its item-group */
+                height: auto; /* Allow height to adjust naturally */
+                max-height: 300px; /* Prevent images from getting too tall */
+            }
+            .prompt-box {
+                min-height: 80px; /* Ensure a minimum height for prompts */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-header">
+        +60 FLUX KONTEXT USE CASES - JOCKERAI
+    </div>
+
+    <div class="description-box">
+        <p>This collection includes over 60 use cases for Flux Kontext, complete with prompts, input images, and output samples. It’s designed as a full-featured guide to help you explore and understand nearly all the capabilities of Flux Kontext. You can easily copy the prompts for your own use and refer to the images to see exactly how each setup works.</p>
+        <p>The file is published by Jockerai, and all rights are reserved. Unauthorized sharing or redistribution is strictly prohibited. Join my social media pages to get more files for Ai image and video generation tools. Specially workflows for all Flux models in Comfyui.👇🏻</p>
+        <p>
+            <a href="https://youtube.com/@jockerai" target="_blank">Youtube.com/jockerai</a><br>
+            <a href="https://whop.com/jockerai" target="_blank">whop.com/jockerai</a><br>
+            <a href="https://boosty.to/jockerai" target="_blank">boosty.to/jockerai</a><br>
+            <a href="https://t.me/jokerrai" target="_blank">t.me/jokerrai</a>
+        </p>
+    </div>
+
+    <div class="section-title">Change color</div>
+    <div class="use-case">
+       <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/01.png" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt:</span>
+                    turn red part of her clothes to blue
+                </div>
+        </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/01-a.jpg" alt="Output Image">
+                </div>
+                </div>
+        </div>
+    </div>
+
+    <div class="section-title">Subjct reference</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/02.png" alt="Input Image">
+                </div>
+       <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    A woman stands in a hotel lobby wears a high-heel shoe
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/02-a.jpg" alt="Output Image 1">
+                </div>
+                </div>
+            
+            <div class="item-group">
+                <div class="inline-subtitle">Change Pose</div>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 2:</span>
+                    This woman sitting on a chair in lobby of a hotel. Don't change her identity
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/02-b.jpg" alt="Output Image 2">
+               </div>
+                </div>
+        </div>
+    </div>
+
+    <div class="section-title">Person change style while preserving identity and elements</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+               <img src="images/03.png" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                <span class="prompt-label">Prompt 1:</span>
+                    Turn this image style to ultrarealistic style. retain face features, camera angle, pose, scale.
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/03-a.jpg" alt="Output Image 1">
+                </div>
+           </div>
+            
+            <div class="item-group">
+                <div class="inline-subtitle">Change Background</div>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 2:</span>
+             create an ultra realistic image that shows this woman is in a yard of an old castle. she is at the left side of the image. Don't change her identity
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/03-b.jpg" alt="Output Image 2">
+      </div>
+                </div>
+            
+            <div class="item-group">
+                <div class="inline-subtitle">Change wheather condition</div>
+                <div class="prompt-box">
+             <span class="prompt-label">Prompt 3:</span>
+                    it's now snowing, everything is covered in snow
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+      <img src="images/03-c.jpg" alt="Output Image 3">
+                </div>
+                </div>
+        </div>
+    </div>
+
+    <div class="section-title">Add makeup to face while preserving identity</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/04.jpg" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    add clown makeup on his face. don't change his identity
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/04-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+            
+            <div class="item-group">
+                <div class="inline-subtitle">Change expression</div>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 2:</span>
+                    put a manic grin evil smile with stretched eyebrows in his face. don't change his identity
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/04-b.jpg" alt="Output Image 2">
+                </div>
+            </div>
+
+            <div class="item-group">
+                <div class="inline-subtitle">Change camera angle</div>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 3:</span>
+                    Turn his head 90 degrees around. Don't change her identity
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/04-c.jpg" alt="Output Image 3">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">colorize B&W image while preserving identity</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/05.png" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    Colorize this photo. lipstick is red
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/05-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+            
+            <div class="item-group">
+                <div class="inline-subtitle">Change pose</div>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 2:</span>
+                    Her finger on her lip . Don't change her identity
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/05-b.jpg" alt="Output Image 2">
+                </div>
+            </div>
+
+            <div class="item-group">
+                <div class="inline-subtitle">Change pose</div>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 3:</span>
+                    she take out her tongue out of her mouth and put her finger on it. Don't change her identity
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/05-c.jpg" alt="Output Image 3">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Subjct reference/ put on any clothes</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/06.png" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    Put this sport T-shirt on a male football player sprinting with a soccer ball in front of his foot. the Background is a solid blue background.
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/06-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Add any object in a background</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/07.jpg" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    Add a flying dragon in the scene
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/07-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Complex subjects image reference</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/08.jpg" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    A close-up photo of a woman neck wear this necklace
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/08-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Lighting and Colorgrading</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/09.png" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    add color grade and lighting to the photo like a commercial photography
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/09-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+            
+            <div class="item-group">
+                <div class="inline-subtitle">Change Background</div>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 2:</span>
+                    Wet this watch and add some ice cubes around it. </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/09-b.jpg" alt="Output Image 2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Remove objects from photo</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/10.jpg" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    remove fishes. Don't change her identity
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/10-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+            
+            <div class="item-group">
+                <div class="inline-subtitle">Change Background</div>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 2:</span>
+                    Change the background to street of a city at the night. Don't change her identity
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/10-b.jpg" alt="Output Image 2">
+                </div>
+            </div>
+
+            <div class="item-group">
+                <div class="inline-subtitle">change light conditions</div>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 3:</span>
+                    Change the background to street of a city at the afternoon. Don't change her identity
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/10-c.jpg" alt="Output Image 3">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Extract any clothing from photo</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/11.jpg" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    extract her dress and put it on a white surface like a product
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/11-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+            
+            <div class="item-group">
+                <div class="inline-subtitle">Put extracted clothe on a person</div>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 2:</span>
+                    Create an ultra realistic photo of a woman wears this dress and pose like a pro in fashion show stage. Camera angle is from 45 degrees
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/11-b.jpg" alt="Output Image 2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Zoom in with the best quality and accuracy</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/12.jpg" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    Zoom in on the bird and create a close-up sharp UHD photo of it
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/12-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+            
+            <div class="item-group">
+                <div class="inline-subtitle">Place the zoomed subject on any background</div>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 2:</span>
+                    A close-up photo of This bird is flying near a sea
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/12-b.jpg" alt="Output Image 2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Change any text while preserving the style</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/13.png" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    Change the "Flux Schnell" to "YouTube Jockerai"
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/13-a.png" alt="Output Image 1">
+                </div>
+            </div>
+            
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 2:</span>
+                    Change the "flux1" to "Jockerai"
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/13-b.png" alt="Output Image 2">
+                </div>
+            </div>
+            </div>
+    </div>
+
+    <div class="section-title">Put any complex pattern on any subject</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/14.png" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    create a realistic photo of a man from one side and print this tattoo on his arm. Keep unchanged the tattoo pattern
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/14-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Change images styles while preserving some elements identity</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/15.jpg" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            
+            <div class="item-group">
+                <div class="inline-subtitle">claymation</div>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    Turn this image into the style of claymation
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/15-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+
+            <div class="item-group">
+                <div class="inline-subtitle">chibi</div>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 2:</span>
+                    Turn this into a cute minimalist flat-chibi style 
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/15-b.jpg" alt="Output Image 2">
+                </div>
+            </div>
+
+            <div class="item-group">
+                <div class="inline-subtitle">Pixar</div>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 3:</span>
+                    Turn this into a Pixar style 
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/15-c.jpg" alt="Output Image 3">
+                </div>
+            </div>
+
+            <div class="item-group">
+                <div class="inline-subtitle">pencil drawing</div>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 4:</span>
+                    Turn this into a artistic pencil drawing style high contrast. Don't change her identity
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/15-d.png" alt="Output Image 4">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Use multiple character photos as a reference image (1 input image)</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/16.png" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            
+            <div class="item-group">
+                <div class="description-note">I stuck these two photos side by side using Photoshop or Canva to create a single image</div>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    Create a close-up wedding photo of these two character. Don't change their identity
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/16-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+
+            <div class="item-group">
+                <div class="inline-subtitle">Next example</div>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 2:</span>
+                    Create a close-up friendly photo of these two character in a party and they are happy. Don't change their identity
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/16-b.jpg" alt="Output Image 2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Use multiple character photos as a reference image (2 input image)</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/17.png" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            
+            <div class="item-group">
+                <div class="description-note">I upload photo of these 2 character one by one as separate input images</div>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    Create a close-up wedding photo of these two character. Don't change their identity
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/17-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+
+            <div class="item-group">
+                <div class="inline-subtitle">Next example</div>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 2:</span>
+                    Create a close-up photo of these two characters are wearing winter clothes. Background is a backyard full of snow. Don't change their identity
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/17-b.jpg" alt="Output Image 2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Restore damaged old photos</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/18.jpg" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    restore this photo. Remove any scratches and imperfections. Don't change her identity
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/18-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Turn him/her to sculpture</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/19.jpg" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    Turn this man to a bronze sculpture
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/19-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+            
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 2:</span>
+                    Turn this man to a sculpture made of wood
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/19-b.jpg" alt="Output Image 2">
+                </div>
+            </div>
+            </div>
+    </div>
+
+    <div class="section-title">Give logos a real material</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/20.png" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    Create a highly detailed, textured logo , made of thick yarn or wool. </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/20-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+            
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 2:</span>
+                    Design a textured logo made entirely of stitched leather, with visible seams and a slightly
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/20-b.jpg" alt="Output Image 2">
+                </div>
+            </div>
+
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 3:</span>
+                    Create a playful logo made of colorful felt pieces, cut and layered with soft textures
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/20-c.jpg" alt="Output Image 3">
+                </div>
+            </div>
+
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 4:</span>
+                    Create a metallic logo with deep grooves and embossed details, The edges of the logo should glow with cyan neon line lights. Background is a darks
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/20-d.jpg" alt="Output Image 4">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Change logo elements</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/21.jpg" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    turn the bird in the logo into a cheetah while it is jumping. Retain the style of the logo
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/21-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Create a poster for a product</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/22.png" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    Create an epic product advertisement for this can with ultra realistic vibe. Put the text FULL OF ENERGY at the top of the poster. Put a warning disclaimer at the bottom in very small text that says "JOCKERAI POWERED – FEEL POWER! |"
+ </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/22-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+            
+            <div class="item-group">
+                <div class="inline-subtitle">another output</div>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 2:</span>
+                    same prompt
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/22-b.jpg" alt="Output Image 2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Put any product in a scene</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/23.jpg" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    This sofa is placed in a stylish living room with natural sunlight streaming in through a large window, creating a warm and cozy atmosphere. </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/23-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Add makeup to the face</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/24.png" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    Add light makeup on her face. Lipstick color is light red, long eyelashes, eye shadows, long eye line. Don't change her identity, pose, camera angle and scale.
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/24-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+            
+            <div class="item-group">
+                <div class="inline-subtitle">Next input image</div>
+                <div class="description-note">Input image 2 (for reference in Prompt 2)</div>
+                <div class="image-container">
+                    <img src="images/24-b.png" alt="Input Image 2">
+                </div>
+                <span class="image-label">Input Image 2</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 2:</span>
+                    Add deep makeup on her face. Lips color is red, long eyelashes, eye shadows, long eye line
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/24-c.jpg" alt="Output Image 2"> </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Remove makeup from the face</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/25.png" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    remove her makeup completely. Don't change her identity, pose, camera angle and scale.
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/25-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Create Natural skin</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/26.png" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    remove the plastic, overly smooth, and shiny look from her skin. Make the skin appear natural, with realistic texture and pores. Do not change her identity.
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/26-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Print Logo on anything</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/27.jpg" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    Print this logo with high saturation on a white cup that is on a table. It is day time and sun lights are coming in through the window
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/27-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Change hair color</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/28.jpg" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    Change her hair color to blue
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/28-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+            
+            <div class="item-group">
+                <div class="inline-subtitle">Another color</div>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 2:</span>
+                    Change her hair color to platinum blonde
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/28-b.jpg" alt="Output Image 2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Place complex objects in any scene</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/29.jpg" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    put this carpet on the ground of a modern living room
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/29-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Add creative elements to the image</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/30.jpg" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    Inside the circle, create a realistic stormy ocean with crashing waves and a large ship sailing through them. Make the water overflow from the circle naturally — as if pulled by gravity — with splashes and flowing streams spilling onto the floor. Ensure the water retains natural liquid texture, not stretched or gelatinous, and blends realistically with the environment outside the circle.
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/30-a.png" alt="Output Image 1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Remove watermark</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/31.png" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    remove all watermarks in this image
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/31-a.png" alt="Output Image 1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Model Sheet for a specific character</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/32.jpg" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    make a model sheet of this character. Full body shot , front. back and side. The background is dark and the character is under a spot light
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/32-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Correcting white balance and image light flaws</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/33.png" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    change the brightness, contrast and white balance to make this look ideal
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/33-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Specific model holding a specific product</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/34.png" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    Create an ultra realistic image of this woman while holding this cola like an advertising photo
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/34-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Create a studio portrait</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/35.jpg" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    Create a high-contrast black-and-white portrait of this woman, capturing an intimate and cinematic feel. The lighting accentuates the contours of her face and the sharpness of her features, emphasizing her natural beauty. She wears a dark, tailored jacket with subtle button details, adding a touch of understated sophistication to her look. The background is simple and dark, allowing her face and hair to stand out dramatically. The lighting is soft yet directional, casting gentle shadows that sculpt her face and create an evocative, timeless mood. The overall composition is reminiscent of classic portrait photographers like Peter Lindbergh, known for capturing raw, unfiltered beauty and emotional depth in monochrome. This black-and-white image highlights the quiet intensity and timeless elegance of the subject, blending modern grace with classic cinematic allure.
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/35-a.png" alt="Output Image 1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Remove texts from a Manga storytelling image</div>
+    <div class="use-case">
+        <div class="example-container">
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/36.jpg" alt="Input Image">
+                </div>
+                <span class="image-label">Input Image</span>
+            </div>
+            <div class="item-group">
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 1:</span>
+                    remove all texts and text boxes from this image
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/36-a.jpg" alt="Output Image 1">
+                </div>
+            </div>
+            
+            <div class="item-group">
+                <div class="inline-subtitle">Colorize</div>
+                <div class="prompt-box">
+                    <span class="prompt-label">Prompt 2:</span>
+                    Colorize this image
+                </div>
+            </div>
+            <div class="item-group">
+                <div class="image-container">
+                    <img src="images/36-b.jpg" alt="Output Image 2">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
