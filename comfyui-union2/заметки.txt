@@ -836,7 +836,7 @@ cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 export MODELS="FluxKontext"
-export ARIA2_MODEL_DIRS="${MODELS} flux"
+export ARIA2_MODEL_DIRS="${MODELS} FluxKontext2"
 export WORKFLOW_TO_COPY=$MODELS
 export VERSION="$MODELS-CUDA12.6"
 export NODES="$MODELS.txt"

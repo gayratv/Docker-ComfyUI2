@@ -13,11 +13,6 @@ https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/vae/diffusion_p
   dir=models/vae/Flux
   out=flux.vae.safetensors
 
-# 🌟 /Kijai/flux-fp8 🌟
-https://huggingface.co/Kijai/flux-fp8/resolve/main/flux1-dev-fp8-e4m3fn.safetensors
-   dir=models/diffusion_models/Flux
-   out=flux1-dev-fp8-e4m3fn.safetensors
-
 # pulid_flux_v0.9.1 -
 https://huggingface.co/guozinan/PuLID/resolve/refs%2Fpr%2F10/pulid_flux_v0.9.1.safetensors
     dir=models/pulid
@@ -79,3 +74,9 @@ https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/OmniSR_X2_DIV2K.safetens
 https://huggingface.co/Gayrat1968/Flux_loras/resolve/main/Flux_HDR_v1.safetensors
     out=Flux_HDR_v1.safetensors
     dir=models/loras/Flux
+
+# 🌟  FLUX Turbo Lora 8-steps 🌟
+https://huggingface.co/alimama-creative/FLUX.1-Turbo-Alpha/resolve/main/diffusion_pytorch_model.safetensors
+    dir=models/loras
+    out=FLUX.1-Turbo-8-steps.safetensors
+
