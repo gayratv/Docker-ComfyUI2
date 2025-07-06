@@ -46,7 +46,7 @@ def create_new_dockerfile(start_file, nodes_file, end_file, output_file):
             "RUN --mount=type=cache,target=/root/repo-cache \\\n"
             "    --mount=type=cache,target=/root/pip-cache \\\n"
             "    PIP_CACHE_DIR=/root/pip-cache \\\n"
-            f"    process_repos-install-req-hash.sh \"{repo}\" true \\\n"
+            f"    process_one_repo_install_req_hash.sh \"{repo}\" true \\\n"
             "    && rm -rf /root/.cache/pip"
         )
         generated_part.append(run_command)
@@ -108,7 +108,7 @@ def main():
     # Формируем полные пути, добавляя базовый путь к каждому аргументу.
     # os.path.join корректно обработает, если в аргументе будет передан абсолютный путь.
     start_file_path = os.path.join(BASE_DOCKERFILE_PATH, args.start)
-    nodes_file_path = os.path.join(BASE_DOCKERFILE_PATH, args.nodes)
+    nodes_file_path = os.path.join(BASE_DOCKERFILE_PATH, 'custom-nodes', args.nodes)
     end_file_path = os.path.join(BASE_DOCKERFILE_PATH, args.end)
     output_file_path = os.path.join(BASE_DOCKERFILE_PATH, args.output)
 

@@ -1,0 +1,83 @@
+
+ARG NODES
+
+
+ARG WORKFLOW_TO_COPY="supir"
+COPY ./user/default/comfy.settings.json user/default/
+
+WORKDIR /workspace/ComfyUI/input
+COPY input  ./
+
+
+
+RUN echo 'alias python=/usr/local/bin/python3.11' >> /root/.bashrc \
+    source /root/.bashrc
+
+ARG DOWNLAD_MODELS
+WORKDIR /workspace/templates/models
+#RUN python3 /workspace/ComfyUI/gayrat_py/remove-models-dirs.py ${DOWNLAD_MODELS}
+#RUN python3 /workspace/ComfyUI/gayrat_py/remove-models-dirs.py ${DOWNLAD_MODELS} --dry-run
+
+
+WORKDIR /workspace/ComfyUI
+
+# Создайте файл конфигурации
+RUN echo '{"skip_update_check": true}' > /workspace/ComfyUI/custom_nodes/ComfyUI-Manager/.skip_update_check
+
+RUN echo "cd /workspace/aria2/templates" >> /root/.bashrc \
+  && echo "set -g mouse on" >> /root/.tmux.conf
+
+
+WORKDIR /workspace
+RUN echo -e "\n========= POST_INSTALL ===============\n"
+
+ARG POST_INSTALL
+
+COPY post-install/ ./post-install
+
+
+RUN --mount=type=cache,target=/root/pip-cache \
+    if [ -n "$POST_INSTALL" ]; then \
+        chmod +x "./post-install/$POST_INSTALL" && \
+        echo -e "$COLOR_YELLOW\n\n========= Running $POST_INSTALL ==========$COLOR_RESET"; \
+        ./post-install/"$POST_INSTALL"; \
+    else \
+        echo "Skipping post-install script"; \
+    fi
+
+RUN echo "===== Финальная проверка Numpy =====" && \
+    python3 -c "import numpy; print('Версия:', numpy.__version__); print('Путь к файлу:', numpy.__file__)"
+
+WORKDIR /workspace/ComfyUI
+COPY assets-docker/styles.csv ./
+COPY input/${MODELS} ./input/
+
+WORKDIR /workspace/ComfyUI
+COPY workflows/$WORKFLOW_TO_COPY user/default/workflows/$WORKFLOW_TO_COPY
+
+
+WORKDIR /workspace/ComfyUI/models/embeddings
+# для версии numpy
+COPY assets-docker/embeddings/ .
+
+WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI-Manager
+# для версии numpy
+COPY assets-docker/pip_overrides.json .
+
+# Copy aria2 directory near the end and keep only selected model subfolders
+ARG ARIA2_MODEL_DIRS=""
+WORKDIR /workspace/aria2
+COPY aria2 .
+RUN if [ -n "$ARIA2_MODEL_DIRS" ]; then \
+        for d in $(ls templates/models); do \
+            echo "Checking $d"; \
+            if ! echo " $ARIA2_MODEL_DIRS " | grep -q " $d "; then \
+                rm -rf "templates/models/$d"; \
+            fi; \
+        done; \
+    fi && \
+    chmod +x *.sh && chmod +x ./templates/*.sh && rm -f ./templates/.env
+
+WORKDIR /workspace/ComfyUI
+
+CMD ["bash"]

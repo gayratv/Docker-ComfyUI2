@@ -1,0 +1,402 @@
+# ====== Stage 1: Builder ======
+ARG BASE_IMAGE="gayrat/comfyui-base-cuda-12-4:v2.0"
+FROM ${BASE_IMAGE} AS builder
+
+WORKDIR /usr/local/bin
+COPY ./bash-scripts/build/*.sh ./
+#COPY *.sh ./
+RUN chmod +x ./*.sh
+
+WORKDIR /workspace
+ARG COMFYUI_VERSION="latest"
+ARG CUDA_VER="12.4"
+
+ARG COLOR_GREEN='\033[32m'
+ARG COLOR_RED='\033[31m'
+ARG COLOR_YELLOW='\033[33m'
+ARG COLOR_BOLD_GREEN='\033[1;32m'
+ARG COLOR_RESET='\033[0m'
+
+#RUN --mount=type=cache,target=/root/repo-cache \
+#    --mount=type=cache,target=/root/pip-cache \
+#    --mount=type=cache,target=/root/pip-cache-uv \
+#    rm -rf /root/repo-cache/* && \
+#    rm -rf /root/pip-cache/* && \
+#    rm -rf /root/pip-cache-uv/*
+#RUN exit 1
+
+#RUN --mount=type=cache,target=/root/repo-cache \
+#    rm -rf /root/repo-cache/*
+#RUN exit 1
+
+
+
+# Очистка директории и клонирование ComfyUI
+RUN --mount=type=cache,target=/root/repo-cache \
+    rm -rf /workspace/* && \
+    git-clone-checkout.sh "https://github.com/comfyanonymous/ComfyUI" "$COMFYUI_VERSION" "/root/repo-cache"
+
+WORKDIR /workspace/ComfyUI
+
+COPY nodes.txt  ./
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_repos-install-req-hash.sh "$NODES" false \
+    && rm -rf /root/.cache/pip
+
+ARG REQ_MODIFY="base-CUDA-12.4"
+COPY requirements-modify ./requirements-modify
+
+ARG PYTORCH_WHEEL="https://download.pytorch.org/whl/cu124"
+
+COPY ./python-prg/*.py ./gayrat_py/
+
+RUN python3 gayrat_py/union-requiere.py \
+     && python3 ./gayrat_py/process-req-in.py \
+            --requirements-file "requirements.in" \
+            --prefixes-file "./requirements-modify/$REQ_MODIFY/remove-lines.txt" \
+            --additional-lines-file "./requirements-modify/$REQ_MODIFY/add-lines.txt"
+
+RUN uv pip compile requirements.modify.in -o requirements.out \
+        --index-strategy unsafe-best-match \
+        --extra-index-url "$PYTORCH_WHEEL" \
+        --extra-index-url https://pypi.nvidia.com
+
+RUN python3 ./gayrat_py/pip-pckg-group.py
+
+
+# Установка пакетов в системную директорию Python 3.11
+#    --link-mode=copy \
+#    --cache-dir=/root/pip-cache-uv \
+
+
+# Устанавливаем UV_CACHE_DIR, чтобы uv использовал именно эту директорию для всего своего кеша
+ENV UV_CACHE_DIR=/root/pip-cache-uv
+ENV PIP_CACHE_DIR=/root/pip-cache-uv2
+ENV UV_NO_CACHE=0
+ENV UV_LINK_MODE=copy
+
+RUN --mount=type=cache,target=/root/pip-cache-uv,mode=0755,uid=0,gid=0 \
+    --mount=type=cache,target=/root/pip-cache-uv2,mode=0755,uid=0,gid=0 \
+    echo "Cache contents before:" && ls -la /root/pip-cache-uv || true && \
+    echo "Cache contents before:" && ls -la /root/pip-cache-uv2 || true && \
+    uv pip install \
+    --system \
+    --index-strategy unsafe-best-match \
+    --extra-index-url "$PYTORCH_WHEEL" \
+    --extra-index-url https://pypi.nvidia.com \
+    -r requirements.out
+
+#    && rm -rf /root/.cache/pip
+
+#в файле
+#/workspace/ComfyUI/custom_nodes/ComfyUI-Manager/glob/cnr_utils.py #есть фрагмент кода
+#            if page % 5 == 0:
+#                print(f"FETCH ComfyRegistry Data: {page}/{sub_json_obj['totalPages']}")
+#надо найти и удалить его
+
+RUN sed -i '/if page % 5 == 0:/,+1d' /workspace/ComfyUI/custom_nodes/ComfyUI-Manager/glob/cnr_utils.py
+
+RUN python3 /workspace/ComfyUI/gayrat_py/remove_lines.py
+
+
+#>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=
+# ====== Stage 2: Final image ======
+#>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=>=
+RUN echo -e "\n\n${COLOR_GREEN}===== Вторая стадия сборки ========${COLOR_RESET}\n"
+FROM ${BASE_IMAGE}
+
+# Копируем установленные системные Python-пакеты
+RUN echo -e "Копируем установленные системные Python-пакеты"
+COPY --from=builder /usr/local/lib/python3.11/dist-packages /usr/local/lib/python3.11/dist-packages
+
+# Копируем рабочую директорию
+RUN echo -e "Копируем рабочую директорию"
+COPY --from=builder /workspace /workspace
+
+ARG MODELS
+
+ENV DOWNLOADS_DIR=/usr/local/bin
+
+WORKDIR /usr/local/bin
+COPY ./bash-scripts/build/*.sh $DOWNLOADS_DIR/
+COPY ./bash-scripts/*.sh $DOWNLOADS_DIR/
+COPY *.sh $DOWNLOADS_DIR/
+RUN chmod +x $DOWNLOADS_DIR/*.sh
+
+
+WORKDIR /workspace/ComfyUI
+COPY ./custom-nodes/*.txt ./
+
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/gayratv/ComfyUI_Gayrat" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/chrisgoringe/cg-use-everywhere" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/rgthree/rgthree-comfy" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/pythongosssss/ComfyUI-Custom-Scripts" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/yolain/ComfyUI-Easy-Use" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/kijai/ComfyUI-KJNodes" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/ssitu/ComfyUI_UltimateSDUpscale" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/cubiq/ComfyUI_essentials" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/Jonseed/ComfyUI-Detail-Daemon" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/melMass/comfy_mtb" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/Jordach/comfy-plasma" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/M1kep/ComfyLiterals" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/chengzeyi/Comfy-WaveSpeed" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/1038lab/ComfyUI-RMBG" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://codeberg.org/Gourieff/comfyui-reactor-node" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/ltdrdata/ComfyUI-Impact-Pack" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/ltdrdata/ComfyUI-Impact-Subpack" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/sipie800/ComfyUI-PuLID-Flux-Enhanced" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/JPS-GER/ComfyUI_JPS-Nodes" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/Zehong-Ma/ComfyUI-MagCache" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/chrisgoringe/cg-noisetools" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/ltdrdata/was-node-suite-comfyui" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/EllangoK/ComfyUI-post-processing-nodes" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/BlenderNeko/ComfyUI_Noise" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/chflame163/ComfyUI_LayerStyle" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/kijai/ComfyUI-Florence2" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/welltop-cn/ComfyUI-TeaCache" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/calcuis/gguf" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/un-seen/comfyui-tensorops" true \
+    && rm -rf /root/.cache/pip
+
+
+ARG NODES
+
+
+ARG WORKFLOW_TO_COPY="supir"
+COPY ./user/default/comfy.settings.json user/default/
+
+WORKDIR /workspace/ComfyUI/input
+COPY input  ./
+
+
+
+RUN echo 'alias python=/usr/local/bin/python3.11' >> /root/.bashrc \
+    source /root/.bashrc
+
+ARG DOWNLAD_MODELS
+WORKDIR /workspace/templates/models
+#RUN python3 /workspace/ComfyUI/gayrat_py/remove-models-dirs.py ${DOWNLAD_MODELS}
+#RUN python3 /workspace/ComfyUI/gayrat_py/remove-models-dirs.py ${DOWNLAD_MODELS} --dry-run
+
+
+WORKDIR /workspace/ComfyUI
+
+# Создайте файл конфигурации
+RUN echo '{"skip_update_check": true}' > /workspace/ComfyUI/custom_nodes/ComfyUI-Manager/.skip_update_check
+
+RUN echo "cd /workspace/aria2/templates" >> /root/.bashrc \
+  && echo "set -g mouse on" >> /root/.tmux.conf
+
+
+WORKDIR /workspace
+RUN echo -e "\n========= POST_INSTALL ===============\n"
+
+ARG POST_INSTALL
+
+COPY post-install/ ./post-install
+
+
+RUN --mount=type=cache,target=/root/pip-cache \
+    if [ -n "$POST_INSTALL" ]; then \
+        chmod +x "./post-install/$POST_INSTALL" && \
+        echo -e "$COLOR_YELLOW\n\n========= Running $POST_INSTALL ==========$COLOR_RESET"; \
+        ./post-install/"$POST_INSTALL"; \
+    else \
+        echo "Skipping post-install script"; \
+    fi
+
+RUN echo "===== Финальная проверка Numpy =====" && \
+    python3 -c "import numpy; print('Версия:', numpy.__version__); print('Путь к файлу:', numpy.__file__)"
+
+WORKDIR /workspace/ComfyUI
+COPY assets-docker/styles.csv ./
+COPY input/${MODELS} ./input/
+
+WORKDIR /workspace/ComfyUI
+COPY workflows/$WORKFLOW_TO_COPY user/default/workflows/$WORKFLOW_TO_COPY
+
+
+WORKDIR /workspace/ComfyUI/models/embeddings
+# для версии numpy
+COPY assets-docker/embeddings/ .
+
+WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI-Manager
+# для версии numpy
+COPY assets-docker/pip_overrides.json .
+
+# Copy aria2 directory near the end and keep only selected model subfolders
+ARG ARIA2_MODEL_DIRS=""
+WORKDIR /workspace/aria2
+COPY aria2 .
+RUN if [ -n "$ARIA2_MODEL_DIRS" ]; then \
+        for d in $(ls templates/models); do \
+            echo "Checking $d"; \
+            if ! echo " $ARIA2_MODEL_DIRS " | grep -q " $d "; then \
+                rm -rf "templates/models/$d"; \
+            fi; \
+        done; \
+    fi && \
+    chmod +x *.sh && chmod +x ./templates/*.sh && rm -f ./templates/.env
+
+WORKDIR /workspace/ComfyUI
+
+CMD ["bash"]
