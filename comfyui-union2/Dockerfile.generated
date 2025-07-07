@@ -36,14 +36,21 @@ RUN --mount=type=cache,target=/root/repo-cache \
     rm -rf /workspace/* && \
     git-clone-checkout.sh "https://github.com/comfyanonymous/ComfyUI" "$COMFYUI_VERSION" "/root/repo-cache"
 
+#process_one_repo_install_req_hash.sh
+
 WORKDIR /workspace/ComfyUI
+
+RUN --mount=type=cache,target=/root/pip-cache \
+    python3 -m pip install --cache-dir=/root/pip-cache -r requirements.txt \
+    && rm -rf /root/.cache/pip
+
 
 COPY nodes.txt  ./
 
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_repos-install-req-hash.sh "$NODES" false \
+    process_repos-install-req-hash.sh nodes.txt true \
     && rm -rf /root/.cache/pip
 
 ARG REQ_MODIFY="base-CUDA-12.4"
@@ -53,43 +60,12 @@ ARG PYTORCH_WHEEL="https://download.pytorch.org/whl/cu124"
 
 COPY ./python-prg/*.py ./gayrat_py/
 
-RUN python3 gayrat_py/union-requiere.py \
-     && python3 ./gayrat_py/process-req-in.py \
-            --requirements-file "requirements.in" \
-            --prefixes-file "./requirements-modify/$REQ_MODIFY/remove-lines.txt" \
-            --additional-lines-file "./requirements-modify/$REQ_MODIFY/add-lines.txt"
-
-RUN uv pip compile requirements.modify.in -o requirements.out \
-        --index-strategy unsafe-best-match \
-        --extra-index-url "$PYTORCH_WHEEL" \
-        --extra-index-url https://pypi.nvidia.com
-
-RUN python3 ./gayrat_py/pip-pckg-group.py
-
-
-# Установка пакетов в системную директорию Python 3.11
-#    --link-mode=copy \
-#    --cache-dir=/root/pip-cache-uv \
-
-
 # Устанавливаем UV_CACHE_DIR, чтобы uv использовал именно эту директорию для всего своего кеша
 ENV UV_CACHE_DIR=/root/pip-cache-uv
 ENV PIP_CACHE_DIR=/root/pip-cache-uv2
 ENV UV_NO_CACHE=0
 ENV UV_LINK_MODE=copy
 
-RUN --mount=type=cache,target=/root/pip-cache-uv,mode=0755,uid=0,gid=0 \
-    --mount=type=cache,target=/root/pip-cache-uv2,mode=0755,uid=0,gid=0 \
-    echo "Cache contents before:" && ls -la /root/pip-cache-uv || true && \
-    echo "Cache contents before:" && ls -la /root/pip-cache-uv2 || true && \
-    uv pip install \
-    --system \
-    --index-strategy unsafe-best-match \
-    --extra-index-url "$PYTORCH_WHEEL" \
-    --extra-index-url https://pypi.nvidia.com \
-    -r requirements.out
-
-#    && rm -rf /root/.cache/pip
 
 #в файле
 #/workspace/ComfyUI/custom_nodes/ComfyUI-Manager/glob/cnr_utils.py #есть фрагмент кода
@@ -251,12 +227,6 @@ RUN --mount=type=cache,target=/root/repo-cache \
     process_one_repo_install_req_hash.sh "https://github.com/Vaibhavs10/ComfyUI-DDUF" true \
     && rm -rf /root/.cache/pip
 
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/Limitex/ComfyUI-Diffusers" true \
-    && rm -rf /root/.cache/pip
-
 
 ARG NODES
 
@@ -294,6 +264,7 @@ ARG POST_INSTALL
 
 COPY post-install/ ./post-install
 
+COPY requirements-modify/ ./requirements-modify
 
 RUN --mount=type=cache,target=/root/pip-cache \
     if [ -n "$POST_INSTALL" ]; then \

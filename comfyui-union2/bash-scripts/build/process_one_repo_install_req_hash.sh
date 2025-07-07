@@ -2,21 +2,25 @@
 # comfyui-union2/bash-scripts/build/process_repos-install-req.sh
 
 # данная версия также сравнивает хеш последнего комита
+# Добавлен третий необязательный параметр для указания директории установки
 
-BASE_INSTALL_DIR="/workspace/ComfyUI/custom_nodes/"
+# --- Параметры ---
 GIT_REPO="${1}" # Принимаем URL репозитория как первый аргумент
 INSTALL_DEPS="${2:-true}" # Принимаем второй параметр для установки зависимостей, по умолчанию true
+BASE_INSTALL_DIR="${3:-/workspace/ComfyUI/custom_nodes/}" # Принимаем третий параметр для пути установки
 
-# Проверяем, был ли передан URL
+# --- Проверка параметров ---
 if [ -z "$GIT_REPO" ]; then
     echo "ERROR: URL репозитория не указан."
-    echo "Пример использования: $0 https://github.com/user/repo [true|false]"
+    echo "Пример использования: $0 <URL репозитория> [true|false] [/путь/установки]"
     exit 1
 fi
 
 echo "DEBUG: Обработка репозитория: $GIT_REPO"
 echo "DEBUG: Устанавливать зависимости: $INSTALL_DEPS"
+echo "DEBUG: Базовая директория установки: $BASE_INSTALL_DIR"
 
+# --- Основные переменные ---
 REPO_NAME=$(basename "$GIT_REPO" .git | sed 's/\r$//')
 INSTALL_DIR="$BASE_INSTALL_DIR"
 CACHE_DIR="/root/repo-cache/$REPO_NAME"
@@ -24,6 +28,8 @@ CACHED_HASH_FILE="$CACHE_DIR/.last_hash"
 
 echo -e "\e[1;31mDEBUG: имя репозитория: $REPO_NAME\e[0m"
 echo "DEBUG: Используется INSTALL_DIR: $INSTALL_DIR"
+
+# --- Логика кеширования и установки ---
 
 # Получаем последний хеш с сервера
 REMOTE_HASH=$(git ls-remote "$GIT_REPO" HEAD | awk '{print $1}')
