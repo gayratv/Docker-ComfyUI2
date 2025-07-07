@@ -18,7 +18,7 @@ https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plus
 
 # ip-adapter-faceid-plusv2_sdxl_lora.safetensors
 https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sdxl_lora.safetensors
-    dir=models/ipadapter
+    dir=models/loras/ipadapter/SDXL
     out=ip-adapter-faceid-plusv2_sdxl_lora.safetensors
 
 # CLIPVision model (IP-Adapter) CLIP-ViT-H-14-laion2B-s32B-b79K
@@ -58,3 +58,27 @@ https://huggingface.co/Gayrat1968/Upscale_Models/resolve/main/4xFaceUpDAT.pth
 https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/OmniSR_X2_DIV2K.safetensors
     dir=models/upscale_models
     out=OmniSR_X2_DIV2K.safetensors
+
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/1k3d68.onnx
+      dir=models/insightface/models/antelopev2
+      out=1k3d68.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/2d106det.onnx
+      dir=models/insightface/models/antelopev2
+      out=2d106det.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/genderage.onnx
+      dir=models/insightface/models/antelopev2
+      out=genderage.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/glintr100.onnx
+      dir=models/insightface/models/antelopev2
+      out=glintr100.onnx
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/readme.md
+      dir=models/insightface/models/antelopev2
+      out=readme.md
+https://huggingface.co/Gayrat1968/antelopev2/resolve/main/scrfd_10g_bnkps.onnx
+      dir=models/insightface/models/antelopev2
+      out=scrfd_10g_bnkps.onnx
+
+
+https://huggingface.co/ezioruan/inswapper_128.onnx/resolve/main/inswapper_128.onnx
+    out=inswapper_128.onnx
+    dir=models/insightface

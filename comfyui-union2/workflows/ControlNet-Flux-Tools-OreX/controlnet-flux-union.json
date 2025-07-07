@@ -1,15 +1,15 @@
 {
   "id": "c55ccc4b-0689-4249-861d-46f5b0d18305",
   "revision": 0,
-  "last_node_id": 56,
-  "last_link_id": 134,
+  "last_node_id": 57,
+  "last_link_id": 136,
   "nodes": [
     {
       "id": 28,
       "type": "Anything Everywhere?",
       "pos": [
-        -574.7265014648438,
-        517.1842651367188
+        -850.7265014648438,
+        479.58441162109375
       ],
       "size": [
         239.10000610351562,
@@ -32,12 +32,12 @@
       "outputs": [],
       "title": "control_net",
       "properties": {
-        "cnr_id": "cg-use-everywhere",
+        "aux_id": "chrisgoringe/cg-use-everywhere",
         "ver": "6.0.3",
         "Node name for S&R": "Anything Everywhere?",
         "group_restricted": 0,
         "color_restricted": 0,
-        "aux_id": "chrisgoringe/cg-use-everywhere",
+        "cnr_id": "cg-use-everywhere",
         "widget_ue_connectable": {}
       },
       "widgets_values": [
@@ -52,8 +52,8 @@
       "id": 34,
       "type": "ControlNetLoader",
       "pos": [
-        -1049.9073486328125,
-        475.62176513671875
+        -1325.907470703125,
+        438.02191162109375
       ],
       "size": [
         412.01513671875,
@@ -89,8 +89,8 @@
       "id": 32,
       "type": "DualCLIPLoader",
       "pos": [
-        -1065.676025390625,
-        158.79098510742188
+        -1341.676025390625,
+        121.19097900390625
       ],
       "size": [
         371.1000061035156,
@@ -190,8 +190,8 @@
       "id": 31,
       "type": "VAELoader",
       "pos": [
-        -1057.236572265625,
-        354.9557189941406
+        -1333.236572265625,
+        317.3558349609375
       ],
       "size": [
         342.8299865722656,
@@ -225,157 +225,11 @@
       "bgcolor": "#335"
     },
     {
-      "id": 35,
-      "type": "LoraLoader",
-      "pos": [
-        -606.1856689453125,
-        15.854716300964355
-      ],
-      "size": [
-        361.2173767089844,
-        126
-      ],
-      "flags": {},
-      "order": 11,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 40
-        },
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 41
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            103
-          ]
-        },
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "links": [
-            101
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.30",
-        "Node name for S&R": "LoraLoader",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "Flux/TinkerBellV2-FLUX.safetensors",
-        0.9000000000000001,
-        1
-      ],
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
-      "id": 53,
-      "type": "Anything Everywhere3",
-      "pos": [
-        -543.4237670898438,
-        237.44163513183594
-      ],
-      "size": [
-        179.97518920898438,
-        66
-      ],
-      "flags": {},
-      "order": 17,
-      "mode": 0,
-      "inputs": [
-        {
-          "color_on": "#B39DDB",
-          "label": "MODEL",
-          "name": "anything",
-          "shape": 7,
-          "type": "*",
-          "link": 103
-        },
-        {
-          "color_on": "#FFD500",
-          "label": "CLIP",
-          "name": "anything2",
-          "shape": 7,
-          "type": "*",
-          "link": 101
-        },
-        {
-          "color_on": "#FF6E6E",
-          "label": "VAE",
-          "name": "anything3",
-          "shape": 7,
-          "type": "*",
-          "link": 102
-        }
-      ],
-      "outputs": [],
-      "properties": {
-        "cnr_id": "cg-use-everywhere",
-        "ver": "3bb64a53dbdfce7696426916077544639472c515",
-        "Node name for S&R": "Anything Everywhere3",
-        "group_restricted": 0,
-        "color_restricted": 0,
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": []
-    },
-    {
-      "id": 33,
-      "type": "UNETLoader",
-      "pos": [
-        -1066.106689453125,
-        15.943278312683105
-      ],
-      "size": [
-        377.1470642089844,
-        82
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "label": "MODEL",
-          "name": "MODEL",
-          "type": "MODEL",
-          "slot_index": 0,
-          "links": [
-            40
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.30",
-        "Node name for S&R": "UNETLoader",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "Flux/flux1-dev-fp8-e4m3fn.safetensors",
-        "default"
-      ],
-      "color": "#223",
-      "bgcolor": "#335"
-    },
-    {
       "id": 46,
       "type": "FluxGuidance",
       "pos": [
-        344.85406494140625,
-        108.30921936035156
+        514.4540405273438,
+        -94.89085388183594
       ],
       "size": [
         211.60000610351562,
@@ -384,7 +238,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 12,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
@@ -419,8 +273,8 @@
       "id": 38,
       "type": "ConditioningZeroOut",
       "pos": [
-        325.5626220703125,
-        251.7513885498047
+        495.16259765625,
+        48.55131530761719
       ],
       "size": [
         240,
@@ -429,7 +283,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 13,
+      "order": 12,
       "mode": 0,
       "inputs": [
         {
@@ -459,15 +313,15 @@
       "id": 54,
       "type": "Prompts Everywhere",
       "pos": [
-        635.2778930664062,
-        147.4912872314453
+        804.8778686523438,
+        -55.70878601074219
       ],
       "size": [
         169.83065795898438,
         46
       ],
       "flags": {},
-      "order": 18,
+      "order": 17,
       "mode": 0,
       "inputs": [
         {
@@ -489,12 +343,13 @@
       ],
       "outputs": [],
       "properties": {
-        "cnr_id": "cg-use-everywhere",
+        "aux_id": "chrisgoringe/cg-use-everywhere",
         "ver": "3bb64a53dbdfce7696426916077544639472c515",
-        "widget_ue_connectable": {},
         "Node name for S&R": "Prompts Everywhere",
         "group_restricted": 0,
-        "color_restricted": 0
+        "color_restricted": 0,
+        "cnr_id": "cg-use-everywhere",
+        "widget_ue_connectable": {}
       },
       "widgets_values": []
     },
@@ -502,8 +357,8 @@
       "id": 45,
       "type": "CLIPTextEncode",
       "pos": [
-        -33.34725570678711,
-        116.61389923095703
+        136.25271606445312,
+        -86.58617401123047
       ],
       "size": [
         329.5238037109375,
@@ -512,7 +367,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 4,
+      "order": 3,
       "mode": 0,
       "inputs": [
         {
@@ -560,7 +415,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 22,
+      "order": 23,
       "mode": 0,
       "inputs": [
         {
@@ -578,10 +433,10 @@
       ],
       "outputs": [],
       "properties": {
-        "cnr_id": "rgthree-comfy",
+        "aux_id": "rgthree/rgthree-comfy",
         "ver": "f754c4765849aa748abb35a1f030a5ed6474a69b",
         "comparer_mode": "Slide",
-        "aux_id": "rgthree/rgthree-comfy",
+        "cnr_id": "rgthree-comfy",
         "widget_ue_connectable": {}
       },
       "widgets_values": [
@@ -613,7 +468,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 21,
+      "order": 22,
       "mode": 0,
       "inputs": [
         {
@@ -656,7 +511,7 @@
         106
       ],
       "flags": {},
-      "order": 5,
+      "order": 4,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -692,7 +547,7 @@
         186
       ],
       "flags": {},
-      "order": 19,
+      "order": 18,
       "mode": 0,
       "inputs": [
         {
@@ -764,7 +619,7 @@
         470.00006103515625
       ],
       "flags": {},
-      "order": 6,
+      "order": 5,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -797,9 +652,10 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfyui-rmbg",
+        "aux_id": "1038lab/ComfyUI-RMBG",
         "ver": "2.5.0",
         "Node name for S&R": "AILab_LoadImage",
+        "cnr_id": "comfyui-rmbg",
         "widget_ue_connectable": {}
       },
       "widgets_values": [
@@ -827,7 +683,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 14,
+      "order": 13,
       "mode": 0,
       "inputs": [
         {
@@ -842,12 +698,13 @@
       "outputs": [],
       "title": "IMAGE",
       "properties": {
-        "cnr_id": "cg-use-everywhere",
+        "aux_id": "chrisgoringe/cg-use-everywhere",
         "ver": "3bb64a53dbdfce7696426916077544639472c515",
-        "widget_ue_connectable": {},
         "Node name for S&R": "Anything Everywhere",
         "group_restricted": 0,
-        "color_restricted": 0
+        "color_restricted": 0,
+        "cnr_id": "cg-use-everywhere",
+        "widget_ue_connectable": {}
       },
       "widgets_values": []
     },
@@ -863,7 +720,7 @@
         58
       ],
       "flags": {},
-      "order": 7,
+      "order": 6,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -899,7 +756,7 @@
         460.6763000488281
       ],
       "flags": {},
-      "order": 16,
+      "order": 15,
       "mode": 0,
       "inputs": [
         {
@@ -929,11 +786,13 @@
         88
       ],
       "flags": {},
-      "order": 8,
+      "order": 7,
       "mode": 0,
       "inputs": [],
       "outputs": [],
-      "properties": {},
+      "properties": {
+        "widget_ue_connectable": {}
+      },
       "widgets_values": [
         "В этих двух нодах препроцессоры надо выбирать согласованно"
       ],
@@ -952,7 +811,7 @@
         63.80805969238281
       ],
       "flags": {},
-      "order": 15,
+      "order": 14,
       "mode": 0,
       "inputs": [
         {
@@ -994,7 +853,7 @@
         82
       ],
       "flags": {},
-      "order": 9,
+      "order": 8,
       "mode": 0,
       "inputs": [
         {
@@ -1014,10 +873,10 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfyui_controlnet_aux",
+        "aux_id": "Fannovel16/comfyui_controlnet_aux",
         "ver": "59b027e088c1c8facf7258f6e392d16d204b4d27",
         "Node name for S&R": "AIO_Preprocessor",
-        "aux_id": "Fannovel16/comfyui_controlnet_aux",
+        "cnr_id": "comfyui_controlnet_aux",
         "widget_ue_connectable": {}
       },
       "widgets_values": [
@@ -1026,6 +885,198 @@
       ],
       "color": "#2a363b",
       "bgcolor": "#3f5159"
+    },
+    {
+      "id": 35,
+      "type": "LoraLoader",
+      "pos": [
+        -554.9299926757812,
+        56.84761047363281
+      ],
+      "size": [
+        361.2173767089844,
+        126
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 136
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 41
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            103
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            101
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "LoraLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Flux/TinkerBellV2-FLUX.safetensors",
+        0.9000000000000001,
+        1
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 33,
+      "type": "UNETLoader",
+      "pos": [
+        -1342.106689453125,
+        -21.656726837158203
+      ],
+      "size": [
+        377.1470642089844,
+        82
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            135
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "UNETLoader",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Flux/flux1-dev-fp8-e4m3fn.safetensors",
+        "default"
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 57,
+      "type": "ModelSamplingFlux",
+      "pos": [
+        -888.7947387695312,
+        -47.856231689453125
+      ],
+      "size": [
+        270,
+        130
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 135
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            136
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.43",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "ModelSamplingFlux"
+      },
+      "widgets_values": [
+        1.15,
+        0.5,
+        1024,
+        1024
+      ],
+      "color": "#332922",
+      "bgcolor": "#593930"
+    },
+    {
+      "id": 53,
+      "type": "Anything Everywhere3",
+      "pos": [
+        -781.0237426757812,
+        285.44183349609375
+      ],
+      "size": [
+        179.97518920898438,
+        66
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "color_on": "#B39DDB",
+          "label": "MODEL",
+          "name": "anything",
+          "shape": 7,
+          "type": "*",
+          "link": 103
+        },
+        {
+          "color_on": "#FFD500",
+          "label": "CLIP",
+          "name": "anything2",
+          "shape": 7,
+          "type": "*",
+          "link": 101
+        },
+        {
+          "color_on": "#FF6E6E",
+          "label": "VAE",
+          "name": "anything3",
+          "shape": 7,
+          "type": "*",
+          "link": 102
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "aux_id": "chrisgoringe/cg-use-everywhere",
+        "ver": "3bb64a53dbdfce7696426916077544639472c515",
+        "Node name for S&R": "Anything Everywhere3",
+        "group_restricted": 0,
+        "color_restricted": 0,
+        "cnr_id": "cg-use-everywhere",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
     }
   ],
   "links": [
@@ -1052,14 +1103,6 @@
       28,
       0,
       "*"
-    ],
-    [
-      40,
-      33,
-      0,
-      35,
-      0,
-      "MODEL"
     ],
     [
       41,
@@ -1204,6 +1247,22 @@
       55,
       0,
       "IMAGE"
+    ],
+    [
+      135,
+      33,
+      0,
+      57,
+      0,
+      "MODEL"
+    ],
+    [
+      136,
+      57,
+      0,
+      35,
+      0,
+      "MODEL"
     ]
   ],
   "groups": [
@@ -1211,10 +1270,10 @@
       "id": 1,
       "title": "Loader",
       "bounding": [
-        -1088.1805419921875,
-        -85.53157043457031,
-        865.0563354492188,
-        749.4613037109375
+        -1364.1806640625,
+        -123.13157653808594,
+        1210.317626953125,
+        668.3670043945312
       ],
       "color": "#88A",
       "font_size": 24,
@@ -1224,8 +1283,8 @@
       "id": 2,
       "title": "Prompt",
       "bounding": [
-        -43.34725570678711,
-        34.70922088623047,
+        126.25271606445312,
+        -168.4908447265625,
         858.4557495117188,
         288.2225036621094
       ],
@@ -1331,8 +1390,8 @@
     "ds": {
       "scale": 0.5644739300537773,
       "offset": [
-        512.694683387205,
-        -125.92372684614207
+        1770.0096439328752,
+        430.3912592548509
       ]
     },
     "links_added_by_ue": [

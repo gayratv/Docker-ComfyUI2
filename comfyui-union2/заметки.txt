@@ -663,6 +663,7 @@ https://www.patreon.com/posts/how-to-create-no-127791231
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 ./workflow-new-image.sh "SDXL_Consistent_Character"
 
+source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 export MODELS="SDXL_Consistent_Character"
 export WORKFLOW_TO_COPY=$MODELS
@@ -673,8 +674,21 @@ export COMFYUI_VERSION="v0.3.40"
 export BASE_IMAGE="cuda-12-6:nvidia-runtime"
 export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
 export REQ_MODIFY="base-CUDA-12.6"
+export POST_INSTALL="SDXL_Consistent_Character.sh"
 
 ./dl_common.sh SDXL_Consistent_Character
+
+python3 python-prg-pre-build/sync_dir.py "$MODELS"
+./db-gen.sh
+./clear-comfy-data.sh
+
+rsync -avh --progress /mnt/h/ComfyUI-data/models/ /mnt/d/ComfyUI-data/models/
+
+H:\ComfyUI-data\models
+/mnt/h/ComfyUI-data/models
+/mnt/d/ComfyUI-data/models
+D:\ComfyUI-data\models
+
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
@@ -854,7 +868,7 @@ python3 python-prg-pre-build/sync_dir.py "$MODELS"
 ./clear-comfy-data.sh
 export POST_INSTALL="FluxKontext.sh"
 
-
+./db-gen.sh
 
 ./dl_common.sh FluxKontext
 
@@ -889,6 +903,38 @@ python3 python-prg-pre-build/sync_dir.py "$MODELS"
 export POST_INSTALL="Upscalers.sh"
 
 ./dl_common.sh Upscalers
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+ComfyUI Studio
+https://www.patreon.com/ComfyUI
+Consistent_Character
+
+https://www.youtube.com/watch?v=bWDtPPk9UOQ
+https://www.patreon.com/posts/how-to-create-no-127791231
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+./workflow-new-image.sh "Consistent_Character_Comf_studio"
+
+source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+export MODELS="Consistent_Character_Comf_studio"
+export WORKFLOW_TO_COPY=$MODELS
+export VERSION="$MODELS-CUDA12.6"
+export NODES="$MODELS.txt"
+export IMAGE_NAME="comfyui-union2"
+export COMFYUI_VERSION="v0.3.40"
+export BASE_IMAGE="cuda-12-6:nvidia-runtime"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
+export REQ_MODIFY="base-CUDA-12.6"
+export POST_INSTALL="Consistent_Character_Comf_studio.sh"
+
+./dl_common.sh "$MODELS"
+
+python3 python-prg-pre-build/sync_dir.py "$MODELS"
+./db-gen.sh
+./clear-comfy-data.sh
+
+rsync -avh --progress /mnt/h/ComfyUI-data/models/ /mnt/d/ComfyUI-data/models/
+
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
 
