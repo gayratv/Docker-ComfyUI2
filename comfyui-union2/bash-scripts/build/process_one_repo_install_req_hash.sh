@@ -5,15 +5,17 @@
 
 BASE_INSTALL_DIR="/workspace/ComfyUI/custom_nodes/"
 GIT_REPO="${1}" # Принимаем URL репозитория как первый аргумент
+INSTALL_DEPS="${2:-true}" # Принимаем второй параметр для установки зависимостей, по умолчанию true
 
 # Проверяем, был ли передан URL
 if [ -z "$GIT_REPO" ]; then
     echo "ERROR: URL репозитория не указан."
-    echo "Пример использования: $0 https://github.com/user/repo"
+    echo "Пример использования: $0 https://github.com/user/repo [true|false]"
     exit 1
 fi
 
 echo "DEBUG: Обработка репозитория: $GIT_REPO"
+echo "DEBUG: Устанавливать зависимости: $INSTALL_DEPS"
 
 REPO_NAME=$(basename "$GIT_REPO" .git | sed 's/\r$//')
 INSTALL_DIR="$BASE_INSTALL_DIR"
@@ -62,22 +64,27 @@ else
     echo "$REMOTE_HASH" > "$CACHED_HASH_FILE"
 fi
 
-# Переходим внутрь репозитория
-cd "$REPO_NAME" || { echo "ERROR: не удалось перейти в $REPO_NAME"; exit 1; }
+# Устанавливаем зависимости только если INSTALL_DEPS=true
+if [ "$INSTALL_DEPS" = true ]; then
+    # Переходим внутрь репозитория
+    cd "$REPO_NAME" || { echo "ERROR: не удалось перейти в $REPO_NAME"; exit 1; }
 
-# Устанавливаем зависимости (если есть requirements.txt)
-if [ -f "requirements.txt" ]; then
-    echo "Установка зависимостей Python из requirements.txt (исключая torch)..."
-    TMP_REQ=$(mktemp)
-    grep -v '^torch' requirements.txt | grep -v '^#' | grep . > "$TMP_REQ"
-    if [ -s "$TMP_REQ" ]; then
-        python3 -m pip install --cache-dir "${PIP_CACHE_DIR:-/root/pip-cache}" -r "$TMP_REQ" 2> pip_error.log || {
-            echo "ERROR: Не удалось установить зависимости. См. pip_error.log."
-            rm "$TMP_REQ"
-            exit 1
-        }
+    # Устанавливаем зависимости (если есть requirements.txt)
+    if [ -f "requirements.txt" ]; then
+        echo "Установка зависимостей Python из requirements.txt (исключая torch)..."
+        TMP_REQ=$(mktemp)
+        grep -v '^torch' requirements.txt | grep -v '^#' | grep . > "$TMP_REQ"
+        if [ -s "$TMP_REQ" ]; then
+            python3 -m pip install --cache-dir "${PIP_CACHE_DIR:-/root/pip-cache}" -r "$TMP_REQ" 2> pip_error.log || {
+                echo "ERROR: Не удалось установить зависимости. См. pip_error.log."
+                rm "$TMP_REQ"
+                exit 1
+            }
+        fi
+        rm "$TMP_REQ"
+    else
+        echo "Файл requirements.txt не найден в $REPO_NAME."
     fi
-    rm "$TMP_REQ"
 else
-    echo "Файл requirements.txt не найден в $REPO_NAME."
+    echo "INFO: Пропуск установки зависимостей для $REPO_NAME по команде."
 fi
