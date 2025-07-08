@@ -79,6 +79,11 @@ RUN if [ -n "$ARIA2_MODEL_DIRS" ]; then \
     fi && \
     chmod +x *.sh && chmod +x ./templates/*.sh && rm -f ./templates/.env
 
+
+WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI-CSV-Loader/CSV/
+COPY assets-docker/CSV ./
+
+
 WORKDIR /workspace/ComfyUI
 
 CMD ["bash"]
