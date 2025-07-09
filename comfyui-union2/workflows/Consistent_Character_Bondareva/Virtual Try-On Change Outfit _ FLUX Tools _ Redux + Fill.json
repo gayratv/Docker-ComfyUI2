@@ -1,0 +1,1962 @@
+{
+  "extra": {
+    "ds": {
+      "scale": 0.7513148009015777,
+      "offset": [
+        102.81009059554844,
+        -445.628151691913
+      ]
+    },
+    "groupNodes": {}
+  },
+  "links": [
+    [
+      1,
+      2,
+      0,
+      3,
+      0,
+      "IMAGE"
+    ],
+    [
+      3,
+      5,
+      0,
+      7,
+      0,
+      "MODEL"
+    ],
+    [
+      5,
+      9,
+      0,
+      11,
+      0,
+      "CLIP"
+    ],
+    [
+      6,
+      10,
+      0,
+      12,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      7,
+      11,
+      0,
+      13,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      8,
+      8,
+      0,
+      13,
+      2,
+      "VAE"
+    ],
+    [
+      9,
+      13,
+      0,
+      7,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      10,
+      13,
+      1,
+      7,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      11,
+      13,
+      2,
+      7,
+      3,
+      "LATENT"
+    ],
+    [
+      12,
+      8,
+      0,
+      14,
+      1,
+      "VAE"
+    ],
+    [
+      13,
+      7,
+      0,
+      14,
+      0,
+      "LATENT"
+    ],
+    [
+      14,
+      15,
+      0,
+      18,
+      1,
+      "STYLE_MODEL"
+    ],
+    [
+      15,
+      16,
+      0,
+      17,
+      0,
+      "CLIP_VISION"
+    ],
+    [
+      16,
+      17,
+      0,
+      18,
+      2,
+      "CLIP_VISION_OUTPUT"
+    ],
+    [
+      25,
+      30,
+      0,
+      32,
+      0,
+      "IMAGE"
+    ],
+    [
+      29,
+      3,
+      1,
+      30,
+      0,
+      "IMAGE"
+    ],
+    [
+      31,
+      30,
+      3,
+      41,
+      0,
+      "INT"
+    ],
+    [
+      32,
+      30,
+      4,
+      41,
+      1,
+      "INT"
+    ],
+    [
+      33,
+      42,
+      1,
+      43,
+      0,
+      "INT"
+    ],
+    [
+      34,
+      43,
+      0,
+      21,
+      2,
+      "INT"
+    ],
+    [
+      37,
+      30,
+      3,
+      21,
+      3,
+      "INT"
+    ],
+    [
+      38,
+      21,
+      0,
+      51,
+      0,
+      "IMAGE"
+    ],
+    [
+      39,
+      4,
+      1,
+      38,
+      1,
+      "MASK"
+    ],
+    [
+      41,
+      18,
+      0,
+      13,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      42,
+      12,
+      0,
+      18,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      43,
+      38,
+      1,
+      35,
+      0,
+      "MASK"
+    ],
+    [
+      46,
+      38,
+      0,
+      32,
+      1,
+      "IMAGE"
+    ],
+    [
+      47,
+      36,
+      0,
+      37,
+      0,
+      "IMAGE"
+    ],
+    [
+      48,
+      37,
+      0,
+      13,
+      4,
+      "MASK"
+    ],
+    [
+      49,
+      32,
+      0,
+      13,
+      3,
+      "IMAGE"
+    ],
+    [
+      52,
+      35,
+      0,
+      36,
+      1,
+      "IMAGE"
+    ],
+    [
+      53,
+      41,
+      0,
+      36,
+      0,
+      "IMAGE"
+    ],
+    [
+      54,
+      38,
+      3,
+      21,
+      1,
+      "INT"
+    ],
+    [
+      55,
+      4,
+      0,
+      38,
+      0,
+      "IMAGE"
+    ],
+    [
+      56,
+      30,
+      0,
+      17,
+      1,
+      "IMAGE"
+    ],
+    [
+      57,
+      1,
+      0,
+      54,
+      0,
+      "MODEL"
+    ],
+    [
+      58,
+      54,
+      0,
+      5,
+      0,
+      "MODEL"
+    ],
+    [
+      59,
+      9,
+      0,
+      54,
+      1,
+      "CLIP"
+    ],
+    [
+      60,
+      54,
+      1,
+      10,
+      0,
+      "CLIP"
+    ],
+    [
+      62,
+      14,
+      0,
+      42,
+      0,
+      "IMAGE"
+    ],
+    [
+      63,
+      14,
+      0,
+      21,
+      0,
+      "IMAGE"
+    ],
+    [
+      64,
+      30,
+      0,
+      56,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "nodes": [
+    {
+      "id": 11,
+      "pos": {
+        "0": 744.0140380859375,
+        "1": 224.74411010742188
+      },
+      "mode": 0,
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "type": "CLIPTextEncode",
+      "flags": {},
+      "order": 7,
+      "inputs": [
+        {
+          "link": 5,
+          "name": "clip",
+          "type": "CLIP",
+          "label": "clip"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "label": "CONDITIONING",
+          "links": [
+            7
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 15,
+      "pos": {
+        "0": 1137.906005859375,
+        "1": 787.757080078125
+      },
+      "mode": 0,
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "type": "StyleModelLoader",
+      "flags": {},
+      "order": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STYLE_MODEL",
+          "type": "STYLE_MODEL",
+          "label": "STYLE_MODEL",
+          "links": [
+            14
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StyleModelLoader"
+      },
+      "widgets_values": [
+        "flux1-redux-dev.safetensors"
+      ]
+    },
+    {
+      "id": 16,
+      "pos": {
+        "0": 1137.906005859375,
+        "1": 897.757080078125
+      },
+      "mode": 0,
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "type": "CLIPVisionLoader",
+      "flags": {},
+      "order": 1,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP_VISION",
+          "type": "CLIP_VISION",
+          "label": "CLIP_VISION",
+          "links": [
+            15
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPVisionLoader"
+      },
+      "widgets_values": [
+        "sigclip_vision_patch14_384.safetensors"
+      ]
+    },
+    {
+      "id": 43,
+      "pos": {
+        "0": 1608.634765625,
+        "1": 921.5216064453124
+      },
+      "mode": 0,
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "type": "easy int",
+      "color": "#232",
+      "flags": {},
+      "order": 27,
+      "inputs": [
+        {
+          "link": 33,
+          "name": "value",
+          "type": "INT",
+          "label": "value",
+          "widget": {
+            "name": "value"
+          }
+        }
+      ],
+      "bgcolor": "#353",
+      "outputs": [
+        {
+          "name": "int",
+          "type": "INT",
+          "label": "int",
+          "links": [
+            34
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "easy int"
+      },
+      "widgets_values": [
+        0
+      ]
+    },
+    {
+      "id": 51,
+      "pos": {
+        "0": 1620,
+        "1": 1268
+      },
+      "mode": 0,
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "type": "SaveImage",
+      "flags": {},
+      "order": 29,
+      "inputs": [
+        {
+          "link": 38,
+          "name": "images",
+          "type": "IMAGE",
+          "label": "images"
+        }
+      ],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "TensorArt"
+      ]
+    },
+    {
+      "id": 41,
+      "pos": {
+        "0": 2227.90234375,
+        "1": 117.16252899169922
+      },
+      "mode": 0,
+      "size": {
+        "0": 315,
+        "1": 130
+      },
+      "type": "EmptyImage",
+      "flags": {},
+      "order": 19,
+      "inputs": [
+        {
+          "link": 31,
+          "name": "width",
+          "type": "INT",
+          "label": "width",
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "link": 32,
+          "name": "height",
+          "type": "INT",
+          "label": "height",
+          "widget": {
+            "name": "height"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "label": "IMAGE",
+          "links": [
+            53
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyImage"
+      },
+      "widgets_values": [
+        512,
+        512,
+        1,
+        0
+      ]
+    },
+    {
+      "id": 35,
+      "pos": {
+        "0": 2237.90234375,
+        "1": 327.1625671386719
+      },
+      "mode": 0,
+      "size": {
+        "0": 264.5999755859375,
+        "1": 26
+      },
+      "type": "MaskToImage",
+      "flags": {},
+      "order": 14,
+      "inputs": [
+        {
+          "link": 43,
+          "name": "mask",
+          "type": "MASK",
+          "label": "mask"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "label": "IMAGE",
+          "links": [
+            52
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MaskToImage"
+      }
+    },
+    {
+      "id": 36,
+      "pos": {
+        "0": 2237.90234375,
+        "1": 407.1625671386719
+      },
+      "mode": 0,
+      "size": {
+        "0": 315,
+        "1": 102
+      },
+      "type": "ImageConcanate",
+      "flags": {},
+      "order": 21,
+      "inputs": [
+        {
+          "link": 53,
+          "name": "image1",
+          "type": "IMAGE",
+          "label": "image1"
+        },
+        {
+          "link": 52,
+          "name": "image2",
+          "type": "IMAGE",
+          "label": "image2"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "label": "IMAGE",
+          "links": [
+            47
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageConcanate"
+      },
+      "widgets_values": [
+        "right",
+        true
+      ]
+    },
+    {
+      "id": 37,
+      "pos": {
+        "0": 2237.90234375,
+        "1": 597.16259765625
+      },
+      "mode": 0,
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "type": "ImageToMask",
+      "flags": {},
+      "order": 22,
+      "inputs": [
+        {
+          "link": 47,
+          "name": "image",
+          "type": "IMAGE",
+          "label": "image"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "label": "MASK",
+          "links": [
+            48
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageToMask"
+      },
+      "widgets_values": [
+        "green"
+      ]
+    },
+    {
+      "id": 32,
+      "pos": {
+        "0": 2227.76513671875,
+        "1": -42.36299133300781
+      },
+      "mode": 0,
+      "size": {
+        "0": 315,
+        "1": 102
+      },
+      "type": "ImageConcanate",
+      "flags": {},
+      "order": 16,
+      "inputs": [
+        {
+          "link": 25,
+          "name": "image1",
+          "type": "IMAGE",
+          "label": "image1"
+        },
+        {
+          "link": 46,
+          "name": "image2",
+          "type": "IMAGE",
+          "label": "image2"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "label": "IMAGE",
+          "links": [
+            49
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageConcanate"
+      },
+      "widgets_values": [
+        "right",
+        true
+      ]
+    },
+    {
+      "id": 13,
+      "pos": {
+        "0": 1174.013916015625,
+        "1": -30.255992889404297
+      },
+      "mode": 0,
+      "size": {
+        "0": 315,
+        "1": 138
+      },
+      "type": "InpaintModelConditioning",
+      "flags": {},
+      "order": 23,
+      "inputs": [
+        {
+          "link": 41,
+          "name": "positive",
+          "type": "CONDITIONING",
+          "label": "positive"
+        },
+        {
+          "link": 7,
+          "name": "negative",
+          "type": "CONDITIONING",
+          "label": "negative"
+        },
+        {
+          "link": 8,
+          "name": "vae",
+          "type": "VAE",
+          "label": "vae"
+        },
+        {
+          "link": 49,
+          "name": "pixels",
+          "type": "IMAGE",
+          "label": "pixels"
+        },
+        {
+          "link": 48,
+          "name": "mask",
+          "type": "MASK",
+          "label": "mask"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "label": "positive",
+          "links": [
+            9
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "label": "negative",
+          "links": [
+            10
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "label": "latent",
+          "links": [
+            11
+          ],
+          "shape": 3,
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "InpaintModelConditioning"
+      },
+      "widgets_values": [
+        false
+      ]
+    },
+    {
+      "id": 14,
+      "pos": {
+        "0": 1219.013916015625,
+        "1": 483.74420166015625
+      },
+      "mode": 0,
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "type": "VAEDecode",
+      "flags": {},
+      "order": 25,
+      "inputs": [
+        {
+          "link": 13,
+          "name": "samples",
+          "type": "LATENT",
+          "label": "samples"
+        },
+        {
+          "link": 12,
+          "name": "vae",
+          "type": "VAE",
+          "label": "vae"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "label": "IMAGE",
+          "links": [
+            62,
+            63
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 8,
+      "pos": {
+        "0": 385,
+        "1": 454
+      },
+      "mode": 0,
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "type": "VAELoader",
+      "flags": {},
+      "order": 2,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "label": "VAE",
+          "links": [
+            8,
+            12
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "ae.sft"
+      ]
+    },
+    {
+      "id": 9,
+      "pos": {
+        "0": 383,
+        "1": 548
+      },
+      "mode": 0,
+      "size": {
+        "0": 315,
+        "1": 130
+      },
+      "type": "DualCLIPLoader",
+      "flags": {},
+      "order": 3,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "label": "CLIP",
+          "links": [
+            5,
+            59
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DualCLIPLoader"
+      },
+      "widgets_values": [
+        "clip_l_sdxl_base.safetensors",
+        "t5xxl_fp16.safetensors",
+        "flux",
+        "default"
+      ]
+    },
+    {
+      "id": 5,
+      "pos": {
+        "0": 396,
+        "1": 384
+      },
+      "mode": 0,
+      "size": {
+        "0": 277.20001220703125,
+        "1": 26
+      },
+      "type": "DifferentialDiffusion",
+      "flags": {},
+      "order": 11,
+      "inputs": [
+        {
+          "link": 58,
+          "name": "model",
+          "type": "MODEL",
+          "label": "model"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "label": "MODEL",
+          "links": [
+            3
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DifferentialDiffusion"
+      }
+    },
+    {
+      "id": 54,
+      "pos": {
+        "0": 393,
+        "1": 153
+      },
+      "mode": 0,
+      "size": {
+        "0": 315,
+        "1": 192
+      },
+      "type": "TensorArt_LoraLoader",
+      "flags": {},
+      "order": 8,
+      "inputs": [
+        {
+          "link": 57,
+          "name": "model",
+          "type": "MODEL",
+          "label": "model"
+        },
+        {
+          "link": 59,
+          "name": "clip",
+          "type": "CLIP",
+          "label": "clip"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "label": "MODEL",
+          "links": [
+            58
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "label": "CLIP",
+          "links": [
+            60
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TensorArt_LoraLoader"
+      },
+      "widgets_values": [
+        "784205851075313773",
+        "FLUX.1 Turbo Alpha - 8 Steps - 1.0",
+        1,
+        1,
+        "784205851075313773"
+      ]
+    },
+    {
+      "id": 1,
+      "pos": {
+        "0": 389,
+        "1": -56
+      },
+      "mode": 0,
+      "size": {
+        "0": 327.5999755859375,
+        "1": 164
+      },
+      "type": "TensorArt_CheckpointLoader",
+      "flags": {},
+      "order": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "label": "MODEL",
+          "links": [
+            57
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "label": "CLIP",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "label": "VAE",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TensorArt_CheckpointLoader"
+      },
+      "widgets_values": [
+        "799485016842306392",
+        "FLUX.1 Fill - fp16"
+      ]
+    },
+    {
+      "id": 2,
+      "pos": {
+        "0": 388,
+        "1": 797
+      },
+      "mode": 0,
+      "size": {
+        "0": 315,
+        "1": 314
+      },
+      "type": "TensorArt_LoadImage",
+      "flags": {},
+      "order": 5,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "label": "IMAGE",
+          "links": [
+            1
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "label": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TensorArt_LoadImage"
+      },
+      "widgets_values": [
+        "https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/db0bcbcb-0e8b-403a-8e09-a19c23d747d8.png",
+        "image"
+      ]
+    },
+    {
+      "id": 18,
+      "pos": {
+        "0": 1147.906005859375,
+        "1": 1157.75732421875
+      },
+      "mode": 0,
+      "size": {
+        "0": 393,
+        "1": 122
+      },
+      "type": "StyleModelApply",
+      "flags": {},
+      "order": 20,
+      "inputs": [
+        {
+          "link": 42,
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "label": "conditioning"
+        },
+        {
+          "link": 14,
+          "name": "style_model",
+          "type": "STYLE_MODEL",
+          "label": "style_model"
+        },
+        {
+          "link": 16,
+          "name": "clip_vision_output",
+          "type": "CLIP_VISION_OUTPUT",
+          "label": "clip_vision_output"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "label": "CONDITIONING",
+          "links": [
+            41
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StyleModelApply"
+      },
+      "widgets_values": [
+        1,
+        "multiply"
+      ]
+    },
+    {
+      "id": 38,
+      "pos": {
+        "0": 1667.901611328125,
+        "1": 337.1625671386719
+      },
+      "mode": 0,
+      "size": {
+        "0": 504,
+        "1": 330
+      },
+      "type": "LayerUtility: ImageScaleByAspectRatio V2",
+      "flags": {},
+      "order": 10,
+      "inputs": [
+        {
+          "link": 55,
+          "name": "image",
+          "type": "IMAGE",
+          "label": "image"
+        },
+        {
+          "link": 39,
+          "name": "mask",
+          "type": "MASK",
+          "label": "mask"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "label": "image",
+          "links": [
+            46
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "label": "mask",
+          "links": [
+            43
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "original_size",
+          "type": "BOX",
+          "label": "original_size",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "label": "width",
+          "links": [
+            54
+          ],
+          "shape": 3,
+          "slot_index": 3
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "label": "height",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerUtility: ImageScaleByAspectRatio V2"
+      },
+      "widgets_values": [
+        "original",
+        1,
+        1,
+        "letterbox",
+        "lanczos",
+        "8",
+        "height",
+        1366,
+        "#000000"
+      ]
+    },
+    {
+      "id": 7,
+      "pos": {
+        "0": 1174.013916015625,
+        "1": 162.74404907226562
+      },
+      "mode": 0,
+      "size": {
+        "0": 315,
+        "1": 262
+      },
+      "type": "KSampler",
+      "flags": {},
+      "order": 24,
+      "inputs": [
+        {
+          "link": 3,
+          "name": "model",
+          "type": "MODEL",
+          "label": "model"
+        },
+        {
+          "link": 9,
+          "name": "positive",
+          "type": "CONDITIONING",
+          "label": "positive"
+        },
+        {
+          "link": 10,
+          "name": "negative",
+          "type": "CONDITIONING",
+          "label": "negative"
+        },
+        {
+          "link": 11,
+          "name": "latent_image",
+          "type": "LATENT",
+          "label": "latent_image"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "label": "LATENT",
+          "links": [
+            13
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        73106995327576,
+        "randomize",
+        12,
+        1,
+        "euler",
+        "normal",
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "pos": {
+        "0": 741.22412109375,
+        "1": 798.65771484375
+      },
+      "mode": 0,
+      "size": {
+        "0": 327.5999755859375,
+        "1": 98
+      },
+      "type": "RembgNode_Mix",
+      "flags": {},
+      "order": 9,
+      "inputs": [
+        {
+          "link": 1,
+          "name": "image",
+          "type": "IMAGE",
+          "label": "image"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "masks",
+          "type": "MASK",
+          "label": "masks",
+          "links": null,
+          "shape": 6
+        },
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "label": "images",
+          "links": [
+            29
+          ],
+          "shape": 6,
+          "slot_index": 1
+        },
+        {
+          "name": "RGBAs",
+          "type": "RGBA",
+          "label": "RGBAs",
+          "links": null,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RembgNode_Mix"
+      },
+      "widgets_values": [
+        "RMBG-1.4"
+      ]
+    },
+    {
+      "id": 12,
+      "pos": {
+        "0": 757.0140380859375,
+        "1": 486.74420166015625
+      },
+      "mode": 0,
+      "size": {
+        "0": 317.4000244140625,
+        "1": 58
+      },
+      "type": "FluxGuidance",
+      "flags": {},
+      "order": 15,
+      "inputs": [
+        {
+          "link": 6,
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "label": "conditioning"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "label": "CONDITIONING",
+          "links": [
+            42
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FluxGuidance"
+      },
+      "widgets_values": [
+        50
+      ]
+    },
+    {
+      "id": 21,
+      "pos": {
+        "0": 1618.634765625,
+        "1": 1041.52197265625
+      },
+      "mode": 0,
+      "size": {
+        "0": 315,
+        "1": 130
+      },
+      "type": "ImageCrop",
+      "color": "#232",
+      "flags": {},
+      "order": 28,
+      "inputs": [
+        {
+          "link": 63,
+          "name": "image",
+          "type": "IMAGE",
+          "label": "image"
+        },
+        {
+          "link": 54,
+          "name": "width",
+          "type": "INT",
+          "label": "width",
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "link": 34,
+          "name": "height",
+          "type": "INT",
+          "label": "height",
+          "widget": {
+            "name": "height"
+          }
+        },
+        {
+          "link": 37,
+          "name": "x",
+          "type": "INT",
+          "label": "x",
+          "widget": {
+            "name": "x"
+          }
+        }
+      ],
+      "bgcolor": "#353",
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "label": "IMAGE",
+          "links": [
+            38
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageCrop"
+      },
+      "widgets_values": [
+        512,
+        552,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 56,
+      "pos": {
+        "0": 2607,
+        "1": -75
+      },
+      "mode": 0,
+      "size": {
+        "0": 210,
+        "1": 26
+      },
+      "type": "PreviewImage",
+      "flags": {},
+      "order": 18,
+      "inputs": [
+        {
+          "link": 64,
+          "name": "images",
+          "type": "IMAGE",
+          "label": "images"
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 42,
+      "pos": {
+        "0": 1660,
+        "1": 792
+      },
+      "mode": 0,
+      "size": {
+        "0": 214.20001220703125,
+        "1": 66
+      },
+      "type": "GetImageSize+",
+      "color": "#232",
+      "flags": {},
+      "order": 26,
+      "inputs": [
+        {
+          "link": 62,
+          "name": "image",
+          "type": "IMAGE",
+          "label": "image"
+        }
+      ],
+      "bgcolor": "#353",
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "label": "width",
+          "links": null,
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "label": "height",
+          "links": [
+            33
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "count",
+          "type": "INT",
+          "label": "count",
+          "links": null,
+          "shape": 3,
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "GetImageSize+"
+      }
+    },
+    {
+      "id": 17,
+      "pos": {
+        "0": 1147.906005859375,
+        "1": 1017.7570190429688
+      },
+      "mode": 0,
+      "size": {
+        "0": 380.4000244140625,
+        "1": 78
+      },
+      "type": "CLIPVisionEncode",
+      "flags": {},
+      "order": 17,
+      "inputs": [
+        {
+          "link": 15,
+          "name": "clip_vision",
+          "type": "CLIP_VISION",
+          "label": "clip_vision"
+        },
+        {
+          "link": 56,
+          "name": "image",
+          "type": "IMAGE",
+          "label": "image"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CLIP_VISION_OUTPUT",
+          "type": "CLIP_VISION_OUTPUT",
+          "label": "CLIP_VISION_OUTPUT",
+          "links": [
+            16
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPVisionEncode"
+      },
+      "widgets_values": [
+        "center"
+      ]
+    },
+    {
+      "id": 30,
+      "pos": {
+        "0": 1658,
+        "1": -53
+      },
+      "mode": 0,
+      "size": {
+        "0": 504,
+        "1": 330
+      },
+      "type": "LayerUtility: ImageScaleByAspectRatio V2",
+      "flags": {},
+      "order": 13,
+      "inputs": [
+        {
+          "link": 29,
+          "name": "image",
+          "type": "IMAGE",
+          "label": "image"
+        },
+        {
+          "link": null,
+          "name": "mask",
+          "type": "MASK",
+          "label": "mask"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "label": "image",
+          "links": [
+            25,
+            56,
+            64
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "label": "mask",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "original_size",
+          "type": "BOX",
+          "label": "original_size",
+          "links": null,
+          "shape": 3,
+          "slot_index": 2
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "label": "width",
+          "links": [
+            31,
+            37
+          ],
+          "shape": 3,
+          "slot_index": 3
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "label": "height",
+          "links": [
+            32
+          ],
+          "shape": 3,
+          "slot_index": 4
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerUtility: ImageScaleByAspectRatio V2"
+      },
+      "widgets_values": [
+        "original",
+        1,
+        1,
+        "letterbox",
+        "lanczos",
+        "8",
+        "None",
+        1366,
+        "#000000"
+      ]
+    },
+    {
+      "id": 4,
+      "pos": {
+        "0": 584,
+        "1": 1250
+      },
+      "mode": 0,
+      "size": {
+        "0": 315,
+        "1": 314
+      },
+      "type": "TensorArt_LoadImage",
+      "flags": {},
+      "order": 6,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "label": "IMAGE",
+          "links": [
+            55
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "label": "MASK",
+          "links": [
+            39
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "TensorArt_LoadImage"
+      },
+      "widgets_values": [
+        "https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/e3fef636-aa72-4279-b8b6-94bd2be0fc4f.png",
+        "image"
+      ]
+    },
+    {
+      "id": 10,
+      "pos": {
+        "0": 738.0140380859375,
+        "1": -30.255992889404297
+      },
+      "mode": 0,
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "type": "CLIPTextEncode",
+      "flags": {},
+      "order": 12,
+      "inputs": [
+        {
+          "link": 60,
+          "name": "clip",
+          "type": "CLIP",
+          "label": "clip"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "label": "CONDITIONING",
+          "links": [
+            6
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "a orange glass"
+      ]
+    }
+  ],
+  "config": {},
+  "groups": [
+    {
+      "color": "#8AA",
+      "flags": {},
+      "title": "2",
+      "locked": false,
+      "bounding": [
+        1128,
+        714,
+        423,
+        576
+      ],
+      "font_size": 24
+    },
+    {
+      "color": "#88A",
+      "flags": {},
+      "title": "Target image",
+      "locked": false,
+      "bounding": [
+        554,
+        1163,
+        387,
+        440
+      ],
+      "font_size": 24
+    },
+    {
+      "color": "#a1309b",
+      "flags": {},
+      "title": "Product image",
+      "locked": false,
+      "bounding": [
+        361,
+        719,
+        725,
+        424
+      ],
+      "font_size": 24
+    },
+    {
+      "color": "#3f789e",
+      "flags": {},
+      "title": "1",
+      "locked": false,
+      "bounding": [
+        353,
+        -124,
+        1245,
+        811
+      ],
+      "font_size": 24
+    },
+    {
+      "color": "#b06634",
+      "flags": {},
+      "title": "3",
+      "locked": false,
+      "bounding": [
+        1598,
+        718,
+        345,
+        464
+      ],
+      "font_size": 24
+    },
+    {
+      "color": "#A88",
+      "flags": {},
+      "title": "4",
+      "locked": false,
+      "bounding": [
+        1648,
+        -126,
+        915,
+        804
+      ],
+      "font_size": 24
+    }
+  ],
+  "version": 0.4,
+  "_tensorNodes": [
+    {
+      "nodeId": "1",
+      "nodeName": "TensorArt_CheckpointLoader",
+      "fieldName": "ckpt_name",
+      "fieldValue": "799485016842306392",
+      "inputString": "[{\"name\":\"ckpt_name\",\"type\":\"button\",\"value\":\"799485016842306392\",\"options\":{}},{\"name\":\"tams_ckpt_name_options\",\"type\":\"combo\",\"value\":\"FLUX.1 Fill - fp16\",\"options\":{\"values\":[]}}]",
+      "fieldDisplayName": "TA Node - CheckpointLoader"
+    },
+    {
+      "nodeId": "2",
+      "nodeName": "TensorArt_LoadImage",
+      "fieldName": "image",
+      "fieldValue": "https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/db0bcbcb-0e8b-403a-8e09-a19c23d747d8.png",
+      "inputString": "[{\"name\":\"image\",\"type\":\"combo\",\"value\":\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/db0bcbcb-0e8b-403a-8e09-a19c23d747d8.png\",\"options\":{\"values\":[\"10827848851883909888\",\"10827894202443600816\",\"10827985955829979427\",\"10827988932242332289\",\"10828165244944756841\",\"10828340780258162183\",\"10828351569216070957\",\"10828419459763970161\",\"10828420125483904997\",\"10828420928642794062\",\"10828421817701029538\",\"10828422706759264874\",\"10828439341167695848\",\"10828439779254362412\",\"10828440792866649897\",\"10828504272483126046\",\"10828505088526916912\",\"115828098264929910587\",\"115828098651476969420\",\"115828273933387289496\",\"115828448923239787218\",\"115828465922720179784\",\"11827883078478236443\",\"11827883095658105787\",\"11827883568104511164\",\"11827894202443600816\",\"11828021187446634986\",\"11828021475209445533\",\"11828036928501868417\",\"11828037233444548149\",\"11828037491142587407\",\"11828044384565137651\",\"11828044595018536423\",\"11828044801176967859\",\"11828045505551608636\",\"11828045698825138134\",\"11828165244944756841\",\"11828245724041895100\",\"11828246033279542482\",\"11828247966014838354\",\"11828248524360590350\",\"11828248726224054421\",\"11828250061958891758\",\"11828252982536671471\",\"11828253386263599816\",\"11828253785695560853\",\"11828266185266231035\",\"119828098264929910587\",\"119828098651476969420\",\"119828273933387289496\",\"119828448923239787218\",\"119828465922720179784\",\"122828235716768295815\",\"12828016858119577681\",\"131828432735507957944\",\"132828432735507957944\",\"13827887613963728551\",\"13828049873533374694\",\"13828291714551739529\",\"13828293071761412984\",\"14827932900098904622\",\"14827932925868708562\",\"14828049873533374694\",\"148828032650714416794\",\"148828033307844417043\",\"148828035210514940318\",\"148828035983609058040\",\"148828041683030692828\",\"148828042731002719079\",\"148828110406802265329\",\"148828200266108024145\",\"148828201305490115665\",\"148828201447224037276\",\"148828320168710234827\",\"148828333929785276924\",\"148828334702879396986\",\"148828336811708358296\",\"148828337400118881385\",\"148828339010731626392\",\"148828398865395925669\",\"148828401876168018292\",\"148828402653557103442\",\"153828032650714416794\",\"153828033307844417043\",\"153828035210514940318\",\"153828035983609058040\",\"153828041683030692828\",\"153828042731002719079\",\"153828110406802265329\",\"153828200266108024145\",\"153828201305490115665\",\"153828201447224037276\",\"153828320168710234827\",\"153828333929785276924\",\"153828334702879396986\",\"153828336811708358296\",\"153828337400118881385\",\"153828339010731626392\",\"153828398865395925669\",\"153828401876168018292\",\"153828402653557103442\",\"156828235716768295815\",\"15827902006399228194\",\"15828490223645281847\",\"15828490258005020401\",\"15828490631667177376\",\"15828490786286000879\",\"15828491198602863615\",\"15828493487820445911\",\"15828493599489596181\",\"15828495734088354374\",\"15828495742678289026\",\"158828263848804004382\",\"159828264797991783903\",\"16828116982397233750\",\"16828117338879521488\",\"16828117905815207785\",\"16828291929300105577\",\"16828293557092720163\",\"16828439341167695848\",\"16828439779254362412\",\"16828440792866649897\",\"16828504272483126046\",\"16828505088526916912\",\"171828249456368499233\",\"171828255022646149809\",\"17827876631732548382\",\"17827876653207385022\",\"17828504272483126046\",\"17828505088526916912\",\"1827842954893777374\",\"1828119894385077870\",\"1828231597894633747\",\"1828243817076403773\",\"1828247673957060339\",\"1828304599453700300\",\"1828495313181557070\",\"1828506484391296213\",\"1828508919637768280\",\"18827865623731301728\",\"18827865829889733268\",\"18827996328176057040\",\"18827997122745011189\",\"18828307610225791156\",\"18828504272483126046\",\"18828505088526916912\",\"19827857536307833666\",\"19828020916863693973\",\"19828023141656765766\",\"19828329759371999446\",\"20827865623731301728\",\"20827865829889733268\",\"20828117592282593398\",\"226828169045990834891\",\"226828169415358024268\",\"226828169638696324829\",\"226828169720300703883\",\"226828169999473579579\",\"226828170484804886772\",\"226828170489099854100\",\"226828170849877108950\",\"226828171253604036817\",\"226828171674510833979\",\"226828171910734036668\",\"24827997122745011189\",\"24828506853758486003\",\"24828509477983520032\",\"25827894202443600816\",\"267827909587016551986\",\"26827851527648551100\",\"26827881021188888930\",\"26827881880182353468\",\"26827882146470327530\",\"26827882399873399448\",\"26827882657571438721\",\"26827937581613284067\",\"26827937989635179561\",\"26827938260218120703\",\"26827939681852303415\",\"26827940794248839401\",\"26827940884443153201\",\"26827941361184525594\",\"26827941799271192274\",\"26827942288897466707\",\"26827942808588512392\",\"26827943100646290198\",\"26827943414178904786\",\"26827943487193349219\",\"26827943774956159796\",\"26827944174388120702\",\"26827944556640212106\",\"26827945149345702343\",\"26827946223087532462\",\"26827946455015767627\",\"26827947893829822095\",\"26827948108578188518\",\"26827948503715182988\",\"26827948787183026876\",\"2827842594116522477\",\"2827843805297307170\",\"2827843994275869236\",\"2827844170369529479\",\"2827845604888614708\",\"2827899532498049804\",\"2827899669937004144\",\"2827900297002233351\",\"2828048069647099670\",\"2828048640877753579\",\"2828051338117230988\",\"2828051814858603593\",\"2828235592214243401\",\"2828304599453700300\",\"2828429235109592477\",\"2828429643131487728\",\"2828430029678546535\",\"2828430592319265416\",\"28828242382557318450\",\"28828244955242744309\",\"28828253983264057693\",\"28828260112182427728\",\"28828278069440560649\",\"28828283687257815887\",\"28828310298875333138\",\"321828435170754428202\",\"322828435170754428202\",\"378828316457858469786\",\"378828320709876117138\",\"378828324175914482536\",\"378828329961235463510\",\"378828332143078866910\",\"3827842594116522477\",\"3827843805297307170\",\"3827843994275869236\",\"3827844170369529479\",\"3828048069647099670\",\"3828048640877753579\",\"3828051338117230988\",\"3828051814858603593\",\"3828065648948078606\",\"3828065919531019867\",\"3828235592214243401\",\"40828505341929988826\",\"40828505436419269874\",\"42828243817076403773\",\"44828458501016649862\",\"45828458501016649862\",\"460828332143078866910\",\"46828195021952926067\",\"46828206291947174243\",\"46828256744928046177\",\"46828257148654974788\",\"47828409658648803951\",\"47828410302893901835\",\"47828410586361745190\",\"47828411093167889018\",\"47828418158388871503\",\"4828065648948078606\",\"4828065919531019867\",\"48827880643231764541\",\"48828231653729208955\",\"48828233925766922192\",\"48828263848804004382\",\"48828264797991783903\",\"48828458556851225044\",\"48828459922650833085\",\"48828494325339073415\",\"48828494595922014521\",\"491827840377913384891\",\"491827840511057371816\",\"491827849740942145469\",\"49828166073873449745\",\"50827840377913384891\",\"50827840511057371816\",\"50827849740942145469\",\"51827845604888614708\",\"51827899532498049804\",\"51827899669937004144\",\"51827900297002233351\",\"51828045952228210086\",\"51828386796537759965\",\"51828391860304228017\",\"51828424300192140795\",\"51828502245258812401\",\"53827861118310580622\",\"53827861453318031709\",\"53827871795599343627\",\"53827872628823004060\",\"53827873277363069516\",\"53827873964557840985\",\"53828156912708155696\",\"53828157458169005421\",\"53828157711572077229\",\"55827866800552348079\",\"56828263848804004382\",\"56828264797991783903\",\"57828399148863768931\",\"5827857179825545864\",\"5828456503857107634\",\"62828449460110702263\",\"62828488698931882788\",\"64828210810252795841\",\"64828210926216913456\",\"64828234398213327735\",\"65827850368007374423\",\"65827851080971949808\",\"65827851093856851752\",\"65827851184051165517\",\"65828166073873449745\",\"65828455357100833262\",\"6827857179825545864\",\"6828021359245327857\",\"6828456503857107634\",\"69828455357100833262\",\"73828102688745988424\",\"73828103375940759863\",\"73828350229186267095\",\"74828027015717290176\",\"75828027015717290176\",\"76828090740147163494\",\"76828110797644291598\",\"76828111373169912367\",\"76828111437594422188\",\"76828195021952926067\",\"76828206291947174243\",\"76828256744928046177\",\"76828257148654974788\",\"76828265957632962662\",\"76828269462326302270\",\"77828180440539134483\",\"77828195021952926067\",\"77828206291947174243\",\"77828256744928046177\",\"77828257148654974788\",\"7828429235109592477\",\"7828429643131487728\",\"7828430029678546535\",\"7828430592319265416\",\"7828491275912275371\",\"78827846343622994063\",\"78828039479712457131\",\"81828090740147163494\",\"81828110797644291598\",\"81828111373169912367\",\"81828111437594422188\",\"81828265957632962662\",\"81828269462326302270\",\"81828445981187172958\",\"81828462113084166681\",\"85828288321527555108\",\"89827849015092668045\",\"89827930774090080978\",\"89827931869306747735\",\"89827944698374133654\",\"89828287496893829658\",\"89828308331780300785\",\"90828252660414122070\",\"9828021359245327857\",\"car.jpeg\",\"cloth_1.jpg\",\"custom-nodes.json\",\"example.png\",\"ggirl.png\",\"girl.png\",\"girl2.png\",\"inpaint.png\",\"inpaint_mask.png\",\"model_1.png\",\"pose.png\",\"prepare.sh\",\"sd3.png\",\"toon_01.png\",\"toon_02.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/9b97202a-0913-4cec-90ef-2d9b2b2d1922.jpg\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/2545108a-f9dc-497e-b38d-76d1f8a54e7d.jpg\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/f71ccbce-3b16-4dca-846e-9233b13ffe60.jpg\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/0d8a9332-edb7-41a4-98cc-fe666b52933a.jpg\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/643158fa-b5c9-4893-bfa2-9a4688aee5ac.jpg\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/87e53498-d0d8-4090-9dd6-abddc9681ae7.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/7accbb38-cc4d-4bd9-8e18-22e15f905cbd.jpg\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/b4c115d6-2ba7-47ba-9f59-cc58eb421540.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/c9b2aa65-a033-418c-8e40-f17d3a7a4950.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/c1d59abd-6bba-4bf7-a29d-220d7b49c714.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/7214a1d0-32bb-4ff5-bf23-e913c5c39a22.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/01d8d0eb-9c46-45e6-87bc-feb64f652e50.webp\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/90b2935b-82d0-472b-9923-0a24e0771f79.jpg\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/7c576223-977f-47ea-9f55-ac3fd8732ec8.jpg\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/68f0d0d2-2809-4606-b94a-cb951a9ff28b.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/2f0b4e00-ca54-426c-ac07-2aa863fc6552.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/11c62cbe-0d58-40ac-80d0-2e0914a19f63.jpg\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/495a691a-48f8-421b-a7c7-bd40bf40cb4f.jpg\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/b4be2a7c-bf3c-4f00-b3f9-88b5119f29ff.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/d6acf86a-998a-4ffc-a002-523eb1e2ef44.webp\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/f8f589c0-e24a-4e9d-9efd-03e0ddf3536a.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/172b04e7-83d1-487e-bd34-4f90873f5657.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/ba3899fd-cc42-46ca-ad76-3ad62e34a782.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/258af92b-ba34-4fc0-84b8-cbc7607536ea.jpg\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/39910b77-6924-4d64-9e61-54eead8c60a4.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/2ca66e1f-1b2c-4bff-845d-b634c4171613.jpg\"]}},{\"name\":\"upload\",\"type\":\"button\",\"value\":\"image\",\"options\":{}}]",
+      "fieldDisplayName": "TA Node - LoadImage"
+    },
+    {
+      "nodeId": "4",
+      "nodeName": "TensorArt_LoadImage",
+      "fieldName": "image",
+      "fieldValue": "https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/e3fef636-aa72-4279-b8b6-94bd2be0fc4f.png",
+      "inputString": "[{\"name\":\"image\",\"type\":\"combo\",\"value\":\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/e3fef636-aa72-4279-b8b6-94bd2be0fc4f.png\",\"options\":{\"values\":[\"10827848851883909888\",\"10827894202443600816\",\"10827985955829979427\",\"10827988932242332289\",\"10828165244944756841\",\"10828340780258162183\",\"10828351569216070957\",\"10828419459763970161\",\"10828420125483904997\",\"10828420928642794062\",\"10828421817701029538\",\"10828422706759264874\",\"10828439341167695848\",\"10828439779254362412\",\"10828440792866649897\",\"10828504272483126046\",\"10828505088526916912\",\"115828098264929910587\",\"115828098651476969420\",\"115828273933387289496\",\"115828448923239787218\",\"115828465922720179784\",\"11827883078478236443\",\"11827883095658105787\",\"11827883568104511164\",\"11827894202443600816\",\"11828021187446634986\",\"11828021475209445533\",\"11828036928501868417\",\"11828037233444548149\",\"11828037491142587407\",\"11828044384565137651\",\"11828044595018536423\",\"11828044801176967859\",\"11828045505551608636\",\"11828045698825138134\",\"11828165244944756841\",\"11828245724041895100\",\"11828246033279542482\",\"11828247966014838354\",\"11828248524360590350\",\"11828248726224054421\",\"11828250061958891758\",\"11828252982536671471\",\"11828253386263599816\",\"11828253785695560853\",\"11828266185266231035\",\"119828098264929910587\",\"119828098651476969420\",\"119828273933387289496\",\"119828448923239787218\",\"119828465922720179784\",\"122828235716768295815\",\"12828016858119577681\",\"131828432735507957944\",\"132828432735507957944\",\"13827887613963728551\",\"13828049873533374694\",\"13828291714551739529\",\"13828293071761412984\",\"14827932900098904622\",\"14827932925868708562\",\"14828049873533374694\",\"148828032650714416794\",\"148828033307844417043\",\"148828035210514940318\",\"148828035983609058040\",\"148828041683030692828\",\"148828042731002719079\",\"148828110406802265329\",\"148828200266108024145\",\"148828201305490115665\",\"148828201447224037276\",\"148828320168710234827\",\"148828333929785276924\",\"148828334702879396986\",\"148828336811708358296\",\"148828337400118881385\",\"148828339010731626392\",\"148828398865395925669\",\"148828401876168018292\",\"148828402653557103442\",\"153828032650714416794\",\"153828033307844417043\",\"153828035210514940318\",\"153828035983609058040\",\"153828041683030692828\",\"153828042731002719079\",\"153828110406802265329\",\"153828200266108024145\",\"153828201305490115665\",\"153828201447224037276\",\"153828320168710234827\",\"153828333929785276924\",\"153828334702879396986\",\"153828336811708358296\",\"153828337400118881385\",\"153828339010731626392\",\"153828398865395925669\",\"153828401876168018292\",\"153828402653557103442\",\"156828235716768295815\",\"15827902006399228194\",\"15828490223645281847\",\"15828490258005020401\",\"15828490631667177376\",\"15828490786286000879\",\"15828491198602863615\",\"15828493487820445911\",\"15828493599489596181\",\"15828495734088354374\",\"15828495742678289026\",\"158828263848804004382\",\"159828264797991783903\",\"16828116982397233750\",\"16828117338879521488\",\"16828117905815207785\",\"16828291929300105577\",\"16828293557092720163\",\"16828439341167695848\",\"16828439779254362412\",\"16828440792866649897\",\"16828504272483126046\",\"16828505088526916912\",\"171828249456368499233\",\"171828255022646149809\",\"17827876631732548382\",\"17827876653207385022\",\"17828504272483126046\",\"17828505088526916912\",\"1827842954893777374\",\"1828119894385077870\",\"1828231597894633747\",\"1828243817076403773\",\"1828247673957060339\",\"1828304599453700300\",\"1828495313181557070\",\"1828506484391296213\",\"1828508919637768280\",\"18827865623731301728\",\"18827865829889733268\",\"18827996328176057040\",\"18827997122745011189\",\"18828307610225791156\",\"18828504272483126046\",\"18828505088526916912\",\"19827857536307833666\",\"19828020916863693973\",\"19828023141656765766\",\"19828329759371999446\",\"20827865623731301728\",\"20827865829889733268\",\"20828117592282593398\",\"226828169045990834891\",\"226828169415358024268\",\"226828169638696324829\",\"226828169720300703883\",\"226828169999473579579\",\"226828170484804886772\",\"226828170489099854100\",\"226828170849877108950\",\"226828171253604036817\",\"226828171674510833979\",\"226828171910734036668\",\"24827997122745011189\",\"24828506853758486003\",\"24828509477983520032\",\"25827894202443600816\",\"267827909587016551986\",\"26827851527648551100\",\"26827881021188888930\",\"26827881880182353468\",\"26827882146470327530\",\"26827882399873399448\",\"26827882657571438721\",\"26827937581613284067\",\"26827937989635179561\",\"26827938260218120703\",\"26827939681852303415\",\"26827940794248839401\",\"26827940884443153201\",\"26827941361184525594\",\"26827941799271192274\",\"26827942288897466707\",\"26827942808588512392\",\"26827943100646290198\",\"26827943414178904786\",\"26827943487193349219\",\"26827943774956159796\",\"26827944174388120702\",\"26827944556640212106\",\"26827945149345702343\",\"26827946223087532462\",\"26827946455015767627\",\"26827947893829822095\",\"26827948108578188518\",\"26827948503715182988\",\"26827948787183026876\",\"2827842594116522477\",\"2827843805297307170\",\"2827843994275869236\",\"2827844170369529479\",\"2827845604888614708\",\"2827899532498049804\",\"2827899669937004144\",\"2827900297002233351\",\"2828048069647099670\",\"2828048640877753579\",\"2828051338117230988\",\"2828051814858603593\",\"2828235592214243401\",\"2828304599453700300\",\"2828429235109592477\",\"2828429643131487728\",\"2828430029678546535\",\"2828430592319265416\",\"28828242382557318450\",\"28828244955242744309\",\"28828253983264057693\",\"28828260112182427728\",\"28828278069440560649\",\"28828283687257815887\",\"28828310298875333138\",\"321828435170754428202\",\"322828435170754428202\",\"378828316457858469786\",\"378828320709876117138\",\"378828324175914482536\",\"378828329961235463510\",\"378828332143078866910\",\"3827842594116522477\",\"3827843805297307170\",\"3827843994275869236\",\"3827844170369529479\",\"3828048069647099670\",\"3828048640877753579\",\"3828051338117230988\",\"3828051814858603593\",\"3828065648948078606\",\"3828065919531019867\",\"3828235592214243401\",\"40828505341929988826\",\"40828505436419269874\",\"42828243817076403773\",\"44828458501016649862\",\"45828458501016649862\",\"460828332143078866910\",\"46828195021952926067\",\"46828206291947174243\",\"46828256744928046177\",\"46828257148654974788\",\"47828409658648803951\",\"47828410302893901835\",\"47828410586361745190\",\"47828411093167889018\",\"47828418158388871503\",\"4828065648948078606\",\"4828065919531019867\",\"48827880643231764541\",\"48828231653729208955\",\"48828233925766922192\",\"48828263848804004382\",\"48828264797991783903\",\"48828458556851225044\",\"48828459922650833085\",\"48828494325339073415\",\"48828494595922014521\",\"491827840377913384891\",\"491827840511057371816\",\"491827849740942145469\",\"49828166073873449745\",\"50827840377913384891\",\"50827840511057371816\",\"50827849740942145469\",\"51827845604888614708\",\"51827899532498049804\",\"51827899669937004144\",\"51827900297002233351\",\"51828045952228210086\",\"51828386796537759965\",\"51828391860304228017\",\"51828424300192140795\",\"51828502245258812401\",\"53827861118310580622\",\"53827861453318031709\",\"53827871795599343627\",\"53827872628823004060\",\"53827873277363069516\",\"53827873964557840985\",\"53828156912708155696\",\"53828157458169005421\",\"53828157711572077229\",\"55827866800552348079\",\"56828263848804004382\",\"56828264797991783903\",\"57828399148863768931\",\"5827857179825545864\",\"5828456503857107634\",\"62828449460110702263\",\"62828488698931882788\",\"64828210810252795841\",\"64828210926216913456\",\"64828234398213327735\",\"65827850368007374423\",\"65827851080971949808\",\"65827851093856851752\",\"65827851184051165517\",\"65828166073873449745\",\"65828455357100833262\",\"6827857179825545864\",\"6828021359245327857\",\"6828456503857107634\",\"69828455357100833262\",\"73828102688745988424\",\"73828103375940759863\",\"73828350229186267095\",\"74828027015717290176\",\"75828027015717290176\",\"76828090740147163494\",\"76828110797644291598\",\"76828111373169912367\",\"76828111437594422188\",\"76828195021952926067\",\"76828206291947174243\",\"76828256744928046177\",\"76828257148654974788\",\"76828265957632962662\",\"76828269462326302270\",\"77828180440539134483\",\"77828195021952926067\",\"77828206291947174243\",\"77828256744928046177\",\"77828257148654974788\",\"7828429235109592477\",\"7828429643131487728\",\"7828430029678546535\",\"7828430592319265416\",\"7828491275912275371\",\"78827846343622994063\",\"78828039479712457131\",\"81828090740147163494\",\"81828110797644291598\",\"81828111373169912367\",\"81828111437594422188\",\"81828265957632962662\",\"81828269462326302270\",\"81828445981187172958\",\"81828462113084166681\",\"85828288321527555108\",\"89827849015092668045\",\"89827930774090080978\",\"89827931869306747735\",\"89827944698374133654\",\"89828287496893829658\",\"89828308331780300785\",\"90828252660414122070\",\"9828021359245327857\",\"car.jpeg\",\"cloth_1.jpg\",\"custom-nodes.json\",\"example.png\",\"ggirl.png\",\"girl.png\",\"girl2.png\",\"inpaint.png\",\"inpaint_mask.png\",\"model_1.png\",\"pose.png\",\"prepare.sh\",\"sd3.png\",\"toon_01.png\",\"toon_02.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/9b97202a-0913-4cec-90ef-2d9b2b2d1922.jpg\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/2545108a-f9dc-497e-b38d-76d1f8a54e7d.jpg\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/f71ccbce-3b16-4dca-846e-9233b13ffe60.jpg\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/0d8a9332-edb7-41a4-98cc-fe666b52933a.jpg\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/643158fa-b5c9-4893-bfa2-9a4688aee5ac.jpg\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/87e53498-d0d8-4090-9dd6-abddc9681ae7.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/7accbb38-cc4d-4bd9-8e18-22e15f905cbd.jpg\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/b4c115d6-2ba7-47ba-9f59-cc58eb421540.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/c9b2aa65-a033-418c-8e40-f17d3a7a4950.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/c1d59abd-6bba-4bf7-a29d-220d7b49c714.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/7214a1d0-32bb-4ff5-bf23-e913c5c39a22.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/01d8d0eb-9c46-45e6-87bc-feb64f652e50.webp\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/90b2935b-82d0-472b-9923-0a24e0771f79.jpg\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/7c576223-977f-47ea-9f55-ac3fd8732ec8.jpg\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/68f0d0d2-2809-4606-b94a-cb951a9ff28b.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/2f0b4e00-ca54-426c-ac07-2aa863fc6552.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/11c62cbe-0d58-40ac-80d0-2e0914a19f63.jpg\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/495a691a-48f8-421b-a7c7-bd40bf40cb4f.jpg\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/b4be2a7c-bf3c-4f00-b3f9-88b5119f29ff.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/d6acf86a-998a-4ffc-a002-523eb1e2ef44.webp\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/f8f589c0-e24a-4e9d-9efd-03e0ddf3536a.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/172b04e7-83d1-487e-bd34-4f90873f5657.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/ba3899fd-cc42-46ca-ad76-3ad62e34a782.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/258af92b-ba34-4fc0-84b8-cbc7607536ea.jpg\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/39910b77-6924-4d64-9e61-54eead8c60a4.png\",\"https://7022ae40757f8d53295a57619de9b364.r2.cloudflarestorage.com/tensor-sf-sig/workspace/workflow_image2image/766900667632805171/2ca66e1f-1b2c-4bff-845d-b634c4171613.jpg\"]}},{\"name\":\"upload\",\"type\":\"button\",\"value\":\"image\",\"options\":{}}]",
+      "fieldDisplayName": "TA Node - LoadImage"
+    },
+    {
+      "nodeId": "54",
+      "nodeName": "TensorArt_LoraLoader",
+      "fieldName": "lora_name",
+      "fieldValue": "784205851075313773",
+      "inputString": "[{\"name\":\"lora_name\",\"type\":\"button\",\"value\":\"784205851075313773\",\"options\":{}},{\"name\":\"tams_lora_name_options\",\"type\":\"combo\",\"value\":\"FLUX.1 Turbo Alpha - 8 Steps - 1.0\",\"options\":{\"values\":[\"FLUX.1 Turbo Alpha - 8 Steps - 1.0\"]}},{\"name\":\"strength_model\",\"type\":\"number\",\"value\":1,\"options\":{\"min\":-100,\"max\":100,\"step\":0.1,\"round\":0.01,\"precision\":2}},{\"name\":\"strength_clip\",\"type\":\"number\",\"value\":1,\"options\":{\"min\":-100,\"max\":100,\"step\":0.1,\"round\":0.01,\"precision\":2}},{\"name\":\"lora_radio\",\"type\":\"lora_radio\",\"value\":\"784205851075313773\",\"options\":{\"hideOnZoom\":true,\"selectOn\":[\"focus\",\"click\"],\"name\":\"FLUX.1 Turbo Alpha - 8 Steps - 1.0\",\"id\":\"784205851075313773\"}}]",
+      "fieldDisplayName": "TA Node - LoraLoader"
+    }
+  ],
+  "last_link_id": 64,
+  "last_node_id": 57
+}

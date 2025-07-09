@@ -7,6 +7,7 @@ if [ -z "$1" ]; then
 fi
 
 MODEL_NAME="$1"
+export MODEL_NAME="$MODEL_NAME"
 
 # source выполняется ДО создания tmux-сессии
 if [ "$2" = "local" ]; then

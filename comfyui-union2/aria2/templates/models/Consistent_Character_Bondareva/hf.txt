@@ -1,0 +1,60 @@
+# 🌟 CLIP  🌟
+
+https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors
+    dir=models/clip/Flux
+    out=t5xxl_fp8_e4m3fn.safetensors
+
+https://huggingface.co/OreX/Models/resolve/main/Flux-Main/clip_l.safetensors
+    out=clip_l.safetensors
+    dir=models/clip/Flux
+
+https://huggingface.co/zer0int/CLIP-GmP-ViT-L-14/resolve/main/ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors
+    dir=models/clip/Flux
+    out=ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors
+
+# 🌟 VAE  🌟
+https://huggingface.co/OreX/Models/resolve/main/Flux-Main/Flux-vae.safetensors
+    dir=models/vae/Flux
+    out=Flux-vae.safetensors
+
+# 🌟 Hyper Lora  🌟
+# https://huggingface.co/OreX/Models/blob/main/LORA/FLUX/Hyper-FLUX.1-dev-8steps-lora.safetensors
+https://huggingface.co/OreX/Models/resolve/main/LORA/FLUX/Hyper-FLUX.1-dev-8steps-lora.safetensors
+    out=Hyper-FLUX.1-dev-8steps-lora.safetensors
+    dir=models/loras/Flux
+
+# 🌟 /Kijai/flux-fp8 🌟
+https://huggingface.co/Kijai/flux-fp8/resolve/main/flux1-dev-fp8-e4m3fn.safetensors
+   dir=models/diffusion_models/Flux/
+   out=flux1-dev-fp8-e4m3fn.safetensors
+
+
+# 🌟 ControlNet-Union-Pro-2.0
+# Shakker-Labs/FLUX.1-dev-ControlNet-Union-Pro-2.0
+# https://huggingface.co/Shakker-Labs/FLUX.1-dev-ControlNet-Union-Pro-2.0/tree/main
+https://huggingface.co/Shakker-Labs/FLUX.1-dev-ControlNet-Union-Pro-2.0/resolve/main/diffusion_pytorch_model.safetensors
+    dir=models/controlnet/Flux
+    out=ControlNet-Union-Pro-2.safetensors
+
+https://huggingface.co/Bingsu/adetailer/resolve/main/face_yolov8m.pt
+    dir=models/ultralytics/bbox
+    out=face_yolov8m.pt
+
+https://huggingface.co/gemasai/4x_NMKD-Siax_200k/resolve/main/4x_NMKD-Siax_200k.pth
+    out=4x_NMKD-Siax_200k.pth
+    dir=models/upscale_models
+
+https://huggingface.co/ezioruan/inswapper_128.onnx/resolve/main/inswapper_128.onnx
+    out=inswapper_128.onnx
+    dir=models/insightface
+
+
+# 🌟  FLUX Turbo Lora 8-steps 🌟
+https://huggingface.co/alimama-creative/FLUX.1-Turbo-Alpha/resolve/main/diffusion_pytorch_model.safetensors
+    dir=models/loras
+    out=FLUX.1-Turbo-8-steps.safetensors
+
+# 🌟  FLUX kontext 🌟
+https://huggingface.co/Comfy-Org/flux1-kontext-dev_ComfyUI/resolve/main/split_files/diffusion_models/flux1-dev-kontext_fp8_scaled.safetensors
+    dir=models/diffusion_models/Flux
+    out=flux1-dev-kontext_fp8_scaled.safetensors

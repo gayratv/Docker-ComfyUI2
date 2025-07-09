@@ -161,6 +161,30 @@ RUN --mount=type=cache,target=/root/repo-cache \
     process_one_repo_install_req_hash.sh "https://github.com/ltdrdata/ComfyUI-Impact-Subpack" true \
     && rm -rf /root/.cache/pip
 
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/kijai/ComfyUI-KJNodes" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/Fannovel16/comfyui_controlnet_aux" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/FizzleDorf/ComfyUI_FizzNodes" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/Zehong-Ma/ComfyUI-MagCache" true \
+    && rm -rf /root/.cache/pip
+
 
 ARG NODES
 

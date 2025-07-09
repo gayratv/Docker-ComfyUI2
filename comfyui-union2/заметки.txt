@@ -951,7 +951,37 @@ export WORKFLOW_TO_COPY=$MODELS
 export VERSION="$MODELS-CUDA12.6"
 export NODES="$MODELS.txt"
 export IMAGE_NAME="comfyui-union2"
-export COMFYUI_VERSION="v0.3.40"
+export COMFYUI_VERSION="v0.3.44"
+export BASE_IMAGE="cuda-12-6:nvidia-runtime"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
+export REQ_MODIFY="base-CUDA-12.6"
+export POST_INSTALL="$MODELS.sh"
+
+./dl_common.sh "$MODELS"
+
+python3 python-prg-pre-build/sync_dir.py "$MODELS"
+./db-gen.sh
+./clear-comfy-data.sh
+
+rsync -avh --progress /mnt/h/ComfyUI-data/models/ /mnt/d/ComfyUI-data/models/
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+
+NUNCHAKU2
+Вариант 2025-07 для Flux Kontext
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+./workflow-new-image.sh "Nunchaku2"
+
+source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+export MODELS="Nunchaku2"
+export WORKFLOW_TO_COPY=$MODELS
+export VERSION="$MODELS-CUDA12.6"
+export NODES="$MODELS.txt"
+export IMAGE_NAME="comfyui-union2"
+export COMFYUI_VERSION="v0.3.44"
 export BASE_IMAGE="cuda-12-6:nvidia-runtime"
 export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
 export REQ_MODIFY="base-CUDA-12.6"
