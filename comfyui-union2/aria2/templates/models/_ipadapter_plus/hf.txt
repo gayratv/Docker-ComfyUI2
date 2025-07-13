@@ -1,0 +1,41 @@
+https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors
+    dir=models/clip_vision
+    out=CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors
+
+
+https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/image_encoder/model.safetensors
+    out=CLIP-ViT-bigG-14-laion2B-39B-b160k.safetensors
+    dir=models/clip_vision
+
+https://huggingface.co/h94/IP-Adapter/resolve/main/sdxl_models/ip-adapter_sdxl_vit-h.safetensors
+    dir=models/ipadapter/SDXL
+    out=ip-adapter_sdxl_vit-h.safetensors
+
+# SDXL base FaceID
+https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sdxl.bin
+    out=ip-adapter-faceid_sdxl.bin
+    dir=models/ipadapter/SDXL
+
+# SDXL plus v2
+https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sdxl.bin
+    out=ip-adapter-faceid-plusv2_sdxl.bin
+    dir=models/ipadapter/SDXL
+
+# SDXL text prompt style transfer
+https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-portrait_sdxl.bin
+    out=ip-adapter-faceid-portrait_sdxl.bin
+    dir=models/ipadapter/SDXL
+
+# very strong style transfer SDXL only
+https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-portrait_sdxl_unnorm.bin
+    out=ip-adapter-faceid-portrait_sdxl_unnorm.bin
+    dir=models/ipadapter/SDXL
+
+# 🌟  LORA  🌟
+https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sdxl_lora.safetensors
+    dir=models/loras/SDXL
+    out=ip-adapter-faceid_sdxl_lora.safetensors
+
+https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plusv2_sdxl_lora.safetensors
+    dir=models/loras/SDXL
+    out=ip-adapter-faceid-plusv2_sdxl_lora.safetensors
