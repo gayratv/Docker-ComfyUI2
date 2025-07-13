@@ -1,0 +1,41 @@
+# ====== Stage 0: Builder Apex ======
+FROM cuda-12-6:nvidia-devel AS apex_build
+ARG PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
+
+RUN pip install wheel setuptools flit_core
+
+RUN  --mount=type=cache,target=/root/pip-cache \
+     python3 -m pip install --cache-dir "/root/pip-cache" \
+      --index-url "$PYTORCH_WHEEL" \
+        torch torchvision torchaudio
+
+WORKDIR /workspace
+RUN git clone https://github.com/NVIDIA/apex
+WORKDIR /workspace/apex
+RUN git checkout 25.07
+
+#RUN --mount=type=cache,target=/root/pip-cache \
+#    python3 -m pip install \
+##    --cache-dir "/root/pip-cache" --no-build-isolation --global-option="--cpp_ext" --global-option="--cuda_ext" \
+#    --cache-dir "/root/pip-cache" --no-build-isolation \
+#    . \
+#    && rm -rf /workspace \
+
+RUN --mount=type=cache,target=/root/pip-cache \
+    python3 -m pip  wheel \
+    --wheel-dir=/wheels \
+    --cache-dir "/root/pip-cache" --no-build-isolation \
+    . \
+    && rm -rf /workspace
+
+WORKDIR /workspace/
+
+
+# ===== СТАДИЯ 2: ЭКСПОРТ (только .whl) =====
+# Используем минимально возможный базовый образ
+FROM scratch
+
+# Копируем только папку с .whl файлом из предыдущей стадии
+COPY --from=apex_build /wheels /
+
+CMD ["bash"]

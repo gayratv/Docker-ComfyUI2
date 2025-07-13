@@ -7,7 +7,9 @@ python3 ./python-prg-pre-build/generate_dockerfile_v2.py --nodes "${MODELS}.txt"
 #    --no-cache \
 #    --cache-from $IMAGE_NAME:$VERSION \
 #    --no-cache \
-docker build --progress=plain \
+DOCKER_BUILDKIT=1 docker build --progress=plain \
+    --build-arg BUILDKIT_INLINE_CACHE=1 \
+    --cache-from $IMAGE_NAME:$VERSION \
     --build-arg BASE_IMAGE="$BASE_IMAGE" \
     --build-arg NODES="$NODES" \
     --build-arg POST_INSTALL=$POST_INSTALL \

@@ -1,0 +1,1759 @@
+{
+  "last_node_id": 245,
+  "last_link_id": 429,
+  "nodes": [
+    {
+      "id": 217,
+      "type": "ExpressionEditor",
+      "pos": [
+        -710,
+        -350
+      ],
+      "size": [
+        256.8715515136719,
+        690
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "src_image",
+          "type": "IMAGE",
+          "shape": 7,
+          "link": 381
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "shape": 7,
+          "link": null
+        },
+        {
+          "name": "sample_image",
+          "type": "IMAGE",
+          "shape": 7,
+          "link": null
+        },
+        {
+          "name": "add_exp",
+          "type": "EXP_DATA",
+          "shape": 7,
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "shape": 3,
+          "links": [
+            394
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "shape": 3,
+          "links": null
+        },
+        {
+          "name": "save_exp",
+          "type": "EXP_DATA",
+          "shape": 3,
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ExpressionEditor",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1.6,
+        0,
+        0.33,
+        1,
+        1,
+        "OnlyExpression",
+        1.7000000000000002
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 219,
+      "type": "ImageCrop",
+      "pos": [
+        -1050,
+        -340
+      ],
+      "size": [
+        315,
+        130
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 405
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "shape": 3,
+          "links": [
+            377,
+            381,
+            389,
+            392
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageCrop",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [
+        512,
+        768,
+        0,
+        0
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 224,
+      "type": "PreviewImage",
+      "pos": [
+        -1050.3753662109375,
+        1411.097900390625
+      ],
+      "size": [
+        321.6346740722656,
+        383.9202575683594
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 376
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 222,
+      "type": "Reroute",
+      "pos": [
+        -1356.475341796875,
+        969.6824340820312
+      ],
+      "size": [
+        75,
+        26
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "",
+          "type": "*",
+          "link": 406
+        }
+      ],
+      "outputs": [
+        {
+          "name": "",
+          "type": "IMAGE",
+          "links": [
+            374,
+            380,
+            407
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "showOutputText": false,
+        "horizontal": false,
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 232,
+      "type": "ExpressionEditor",
+      "pos": [
+        -417.8787841796875,
+        -348.1817626953125
+      ],
+      "size": [
+        256.8715515136719,
+        690
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "src_image",
+          "type": "IMAGE",
+          "shape": 7,
+          "link": 389
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "shape": 7,
+          "link": null
+        },
+        {
+          "name": "sample_image",
+          "type": "IMAGE",
+          "shape": 7,
+          "link": null
+        },
+        {
+          "name": "add_exp",
+          "type": "EXP_DATA",
+          "shape": 7,
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "shape": 3,
+          "links": [
+            395
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "shape": 3,
+          "links": null
+        },
+        {
+          "name": "save_exp",
+          "type": "EXP_DATA",
+          "shape": 3,
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ExpressionEditor",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [
+        0,
+        0,
+        0,
+        5,
+        -10,
+        0,
+        0,
+        0,
+        26,
+        -4.800000000000001,
+        7,
+        0.01,
+        1,
+        1,
+        "OnlyExpression",
+        1.7000000000000002
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 235,
+      "type": "ExpressionEditor",
+      "pos": [
+        -123.53539276123047,
+        -354.242431640625
+      ],
+      "size": [
+        256.8715515136719,
+        690
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "src_image",
+          "type": "IMAGE",
+          "shape": 7,
+          "link": 392
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "shape": 7,
+          "link": null
+        },
+        {
+          "name": "sample_image",
+          "type": "IMAGE",
+          "shape": 7,
+          "link": null
+        },
+        {
+          "name": "add_exp",
+          "type": "EXP_DATA",
+          "shape": 7,
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "shape": 3,
+          "links": [
+            396
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "shape": 3,
+          "links": null
+        },
+        {
+          "name": "save_exp",
+          "type": "EXP_DATA",
+          "shape": 3,
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ExpressionEditor",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [
+        0,
+        0,
+        0,
+        -4,
+        -10,
+        0,
+        11,
+        -6,
+        6,
+        0,
+        0,
+        -0.2,
+        1,
+        1,
+        "OnlyExpression",
+        1.7000000000000002
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 240,
+      "type": "PreviewImage",
+      "pos": [
+        -1042.2913818359375,
+        2127.575927734375
+      ],
+      "size": [
+        292.5235900878906,
+        344.36468505859375
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 408
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 221,
+      "type": "ImageCrop",
+      "pos": [
+        -1040.37548828125,
+        1211.0972900390625
+      ],
+      "size": [
+        315,
+        130
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 374
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "shape": 3,
+          "links": [
+            376,
+            386,
+            388,
+            391
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageCrop",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [
+        512,
+        768,
+        0,
+        768
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 220,
+      "type": "ImageCrop",
+      "pos": [
+        -1063.6932373046875,
+        477.8864440917969
+      ],
+      "size": [
+        315,
+        130
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 380
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "shape": 3,
+          "links": [
+            375,
+            413
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageCrop",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [
+        512,
+        768,
+        512,
+        0
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 225,
+      "type": "PreviewImage",
+      "pos": [
+        -1051.9334716796875,
+        -136.04443359375
+      ],
+      "size": [
+        319.6282958984375,
+        391.20953369140625
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 377
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 223,
+      "type": "PreviewImage",
+      "pos": [
+        -1055.4068603515625,
+        662.169921875
+      ],
+      "size": [
+        297.4507141113281,
+        367.0023193359375
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 375
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 241,
+      "type": "ImageCrop",
+      "pos": [
+        -1056.48681640625,
+        1892.8931884765625
+      ],
+      "size": [
+        315,
+        130
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 407
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "shape": 3,
+          "links": [
+            408,
+            410,
+            411,
+            412
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageCrop",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [
+        512,
+        768,
+        512,
+        768
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 237,
+      "type": "ImageBatchMulti",
+      "pos": [
+        115.57859802246094,
+        555.732666015625
+      ],
+      "size": [
+        210,
+        282
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image_1",
+          "type": "IMAGE",
+          "link": 394
+        },
+        {
+          "name": "image_2",
+          "type": "IMAGE",
+          "link": 395
+        },
+        {
+          "name": "image_3",
+          "type": "IMAGE",
+          "link": 396
+        },
+        {
+          "name": "image_4",
+          "type": "IMAGE",
+          "link": 397
+        },
+        {
+          "name": "image_5",
+          "type": "IMAGE",
+          "link": 398
+        },
+        {
+          "name": "image_6",
+          "type": "IMAGE",
+          "link": 399
+        },
+        {
+          "name": "image_7",
+          "type": "IMAGE",
+          "link": 400
+        },
+        {
+          "name": "image_8",
+          "type": "IMAGE",
+          "link": 401
+        },
+        {
+          "name": "image_9",
+          "type": "IMAGE",
+          "link": 402
+        },
+        {
+          "name": "image_10",
+          "type": "IMAGE",
+          "link": 413
+        },
+        {
+          "name": "image_11",
+          "type": "IMAGE",
+          "link": 414
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            409,
+            429
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [
+        11,
+        null
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 243,
+      "type": "PreviewImage",
+      "pos": [
+        503.1210632324219,
+        156.39999389648438
+      ],
+      "size": [
+        1129.7801513671875,
+        1434.198486328125
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 409
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "PreviewImage",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 231,
+      "type": "ExpressionEditor",
+      "pos": [
+        -111.11250305175781,
+        1100.7239990234375
+      ],
+      "size": [
+        256.8715515136719,
+        690
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "src_image",
+          "type": "IMAGE",
+          "shape": 7,
+          "link": 388
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "shape": 7,
+          "link": null
+        },
+        {
+          "name": "sample_image",
+          "type": "IMAGE",
+          "shape": 7,
+          "link": null
+        },
+        {
+          "name": "add_exp",
+          "type": "EXP_DATA",
+          "shape": 7,
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "shape": 3,
+          "links": [
+            402
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "shape": 3,
+          "links": null
+        },
+        {
+          "name": "save_exp",
+          "type": "EXP_DATA",
+          "shape": 3,
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ExpressionEditor",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [
+        0,
+        -11.5,
+        0,
+        5,
+        15,
+        0,
+        0,
+        7,
+        59,
+        -5.2,
+        4.6000000000000005,
+        0,
+        1,
+        1,
+        "OnlyExpression",
+        1.7000000000000002
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 245,
+      "type": "JWSaveImageSequence",
+      "pos": [
+        519.5194091796875,
+        -35.02757263183594
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 429
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "JWSaveImageSequence",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [
+        "D:\\output\\Consistent_Character 2\\image{:01d}.png",
+        0,
+        "true"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 242,
+      "type": "LoadImage",
+      "pos": [
+        -1798.1044921875,
+        -305.59735107421875
+      ],
+      "size": [
+        644.7781982421875,
+        490.61761474609375
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            414
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [
+        "ChatGPT Image Mar 28, 2025, 11_46_42 AM.png",
+        "image"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 239,
+      "type": "LoadImage",
+      "pos": [
+        -1796.2188720703125,
+        255.4866943359375
+      ],
+      "size": [
+        633.7396240234375,
+        606.52294921875
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            405,
+            406
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [
+        "ChatGPT Image Mar 28, 2025, 11_50_16 AM.png",
+        "image"
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 234,
+      "type": "ExpressionEditor",
+      "pos": [
+        -687.2308959960938,
+        1102.4462890625
+      ],
+      "size": [
+        256.8715515136719,
+        690
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "src_image",
+          "type": "IMAGE",
+          "shape": 7,
+          "link": 391
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "shape": 7,
+          "link": null
+        },
+        {
+          "name": "sample_image",
+          "type": "IMAGE",
+          "shape": 7,
+          "link": null
+        },
+        {
+          "name": "add_exp",
+          "type": "EXP_DATA",
+          "shape": 7,
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "shape": 3,
+          "links": [
+            400
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "shape": 3,
+          "links": null
+        },
+        {
+          "name": "save_exp",
+          "type": "EXP_DATA",
+          "shape": 3,
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ExpressionEditor",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [
+        0,
+        8.5,
+        0,
+        3.5,
+        -2.5,
+        0,
+        0,
+        0,
+        0,
+        -2.6,
+        6,
+        0,
+        1,
+        1,
+        "OnlyExpression",
+        1.7000000000000002
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 229,
+      "type": "ExpressionEditor",
+      "pos": [
+        -400.6922912597656,
+        1100.2451171875
+      ],
+      "size": [
+        256.8715515136719,
+        690
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "src_image",
+          "type": "IMAGE",
+          "shape": 7,
+          "link": 386
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "shape": 7,
+          "link": null
+        },
+        {
+          "name": "sample_image",
+          "type": "IMAGE",
+          "shape": 7,
+          "link": null
+        },
+        {
+          "name": "add_exp",
+          "type": "EXP_DATA",
+          "shape": 7,
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "shape": 3,
+          "links": [
+            401
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "shape": 3,
+          "links": null
+        },
+        {
+          "name": "save_exp",
+          "type": "EXP_DATA",
+          "shape": 3,
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ExpressionEditor",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [
+        0,
+        0,
+        0,
+        3.5,
+        6.5,
+        0,
+        0,
+        0,
+        7,
+        0.2,
+        5,
+        0.22,
+        1,
+        1,
+        "OnlyExpression",
+        1.7000000000000002
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 233,
+      "type": "ExpressionEditor",
+      "pos": [
+        -401.48114013671875,
+        1905.8023681640625
+      ],
+      "size": [
+        256.8715515136719,
+        690
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "src_image",
+          "type": "IMAGE",
+          "shape": 7,
+          "link": 411
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "shape": 7,
+          "link": null
+        },
+        {
+          "name": "sample_image",
+          "type": "IMAGE",
+          "shape": 7,
+          "link": null
+        },
+        {
+          "name": "add_exp",
+          "type": "EXP_DATA",
+          "shape": 7,
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "shape": 3,
+          "links": [
+            398
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "shape": 3,
+          "links": null
+        },
+        {
+          "name": "save_exp",
+          "type": "EXP_DATA",
+          "shape": 3,
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ExpressionEditor",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [
+        0,
+        0,
+        0,
+        0,
+        1.5,
+        0,
+        -13,
+        0,
+        4,
+        0,
+        0,
+        1.1,
+        1,
+        1,
+        "OnlyExpression",
+        1.7000000000000002
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 227,
+      "type": "ExpressionEditor",
+      "pos": [
+        -690.7163696289062,
+        1900.531005859375
+      ],
+      "size": [
+        256.8715515136719,
+        690
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "src_image",
+          "type": "IMAGE",
+          "shape": 7,
+          "link": 410
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "shape": 7,
+          "link": null
+        },
+        {
+          "name": "sample_image",
+          "type": "IMAGE",
+          "shape": 7,
+          "link": null
+        },
+        {
+          "name": "add_exp",
+          "type": "EXP_DATA",
+          "shape": 7,
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "shape": 3,
+          "links": [
+            397
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "shape": 3,
+          "links": null
+        },
+        {
+          "name": "save_exp",
+          "type": "EXP_DATA",
+          "shape": 3,
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ExpressionEditor",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [
+        0,
+        0,
+        0,
+        0,
+        1.5,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -4.4,
+        0.33,
+        1,
+        1,
+        "OnlyExpression",
+        1.7000000000000002
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    },
+    {
+      "id": 236,
+      "type": "ExpressionEditor",
+      "pos": [
+        -102.60865020751953,
+        1896.519287109375
+      ],
+      "size": [
+        256.8715515136719,
+        690
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "src_image",
+          "type": "IMAGE",
+          "shape": 7,
+          "link": 412
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "shape": 7,
+          "link": null
+        },
+        {
+          "name": "sample_image",
+          "type": "IMAGE",
+          "shape": 7,
+          "link": null
+        },
+        {
+          "name": "add_exp",
+          "type": "EXP_DATA",
+          "shape": 7,
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "shape": 3,
+          "links": [
+            399
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "motion_link",
+          "type": "EDITOR_LINK",
+          "shape": 3,
+          "links": null
+        },
+        {
+          "name": "save_exp",
+          "type": "EXP_DATA",
+          "shape": 3,
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ExpressionEditor",
+        "ttNbgOverride": {
+          "color": "#233",
+          "bgcolor": "#355",
+          "groupcolor": "#8AA"
+        }
+      },
+      "widgets_values": [
+        0,
+        0,
+        0,
+        0,
+        1.5,
+        0,
+        15,
+        15,
+        5,
+        0,
+        13.4,
+        0.11,
+        1,
+        1,
+        "OnlyExpression",
+        1.7000000000000002
+      ],
+      "color": "#233",
+      "bgcolor": "#355"
+    }
+  ],
+  "links": [
+    [
+      374,
+      222,
+      0,
+      221,
+      0,
+      "IMAGE"
+    ],
+    [
+      375,
+      220,
+      0,
+      223,
+      0,
+      "IMAGE"
+    ],
+    [
+      376,
+      221,
+      0,
+      224,
+      0,
+      "IMAGE"
+    ],
+    [
+      377,
+      219,
+      0,
+      225,
+      0,
+      "IMAGE"
+    ],
+    [
+      380,
+      222,
+      0,
+      220,
+      0,
+      "IMAGE"
+    ],
+    [
+      381,
+      219,
+      0,
+      217,
+      0,
+      "IMAGE"
+    ],
+    [
+      386,
+      221,
+      0,
+      229,
+      0,
+      "IMAGE"
+    ],
+    [
+      388,
+      221,
+      0,
+      231,
+      0,
+      "IMAGE"
+    ],
+    [
+      389,
+      219,
+      0,
+      232,
+      0,
+      "IMAGE"
+    ],
+    [
+      391,
+      221,
+      0,
+      234,
+      0,
+      "IMAGE"
+    ],
+    [
+      392,
+      219,
+      0,
+      235,
+      0,
+      "IMAGE"
+    ],
+    [
+      394,
+      217,
+      0,
+      237,
+      0,
+      "IMAGE"
+    ],
+    [
+      395,
+      232,
+      0,
+      237,
+      1,
+      "IMAGE"
+    ],
+    [
+      396,
+      235,
+      0,
+      237,
+      2,
+      "IMAGE"
+    ],
+    [
+      397,
+      227,
+      0,
+      237,
+      3,
+      "IMAGE"
+    ],
+    [
+      398,
+      233,
+      0,
+      237,
+      4,
+      "IMAGE"
+    ],
+    [
+      399,
+      236,
+      0,
+      237,
+      5,
+      "IMAGE"
+    ],
+    [
+      400,
+      234,
+      0,
+      237,
+      6,
+      "IMAGE"
+    ],
+    [
+      401,
+      229,
+      0,
+      237,
+      7,
+      "IMAGE"
+    ],
+    [
+      402,
+      231,
+      0,
+      237,
+      8,
+      "IMAGE"
+    ],
+    [
+      405,
+      239,
+      0,
+      219,
+      0,
+      "IMAGE"
+    ],
+    [
+      406,
+      239,
+      0,
+      222,
+      0,
+      "*"
+    ],
+    [
+      407,
+      222,
+      0,
+      241,
+      0,
+      "IMAGE"
+    ],
+    [
+      408,
+      241,
+      0,
+      240,
+      0,
+      "IMAGE"
+    ],
+    [
+      409,
+      237,
+      0,
+      243,
+      0,
+      "IMAGE"
+    ],
+    [
+      410,
+      241,
+      0,
+      227,
+      0,
+      "IMAGE"
+    ],
+    [
+      411,
+      241,
+      0,
+      233,
+      0,
+      "IMAGE"
+    ],
+    [
+      412,
+      241,
+      0,
+      236,
+      0,
+      "IMAGE"
+    ],
+    [
+      413,
+      220,
+      0,
+      237,
+      9,
+      "IMAGE"
+    ],
+    [
+      414,
+      242,
+      0,
+      237,
+      10,
+      "IMAGE"
+    ],
+    [
+      429,
+      237,
+      0,
+      245,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 2,
+      "title": "IMAGE PREP",
+      "bounding": [
+        -1100.482177734375,
+        -511.46453857421875,
+        2972.187744140625,
+        3217.27294921875
+      ],
+      "color": "#3f789e",
+      "font_size": 40,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.15772225476662663,
+      "offset": [
+        3530.272784867194,
+        1625.941637675712
+      ]
+    },
+    "groupNodes": {},
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0
+  },
+  "version": 0.4
+}

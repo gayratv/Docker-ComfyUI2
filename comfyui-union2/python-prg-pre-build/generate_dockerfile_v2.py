@@ -1,10 +1,36 @@
 import os
 import sys
 import argparse
+import subprocess
 
 # Глобальная константа для базового пути
 BASE_DOCKERFILE_PATH = '/mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2'
 
+def get_latest_commit_hash(repo_url: str) -> str:
+    """
+    Определяет SHA‑1 хеш последнего коммита (HEAD) для удалённого git‑репозитория.
+    При ошибке возвращает строку 'HEAD', чтобы downstream‑скрипт мог работать
+    с именем ветки по умолчанию.
+
+    Args:
+        repo_url: URL или путь до git‑репозитория.
+
+    Returns:
+        str: 40‑символьный хеш последнего коммита либо 'HEAD' при неудаче.
+    """
+    try:
+        result = subprocess.run(
+            ['git', 'ls-remote', repo_url, 'HEAD'],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            check=True,
+            timeout=15
+        )
+        return result.stdout.strip().split()[0]
+    except (subprocess.CalledProcessError, IndexError, subprocess.TimeoutExpired) as exc:
+        print(f"Предупреждение: не удалось получить хеш последнего коммита для '{repo_url}': {exc}", file=sys.stderr)
+        return 'HEAD'
 
 def create_new_dockerfile(start_file, nodes_file, end_file, output_file):
     """
@@ -40,13 +66,14 @@ def create_new_dockerfile(start_file, nodes_file, end_file, output_file):
 
     generated_part = []
     for repo in repositories:
+        commit_hash = get_latest_commit_hash(repo)
         # Формируем команду RUN для каждого репозитория
         # Использование f-string и многострочного формата делает команду читаемой
         run_command = (
             "RUN --mount=type=cache,target=/root/repo-cache \\\n"
             "    --mount=type=cache,target=/root/pip-cache \\\n"
             "    PIP_CACHE_DIR=/root/pip-cache \\\n"
-            f"    process_one_repo_install_req_hash.sh \"{repo}\" true \\\n"
+            f"    process_one_repo_install_req_hash.sh \"{repo}@{commit_hash}\" true \\\n"
             "    && rm -rf /root/.cache/pip"
         )
         generated_part.append(run_command)

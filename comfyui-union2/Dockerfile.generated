@@ -106,175 +106,95 @@ RUN chmod +x $DOWNLOADS_DIR/*.sh
 WORKDIR /workspace/ComfyUI
 COPY ./custom-nodes/*.txt ./
 
+# Copy the pre-built Apex wheel from your local host into the image
+WORKDIR /workspace/wheels
+COPY ./assets-docker/apex_wheel/apex-*.whl .
+# Install the Apex wheel and then delete the file to keep the image clean
+RUN python3 -m pip install apex-*.whl && rm apex-*.whl
+
+
 
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/gayratv/ComfyUI_Gayrat" true \
+    process_one_repo_install_req_hash.sh "https://github.com/gayratv/ComfyUI_Gayrat@62e735f1955129437dc6e93552168e0c3fbb5612" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/chrisgoringe/cg-use-everywhere" true \
+    process_one_repo_install_req_hash.sh "https://github.com/chrisgoringe/cg-use-everywhere@a834f09f3889264f192711971ca624128650a250" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/rgthree/rgthree-comfy" true \
+    process_one_repo_install_req_hash.sh "https://github.com/rgthree/rgthree-comfy@944d5353a1b0a668f40844018c3dc956b95a67d7" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/pythongosssss/ComfyUI-Custom-Scripts" true \
+    process_one_repo_install_req_hash.sh "https://github.com/pythongosssss/ComfyUI-Custom-Scripts@aac13aa7ce35b07d43633c3bbe654a38c00d74f5" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/yolain/ComfyUI-Easy-Use" true \
+    process_one_repo_install_req_hash.sh "https://github.com/mit-han-lab/ComfyUI-nunchaku@ec55886239725537d3a0a52409a338bd01b78915" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/kijai/ComfyUI-KJNodes" true \
+    process_one_repo_install_req_hash.sh "https://github.com/Jonseed/ComfyUI-Detail-Daemon@f391accbda2d309cdcbec65cb9fcc80a41197b20" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/ssitu/ComfyUI_UltimateSDUpscale" true \
+    process_one_repo_install_req_hash.sh "https://github.com/blepping/ComfyUI-bleh@9606ca236c05746e2b196361cdce411b7759f787" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes" true \
+    process_one_repo_install_req_hash.sh "https://github.com/vuongminh1907/ComfyUI_ZenID@21b90a97c530df6e218cdbe5117a0b331708eab6" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/cubiq/ComfyUI_essentials" true \
+    process_one_repo_install_req_hash.sh "https://github.com/cubiq/ComfyUI_essentials@9d9f4bedfc9f0321c19faf71855e228c93bd0dc9" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/Jonseed/ComfyUI-Detail-Daemon" true \
+    process_one_repo_install_req_hash.sh "https://github.com/cubiq/ComfyUI_InstantID@72495e806bc2ab9c41581e15ccaa1bcf83c477e8" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/melMass/comfy_mtb" true \
+    process_one_repo_install_req_hash.sh "https://github.com/jakechai/ComfyUI-JakeUpgrade@4c1a84ad63ef6e003086469c6ae72559f3183985" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/Jordach/comfy-plasma" true \
+    process_one_repo_install_req_hash.sh "https://github.com/cubiq/ComfyUI_FaceAnalysis@8846653446a6b13582da11793faf950325a398e0" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/M1kep/ComfyLiterals" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/chengzeyi/Comfy-WaveSpeed" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/1038lab/ComfyUI-RMBG" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://codeberg.org/Gourieff/comfyui-reactor-node" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/ltdrdata/ComfyUI-Impact-Pack" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/ltdrdata/ComfyUI-Impact-Subpack" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/sipie800/ComfyUI-PuLID-Flux-Enhanced" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/JPS-GER/ComfyUI_JPS-Nodes" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/Zehong-Ma/ComfyUI-MagCache" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/chrisgoringe/cg-noisetools" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/ltdrdata/was-node-suite-comfyui" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/EllangoK/ComfyUI-post-processing-nodes" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/BlenderNeko/ComfyUI_Noise" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/ltdrdata/ComfyUI-Inspire-Pack" true \
+    process_one_repo_install_req_hash.sh "https://github.com/cubiq/ComfyUI_IPAdapter_plus@a0f451a5113cf9becb0847b92884cb10cbdec0ef" true \
     && rm -rf /root/.cache/pip
 
 
 ARG NODES
 
-
-ARG WORKFLOW_TO_COPY="supir"
-COPY ./user/default/comfy.settings.json user/default/
 
 WORKDIR /workspace/ComfyUI/input
 COPY input  ./
@@ -308,6 +228,8 @@ COPY post-install/ ./post-install
 
 COPY requirements-modify/ ./requirements-modify
 
+
+WORKDIR /workspace
 RUN --mount=type=cache,target=/root/pip-cache \
     if [ -n "$POST_INSTALL" ]; then \
         chmod +x "./post-install/$POST_INSTALL" && \
@@ -324,9 +246,6 @@ WORKDIR /workspace/ComfyUI
 COPY assets-docker/styles.csv ./
 COPY input/${MODELS} ./input/
 
-WORKDIR /workspace/ComfyUI
-COPY workflows/$WORKFLOW_TO_COPY user/default/workflows/$WORKFLOW_TO_COPY
-
 
 WORKDIR /workspace/ComfyUI/models/embeddings
 # для версии numpy
@@ -335,6 +254,14 @@ COPY assets-docker/embeddings/ .
 WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI-Manager
 # для версии numpy
 COPY assets-docker/pip_overrides.json .
+
+WORKDIR /workspace/WAS_node/
+COPY assets-docker/WAS_node/nsp_pantry.json .
+RUN echo 'export WAS_CONFIG_DIR=/workspace/WAS_node' >> /root/.bashrc
+
+
+
+RUN echo -e "\\033[31m Копирование template \\033[0m"
 
 # Copy aria2 directory near the end and keep only selected model subfolders
 ARG ARIA2_MODEL_DIRS=""
@@ -354,6 +281,8 @@ RUN if [ -n "$ARIA2_MODEL_DIRS" ]; then \
 WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI-CSV-Loader/CSV/
 COPY assets-docker/CSV ./
 
+WORKDIR /workspace/ComfyUI/user/default/
+COPY ./user/default/comfy.settings.json .
 
 WORKDIR /workspace/ComfyUI
 

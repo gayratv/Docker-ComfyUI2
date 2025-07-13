@@ -1,0 +1,54 @@
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    for repo in \
+      https://github.com/gayratv/ComfyUI_Gayrat \
+      https://github.com/chrisgoringe/cg-use-everywhere \
+      https://github.com/rgthree/rgthree-comfy \
+      ... ; do \
+        process_one_repo_install_req_hash.sh "$repo" true ; \
+    done && rm -rf /root/.cache/pip
+
+
+Не меняйте аргументы без нужды.
+Если ARG MODELS или другие build‑args передаёте «на всякий случай», уберите их или задавайте только когда реально нужно — каждое новое значение принудительно сбивает кэш слоёв ниже.
+
+Следуя этим рекомендациям — особенно «фиксировать всё, что тянется снаружи» и «схлопнуть десятки RUNов в один» — вы увидите желанный => CACHED вместо повторного скачивания и установки всех репозиториев при каждой сборке.
+
+Фиксируйте версии.
+
+Замените latest/main/master на конкретные теги или SHA‑коммиты.
+
+Аналогично передавайте в process_one_repo_install_req_hash.sh не плавающий HEAD, а фиксированный хэш.
+
+
+========================
+# Первая сборка (кэш записывается внутрь образа)
+DOCKER_BUILDKIT=1 docker build \
+  --build-arg BUILDKIT_INLINE_CACHE=1 \
+  -t my-image:latest .
+
+# Повторная сборка (используем образ в качестве источника кэша)
+DOCKER_BUILDKIT=1 docker build \
+  --build-arg BUILDKIT_INLINE_CACHE=1 \
+  --cache-from=my-image:latest \
+  -t my-image:latest .
+
+
+=============
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh \
+      "https://github.com/chrisgoringe/cg-use-everywhere.git@5c1d1234abcde56789f01234567890abcdef1234" true \
+    && rm -rf /root/.cache/pip
+
+
+======
+
+git clone https://github.com/chrisgoringe/cg-use-everywhere.git
+cd cg-use-everywhere
+git log
+
+Выберите нужный коммит и вставьте его хэш в Dockerfile.
+

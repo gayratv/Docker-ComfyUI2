@@ -105,3 +105,10 @@ RUN chmod +x $DOWNLOADS_DIR/*.sh
 
 WORKDIR /workspace/ComfyUI
 COPY ./custom-nodes/*.txt ./
+
+# Copy the pre-built Apex wheel from your local host into the image
+WORKDIR /workspace/wheels
+COPY ./assets-docker/apex_wheel/apex-*.whl .
+# Install the Apex wheel and then delete the file to keep the image clean
+RUN python3 -m pip install apex-*.whl && rm apex-*.whl
+

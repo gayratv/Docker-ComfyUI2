@@ -10,6 +10,7 @@
 echo "run --name $IMAGE_NAME $IMAGE_NAME:$VERSION"
 docker rm -f "$IMAGE_NAME"
 
+#    -e WAS_CONFIG_DIR=/workspace/WAS_node \
 docker run -it --privileged --gpus all -p 8188:8188 -p 1188:1188 \
     --env-file .env \
     -e MODELS=$MODELS \

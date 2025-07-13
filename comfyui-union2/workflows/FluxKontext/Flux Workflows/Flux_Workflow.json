@@ -213,10 +213,10 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfyui-impact-pack",
+        "aux_id": "ltdrdata/ComfyUI-Impact-Pack",
         "ver": "2346b677666e14ad53a6e65e16a33289a78106c7",
         "Node name for S&R": "FromBasicPipe_v2",
-        "aux_id": "ltdrdata/ComfyUI-Impact-Pack",
+        "cnr_id": "comfyui-impact-pack",
         "widget_ue_connectable": {}
       },
       "widgets_values": []
@@ -296,10 +296,10 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfyui-kjnodes",
+        "aux_id": "kijai/ComfyUI-KJNodes",
         "ver": "9682804efb2e7caeafcca9431c94a38163e8ceb8",
         "Node name for S&R": "ModelPassThrough",
-        "aux_id": "kijai/ComfyUI-KJNodes",
+        "cnr_id": "comfyui-kjnodes",
         "widget_ue_connectable": {}
       },
       "widgets_values": []
@@ -491,10 +491,10 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfyui-detail-daemon",
+        "aux_id": "Jonseed/ComfyUI-Detail-Daemon",
         "ver": "f391accbda2d309cdcbec65cb9fcc80a41197b20",
         "Node name for S&R": "DetailDaemonSamplerNode",
-        "aux_id": "Jonseed/ComfyUI-Detail-Daemon",
+        "cnr_id": "comfyui-detail-daemon",
         "widget_ue_connectable": {}
       },
       "widgets_values": [
@@ -544,10 +544,10 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfyui-easy-use",
+        "aux_id": "yolain/ComfyUI-Easy-Use",
         "ver": "71c7865d2d3c934ccb99f24171e08ae5a81148ac",
         "Node name for S&R": "easy cleanGpuUsed",
-        "aux_id": "yolain/ComfyUI-Easy-Use",
+        "cnr_id": "comfyui-easy-use",
         "widget_ue_connectable": {}
       },
       "widgets_values": []
@@ -811,10 +811,10 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfyui-impact-pack",
+        "aux_id": "ltdrdata/ComfyUI-Impact-Pack",
         "ver": "2346b677666e14ad53a6e65e16a33289a78106c7",
         "Node name for S&R": "ToBasicPipe",
-        "aux_id": "ltdrdata/ComfyUI-Impact-Pack",
+        "cnr_id": "comfyui-impact-pack",
         "widget_ue_connectable": {}
       },
       "widgets_values": []
@@ -980,10 +980,10 @@
         }
       ],
       "properties": {
-        "cnr_id": "comfyui_ultimatesdupscale",
+        "aux_id": "ssitu/ComfyUI_UltimateSDUpscale",
         "ver": "8642daf6281e4ebbdf2daca18539c0ab6c2c63f4",
         "Node name for S&R": "UltimateSDUpscale",
-        "aux_id": "ssitu/ComfyUI_UltimateSDUpscale",
+        "cnr_id": "comfyui_ultimatesdupscale",
         "widget_ue_connectable": {
           "tile_height": false,
           "tile_width": false
@@ -991,7 +991,7 @@
       },
       "widgets_values": [
         1.5000000000000002,
-        121318386977356,
+        439627448886161,
         "randomize",
         20,
         1.5,
@@ -1338,7 +1338,7 @@
       },
       "widgets_values": [
         true,
-        1112392234041047,
+        409501040919224,
         "randomize",
         2.5
       ],
@@ -1414,10 +1414,10 @@
         }
       ],
       "properties": {
-        "cnr_id": "ComfyUI_JPS-Nodes",
+        "aux_id": "JPS-GER/ComfyUI_JPS-Nodes",
         "ver": "0e2a9aca02b17dde91577bfe4b65861df622dcaf",
         "Node name for S&R": "SDXL Resolutions (JPS)",
-        "aux_id": "JPS-GER/ComfyUI_JPS-Nodes",
+        "cnr_id": "ComfyUI_JPS-Nodes",
         "widget_ue_connectable": {}
       },
       "widgets_values": [
@@ -1460,50 +1460,6 @@
       },
       "widgets_values": [
         "dpmpp_2m"
-      ],
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
-      "id": 134,
-      "type": "BasicScheduler",
-      "pos": [
-        -3893.800537109375,
-        1029.043701171875
-      ],
-      "size": [
-        270,
-        106
-      ],
-      "flags": {},
-      "order": 22,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 261
-        }
-      ],
-      "outputs": [
-        {
-          "name": "SIGMAS",
-          "type": "SIGMAS",
-          "links": [
-            224
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.40",
-        "Node name for S&R": "BasicScheduler",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "sgm_uniform",
-        40,
-        1
       ],
       "color": "#232",
       "bgcolor": "#353"
@@ -1583,10 +1539,10 @@
         }
       ],
       "properties": {
-        "cnr_id": "rgthree-comfy",
+        "aux_id": "rgthree/rgthree-comfy",
         "ver": "84a146fee39f7b3a8c6631dcac29bc13b077eb49",
         "Node name for S&R": "Lora Loader Stack (rgthree)",
-        "aux_id": "rgthree/rgthree-comfy",
+        "cnr_id": "rgthree-comfy",
         "widget_ue_connectable": {}
       },
       "widgets_values": [
@@ -1794,6 +1750,50 @@
       "widgets_values": [
         "4xLSDIR.pth"
       ]
+    },
+    {
+      "id": 134,
+      "type": "BasicScheduler",
+      "pos": [
+        -3893.800537109375,
+        1029.043701171875
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 261
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            224
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.40",
+        "Node name for S&R": "BasicScheduler",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "sgm_uniform",
+        25,
+        1
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
     }
   ],
   "links": [
@@ -2205,10 +2205,10 @@
   "extra": {
     "ue_links": [],
     "ds": {
-      "scale": 0.4090909090909103,
+      "scale": 2.067737843860761,
       "offset": [
-        5506.4234093512605,
-        123.80685656072023
+        4159.952625988488,
+        -818.7625858838283
       ]
     },
     "links_added_by_ue": [],

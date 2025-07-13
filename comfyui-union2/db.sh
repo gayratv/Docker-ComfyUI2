@@ -1,9 +1,13 @@
 #!/bin/bash
 
+source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+
 #    --no-cache \
-#    --cache-from $IMAGE_NAME:$VERSION \
 #    --no-cache \
-docker build --progress=plain \
+DOCKER_BUILDKIT=1 docker build --progress=plain \
+    --build-arg BUILDKIT_INLINE_CACHE=1 \
+    --cache-from $IMAGE_NAME:$VERSION \
     --build-arg BASE_IMAGE="$BASE_IMAGE" \
     --build-arg NODES="$NODES" \
     --build-arg POST_INSTALL=$POST_INSTALL \

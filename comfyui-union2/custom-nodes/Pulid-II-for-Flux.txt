@@ -14,3 +14,37 @@ https://github.com/twri/sdxl_prompt_styler
 https://github.com/chrisgoringe/cg-use-everywhere
 https://github.com/sipherxyz/comfyui-art-venture
 https://github.com/gayratv/ComfyUI_Gayrat
+
+
+# Основные плагины PuLID для ComfyUI
+# PuLID_ComfyUI
+# — это нативная реализация PuLID в ComfyUI с базовыми узлами: PulidModelLoader, PulidInsightFaceLoader, PulidEvaClipLoader, ApplyPulid, ApplyPulidAdvanced. Поддерживает маскирование, продвинутый режим работы и выбор методов (Fidelity, Style, Neutral)
+# comfyui.org
+#
+# cubiq/PuLID_ComfyUI
+# — ещё один вариант нативного плагина от cubiq. Бета‑стадия, 4‑шаговый lighting UNet, параметры method, fidelity, projection в Advanced‑узле
+#
+# balazik/ComfyUI-PuLID-Flux
+# — альфа‑версия PuLID‑Flux, специально построена под Flux модели. Node: ApplyPulidFlux с поддержкой параметров weight, start_at, end_at. Требует Flux.1‑dev (в GGUF/FP8)
+#
+# lldacing/ComfyUI_PuLID_Flux_ll
+# — улучшенная версия balazik‑плагина. Решены проблемы pollution модели, добавлена поддержка TeaCache, WaveSpeed, First Block Cache. Узлы: PulidFluxModelLoader, PulidFluxInsightFaceLoader, PulidFluxEvaClipLoader, ApplyPulidFlux, PulidFluxFaceDetector и др. Поддерживает выбор лиц по разным режимам
+#
+# ComfyUI-PuLID-Flux-GR
+# — расширенная версия с улучшенным выбором лиц: режимы cent er_face, largest_face, smallest_face и др. Имеются настройки игнорирования размытия и оптимизация ресурсов
+#
+# | Плагин                           | Ключевые узлы                   | Особенности                               |
+# | -------------------------------- | ------------------------------- | ----------------------------------------- |
+# | **PuLID\_ComfyUI**               | Basic применением PuLID         | Маскирование, выбор метода, Advanced‑узел |
+# | **cubiq/PuLID\_ComfyUI**         | Бета‑версия                     | 4‑шаговый lighting UNet                   |
+# | **ComfyUI‑PuLID‑Flux** (balazik) | ApplyPulidFlux                  | Flux‑ориентированная, start/end, вес      |
+# | **PuLID\_Flux\_ll** (lldacing)   | Набор Flux‑узлов + FaceDetector | Решает pollution, TeaCache, WaveSpeed     |
+# | **Flux‑GR**                      | Flux‑Flux‑GR узлы               | Выбор лиц по метрикам, игнор размытия     |
+#
+# Рекомендации
+# Хочешь начать быстро? Используй PuLID_ComfyUI или cubiq — достаточно универсальны.
+#
+# Если работаешь с Flux.1-dev, выбирай balazik или lldacing — эти плагины оптимизированы именно под Flux‑модели.
+#
+# Для продвинутого управления выбором лиц и ускорения — lldacing/GR‑версия очевидно лучше.
+

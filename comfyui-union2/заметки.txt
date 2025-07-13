@@ -977,6 +977,7 @@ source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 export MODELS="Nunchaku2"
 export WORKFLOW_TO_COPY=$MODELS
+export ARIA2_MODEL_DIRS="${MODELS} _antelopev2 _InstantID(ip-adapter)"
 export VERSION="$MODELS-CUDA12.6"
 export NODES="$MODELS.txt"
 export IMAGE_NAME="comfyui-union2"
@@ -987,6 +988,8 @@ export REQ_MODIFY="base-CUDA-12.6"
 export POST_INSTALL="$MODELS.sh"
 
 ./dl_common.sh "$MODELS"
+./dl_common.sh _antelopev2
+./dl_common.sh _InstantID(ip-adapter)
 
 python3 python-prg-pre-build/sync_dir.py "$MODELS"
 ./db-gen.sh

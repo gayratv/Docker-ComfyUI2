@@ -2,9 +2,6 @@
 ARG NODES
 
 
-ARG WORKFLOW_TO_COPY="supir"
-COPY ./user/default/comfy.settings.json user/default/
-
 WORKDIR /workspace/ComfyUI/input
 COPY input  ./
 
@@ -37,6 +34,8 @@ COPY post-install/ ./post-install
 
 COPY requirements-modify/ ./requirements-modify
 
+
+WORKDIR /workspace
 RUN --mount=type=cache,target=/root/pip-cache \
     if [ -n "$POST_INSTALL" ]; then \
         chmod +x "./post-install/$POST_INSTALL" && \
@@ -53,9 +52,6 @@ WORKDIR /workspace/ComfyUI
 COPY assets-docker/styles.csv ./
 COPY input/${MODELS} ./input/
 
-WORKDIR /workspace/ComfyUI
-COPY workflows/$WORKFLOW_TO_COPY user/default/workflows/$WORKFLOW_TO_COPY
-
 
 WORKDIR /workspace/ComfyUI/models/embeddings
 # для версии numpy
@@ -64,6 +60,14 @@ COPY assets-docker/embeddings/ .
 WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI-Manager
 # для версии numpy
 COPY assets-docker/pip_overrides.json .
+
+WORKDIR /workspace/WAS_node/
+COPY assets-docker/WAS_node/nsp_pantry.json .
+RUN echo 'export WAS_CONFIG_DIR=/workspace/WAS_node' >> /root/.bashrc
+
+
+
+RUN echo -e "\\033[31m Копирование template \\033[0m"
 
 # Copy aria2 directory near the end and keep only selected model subfolders
 ARG ARIA2_MODEL_DIRS=""
@@ -83,6 +87,8 @@ RUN if [ -n "$ARIA2_MODEL_DIRS" ]; then \
 WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI-CSV-Loader/CSV/
 COPY assets-docker/CSV ./
 
+WORKDIR /workspace/ComfyUI/user/default/
+COPY ./user/default/comfy.settings.json .
 
 WORKDIR /workspace/ComfyUI
 

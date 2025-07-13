@@ -142,7 +142,6 @@ RUN --mount=type=cache,target=/root/repo-cache \
         echo "Skipping RUN because NODES is set to 'nodes1.txt'"; \
     fi
 
-ARG WORKFLOW_TO_COPY="supir"
 COPY ./user/default/comfy.settings.json user/default/
 
 WORKDIR /workspace/ComfyUI/input
@@ -203,6 +202,11 @@ COPY assets-docker/embeddings/ .
 WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI-Manager
 # для версии numpy
 COPY assets-docker/pip_overrides.json .
+
+WORKDIR /workspace/WAS_node/
+COPY assets-docker/WAS_node/nsp_pantry.json .
+RUN echo 'export WAS_CONFIG_DIR=/workspace/WAS_node' >> /root/.bashrc
+
 
 # Copy aria2 directory near the end and keep only selected model subfolders
 ARG ARIA2_MODEL_DIRS=""
