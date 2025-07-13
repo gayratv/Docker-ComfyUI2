@@ -1,8 +1,12 @@
 #!/bin/bash
 
 source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
+
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+mkdir -p ./input/"${MODELS}"
+
 python3 ./python-prg-pre-build/generate_dockerfile_v2.py --nodes "${MODELS}.txt"
+
 
 #    --no-cache \
 #    --cache-from $IMAGE_NAME:$VERSION \

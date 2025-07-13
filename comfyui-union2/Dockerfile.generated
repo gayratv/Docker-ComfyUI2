@@ -244,6 +244,7 @@ RUN echo "===== Финальная проверка Numpy =====" && \
 
 WORKDIR /workspace/ComfyUI
 COPY assets-docker/styles.csv ./
+
 COPY input/${MODELS} ./input/
 
 

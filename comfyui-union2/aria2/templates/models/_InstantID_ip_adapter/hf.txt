@@ -3,10 +3,10 @@
 # позволяющий генерировать сохраняющие идентификаторы только с одним изображением,
 # поддерживая различные последующие задачи.
 https://huggingface.co/InstantX/InstantID/resolve/main/ip-adapter.bin
-    dir=models/SDXL/instantid
+    dir=models/instantid/SDXL
     out=ip-adapter.bin
 
 # ControlNet-модель для InstantID
 https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/diffusion_pytorch_model.safetensors
-    dir=models/SDXL/controlnet
+    dir=models/controlnet/SDXL
     out=ControlNet-InstantID.safetensors
