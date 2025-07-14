@@ -1,4 +1,6 @@
 {
+  "id": "6a8244cc-8f76-4ff4-bc23-653f1d14ad9e",
+  "revision": 0,
   "last_node_id": 16,
   "last_link_id": 25,
   "nodes": [
@@ -9,10 +11,10 @@
         690,
         840
       ],
-      "size": {
-        "0": 425.27801513671875,
-        "1": 180.6060791015625
-      },
+      "size": [
+        425.27801513671875,
+        180.6060791015625
+      ],
       "flags": {},
       "order": 6,
       "mode": 0,
@@ -27,14 +29,17 @@
         {
           "name": "CONDITIONING",
           "type": "CONDITIONING",
+          "slot_index": 0,
           "links": [
             6
-          ],
-          "slot_index": 0
+          ]
         }
       ],
       "properties": {
-        "Node name for S&R": "CLIPTextEncode"
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "blurry, noisy, messy, lowres, jpeg, artifacts, ill, distorted, malformed"
@@ -47,10 +52,10 @@
         335,
         430
       ],
-      "size": {
-        "0": 315,
-        "1": 78
-      },
+      "size": [
+        315,
+        78
+      ],
       "flags": {},
       "order": 4,
       "mode": 0,
@@ -62,6 +67,7 @@
         },
         {
           "name": "ipadapter",
+          "shape": 7,
           "type": "IPADAPTER",
           "link": null
         }
@@ -70,105 +76,28 @@
         {
           "name": "model",
           "type": "MODEL",
+          "slot_index": 0,
           "links": [
             21
-          ],
-          "shape": 3,
-          "slot_index": 0
+          ]
         },
         {
           "name": "ipadapter",
           "type": "IPADAPTER",
+          "slot_index": 1,
           "links": [
             22
-          ],
-          "shape": 3,
-          "slot_index": 1
+          ]
         }
       ],
       "properties": {
-        "Node name for S&R": "IPAdapterUnifiedLoader"
+        "cnr_id": "comfyui_ipadapter_plus",
+        "ver": "a0f451a5113cf9becb0847b92884cb10cbdec0ef",
+        "Node name for S&R": "IPAdapterUnifiedLoader",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "PLUS (high strength)"
-      ]
-    },
-    {
-      "id": 12,
-      "type": "LoadImage",
-      "pos": [
-        -102,
-        -46
-      ],
-      "size": {
-        "0": 315,
-        "1": 314
-      },
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            25
-          ],
-          "shape": 3,
-          "slot_index": 0
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": null,
-          "shape": 3
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "black_car.jpg",
-        "image"
-      ]
-    },
-    {
-      "id": 16,
-      "type": "LoadImage",
-      "pos": [
-        310,
-        -40
-      ],
-      "size": {
-        "0": 315,
-        "1": 314
-      },
-      "flags": {},
-      "order": 1,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            24
-          ],
-          "shape": 3,
-          "slot_index": 0
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": null,
-          "shape": 3
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "bw_texture_waves.jpg",
-        "image"
       ]
     },
     {
@@ -178,25 +107,29 @@
         801,
         1097
       ],
-      "size": {
-        "0": 315,
-        "1": 106
-      },
+      "size": [
+        315,
+        106
+      ],
       "flags": {},
-      "order": 2,
+      "order": 0,
       "mode": 0,
+      "inputs": [],
       "outputs": [
         {
           "name": "LATENT",
           "type": "LATENT",
+          "slot_index": 0,
           "links": [
             2
-          ],
-          "slot_index": 0
+          ]
         }
       ],
       "properties": {
-        "Node name for S&R": "EmptyLatentImage"
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "Node name for S&R": "EmptyLatentImage",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         1024,
@@ -211,10 +144,10 @@
         690,
         610
       ],
-      "size": {
-        "0": 422.84503173828125,
-        "1": 164.31304931640625
-      },
+      "size": [
+        422.84503173828125,
+        164.31304931640625
+      ],
       "flags": {},
       "order": 5,
       "mode": 0,
@@ -229,14 +162,17 @@
         {
           "name": "CONDITIONING",
           "type": "CONDITIONING",
+          "slot_index": 0,
           "links": [
             4
-          ],
-          "slot_index": 0
+          ]
         }
       ],
       "properties": {
-        "Node name for S&R": "CLIPTextEncode"
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "sports car running fast on the highway\n\nhigh quality, detailed"
@@ -249,10 +185,10 @@
         772,
         219
       ],
-      "size": {
-        "0": 315,
-        "1": 322
-      },
+      "size": [
+        315,
+        322
+      ],
       "flags": {},
       "order": 7,
       "mode": 0,
@@ -279,16 +215,19 @@
         },
         {
           "name": "image_negative",
+          "shape": 7,
           "type": "IMAGE",
           "link": null
         },
         {
           "name": "attn_mask",
+          "shape": 7,
           "type": "MASK",
           "link": null
         },
         {
           "name": "clip_vision",
+          "shape": 7,
           "type": "CLIP_VISION",
           "link": null
         }
@@ -297,15 +236,17 @@
         {
           "name": "MODEL",
           "type": "MODEL",
+          "slot_index": 0,
           "links": [
             23
-          ],
-          "shape": 3,
-          "slot_index": 0
+          ]
         }
       ],
       "properties": {
-        "Node name for S&R": "IPAdapterStyleComposition"
+        "cnr_id": "comfyui_ipadapter_plus",
+        "ver": "a0f451a5113cf9becb0847b92884cb10cbdec0ef",
+        "Node name for S&R": "IPAdapterStyleComposition",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         1.2,
@@ -324,10 +265,10 @@
         1247,
         586
       ],
-      "size": {
-        "0": 315,
-        "1": 262
-      },
+      "size": [
+        315,
+        262
+      ],
       "flags": {},
       "order": 8,
       "mode": 0,
@@ -357,14 +298,17 @@
         {
           "name": "LATENT",
           "type": "LATENT",
+          "slot_index": 0,
           "links": [
             7
-          ],
-          "slot_index": 0
+          ]
         }
       ],
       "properties": {
-        "Node name for S&R": "KSampler"
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "Node name for S&R": "KSampler",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         0,
@@ -383,10 +327,10 @@
         1615,
         586
       ],
-      "size": {
-        "0": 140,
-        "1": 46
-      },
+      "size": [
+        140,
+        46
+      ],
       "flags": {},
       "order": 9,
       "mode": 0,
@@ -406,15 +350,19 @@
         {
           "name": "IMAGE",
           "type": "IMAGE",
+          "slot_index": 0,
           "links": [
             9
-          ],
-          "slot_index": 0
+          ]
         }
       ],
       "properties": {
-        "Node name for S&R": "VAEDecode"
-      }
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "Node name for S&R": "VAEDecode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
     },
     {
       "id": 9,
@@ -424,8 +372,8 @@
         588
       ],
       "size": [
-        691.0159878487498,
-        716.6239849908982
+        691.0159912109375,
+        716.6239624023438
       ],
       "flags": {},
       "order": 10,
@@ -437,9 +385,96 @@
           "link": 9
         }
       ],
-      "properties": {},
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "widget_ue_connectable": {}
+      },
       "widgets_values": [
         "IPAdapter"
+      ]
+    },
+    {
+      "id": 12,
+      "type": "LoadImage",
+      "pos": [
+        -102,
+        -46
+      ],
+      "size": [
+        315,
+        314
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            25
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "car.webp",
+        "image"
+      ]
+    },
+    {
+      "id": 16,
+      "type": "LoadImage",
+      "pos": [
+        310,
+        -40
+      ],
+      "size": [
+        315,
+        314
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            24
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Снимок экрана 2025-04-11 095311.png",
+        "image"
       ]
     },
     {
@@ -449,45 +484,49 @@
         -72,
         657
       ],
-      "size": {
-        "0": 315,
-        "1": 98
-      },
+      "size": [
+        315,
+        98
+      ],
       "flags": {},
       "order": 3,
       "mode": 0,
+      "inputs": [],
       "outputs": [
         {
           "name": "MODEL",
           "type": "MODEL",
+          "slot_index": 0,
           "links": [
             10
-          ],
-          "slot_index": 0
+          ]
         },
         {
           "name": "CLIP",
           "type": "CLIP",
+          "slot_index": 1,
           "links": [
             3,
             5
-          ],
-          "slot_index": 1
+          ]
         },
         {
           "name": "VAE",
           "type": "VAE",
+          "slot_index": 2,
           "links": [
             8
-          ],
-          "slot_index": 2
+          ]
         }
       ],
       "properties": {
-        "Node name for S&R": "CheckpointLoaderSimple"
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
-        "sdxl/AlbedoBaseXL.safetensors"
+        "SDXL/realvisxlV50.safetensors"
       ]
     }
   ],
@@ -607,6 +646,17 @@
   ],
   "groups": [],
   "config": {},
-  "extra": {},
+  "extra": {
+    "ue_links": [],
+    "ds": {
+      "scale": 0.3805859690535697,
+      "offset": [
+        1323.1104699687464,
+        712.825032385626
+      ]
+    },
+    "links_added_by_ue": [],
+    "frontendVersion": "1.23.4"
+  },
   "version": 0.4
 }

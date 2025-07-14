@@ -1,0 +1,39 @@
+
+https://huggingface.co/Aitrepreneur/InstantiDA1111/resolve/main/ip-adapter_instant_id_sdxl.bin?download=true
+    dir=models/instantid/SDXL
+    out=ip-adapter_instant_id_sdxl.bin
+
+https://huggingface.co/Aitrepreneur/InstantiDA1111/resolve/main/control_instant_id_sdxl.safetensors
+    dir=models/controlnet/SDXL
+    out=control_instant_id_sdxl.safetensors
+
+
+# Модель контролнета скачать тут -
+https://huggingface.co/lllyasviel/misc/resolve/main/fooocus_xl_cpds_128.safetensors
+    out=fooocus_xl_cpds_128.safetensors
+    dir=models/controlnet/SDXL
+
+https://huggingface.co/Dung306080/Controlnet/resolve/main/xinsir-controlnet-depth-sdxl-1.0.safetensors
+    out=xinsir-controlnet-depth-sdxl-1.0.safetensors
+    dir=models/controlnet/SDXL
+
+
+# 🌟 xinsir/controlnet-union-sdxl-1.0 🌟
+
+https://huggingface.co/xinsir/controlnet-union-sdxl-1.0/resolve/main/diffusion_pytorch_model.safetensors
+      dir=models/controlnet/SDXL/union
+      out=controlnet-union-sdxl-1.0.safetensors
+https://huggingface.co/xinsir/controlnet-union-sdxl-1.0/resolve/main/config.json
+      dir=models/controlnet/SDXL/union
+      out=config.json
+
+
+https://huggingface.co/xinsir/controlnet-union-sdxl-1.0/resolve/main/diffusion_pytorch_model_promax.safetensors
+      dir=models/controlnet/SDXL/union_promax
+      out=controlnet-union-sdxl-1.0_promax.safetensors
+https://huggingface.co/xinsir/controlnet-union-sdxl-1.0/resolve/main/config_promax.json
+      dir=models/controlnet/SDXL/union_promax
+      out=config_promax.json
+
+
+
