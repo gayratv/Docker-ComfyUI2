@@ -85,8 +85,22 @@ RUN if [ -n "$ARIA2_MODEL_DIRS" ]; then \
     chmod +x *.sh && chmod +x ./templates/*.sh && rm -f ./templates/.env
 
 
+ARG ARG_COPY_CSV=false
+
+RUN if [ "$ARG_COPY_CSV" = "true" ]; then \
+      mkdir -p /workspace/ComfyUI/custom_nodes/ComfyUI-CSV-Loader/CSV; \
+    fi
+
 WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI-CSV-Loader/CSV/
+
 COPY assets-docker/CSV ./
+
+RUN if [ "$ARG_COPY_CSV" != "true" ]; then \
+      rm -rf /workspace/ComfyUI/custom_nodes/ComfyUI-CSV-Loader/CSV; \
+    fi
+
+
+
 
 WORKDIR /workspace/ComfyUI/user/default/
 COPY ./user/default/comfy.settings.json .

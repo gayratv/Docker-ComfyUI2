@@ -1,0 +1,39 @@
+# https://github.com/Fannovel16/comfyui_controlnet_aux
+# Assets files of preprocessors
+
+# * anime_face_segment:  [bdsqlsz/qinglong_controlnet-lllite/Annotators/UNet.pth]
+https://huggingface.co/bdsqlsz/qinglong_controlnet-lllite/resolve/main/Annotators/UNet.pth
+    dir=models/controlnet_aux/anime_face_segment
+    out=UNet.pth
+
+https://huggingface.co/bdsqlsz/qinglong_controlnet-lllite/resolve/main/Annotators/UNet.pth
+    dir=models/controlnet_aux/anime_face_segment
+    out=UNet.pth
+
+https://huggingface.co/skytnt/anime-seg/resolve/main/isnetis.ckpt
+    dir=models/controlnet_aux/anime-seg
+    out=isnetis.ckpt
+
+https://huggingface.co/LayerNorm/DensePose-TorchScript-with-hint-image/resolve/main/densepose_r50_fpn_dl.torchscript
+    dir=models/controlnet_aux/densepose
+    out=densepose_r50_fpn_dl.torchscript
+
+https://huggingface.co/yzd-v/DWPose/resolve/main/yolox_l.onnx
+    dir=models/controlnet_aux/dwpose/bbox_detector
+    out=yolox_l.onnx
+
+https://huggingface.co/hr16/yolox-onnx/resolve/main/yolox_l.torchscript.pt
+    dir=models/controlnet_aux/dwpose/bbox_detector
+    out=yolox_l.torchscript.pt
+
+https://huggingface.co/hr16/yolo-nas-fp16/resolve/main/yolo_nas_l_fp16.onnx
+    dir=models/controlnet_aux/dwpose/bbox_detector
+    out=yolo_nas_l_fp16.onnx
+
+https://huggingface.co/hr16/yolo-nas-fp16/resolve/main/yolo_nas_m_fp16.onnx
+    dir=models/controlnet_aux/dwpose/bbox_detector
+    out=yolo_nas_m_fp16.onnx
+
+https://huggingface.co/hr16/yolo-nas-fp16/resolve/main/yolo_nas_s_fp16.onnx
+    dir=models/controlnet_aux/dwpose/bbox_detector
+    out=yolo_nas_s_fp16.onnx

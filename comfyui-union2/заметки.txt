@@ -875,6 +875,8 @@ export BASE_IMAGE="cuda-12-6:nvidia-runtime"
 export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
 export REQ_MODIFY="base-CUDA-12.6"
 
+./db-gen.sh
+
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 python3 ./python-prg-pre-build/generate_dockerfile_v2.py --nodes FluxKontext.txt
 
@@ -882,8 +884,6 @@ python3 python-prg-pre-build/sync_dir.py "$MODELS"
 
 ./clear-comfy-data.sh
 export POST_INSTALL="FluxKontext.sh"
-
-./db-gen.sh
 
 ./dl_common.sh FluxKontext
 
