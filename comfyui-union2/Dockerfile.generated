@@ -141,6 +141,12 @@ RUN --mount=type=cache,target=/root/repo-cache \
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/1038lab/ComfyUI-RMBG@b01150858d17fff1c66357b127170da03c3bedff" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
     process_one_repo_install_req_hash.sh "https://github.com/mit-han-lab/ComfyUI-nunchaku@ec55886239725537d3a0a52409a338bd01b78915" true \
     && rm -rf /root/.cache/pip
 
@@ -202,6 +208,12 @@ RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
     process_one_repo_install_req_hash.sh "https://github.com/Fannovel16/comfyui_controlnet_aux@59b027e088c1c8facf7258f6e392d16d204b4d27" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/XLabs-AI/x-flux-comfyui@00328556efc9472410d903639dc9e68a8471f7ac" true \
     && rm -rf /root/.cache/pip
 
 
