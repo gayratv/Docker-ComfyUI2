@@ -35,5 +35,32 @@ https://huggingface.co/xinsir/controlnet-union-sdxl-1.0/resolve/main/config_prom
       dir=models/controlnet/SDXL/union_promax
       out=config_promax.json
 
+# xinsir/controlnet-openpose-sdxl-1.0
+https://huggingface.co/xinsir/controlnet-openpose-sdxl-1.0/resolve/main/diffusion_pytorch_model.safetensors
+      dir=models/controlnet/SDXL
+      out=openpose.safetensors
 
+# InstantX/InstantID
+https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/diffusion_pytorch_model.safetensors
+      dir=models/controlnet/SDXL
+      out=instantID_controlNet_sdxl.safetensors
 
+# модель для depth v2
+# depth-anything/Depth-Anything-V2-Large
+https://huggingface.co/depth-anything/Depth-Anything-V2-Large/resolve/main/depth_anything_v2_vitl.pth
+    dir=models/depth-anything/Depth-Anything-V2-Large
+    out=depth_anything_v2_vitl.pth
+
+# 🌟 ControlNet-Union-Pro-2.0 для Flux от Shakker-Labs 🌟
+# https://huggingface.co/Shakker-Labs/FLUX.1-dev-ControlNet-Union-Pro-2.0?utm_source=chatgpt.com
+# версия FP8
+# https://huggingface.co/ABDALLALSWAITI/FLUX.1-dev-ControlNet-Union-Pro-2.0-fp8
+https://huggingface.co/ABDALLALSWAITI/FLUX.1-dev-ControlNet-Union-Pro-2.0-fp8/resolve/main/diffusion_pytorch_model.safetensors
+    out=ControlNet-Union-Pro-2.0-Flux-fp8.safetensors
+    dir=models/controlnet/Flux
+
+# 🌟 ControlNet jasperai/Flux.1-dev-Controlnet-Upscaler 🌟
+# https://huggingface.co/jasperai/Flux.1-dev-Controlnet-Upscaler
+https://huggingface.co/jasperai/Flux.1-dev-Controlnet-Upscaler/resolve/main/diffusion_pytorch_model.safetensors
+    out=Flux.1-dev-Controlnet-Upscaler.safetensors
+    dir=models/controlnet/Flux

@@ -1,0 +1,56 @@
+# RealCartoon-XL SDXL
+# https://civitai.com/models/125907/realcartoon-xl
+https://civitai.com/api/download/models/686204?type=Model&format=SafeTensor&size=pruned&fp=fp16
+    out=realcartoonXL_v7.safetensors
+    dir=models/checkpoints/SDXL
+
+# AGXL модель от Артура 6GB
+https://civitai.com/api/download/models/1420441?type=Model&format=SafeTensor&size=full&fp=fp16
+    out=agxl_V2.safetensors
+    dir=models/checkpoints/SDXL
+
+# RealVisXL SDXL
+https://civitai.com/api/download/models/798204?type=Model&format=SafeTensor&size=full&fp=fp16
+    out=realvisxlV50.safetensors
+    dir=models/checkpoints/SDXL
+
+# Samaritan 3d Cartoon model SDXL
+https://civitai.com/api/download/models/144566?type=Model&format=SafeTensor&size=full&fp=fp16
+    dir=models/checkpoints/SDXL
+    out=samaritan3dCartoon_v40SDXL.safetensors
+
+# https://civitai.com/models/101055/sd-xl?modelVersionId=128078
+# SDXL
+https://civitai.com/api/download/models/128078?type=Model&format=SafeTensor&size=pruned&fp=fp16
+    dir=models/checkpoints/SDXL
+    out=sdXL_v10VAEFix.safetensors
+
+# https://civitai.com/models/1046064/ilustreal?modelVersionId=1575331
+# Illustrious
+# Clip Skip: 2
+https://civitai.com/api/download/models/1575331?type=Model&format=SafeTensor&size=full&fp=fp16
+    dir=models/checkpoints/Illustrious
+    out=ilustreal_v50VAE.safetensors
+
+# RealVisXL V5.0 - сама hyperlora рекомендует
+# https://civitai.com/models/139562?modelVersionId=789646
+# Clip Skip: 1
+https://civitai.com/api/download/models/789646?type=Model&format=SafeTensor&size=full&fp=fp16
+    out=realvisxlV50_v50Bakedvae.safetensors
+    dir=models/checkpoints/SDXL
+
+# LORA
+# https://civitai.com/models/1302719/lazy-embeddings-for-all-illustrious-noobai-pony-sdxl-models-lazypositive-lazynegative-positive-and-negative-plus-more?modelVersionId=1833157
+# ✨ Lazy Embeddings for ALL illustrious NoobAI Pony SDXL models LazyPositive LazyNegative (Positive and Negative plus
+# lazypos
+https://civitai.com/api/download/models/1833157?type=Model&format=SafeTensor
+    out=lazypos.safetensors
+    dir=models/loras/Illustrious
+
+# https://civitai.com/models/1302719/lazy-embeddings-for-all-illustrious-noobai-pony-sdxl-models-lazypositive-lazynegative-positive-and-negative-plus-more?modelVersionId=1860747
+# lazyneg
+https://civitai.com/api/download/models/1860747?type=Model&format=SafeTensor
+    out=lazyneg.safetensors
+    dir=models/loras/Illustrious
+
+# image https://civitai.com/images/88490231

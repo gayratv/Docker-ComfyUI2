@@ -1,44 +1,46 @@
-https://huggingface.co/bytedance-research/HyperLoRA/resolve/main/.gitattributes
-      dir=models/hyper_lora/hyper_lora
-      out=.gitattributes
+https://huggingface.co/openai/clip-vit-large-patch14/raw/main/preprocessor_config.json
+    out=preprocessor_config.json
+    dir=models/hyper_lora/clip_processor/clip_vit_large_14_processor
 
-https://huggingface.co/bytedance-research/HyperLoRA/resolve/main/README.md
-      dir=models/hyper_lora/hyper_lora
-      out=README.md
+https://huggingface.co/openai/clip-vit-large-patch14/resolve/main/model.safetensors
+    dir=models/hyper_lora/clip_vit/clip_vit_large_14
+    out=model.safetensors
+https://huggingface.co/openai/clip-vit-large-patch14/raw/main/config.json
+    dir=models/hyper_lora/clip_vit/clip_vit_large_14
+    out=config.json
 
-https://huggingface.co/bytedance-research/HyperLoRA/resolve/main/assets/overview.jpg
-      dir=models/hyper_lora/hyper_lora
-      out=overview.jpg
+# ===============
 
 https://huggingface.co/bytedance-research/HyperLoRA/resolve/main/sdxl_hyper_id_lora_v1_edit/hyper_lora_modules.json
-      dir=models/hyper_lora/hyper_lora
+      dir=models/hyper_lora/hyper_lora/sdxl_hyper_id_lora_v1_edit
       out=hyper_lora_modules.json
 
 https://huggingface.co/bytedance-research/HyperLoRA/resolve/main/sdxl_hyper_id_lora_v1_edit/hyper_lora_modules.safetensors
-      dir=models/hyper_lora/hyper_lora
+      dir=models/hyper_lora/hyper_lora/sdxl_hyper_id_lora_v1_edit
       out=hyper_lora_modules.safetensors
 
 https://huggingface.co/bytedance-research/HyperLoRA/resolve/main/sdxl_hyper_id_lora_v1_edit/id_projector.safetensors
-      dir=models/hyper_lora/hyper_lora
+      dir=models/hyper_lora/hyper_lora/sdxl_hyper_id_lora_v1_edit
       out=id_projector.safetensors
 
 https://huggingface.co/bytedance-research/HyperLoRA/resolve/main/sdxl_hyper_id_lora_v1_edit/resampler.safetensors
-      dir=models/hyper_lora/hyper_lora
+      dir=models/hyper_lora/hyper_lora/sdxl_hyper_id_lora_v1_edit
       out=resampler.safetensors
 
 https://huggingface.co/bytedance-research/HyperLoRA/resolve/main/sdxl_hyper_id_lora_v1_fidelity/hyper_lora_modules.json
-      dir=models/hyper_lora/hyper_lora
+      dir=models/hyper_lora/hyper_lora/sdxl_hyper_id_lora_v1_fidelity
       out=hyper_lora_modules.json
 
 https://huggingface.co/bytedance-research/HyperLoRA/resolve/main/sdxl_hyper_id_lora_v1_fidelity/hyper_lora_modules.safetensors
-      dir=models/hyper_lora/hyper_lora
+      dir=models/hyper_lora/hyper_lora/sdxl_hyper_id_lora_v1_fidelity
       out=hyper_lora_modules.safetensors
 
 https://huggingface.co/bytedance-research/HyperLoRA/resolve/main/sdxl_hyper_id_lora_v1_fidelity/id_projector.safetensors
-      dir=models/hyper_lora/hyper_lora
+      dir=models/hyper_lora/hyper_lora/sdxl_hyper_id_lora_v1_fidelity
       out=id_projector.safetensors
 
 https://huggingface.co/bytedance-research/HyperLoRA/resolve/main/sdxl_hyper_id_lora_v1_fidelity/resampler.safetensors
-      dir=models/hyper_lora/hyper_lora
+      dir=models/hyper_lora/hyper_lora/sdxl_hyper_id_lora_v1_fidelity
       out=resampler.safetensors
+
 

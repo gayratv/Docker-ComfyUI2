@@ -36,8 +36,6 @@ RUN --mount=type=cache,target=/root/repo-cache \
     rm -rf /workspace/* && \
     git-clone-checkout.sh "https://github.com/comfyanonymous/ComfyUI" "$COMFYUI_VERSION" "/root/repo-cache"
 
-#process_one_repo_install_req_hash.sh
-
 WORKDIR /workspace/ComfyUI
 
 RUN --mount=type=cache,target=/root/pip-cache \
@@ -66,6 +64,8 @@ ENV PIP_CACHE_DIR=/root/pip-cache-uv2
 ENV UV_NO_CACHE=0
 ENV UV_LINK_MODE=copy
 
+RUN --mount=type=cache,target=/root/pip-cache \
+  python3 -m pip install --cache-dir=/root/pip-cache opencv-python mediapipe scipy ultralytics onnxruntime-gpu transformers scikit-image accelerate
 
 #в файле
 #/workspace/ComfyUI/custom_nodes/ComfyUI-Manager/glob/cnr_utils.py #есть фрагмент кода
@@ -101,7 +101,6 @@ COPY ./bash-scripts/build/*.sh $DOWNLOADS_DIR/
 COPY ./bash-scripts/*.sh $DOWNLOADS_DIR/
 COPY *.sh $DOWNLOADS_DIR/
 RUN chmod +x $DOWNLOADS_DIR/*.sh
-
 
 WORKDIR /workspace/ComfyUI
 COPY ./custom-nodes/*.txt ./

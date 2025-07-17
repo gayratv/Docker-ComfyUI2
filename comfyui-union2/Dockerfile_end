@@ -34,6 +34,15 @@ COPY post-install/ ./post-install
 
 COPY requirements-modify/ ./requirements-modify
 
+# ========================== блок коррекции установленных пакетов
+RUN --mount=type=cache,target=/root/pip-cache \
+  python3 -m pip uninstall -y onnxruntime onnxruntime-gpu xformers \
+  && python3 -m pip install --cache-dir=/root/pip-cache onnxruntime-gpu hf_transfer
+
+RUN --mount=type=cache,target=/root/pip-cache \
+  python3 -m pip install  --cache-dir=/root/pip-cache xformers sageattention
+# ==========================
+
 
 WORKDIR /workspace
 RUN --mount=type=cache,target=/root/pip-cache \
@@ -49,8 +58,6 @@ RUN echo "===== Финальная проверка Numpy =====" && \
     python3 -c "import numpy; print('Версия:', numpy.__version__); print('Путь к файлу:', numpy.__file__)"
 
 WORKDIR /workspace/ComfyUI
-COPY assets-docker/styles.csv ./
-
 COPY input/${MODELS} ./input/
 
 
@@ -87,18 +94,24 @@ RUN if [ -n "$ARIA2_MODEL_DIRS" ]; then \
 
 ARG ARG_COPY_CSV=false
 
-RUN if [ "$ARG_COPY_CSV" = "true" ]; then \
-      mkdir -p /workspace/ComfyUI/custom_nodes/ComfyUI-CSV-Loader/CSV; \
-    fi
+#RUN if [ "$ARG_COPY_CSV" = "true" ]; then \
+#      mkdir -p /workspace/ComfyUI/custom_nodes/ComfyUI-CSV-Loader/CSV; \
+#    fi
 
 WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI-CSV-Loader/CSV/
 
 COPY assets-docker/CSV ./
 
-RUN if [ "$ARG_COPY_CSV" != "true" ]; then \
-      rm -rf /workspace/ComfyUI/custom_nodes/ComfyUI-CSV-Loader/CSV; \
+RUN if [ "$ARG_COPY_CSV" = "false"  ]; then \
+      rm -rf /workspace/ComfyUI/custom_nodes/ComfyUI-CSV-Loader; \
     fi
 
+
+WORKDIR /workspace/ComfyUI
+COPY assets-docker/styles.csv ./
+RUN if [ "$ARG_COPY_CSV" = "false" ]; then \
+      rm -f styles.csv; \
+    fi
 
 
 
