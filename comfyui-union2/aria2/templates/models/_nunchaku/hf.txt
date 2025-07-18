@@ -1,12 +1,22 @@
+
 # 🌟 kontext 🌟
+=======
+# 🌟 flux.1-kontext 🌟
+# mit-han-lab/nunchaku-flux.1-kontext-dev
+
+
 https://huggingface.co/mit-han-lab/nunchaku-flux.1-kontext-dev/resolve/main/svdq-int4_r32-flux.1-kontext-dev.safetensors
       dir=models/diffusion_models/svdq-int4
       out=svdq-int4-flux.1-kontext-dev.safetensors
 
+
 # 🌟 dev 🌟
+=======
+
 https://huggingface.co/mit-han-lab/nunchaku-flux.1-dev/resolve/main/svdq-int4_r32-flux.1-dev.safetensors
       dir=models/diffusion_models/svdq-int4
       out=svdq-int4-flux.1-dev.safetensors
+
 
 # 🌟 fill 🌟
 https://huggingface.co/mit-han-lab/nunchaku-flux.1-fill-dev/resolve/main/svdq-int4_r32-flux.1-fill-dev.safetensors
@@ -22,4 +32,77 @@ https://huggingface.co/mit-han-lab/nunchaku-flux.1-depth-dev/resolve/main/svdq-i
 https://huggingface.co/mit-han-lab/nunchaku-flux.1-canny-dev/resolve/main/svdq-int4_r32-flux.1-canny-dev.safetensors
     dir=models/diffusion_models/svdq-int4
     out=svdq-int4_r32-flux.1-canny-dev.safetensors
+
+=======
+
+# 🌟 CLIP 🌟
+https://huggingface.co/zer0int/CLIP-GmP-ViT-L-14/resolve/main/ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors
+    dir=models/clip/Flux
+    out=ViT-L-14-TEXT-detail-improved-hiT-GmP-TE-only-HF.safetensors
+
+# Flux-Main/t5xxl_fp8_e4m3fn.safetensors
+https://huggingface.co/OreX/Models/resolve/main/Flux-Main/t5xxl_fp8_e4m3fn.safetensors
+    dir=models/clip/Flux
+    out=t5xxl_fp8_e4m3fn.safetensors
+
+# 🌟 VAE dev 🌟
+https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/vae/diffusion_pytorch_model.safetensors
+  dir=models/vae/Flux
+  out=flux.vae.safetensors
+
+# 🌟Load Clip Vision🌟
+# Download Link: https://huggingface.co/Comfy-Org/sigclip_vision_384/tree/main
+# File Name: sigclip_vision_patch14_384.safetensors
+# Directory: ComfyUI/models/clip-vision/
+https://huggingface.co/Comfy-Org/sigclip_vision_384/resolve/main/sigclip_vision_patch14_384.safetensors
+   dir=models/clip_vision
+   out=sigclip_vision_patch14_384.safetensors
+
+# 🌟Load Style Model🌟
+# Download Link: https://huggingface.co/black-forest-labs/FLUX.1-Redux-dev/tree/main
+# File Name: flux1-redux-dev.safetensors
+# Directory: ComfyUI/models/style_models/
+https://huggingface.co/black-forest-labs/FLUX.1-Redux-dev/resolve/main/flux1-redux-dev.safetensors
+   dir=models/style_models/Flux
+   out=flux1-redux-dev.safetensors
+
+
+# 🌟 сравнение лиц AuraFace 🌟
+https://huggingface.co/fal/AuraFace-v1/resolve/main/1k3d68.onnx
+      dir=models/insightface/models/auraface/
+      out=1k3d68.onnx
+
+https://huggingface.co/fal/AuraFace-v1/resolve/main/2d106det.onnx
+      dir=models/insightface/models/auraface/
+      out=2d106det.onnx
+
+https://huggingface.co/fal/AuraFace-v1/resolve/main/genderage.onnx
+      dir=models/insightface/models/auraface/
+      out=genderage.onnx
+
+https://huggingface.co/fal/AuraFace-v1/resolve/main/glintr100.onnx
+      dir=models/insightface/models/auraface/
+      out=glintr100.onnx
+
+https://huggingface.co/fal/AuraFace-v1/resolve/main/scrfd_10g_bnkps.onnx
+      dir=models/insightface/models/auraface/
+      out=scrfd_10g_bnkps.onnx
+
+# 🌟 controlnet union 🌟
+# перенес в _controlnet
+
+# Kijai/flux-fp8
+# https://huggingface.co/Kijai/flux-fp8/resolve/main/flux_shakker_labs_union_pro-fp8_e4m3fn.safetensors
+#     dir=models/controlnet/Flux
+#     out=flux_shakker_labs_union_pro-fp8_e4m3fn.safetensors
+
+# 🌟 flux1-canny-dev-lora 🌟
+https://huggingface.co/black-forest-labs/FLUX.1-Canny-dev-lora/resolve/main/flux1-canny-dev-lora.safetensors
+    out=flux1-canny-dev-lora.safetensors
+    dir=models/loras/Flux
+
+# 🌟 flux1-depth-dev-lora 🌟
+https://huggingface.co/black-forest-labs/FLUX.1-Depth-dev-lora/resolve/main/flux1-depth-dev-lora.safetensors
+    out=flux1-depth-dev-lora.safetensors
+    dir=models/loras/Flux
 

@@ -1,0 +1,15 @@
+# Samaritan 3d Cartoon model SDXL
+https://civitai.com/api/download/models/144566?type=Model&format=SafeTensor&size=full&fp=fp16
+    dir=models/checkpoints/SDXL
+    out=samaritan3dCartoon_v40SDXL.safetensors
+
+# https://civitai.com/models/101055/sd-xl?modelVersionId=128078
+# SDXL
+https://civitai.com/api/download/models/128078?type=Model&format=SafeTensor&size=pruned&fp=fp16
+    dir=models/checkpoints/SDXL
+    out=sdXL_v10VAEFix.safetensors
+
+# LORA Pixar Style
+https://civitai.com/api/download/models/1126656?type=Model&format=SafeTensor
+    dir=models/loras/SDXL
+    out=Pixar_Style-000003.safetensors
