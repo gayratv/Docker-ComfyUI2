@@ -1,0 +1,13 @@
+# Лора помогает удалять объекты в Flux Kontext
+# starsfriday/Kontext-Remover-General-LoRA
+# https://huggingface.co/starsfriday/Kontext-Remover-General-LoRA
+
+https://huggingface.co/starsfriday/Kontext-Remover-General-LoRA/resolve/main/config.yaml
+    dir=models/loras/Flux_kontext/Kontext-Remover
+    out=config.yaml
+https://huggingface.co/starsfriday/Kontext-Remover-General-LoRA/resolve/main/kontext_remove.safetensors
+    dir=models/loras/Flux_kontext/Kontext-Remover
+    out=kontext_remove.safetensors
+https://huggingface.co/starsfriday/Kontext-Remover-General-LoRA/resolve/main/optimizer.pt
+    dir=models/loras/Flux_kontext/Kontext-Remover
+    out=optimizer.pt
