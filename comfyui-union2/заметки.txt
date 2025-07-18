@@ -874,20 +874,18 @@ export COMFYUI_VERSION="v0.3.44"
 export BASE_IMAGE="cuda-12-6:nvidia-runtime"
 export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
 export REQ_MODIFY="base-CUDA-12.6"
+export POST_INSTALL="FluxKontext.sh"
 
 ./db-gen.sh
 
-cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
-python3 ./python-prg-pre-build/generate_dockerfile_v2.py --nodes FluxKontext.txt
-
-python3 python-prg-pre-build/sync_dir.py "$MODELS"
-
-./clear-comfy-data.sh
-export POST_INSTALL="FluxKontext.sh"
 
 ./dl_common.sh "$MODELS"
 ./dl_common.sh _flux_kontext_lora
 
+python3 python-prg-pre-build/sync_dir.py "$MODELS"
+./clear-comfy-data.sh
+
+rsync -avh --progress /mnt/h/ComfyUI-data/models/ /mnt/d/ComfyUI-data/models/
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
@@ -994,7 +992,19 @@ source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 export MODELS="Nunchaku2"
 export WORKFLOW_TO_COPY=$MODELS
-export ARIA2_MODEL_DIRS="${MODELS} _antelopev2 _InstantID_ip_adapter _ipadapter_plus _InsightFace _preprocessors_controlnet _controlnet _hyper_lora _ultralytics _lora_flux"
+
+export ARIA2_MODEL_DIRS="${MODELS} \
+    _antelopev2 \
+    _InstantID_ip_adapter \
+    _ipadapter_plus \
+    _InsightFace \
+    _preprocessors_controlnet \
+    _controlnet \
+    _hyper_lora \
+    _ultralytics \
+    _lora_flux \
+    _nunchaku"
+
 export VERSION="$MODELS-CUDA12.6"
 export NODES="$MODELS.txt"
 export IMAGE_NAME="comfyui-union2"
@@ -1137,3 +1147,16 @@ pip list | grep '^numpy'
 pip install -U "numpy>=2,<3"
 
 pip install -U "numpy==2.2.3"
+
+
+==========================
+"""
+source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/python-prg-pre-build
+python3 models_selector.py
+
+sudo apt-get install python3-tk
+
+cd F:\_prg\python\Docker-ComfyUI\comfyui-union2\python-prg-pre-build
+
+"""

@@ -287,6 +287,12 @@ RUN --mount=type=cache,target=/root/repo-cache \
     process_one_repo_install_req_hash.sh "https://github.com/Pixelailabs/paint_editor@3e5b853b143b01885cf3f1fa8cbe5b68fad2226f" true \
     && rm -rf /root/.cache/pip
 
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/nunchaku-tech/ComfyUI-nunchaku@c3d3450cdcf392ed1c7f7f1e5c213c71eea6579b" true \
+    && rm -rf /root/.cache/pip
+
 
 ARG NODES
 
