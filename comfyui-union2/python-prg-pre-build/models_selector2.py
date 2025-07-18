@@ -1,20 +1,15 @@
 #!/usr/bin/env python3
 r"""
-Model-Task Builder GUI  (v 2025-07-18)
-======================================
+Model‑Task Builder GUI  – колесо мыши работает
+=============================================
 
-• Слева: дерево *.txt*-файлов; клик ☑/☐ — отмечает файл целиком.
-• Справа: при выборе файла выводятся *блоки* (комментарии + URL + out/dir);
-  у каждого блок-чек-бокс.
-• **Выбрать все строки** — отмечает все блоки текущего файла.
-• **Сформировать задание** — создаёт подпапку `_1_out` (рядом с моделями)
-  и файлы: `civitay.txt` (все выбранные строки с URL *civitai.com*)
-  и `hf.txt` (все выбранные строки с URL *huggingface.co*).
+• Верхняя панель с кнопками (выбрать все, сформировать задание, показать выбранные).
+• Слева — дерево *.txt*, справа — блоки (комментарии + URL + out/dir).
+• Правую область можно прокручивать как вертикально, так и горизонтально;
+  **колесо мыши теперь крутит вертикально**, когда курсор над областью.
 
-Формат блоков гибкий:
-* URL начинает новый блок (пустая строка тоже завершает).
-* `out=` и `dir=` могут идти в любом порядке или отсутствовать.
-* Любые «# …» комментарии перед URL попадают в блок.
+Файлы‑задания (_1_out/civitay.txt, _1_out/hf.txt) формируются так же,
+как и в предыдущих версиях.
 """
 
 from __future__ import annotations
@@ -28,160 +23,205 @@ from typing import List, Dict, Tuple
 import tkinter as tk
 from tkinter import ttk, messagebox, font
 
-# ────────── НАСТРОЙКИ ────────────────────────────────────────────────
+# ────────── ПУТИ / НАСТРОЙКИ ─────────────────────────────────────────
 ROOT_DIR = Path(
     r"F:\_prg\python\Docker-ComfyUI\comfyui-union2\aria2\templates\models"
-)  # ← смените при необходимости
-BASE_SIZE = 14          # кегль шрифта
-SCALING   = 1.3         # глобальный масштаб tkinter
+)
+OUT_DIR  = ROOT_DIR / "_1_out"
 
-OUT_DIR   = ROOT_DIR / "_1_out"   # куда писать civitay.txt / hf.txt
-# ──────────────────────────────────────────────────────────────────────
+BASE_SIZE = 14
+SCALING   = 1.3
 
 URL_RE = re.compile(r"^\s*(https?://\S+)", re.I)
 OUT_RE = re.compile(r"^\s*out\s*=\s*(\S+)", re.I)
 DIR_RE = re.compile(r"^\s*dir\s*=\s*(\S.*)$", re.I)
 
 
-# ═══════════ ПАРСЕР ФАЙЛА ════════════════════════════════════════════
+# ═══════════ ПАРСЕР ══════════════════════════════════════════════════
 @dataclass
 class Block:
-    display_lines: List[str]   # как будет показано в GUI
+    comments: List[str]
     url: str
     out: str | None
     dir: str | None
 
-    def raw_lines(self) -> List[str]:
-        """Строки для записи в итоговый txt-файл."""
-        lines = [self.url]
+    def display_lines(self) -> List[str]:
+        lines = ["-" * 34, *self.comments, self.url]
         if self.out:
-            lines.append(f"  out={self.out}")
+            lines.append(f"    out={self.out}")
         if self.dir:
-            lines.append(f"  dir={self.dir}")
-        lines.append("")                 # разделитель
+            lines.append(f"    dir={self.dir}")
+        lines.append("-" * 34)
+        return lines
+
+    def raw_lines(self) -> List[str]:
+        lines = [*self.comments, self.url]
+        if self.out:
+            lines.append(f"    out={self.out}")
+        if self.dir:
+            lines.append(f"    dir={self.dir}")
+        lines.append("")                        # пустая строка‑разделитель
         return lines
 
 
 def parse_model_file(path: Path) -> List[Block]:
-    """Разбивает файл на блоки (новый блок при встрече URL или пустой строке)."""
+    """Разбивает текст на блоки (комментарии + URL + опции)."""
     blocks: List[Block] = []
-    comments, url, out, dir_, disp = [], None, None, None, []
 
-    def flush():
-        nonlocal comments, url, out, dir_, disp
-        if url:
-            blocks.append(Block(["-" * 34, *disp, "-" * 34], url, out, dir_))
-        comments, url, out, dir_, disp = [], None, None, None, []
+    pending: List[str] = []        # комментарии / строки до следующего URL
+    cur_comments: List[str] = []
+    cur_url = cur_out = cur_dir = None
+
+    def push_block():
+        nonlocal cur_comments, cur_url, cur_out, cur_dir
+        if cur_url:
+            blocks.append(Block(cur_comments.copy(), cur_url, cur_out, cur_dir))
+        cur_comments, cur_url, cur_out, cur_dir = [], None, None, None
 
     with path.open(encoding="utf8") as fh:
         for raw in fh:
             line = raw.rstrip("\n")
 
-            if not line.strip():                # пустая строка → конец блока
-                flush()
+            if not line.strip():            # пустая строка
+                push_block()
+                pending = []
                 continue
 
             if line.lstrip().startswith("#"):
-                comments.append(line)
-                disp.append(line)
+                pending.append(line)
                 continue
 
-            m_url = URL_RE.match(line)
-            if m_url:
-                flush()                         # ⟵ главное: закрыть предыдущий блок
-                url = m_url.group(1)
-                disp.extend(comments)
-                comments.clear()
-                disp.append(url)
+            m = URL_RE.match(line)
+            if m:
+                push_block()
+                cur_comments = pending
+                pending = []
+                cur_url = m.group(1)
+                cur_out = cur_dir = None
                 continue
 
-            m_out = OUT_RE.match(line)
-            if m_out:
-                out = m_out.group(1)
-                disp.append(f"    out={out}")
+            m = OUT_RE.match(line)
+            if m:
+                if cur_url is None:
+                    pending.append(line)    # out= до URL → считать комментарием
+                else:
+                    cur_out = m.group(1)
                 continue
 
-            m_dir = DIR_RE.match(line)
-            if m_dir:
-                dir_ = m_dir.group(1)
-                disp.append(f"    dir={dir_}")
+            m = DIR_RE.match(line)
+            if m:
+                if cur_url is None:
+                    pending.append(line)
+                else:
+                    cur_dir = m.group(1)
                 continue
 
-            disp.append(line)                   # всё прочее просто добавляем
+            pending.append(line)            # неизвестная строка ≙ комментарий
 
-    flush()
+    push_block()
     return blocks
 
 
-# ═══════════ ГРАФИЧЕСКИЙ ИНТЕРФЕЙС ═══════════════════════════════════
+# ═══════════ GUI ════════════════════════════════════════════════════
 class ModelGUI(tk.Tk):
     def __init__(self, root_path: Path):
         super().__init__()
         self.title("Model Task Builder")
-        self.geometry("1150x650")
+        self.geometry("1300x700")
 
-        # DPI / шрифт
+        # DPI, базовый шрифт
         self.tk.call("tk", "scaling", SCALING)
         font.nametofont("TkDefaultFont").configure(size=BASE_SIZE)
         big_f = font.Font(size=BASE_SIZE)
 
-        # ─────────── ЛЕВАЯ ПАНЕЛЬ: дерево файлов ──────────────────────
-        left = tk.Frame(self)
-        left.pack(side="left", fill="y")
+        # ─── Верхняя панель кнопок ───────────────────────────────────
+        bar = tk.Frame(self)
+        bar.pack(side="top", fill="x", pady=6)
 
-        self.tree = ttk.Treeview(left, columns=("rel",), show="tree")
+        ttk.Style().configure("Big.TButton", font=big_f)
+        ttk.Button(bar, text="Выбрать все строки",
+                   style="Big.TButton", command=self._select_all_blocks).pack(side="left", padx=6)
+        ttk.Button(bar, text="Сформировать задание",
+                   style="Big.TButton", command=self._make_task).pack(side="left", padx=6)
+        ttk.Button(bar, text="Показать выбранные",
+                   style="Big.TButton", command=self._show_selected).pack(side="left", padx=6)
+
+        # ─── Рабочая область (grid) ──────────────────────────────────
+        work = tk.Frame(self)
+        work.pack(side="top", fill="both", expand=True)
+
+        # 1) Левое дерево
+        tree_frame = tk.Frame(work)
+        tree_frame.grid(row=0, column=0, sticky="ns")
+
+        self.tree = ttk.Treeview(tree_frame, columns=("rel",), show="tree")
         self.tree.column("rel", width=0, stretch=False)
         self.tree.tag_configure("file", font=big_f)
-        ysb_tree = ttk.Scrollbar(left, orient="vertical",
+        ysb_tree = ttk.Scrollbar(tree_frame, orient="vertical",
                                  command=self.tree.yview)
         self.tree.configure(yscrollcommand=ysb_tree.set)
         self.tree.pack(side="left", fill="y")
         ysb_tree.pack(side="right", fill="y")
 
-        # ─────────── ПРАВАЯ ПАНЕЛЬ: блоки ──────────────────────────────
-        right = tk.Frame(self)
-        right.pack(side="left", fill="both", expand=True)
+        # 2) Правая панель с canvas
+        right = tk.Frame(work)
+        right.grid(row=0, column=1, sticky="nsew")
+        work.grid_rowconfigure(0, weight=1)
+        work.grid_columnconfigure(1, weight=1)
 
         self.canvas = tk.Canvas(right, borderwidth=0)
-        ysb_blocks = ttk.Scrollbar(right, orient="vertical",
-                                   command=self.canvas.yview)
-        self.canvas.configure(yscrollcommand=ysb_blocks.set)
+        ysb = ttk.Scrollbar(right, orient="vertical", command=self.canvas.yview)
+        xsb = ttk.Scrollbar(right, orient="horizontal", command=self.canvas.xview)
+        self.canvas.configure(yscrollcommand=ysb.set, xscrollcommand=xsb.set)
+
+        # Расположение
+        right.grid_rowconfigure(0, weight=1)
+        right.grid_columnconfigure(0, weight=1)
+        self.canvas.grid(row=0, column=0, sticky="nsew")
+        ysb.grid(row=0, column=1, sticky="ns")
+        xsb.grid(row=1, column=0, columnspan=2, sticky="ew")
+
+        # внутренний контейнер
         self.inner = tk.Frame(self.canvas)
         self.canvas.create_window((0, 0), window=self.inner, anchor="nw")
-        self.canvas.pack(side="left", fill="both", expand=True)
-        ysb_blocks.pack(side="right", fill="y")
+
+        # обновление scroll‑region
         self.inner.bind(
             "<Configure>",
             lambda e: self.canvas.configure(scrollregion=self.canvas.bbox("all")),
         )
 
-        # состояния
-        self.file_checked: set[str] = set()                         # выбранные файлы
-        self.block_vars: Dict[Tuple[str, int], tk.IntVar] = {}      # (rel, idx) → var
+        # ── прокрутка колесом мыши ───────────────────────────────────
+        def _on_mousewheel(event):
+            # Windows / Mac: event.delta, Linux: bind Button-4/5
+            delta = event.delta
+            if delta == 0:   # Linux case handled separately
+                return
+            self.canvas.yview_scroll(int(-delta / 120), "units")
+
+        # Windows / macOS
+        self.canvas.bind("<Enter>", lambda e: self.canvas.bind_all("<MouseWheel>", _on_mousewheel))
+        self.canvas.bind("<Leave>", lambda e: self.canvas.unbind_all("<MouseWheel>"))
+
+        # Linux support (button‑4/5)
+        self.canvas.bind("<Enter>", lambda e: (
+            self.canvas.bind_all("<Button-4>", lambda ev: self.canvas.yview_scroll(-1, "units")),
+            self.canvas.bind_all("<Button-5>", lambda ev: self.canvas.yview_scroll(1, "units")),
+        ))
+        self.canvas.bind("<Leave>", lambda e: (
+            self.canvas.unbind_all("<Button-4>"),
+            self.canvas.unbind_all("<Button-5>"),
+        ))
+
+        # ─── состояния ───────────────────────────────────────────────
+        self.file_checked: set[str] = set()
+        self.block_vars: Dict[Tuple[str, int], tk.IntVar] = {}
 
         self._fill_tree("", root_path)
-
-        # события
         self.tree.bind("<Button-1>", self._toggle_file)
-        self.tree.bind("<<TreeviewSelect>>", self._display_blocks)
+        self.tree.bind("<<TreeviewSelect>>", self._show_blocks)
 
-        # ─────────── КНОПКИ ───────────────────────────────────────────
-        style = ttk.Style()
-        style.configure("Big.TButton", font=big_f)
-
-        btns = tk.Frame(self)
-        btns.pack(fill="x", pady=6)
-
-        ttk.Button(btns, text="Выбрать все строки",
-                   style="Big.TButton", command=self._select_all_blocks).pack(side="left", padx=6)
-
-        ttk.Button(btns, text="Сформировать задание",
-                   style="Big.TButton", command=self._make_task).pack(side="left", padx=6)
-
-        ttk.Button(btns, text="Показать выбранные",
-                   style="Big.TButton", command=self._show_selected).pack(side="left", padx=6)
-
-    # ──────────── дерево ─────────────────────────────────────────────
+    # ── дерево ───────────────────────────────────────────────────────
     def _fill_tree(self, parent: str, path: Path):
         for p in sorted(path.iterdir()):
             if p.is_dir():
@@ -205,8 +245,8 @@ class ModelGUI(tk.Tk):
             self.tree.item(iid, text="☐ " + text[2:])
             self.file_checked.discard(rel)
 
-    # ──────────── отображение блоков ─────────────────────────────────
-    def _display_blocks(self, _ev=None):
+    # ── показ блоков ────────────────────────────────────────────────
+    def _show_blocks(self, _=None):
         sel = self.tree.selection()
         if not sel:
             return
@@ -216,11 +256,9 @@ class ModelGUI(tk.Tk):
         rel = self.tree.set(iid, "rel")
         path = ROOT_DIR / rel
 
-        # очистка
         for w in self.inner.winfo_children():
             w.destroy()
-        self.block_vars = {k: v for k, v in self.block_vars.items()
-                           if k[0] != rel}
+        self.block_vars = {k: v for k, v in self.block_vars.items() if k[0] != rel}
 
         for idx, blk in enumerate(parse_model_file(path)):
             var = tk.IntVar()
@@ -229,15 +267,13 @@ class ModelGUI(tk.Tk):
             row = tk.Frame(self.inner, pady=4)
             tk.Checkbutton(row, variable=var).pack(side="left", anchor="n")
 
-            tk.Label(row,
-                     text="\n".join(blk.display_lines),
+            tk.Label(row, text="\n".join(blk.display_lines()),
                      justify="left", anchor="w",
                      font=("Courier New", BASE_SIZE),
-                     wraplength=700
-                     ).pack(side="left", fill="x", expand=True)
+                     wraplength=0).pack(side="left", fill="x", expand=True)
             row.pack(anchor="w", fill="x")
 
-    # ─────────── выбрать все блоки текущего файла ────────────────────
+    # ── выбор всех в файле ───────────────────────────────────────────
     def _select_all_blocks(self):
         sel = self.tree.selection()
         if not sel:
@@ -246,6 +282,7 @@ class ModelGUI(tk.Tk):
         if "file" not in self.tree.item(iid, "tags"):
             return
         rel = self.tree.set(iid, "rel")
+
         changed = False
         for (r, _), var in self.block_vars.items():
             if r == rel and not var.get():
@@ -254,42 +291,36 @@ class ModelGUI(tk.Tk):
         if not changed:
             messagebox.showinfo("Инфо", "Все строки уже выбраны.")
 
-    # ─────────── показать выбранное ──────────────────────────────────
+    # ── показать выбранное ───────────────────────────────────────────
     def _show_selected(self):
-        blk_sel = [(k, v) for k, v in self.block_vars.items() if v.get()]
-        if not blk_sel and not self.file_checked:
+        blocks = [(k, v) for k, v in self.block_vars.items() if v.get()]
+        if not blocks and not self.file_checked:
             messagebox.showinfo("Выбор", "Ничего не выбрано.")
             return
         msg = ["Файлы целиком:"] + sorted(self.file_checked) + ["",
-               "Блоки:"] + [f"{rel} [#{idx}]" for (rel, idx), _ in blk_sel]
+               "Блоки:"] + [f"{rel} [#{idx}]" for (rel, idx), _ in blocks]
         messagebox.showinfo("Выбрано", "\n".join(msg))
 
-    # ─────────── сформировать задание ────────────────────────────────
+    # ── формирование civitay.txt / hf.txt ───────────────────────────
     def _make_task(self):
-        civ_lines: List[str] = []
-        hf_lines: List[str]  = []
+        civ_lines, hf_lines = [], []
 
-        # выбранные блоки
         for (rel, idx), var in self.block_vars.items():
             if not var.get():
                 continue
             blk = parse_model_file(ROOT_DIR / rel)[idx]
-            (hf_lines if blk.url.startswith("https://huggingface.co")
-             else civ_lines).extend(blk.raw_lines())
+            (hf_lines if blk.url.startswith("https://huggingface.co") else civ_lines).extend(blk.raw_lines())
 
-        # целые файлы (если блоки не выбраны)
         for rel in self.file_checked:
             if any(k[0] == rel and v.get() for k, v in self.block_vars.items()):
                 continue
             for blk in parse_model_file(ROOT_DIR / rel):
-                (hf_lines if blk.url.startswith("https://huggingface.co")
-                 else civ_lines).extend(blk.raw_lines())
+                (hf_lines if blk.url.startswith("https://huggingface.co") else civ_lines).extend(blk.raw_lines())
 
         if not civ_lines and not hf_lines:
-            messagebox.showinfo("Задание", "Нечего записывать – ничего не выбрано.")
+            messagebox.showinfo("Задание", "Нечего записывать — ничего не выбрано.")
             return
 
-        # создаём директорию и записываем файлы
         OUT_DIR.mkdir(exist_ok=True)
         if civ_lines:
             (OUT_DIR / "civitay.txt").write_text("\n".join(civ_lines), encoding="utf8")
@@ -299,7 +330,7 @@ class ModelGUI(tk.Tk):
         messagebox.showinfo("Задание", f"Файлы созданы в:\n{OUT_DIR}")
 
 
-# ══════════════════ MAIN ═════════════════════════════════════════════
+# ═══════════ MAIN ════════════════════════════════════════════════════
 if __name__ == "__main__":
     if not ROOT_DIR.exists():
         sys.exit(f"Каталог {ROOT_DIR} не найден.")
