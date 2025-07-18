@@ -140,31 +140,13 @@ RUN --mount=type=cache,target=/root/repo-cache \
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/yolain/ComfyUI-Easy-Use@b6bb4a3055adc718ec98befee233f8b05c778465" true \
+    process_one_repo_install_req_hash.sh "https://github.com/1038lab/ComfyUI-RMBG@4b2e8ce688386cca1257ae3aea94cb7c6bfca09f" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/kijai/ComfyUI-KJNodes@ad37ce656c13e9abea002b46e3a89be3dba32355" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/ssitu/ComfyUI_UltimateSDUpscale@95fb26043d341c79246f0e137aabc64c19d67d37" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes@d78b780ae43fcf8c6b7c6505e6ffb4584281ceca" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/cubiq/ComfyUI_essentials@9d9f4bedfc9f0321c19faf71855e228c93bd0dc9" true \
+    process_one_repo_install_req_hash.sh "https://github.com/mit-han-lab/ComfyUI-nunchaku@a7e55c019f8f806e1822572092b363f317db41f0" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
@@ -176,37 +158,79 @@ RUN --mount=type=cache,target=/root/repo-cache \
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/melMass/comfy_mtb@d00722e9ea23c93b92624d0947ef342b55cee052" true \
+    process_one_repo_install_req_hash.sh "https://github.com/blepping/ComfyUI-bleh@9606ca236c05746e2b196361cdce411b7759f787" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/Jordach/comfy-plasma@c63555fec40a7dddb36c99aa603e817abab3abdb" true \
+    process_one_repo_install_req_hash.sh "https://github.com/vuongminh1907/ComfyUI_ZenID@21b90a97c530df6e218cdbe5117a0b331708eab6" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/M1kep/ComfyLiterals@bdddb08ca82d90d75d97b1d437a652e0284a32ac" true \
+    process_one_repo_install_req_hash.sh "https://github.com/cubiq/ComfyUI_essentials@9d9f4bedfc9f0321c19faf71855e228c93bd0dc9" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/chengzeyi/Comfy-WaveSpeed@16ec6f344f8cecbbf006d374043f85af22b7a51d" true \
+    process_one_repo_install_req_hash.sh "https://github.com/cubiq/ComfyUI_InstantID@72495e806bc2ab9c41581e15ccaa1bcf83c477e8" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/1038lab/ComfyUI-RMBG@4b2e8ce688386cca1257ae3aea94cb7c6bfca09f" true \
+    process_one_repo_install_req_hash.sh "https://github.com/jakechai/ComfyUI-JakeUpgrade@4c1a84ad63ef6e003086469c6ae72559f3183985" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://codeberg.org/Gourieff/comfyui-reactor-node@c8f585414f25f315076b6e953561088f0d01bf10" true \
+    process_one_repo_install_req_hash.sh "https://github.com/cubiq/ComfyUI_FaceAnalysis@8846653446a6b13582da11793faf950325a398e0" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/cubiq/ComfyUI_IPAdapter_plus@a0f451a5113cf9becb0847b92884cb10cbdec0ef" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/kijai/ComfyUI-Florence2@de485b65b3e1b9b887ab494afa236dff4bef9a7e" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/Fannovel16/comfyui_controlnet_aux@59b027e088c1c8facf7258f6e392d16d204b4d27" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/XLabs-AI/x-flux-comfyui@00328556efc9472410d903639dc9e68a8471f7ac" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/bytedance/ComfyUI-HyperLoRA@108d4c32eb6bb77d386a6fb1a3d05d6826df8bcd" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/kijai/ComfyUI-KJNodes@ad37ce656c13e9abea002b46e3a89be3dba32355" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/BlenderNeko/ComfyUI_ADV_CLIP_emb@63984deefb005da1ba90a1175e21d91040da38ab" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
@@ -224,73 +248,7 @@ RUN --mount=type=cache,target=/root/repo-cache \
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/sipie800/ComfyUI-PuLID-Flux-Enhanced@04e1b52320f1f14383afe18959349703623c5b88" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/JPS-GER/ComfyUI_JPS-Nodes@0e2a9aca02b17dde91577bfe4b65861df622dcaf" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/Zehong-Ma/ComfyUI-MagCache@7d4e982bf7955498afca891c7094c48a70985537" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch@b432b2411cbb7d3192d35953bd3aafea05a0e245" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/chrisgoringe/cg-noisetools@23c7723e6f856f236f69bb87a218b7f54481c48b" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/ltdrdata/was-node-suite-comfyui@f86447721c18758d7b3b6ae5769f52344a3d764a" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/EllangoK/ComfyUI-post-processing-nodes@c49a05254795403648f2c1774b6f5ea39f96e7d5" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/BlenderNeko/ComfyUI_Noise@0c9ec19b16dc72334cb8ce82c3774aed183048e4" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/ltdrdata/ComfyUI-Inspire-Pack@04223778ea4fad60a4ceb6798f063ec6cdc0e1e0" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/kaibioinfo/ComfyUI_AdvancedRefluxControl@2b95c2c866399ca1914b4da486fe52808f7a9c60" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/Pixelailabs/paint_editor@3e5b853b143b01885cf3f1fa8cbe5b68fad2226f" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/nunchaku-tech/ComfyUI-nunchaku@c3d3450cdcf392ed1c7f7f1e5c213c71eea6579b" true \
+    process_one_repo_install_req_hash.sh "https://github.com/glibsonoran/Plush-for-ComfyUI@a9e824e6717039edea45bc157b88db3ff31bcc22" true \
     && rm -rf /root/.cache/pip
 
 
