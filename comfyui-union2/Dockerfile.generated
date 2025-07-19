@@ -212,7 +212,7 @@ RUN --mount=type=cache,target=/root/repo-cache \
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/ltdrdata/ComfyUI-Impact-Pack@b3a815b43d987022542715b351ce3c2c02c902db" true \
+    process_one_repo_install_req_hash.sh "https://github.com/ltdrdata/ComfyUI-Impact-Pack@e1e95c14d3cf01d233daad81f1eda7584763237b" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
@@ -291,6 +291,24 @@ RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
     process_one_repo_install_req_hash.sh "https://github.com/nunchaku-tech/ComfyUI-nunchaku@28c7fa41b460b3f82ef5230b522c70a72fe47a6e" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://codeberg.org/Gourieff/comfyui-reactor-node@c8f585414f25f315076b6e953561088f0d01bf10" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/mav-rik/facerestore_cf@ff4d7a5c102441d8f058dd6135797ffb57b6c6ad" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes@d78b780ae43fcf8c6b7c6505e6ffb4584281ceca" true \
     && rm -rf /root/.cache/pip
 
 
