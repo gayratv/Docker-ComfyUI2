@@ -1,0 +1,455 @@
+{
+  "id": "2c9335d1-ff64-4606-9032-0c14eff9c3cc",
+  "revision": 0,
+  "last_node_id": 44,
+  "last_link_id": 44,
+  "nodes": [
+    {
+      "id": 32,
+      "type": "Text Concatenate",
+      "pos": [
+        877.1314697265625,
+        610.8816528320312
+      ],
+      "size": [
+        270,
+        142
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_a",
+          "shape": 7,
+          "type": "STRING",
+          "link": 24
+        },
+        {
+          "name": "text_b",
+          "shape": 7,
+          "type": "STRING",
+          "link": 34
+        },
+        {
+          "name": "text_c",
+          "shape": 7,
+          "type": "STRING",
+          "link": 41
+        },
+        {
+          "name": "text_d",
+          "shape": 7,
+          "type": "STRING",
+          "link": 32
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            29
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "was-node-suite-comfyui",
+        "ver": "1.0.2",
+        "Node name for S&R": "Text Concatenate",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        ", ",
+        "true"
+      ]
+    },
+    {
+      "id": 36,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        626.965087890625,
+        992.7001953125
+      ],
+      "size": [
+        218.47000122070312,
+        93
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            32
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "Node name for S&R": "PrimitiveStringMultiline",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "результат выведи на английском"
+      ]
+    },
+    {
+      "id": 34,
+      "type": "LoadPromptsFromFile //Inspire",
+      "pos": [
+        6.638442039489746,
+        735.0087280273438
+      ],
+      "size": [
+        305.2925720214844,
+        170
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_data_opt",
+          "shape": 7,
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "zipped_prompt",
+          "shape": 6,
+          "type": "ZIPPED_PROMPT",
+          "links": [
+            25
+          ]
+        },
+        {
+          "name": "count",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "remaining_count",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-inspire-pack",
+        "ver": "1.21.0",
+        "Node name for S&R": "LoadPromptsFromFile //Inspire",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "example\\3продукт.txt",
+        false,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 35,
+      "type": "UnzipPrompt //Inspire",
+      "pos": [
+        456.0267639160156,
+        849.57470703125
+      ],
+      "size": [
+        179.94100952148438,
+        66
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "zipped_prompt",
+          "type": "ZIPPED_PROMPT",
+          "link": 25
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "STRING",
+          "links": [
+            41
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "name",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-inspire-pack",
+        "ver": "1.21.0",
+        "Node name for S&R": "UnzipPrompt //Inspire",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 33,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        461.4552917480469,
+        496.5126037597656
+      ],
+      "size": [
+        210,
+        93
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            24
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "Node name for S&R": "PrimitiveStringMultiline",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "девочка стипанк"
+      ]
+    },
+    {
+      "id": 39,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        467.26849365234375,
+        639.2013549804688
+      ],
+      "size": [
+        210,
+        93
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            34
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "Node name for S&R": "PrimitiveStringMultiline",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "с этим словом работай"
+      ]
+    },
+    {
+      "id": 41,
+      "type": "ShowText|pysssss",
+      "pos": [
+        1587.5389404296875,
+        901.3732299804688
+      ],
+      "size": [
+        416.1470031738281,
+        196.04200744628906
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 44
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "aac13aa7ce35b07d43633c3bbe654a38c00d74f5",
+        "Node name for S&R": "ShowText|pysssss",
+        "widget_ue_connectable": {},
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65
+      },
+      "widgets_values": [
+        "Девушка из стимпанка уверенно стоит в центре тускло освещенной винтажной мастерской, окруженной сложной латунной машиной и винтами. В ее руке она держит красиво оформленный гаджет, демонстрируя его изысканное мастерство. Фоновые функции обнажали кирпичные стены, украшенные различными атрибутами в стиле стимпанк, такими как шестерни, трубы и старые карты, создавая богатую, текстурированную среду. Мягкое, теплое освещение исходит из висящей лампочки Эдисона, отливая золотой сияние, которое усиливает металлические текстуры и подчеркивает детали продукта. Цветовая палитра включает в себя глубокие коричневые, золотые и богатые зеленые, вызывая чувство ностальгии и приключений. Композиция привлекает внимание зрителя к продукту, создавая девушку на фоне мастерства и изобретения, заключая в себе сущность эстетики стимпанк."
+      ]
+    },
+    {
+      "id": 20,
+      "type": "PollinationsTextGen",
+      "pos": [
+        1250.7100830078125,
+        650.2854614257812
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 29
+        }
+      ],
+      "outputs": [
+        {
+          "name": "generated_text",
+          "type": "STRING",
+          "slot_index": 0,
+          "links": [
+            44
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-Pollinations",
+        "ver": "78d8ee093b3081c48815cf8df6486e3417de873b",
+        "Node name for S&R": "PollinationsTextGen",
+        "enableTabs": false,
+        "tabWidth": 65,
+        "tabXOffset": 10,
+        "hasSecondTab": false,
+        "secondTabText": "Send Back",
+        "secondTabOffset": 80,
+        "secondTabWidth": 65,
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "изобрази космический корабль, в стиле стимпанк, результат выведи на английском",
+        "openai",
+        1044137364324196,
+        "randomize",
+        true
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    }
+  ],
+  "links": [
+    [
+      24,
+      33,
+      0,
+      32,
+      0,
+      "STRING"
+    ],
+    [
+      25,
+      34,
+      0,
+      35,
+      0,
+      "ZIPPED_PROMPT"
+    ],
+    [
+      29,
+      32,
+      0,
+      20,
+      0,
+      "STRING"
+    ],
+    [
+      32,
+      36,
+      0,
+      32,
+      3,
+      "STRING"
+    ],
+    [
+      34,
+      39,
+      0,
+      32,
+      1,
+      "STRING"
+    ],
+    [
+      41,
+      35,
+      0,
+      32,
+      2,
+      "STRING"
+    ],
+    [
+      44,
+      20,
+      0,
+      41,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.6105100000000008,
+      "offset": [
+        -552.666345447287,
+        -496.84816824879596
+      ]
+    },
+    "ue_links": [],
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true,
+    "links_added_by_ue": [],
+    "frontendVersion": "1.23.4"
+  },
+  "version": 0.4
+}

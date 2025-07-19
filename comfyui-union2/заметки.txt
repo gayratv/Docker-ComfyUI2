@@ -854,41 +854,6 @@ export POST_INSTALL="face-swap-compare.sh"
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
-FluxKontext
-
-https://civitai.com/models/1721725
-https://www.reddit.com/r/comfyui/comments/1llxly2/fluxkontextecom77_v1/?%24deep_link=true&correlation_id=30492ca9-7cf8-411d-8350-72a67144cceb&post_fullname=t3_1llxly2&post_index=0&ref=email_digest&ref_campaign=email_digest&ref_source=email&utm_content=post_title
-https://chatgpt.com/g/g-685da7d29b9c81919d77d244242f6313-flux-kontext-img2prompt
-
-
-
-source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
-cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
-export MODELS="FluxKontext"
-export ARIA2_MODEL_DIRS="${MODELS} FluxKontext2 _flux_kontext_lora"
-export WORKFLOW_TO_COPY=$MODELS
-export VERSION="$MODELS-CUDA12.6"
-export NODES="$MODELS.txt"
-export IMAGE_NAME="comfyui-union2"
-export COMFYUI_VERSION="v0.3.44"
-export BASE_IMAGE="cuda-12-6:nvidia-runtime"
-export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
-export REQ_MODIFY="base-CUDA-12.6"
-export POST_INSTALL="FluxKontext.sh"
-
-./db-gen.sh
-
-
-./dl_common.sh "$MODELS"
-./dl_common.sh _flux_kontext_lora
-
-python3 python-prg-pre-build/sync_dir.py "$MODELS"
-./clear-comfy-data.sh
-
-rsync -avh --progress /mnt/h/ComfyUI-data/models/ /mnt/d/ComfyUI-data/models/
-
-->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
-->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 Upscalers
 
 https://boosty.to/blender_razumov/posts/fc2f2118-aca9-4323-9332-e6bd9c0e2171?comment=8678542&from=email
@@ -992,7 +957,6 @@ source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 export MODELS="Nunchaku2"
 export WORKFLOW_TO_COPY=$MODELS
-
 export ARIA2_MODEL_DIRS="${MODELS} \
     _antelopev2 \
     _InstantID_ip_adapter \
@@ -1004,7 +968,6 @@ export ARIA2_MODEL_DIRS="${MODELS} \
     _ultralytics \
     _lora_flux \
     _nunchaku"
-
 export VERSION="$MODELS-CUDA12.6"
 export NODES="$MODELS.txt"
 export IMAGE_NAME="comfyui-union2"
@@ -1030,6 +993,41 @@ python3 python-prg-pre-build/sync_dir.py "$MODELS"
 
 rsync -avh --progress /mnt/h/ComfyUI-data/models/ /mnt/d/ComfyUI-data/models/
 
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+FluxKontext
+
+https://civitai.com/models/1721725
+https://www.reddit.com/r/comfyui/comments/1llxly2/fluxkontextecom77_v1/?%24deep_link=true&correlation_id=30492ca9-7cf8-411d-8350-72a67144cceb&post_fullname=t3_1llxly2&post_index=0&ref=email_digest&ref_campaign=email_digest&ref_source=email&utm_content=post_title
+https://chatgpt.com/g/g-685da7d29b9c81919d77d244242f6313-flux-kontext-img2prompt
+
+
+
+source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+export MODELS="FluxKontext"
+export ARIA2_MODEL_DIRS="${MODELS} FluxKontext2 _flux_kontext_lora"
+export WORKFLOW_TO_COPY=$MODELS
+export VERSION="$MODELS-CUDA12.6"
+export NODES="$MODELS.txt"
+export IMAGE_NAME="comfyui-union2"
+export COMFYUI_VERSION="v0.3.44"
+export BASE_IMAGE="cuda-12-6:nvidia-runtime"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
+export REQ_MODIFY="base-CUDA-12.6"
+export POST_INSTALL="FluxKontext.sh"
+
+./db-gen.sh
+
+
+./dl_common.sh "$MODELS"
+./dl_common.sh _flux_kontext_lora
+
+python3 python-prg-pre-build/sync_dir.py "$MODELS"
+./clear-comfy-data.sh
+
+rsync -avh --progress /mnt/h/ComfyUI-data/models/ /mnt/d/ComfyUI-data/models/
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 

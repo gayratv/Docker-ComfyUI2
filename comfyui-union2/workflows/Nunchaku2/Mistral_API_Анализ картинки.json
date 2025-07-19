@@ -1,0 +1,361 @@
+{
+  "id": "2dfdc03b-5455-4d29-8ed7-c7aa6a5571ca",
+  "revision": 0,
+  "last_node_id": 15,
+  "last_link_id": 15,
+  "nodes": [
+    {
+      "id": 12,
+      "type": "ComfyUIPixtralLarge",
+      "pos": [
+        278.25927734375,
+        -195.8799285888672
+      ],
+      "size": [
+        270,
+        126
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 13
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 11
+        }
+      ],
+      "outputs": [
+        {
+          "name": "response_original",
+          "type": "STRING",
+          "links": [
+            12
+          ]
+        },
+        {
+          "name": "response_en",
+          "type": "STRING",
+          "links": [
+            14
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "gayratv/ComfyUI_Gayrat",
+        "ver": "c7f4019b1a21ae7429dbff1ec6291150ad6261f1",
+        "Node name for S&R": "ComfyUIPixtralLarge",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Describe the image",
+        0.7,
+        0.85
+      ]
+    },
+    {
+      "id": 2,
+      "type": "LoadImage",
+      "pos": [
+        -730.8160400390625,
+        -251.94400024414062
+      ],
+      "size": [
+        300,
+        460
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            13
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "8MK9GTV9F7D45F21CWP2CAVPP0.jpeg",
+        "image"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 6,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        -355.257568359375,
+        -234.33409118652344
+      ],
+      "size": [
+        523.2156982421875,
+        350.2629699707031
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            11
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "Node name for S&R": "PrimitiveStringMultiline",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Вы — специализированный помощник на базе искусственного интеллекта, эксперт по созданию высококачественных и детализированных промптов для модели генерации изображений FLUX.1.\n\nПри создании промпта следуйте следующим правилам:\n\n1. Всегда пишите подсказку исключительно на русском языке.\n\n2. Подробно и четко опишите основное содержание изображения:\n\n   * Укажите и детально опишите главные и второстепенные объекты (форму, размер, текстуру, цвет).\n   * Описывайте окружение или фон изображения максимально подробно (время суток, погода, местность, интерьер или экстерьер).\n   * Укажите общее настроение и эмоциональную атмосферу (спокойная, тревожная, радостная и т.д.).\n\n3. Если изображение стилизовано или является художественным:\n\n   * Подробно опишите художественный стиль (импрессионизм, сюрреализм, реализм, аниме, цифровой арт и т.д.).\n   * Укажите имя и фамилию художника, если это необходимо.\n\n4. Обязательно укажите настройки камеры и технические параметры:\n\n   * Тип камеры (цифровая, плёночная, дрон и т.д.).\n   * Объектив (широкоугольный, телеобъектив, макро и т.д.).\n   * Параметры съемки (выдержка, диафрагма, ISO).\n   * Ракурс или угол съемки.\n\nВыводите только готовый, качественный и структурированный промпт, готовый к непосредственному использованию в FLUX.\n\nНе пиши никакие предложения не относящиеся непосредственно к промту Flux\n"
+      ]
+    },
+    {
+      "id": 7,
+      "type": "ShowText|pysssss",
+      "pos": [
+        699.5328369140625,
+        -173.45948791503906
+      ],
+      "size": [
+        525.7058715820312,
+        359.6351013183594
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 12
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "pythongosssss/ComfyUI-Custom-Scripts",
+        "ver": "aac13aa7ce35b07d43633c3bbe654a38c00d74f5",
+        "Node name for S&R": "ShowText|pysssss",
+        "cnr_id": "comfyui-custom-scripts",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Портрет молодой блондинки с голубыми глазами и светлой кожей, стоящей на улице в солнечный день. Девушка одета в белое платье с вышивкой и кружевами, которое подчеркивает её фигуру. Платье имеет глубокое декольте и тонкие бретели. На шее у неё золотая цепочка с кулоном в форме сердца. Фон изображения представляет собой ухоженный сад с зелёными растениями и кирпичной стеной. Общая атмосфера изображения спокойная и романтичная, с мягким естественным освещением.\n\nСтиль изображения: реализм, с элементами фотографии высокого качества.\n\nНастройки камеры:\n- Тип камеры: цифровая зеркальная камера.\n- Объектив: портретный объектив с фиксированным фокусным расстоянием 50 мм.\n- Параметры съемки: выдержка 1/250 секунды, диафрагма f/2.8, ISO 100.\n- Ракурс: съемка на уровне глаз, с небольшим углом снизу, чтобы подчеркнуть выразительность лица и фигуры модели."
+      ]
+    },
+    {
+      "id": 13,
+      "type": "ShowText|pysssss",
+      "pos": [
+        693.9723510742188,
+        250.68478393554688
+      ],
+      "size": [
+        525.7058715820312,
+        359.6351013183594
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 14
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "pythongosssss/ComfyUI-Custom-Scripts",
+        "ver": "aac13aa7ce35b07d43633c3bbe654a38c00d74f5",
+        "Node name for S&R": "ShowText|pysssss",
+        "cnr_id": "comfyui-custom-scripts",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "A portrait of a young blonde woman with blue eyes and fair skin, standing outdoors on a sunny day. The girl is dressed in a white dress with embroidery and lace that accentuates her figure. The dress features a deep neckline and thin straps. Around her neck, she wears a gold chain with a heart-shaped pendant. The background of the image is a well-maintained garden with green plants and a brick wall. The overall atmosphere of the image is calm and romantic, with soft natural lighting.\n\nImage style: realism, with elements of high-quality photography.\n\nCamera settings:\n- Camera type: digital SLR.\n- Lens: portrait lens with a fixed focal length of 50 mm.\n- Shooting parameters: shutter speed 1/250 second, aperture f/2.8, ISO 100.\n- Angle: shot at eye level, with a slight angle from below to emphasize the expressiveness of the model's face and figure."
+      ]
+    },
+    {
+      "id": 15,
+      "type": "ShowText|pysssss",
+      "pos": [
+        12.170196533203125,
+        452.2038269042969
+      ],
+      "size": [
+        525.7058715820312,
+        359.6351013183594
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 15
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "pythongosssss/ComfyUI-Custom-Scripts",
+        "ver": "aac13aa7ce35b07d43633c3bbe654a38c00d74f5",
+        "Node name for S&R": "ShowText|pysssss",
+        "widget_ue_connectable": {},
+        "cnr_id": "comfyui-custom-scripts"
+      },
+      "widgets_values": [
+        "A portrait of a young woman with long, fair hair and green eyes, standing outdoors on a sunny day. The main subject is the woman, dressed in a white gown with lace details and a deep décolletage, wearing a gold chain around her neck. Secondary elements include lush greenery in the background, a brick wall, and an archway. The overall mood is romantic, tender, and serene."
+      ]
+    },
+    {
+      "id": 14,
+      "type": "ComfyUIPixtralTranslate",
+      "pos": [
+        -436.2698059082031,
+        445.61474609375
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "translated_en",
+          "type": "STRING",
+          "links": [
+            15
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "gayratv/ComfyUI_Gayrat",
+        "ver": "c7f4019b1a21ae7429dbff1ec6291150ad6261f1",
+        "Node name for S&R": "ComfyUIPixtralTranslate",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "ортрет молодой женщины с длинными светлыми волосами и зелеными глазами, стоящей на улице в солнечный день. Основной объект: женщина в белом платье с кружевными элементами и глубоким декольте, с золотой цепочкой на шее. Второстепенные объекты: зеленая растительность на заднем плане, кирпичная стена и арка. Общее настроение: романтичное, нежное, спокойное.\n",
+        0.3
+      ]
+    }
+  ],
+  "links": [
+    [
+      11,
+      6,
+      0,
+      12,
+      1,
+      "STRING"
+    ],
+    [
+      12,
+      12,
+      0,
+      7,
+      0,
+      "STRING"
+    ],
+    [
+      13,
+      2,
+      0,
+      12,
+      0,
+      "IMAGE"
+    ],
+    [
+      14,
+      12,
+      1,
+      13,
+      0,
+      "STRING"
+    ],
+    [
+      15,
+      14,
+      0,
+      15,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "controller_panel": {
+      "controllers": {},
+      "hidden": true,
+      "highlight": true,
+      "version": 2,
+      "default_order": []
+    },
+    "ue_links": [],
+    "links_added_by_ue": [],
+    "ds": {
+      "scale": 0.8264462809917354,
+      "offset": [
+        909.7694536744407,
+        544.8293047227165
+      ]
+    },
+    "frontendVersion": "1.23.4"
+  },
+  "version": 0.4
+}
