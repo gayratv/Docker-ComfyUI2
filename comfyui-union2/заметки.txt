@@ -958,6 +958,7 @@ cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 export MODELS="Nunchaku2"
 export WORKFLOW_TO_COPY=$MODELS
 export ARIA2_MODEL_DIRS="${MODELS} \
+    Nunchaku \
     _antelopev2 \
     _InstantID_ip_adapter \
     _ipadapter_plus \
@@ -980,6 +981,8 @@ export POST_INSTALL="$MODELS.sh"
 ./db-gen.sh
 
 ./dl_common.sh "$MODELS"
+./dl_common.sh Nunchaku2
+./dl_common.sh Nunchaku
 ./dl_common.sh _antelopev2
 ./dl_common.sh _InstantID_ip_adapter
 ./dl_common.sh _ipadapter_plus
@@ -1002,7 +1005,7 @@ https://civitai.com/models/1721725
 https://www.reddit.com/r/comfyui/comments/1llxly2/fluxkontextecom77_v1/?%24deep_link=true&correlation_id=30492ca9-7cf8-411d-8350-72a67144cceb&post_fullname=t3_1llxly2&post_index=0&ref=email_digest&ref_campaign=email_digest&ref_source=email&utm_content=post_title
 https://chatgpt.com/g/g-685da7d29b9c81919d77d244242f6313-flux-kontext-img2prompt
 
-
+cd /workspace/Docker-ComfyUI2/comfyui-union2
 
 source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
@@ -1028,6 +1031,42 @@ python3 python-prg-pre-build/sync_dir.py "$MODELS"
 ./clear-comfy-data.sh
 
 rsync -avh --progress /mnt/h/ComfyUI-data/models/ /mnt/d/ComfyUI-data/models/
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+
+Wan Text to Image - Генерация изображений
+https://boosty.to/stabledif/posts/f5163720-321a-4e6a-ad9a-2e442ca53e3d?isFromFeed=true
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+./workflow-new-image.sh "WanTI"
+
+source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+export MODELS="WanTI"
+export WORKFLOW_TO_COPY=$MODELS
+export ARIA2_MODEL_DIRS="${MODELS}"
+export VERSION="$MODELS-CUDA12.6"
+export NODES="$MODELS.txt"
+export IMAGE_NAME="comfyui-union2"
+export COMFYUI_VERSION="v0.3.44"
+export BASE_IMAGE="cuda-12-6:nvidia-runtime"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
+export REQ_MODIFY="base-CUDA-12.6"
+export POST_INSTALL="$MODELS.sh"
+
+
+./db-gen.sh
+
+./dl_common.sh "$MODELS"
+
+
+
+python3 python-prg-pre-build/sync_dir.py "$MODELS"
+./clear-comfy-data.sh
+
+rsync -avh --progress /mnt/h/ComfyUI-data/models/ /mnt/d/ComfyUI-data/models/
+
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 

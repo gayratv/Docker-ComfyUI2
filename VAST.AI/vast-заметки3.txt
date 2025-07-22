@@ -1,30 +1,27 @@
 wsl
 clear
 
-
-export IMAGE_NAME_BASE="FluxKontext"
 export CUDA="CUDA12.6"
-export IMAGE_NAME="gayrat/comfyui-union2:${IMAGE_NAME_BASE}-${CUDA}"
-export IMAGE_NAME="docker.io/vastai/kvm:ubuntu_cli_22.04-2025-05-16"
-echo -e "IMAGE_NAME : ${IMAGE_NAME}"
+export IMAGE_NAME_BASE="nvidia-devel"
+export IMAGE_NAME="gayrat/cuda-12-6:nvidia-devel"
 cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.6"
 
-
-
-export IMAGE_NAME_BASE="FluxKontext"
+============
+export IMAGE_NAME_BASE="Nunchaku2"
 export CUDA="CUDA12.6"
 export IMAGE_NAME="gayrat/comfyui-union2:${IMAGE_NAME_BASE}-${CUDA}"
 echo -e "IMAGE_NAME : ${IMAGE_NAME}"
 cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.6"
+============
 
 source vast-contract.sh 20217856 $IMAGE_NAME
 source ./vs.sh
 
-source tmux-s.sh FluxKontext
+source tmux-s.sh Nunchaku2
 
-./dl_common.sh FluxKontext
+./dl_common.sh Nunchaku2
 
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
@@ -59,8 +56,34 @@ vastai create instance "$INSTANCE_ID" \
     --env '-p 8188:8188' \
     > vast-create-instance.txt
 
-ssh -p 46479 root@76.66.207.49 -L 8080:localhost:8080
+ssh -p 46445 root@76.66.207.49 -L 8080:localhost:8080
 
-export VAST_SSH=46479
+export VAST_SSH=46445
 export VAST_PUBLIC_IPADDR=76.66.207.49
 ssh -p $VAST_SSH "root@$VAST_PUBLIC_IPADDR" -i ~/.ssh/mvps/ud_rsa
+
+
+=============================
+
+
+export IMAGE_NAME_BASE="FluxKontext"
+export CUDA="CUDA12.6"
+export IMAGE_NAME="docker.io/vastai/kvm:ubuntu_cli_22.04-2025-05-16"
+echo -e "IMAGE_NAME : ${IMAGE_NAME}"
+cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
+source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.6"
+
+===================
+sudo rm -rf ~/.docker/cli-plugins/docker-buildx
+
+sudo curl -L \
+  https://github.com/docker/buildx/releases/download/v0.26.0-rc1/buildx-v0.26.0-rc1.linux-amd64 \
+  -o ~/.docker/cli-plugins/docker-buildx
+chmod +x ~/.docker/cli-plugins/docker-buildx
+
+docker pull nvidia/cuda:12.6.3-cudnn-devel-ubuntu22.04
+
+==========================
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
+source ./ssh-transfer.sh "ssh -p 14639 root@76.71.171.219 -L 8080:localhost:8080"

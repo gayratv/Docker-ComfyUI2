@@ -17,13 +17,13 @@ ARG COLOR_YELLOW='\033[33m'
 ARG COLOR_BOLD_GREEN='\033[1;32m'
 ARG COLOR_RESET='\033[0m'
 
-#RUN --mount=type=cache,target=/root/repo-cache \
-#    --mount=type=cache,target=/root/pip-cache \
-#    --mount=type=cache,target=/root/pip-cache-uv \
-#    rm -rf /root/repo-cache/* && \
-#    rm -rf /root/pip-cache/* && \
-#    rm -rf /root/pip-cache-uv/*
-#RUN exit 1
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    --mount=type=cache,target=/root/pip-cache-uv \
+    rm -rf /root/repo-cache/* && \
+    rm -rf /root/pip-cache/* && \
+    rm -rf /root/pip-cache-uv/*
+RUN exit 1
 
 #RUN --mount=type=cache,target=/root/repo-cache \
 #    rm -rf /root/repo-cache/*

@@ -5,6 +5,7 @@ import subprocess
 
 # Глобальная константа для базового пути
 BASE_DOCKERFILE_PATH = '/mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2'
+# BASE_DOCKERFILE_PATH = '/workspace/Docker-ComfyUI2/comfyui-union2'
 
 def get_latest_commit_hash(repo_url: str) -> str:
     """

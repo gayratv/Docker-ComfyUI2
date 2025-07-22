@@ -1,0 +1,45 @@
+mkdir /workspace
+cd /workspace
+
+git clone https://github.com/thu-ml/SageAttention.git
+cd SageAttention
+
+python3 -m pip install --upgrade pip
+
+python3 -m pip install --cache-dir=/root/pip-cache packaging
+
+python3 -m pip install --cache-dir=/root/pip-cache  torch==2.7.0 torchaudio==2.7.0 \
+    --extra-index-url https://download.pytorch.org/whl/cu126
+
+python3 -m pip install --cache-dir=/root/pip-cache numpy
+
+
+export TORCH_CUDA_ARCH_LIST="8.6;8.9"
+export EXT_PARALLEL=4
+export NVCC_APPEND_FLAGS="--threads 8"
+export MAX_JOBS=32
+export FORCE_CUDA=1
+
+python3 setup.py install
+
+python setup.py bdist_wheel
+
+=======
+скопировать локальную папку app в папку /var/www/app в
+
+
+ssh -p 40125 root@184.148.207.214 -L 8080:localhost:8080
+
+rsync -avz -e "ssh -i ~/.ssh/mvps/ud_rsa -p $VAST_SSH" "$LOCAL_FOLDER" root@$VAST_PUBLIC_IPADDR:/workspace/
+
+export VAST_SSH=40125
+export VAST_PUBLIC_IPADDR=184.148.207.214
+
+# копировать docker->host
+export LOCAL_FOLDER=/mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/assets-docker/sageattention_wheel/
+rsync -avz -e "ssh -i ~/.ssh/mvps/ud_rsa -p $VAST_SSH" \
+    root@$VAST_PUBLIC_IPADDR:/workspace/SageAttention/dist/ "$LOCAL_FOLDER"
+
+scp -P $VAST_SSH -i ~/.ssh/mvps/ud_rsa \
+    root@$VAST_PUBLIC_IPADDR:/workspace/SageAttention/dist/sageattention-2.2.0-cp311-cp311-linux_x86_64.whl \
+    "$LOCAL_FOLDER"

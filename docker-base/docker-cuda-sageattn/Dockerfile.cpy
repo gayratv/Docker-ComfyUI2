@@ -1,6 +1,37 @@
+# Сборка
+FROM cuda-12-6:nvidia-devel AS builder
+WORKDIR /workspace/
+RUN git clone https://github.com/thu-ml/SageAttention.git
+WORKDIR /workspace/SageAttention
+
+RUN python3 -m pip install --upgrade pip
+
+RUN --mount=type=cache,target=/root/pip-cache \
+  python3 -m pip install --cache-dir=/root/pip-cache packaging
+
+
+RUN --mount=type=cache,target=/root/pip-cache \
+  python3 -m pip install --cache-dir=/root/pip-cache  torch==2.7.0 torchaudio==2.7.0 \
+    --extra-index-url https://download.pytorch.org/whl/cu126
+
+RUN --mount=type=cache,target=/root/pip-cache \
+  python3 -m pip install --cache-dir=/root/pip-cache numpy
+
+# parallel compiling (Optional)
+ENV TORCH_CUDA_ARCH_LIST="7.5;8.6;8.9"
+ENV EXT_PARALLEL=4
+ENV NVCC_APPEND_FLAGS="--threads 8"
+ENV MAX_JOBS=32
+
+
+RUN  python3 setup.py install
+#RUN --mount=type=cache,target=/root/pip-cache \
+#  python3 -m pip install  --cache-dir=/root/pip-cache   -e .
+#RUN  python3 -m pip install  -e .
+
+
 # Стадия 1: Сборка и установка зависимостей
-ARG BASE_IMAGE="nvidia/cuda:12.6.3-cudnn-runtime-ubuntu22.04"
-FROM ${BASE_IMAGE}
+FROM nvidia/cuda:12.6.3-cudnn-runtime-ubuntu22.04
 
 # Установка необходимых пакетов
 RUN apt-get update \
@@ -22,33 +53,6 @@ RUN apt-get update \
     libv4l-dev libxvidcore-dev libx264-dev libgtk-3-dev libatlas-base-dev gfortran \
     && rm -rf /var/lib/apt/lists/*
 
-
-## Устанавливаем переменные окружения, чтобы apt не задавал интерактивных вопросов
-#ENV DEBIAN_FRONTEND=noninteractive
-#
-## 2. Устанавливаем утилиты и добавляем репозиторий NVIDIA
-#RUN apt-get update && \
-#    apt-get install -y --no-install-recommends wget gnupg ca-certificates && \
-#    wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb && \
-#    dpkg -i cuda-keyring_1.1-1_all.deb && \
-#    rm cuda-keyring_1.1-1_all.deb
-#
-## 3. Обновляем список пакетов и устанавливаем ТОЧНУЮ ВЕРСИЮ TensorRT
-##    Это решает конфликт зависимостей.
-#RUN apt-get update  \
-##    && export TRT_VERSION="10.12.0.36-1+cuda12.9" && \
-##    export TRT_VERSION="8.6.1.6-1+cuda12.0" && \
-##    apt-get install -y --no-install-recommends \
-##        libnvinfer-headers-dev=${TRT_VERSION} \
-##        libnvinfer-dev=${TRT_VERSION} \
-##        libnvparsers-dev=${TRT_VERSION} \
-##        libnvonnxparsers-dev=${TRT_VERSION} \
-#    && apt-get install -y tensorrt \
-#    && apt-get clean && \
-#    rm -rf /var/lib/apt/lists/*
-#
-## Сбрасываем переменную окружения
-#ENV DEBIAN_FRONTEND=
 
 ARG INSTALL_tensorrt="false"
 
@@ -127,7 +131,7 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.10 1 \
 
 # Установка pip и wheel
 RUN python3 -m ensurepip --upgrade \
-    && python3.11 -m pip install --upgrade pip setuptools wheel build \
+    && python3.11 -m pip install --upgrade pip setuptools wheel \
     && rm -rf /var/lib/apt/lists/*
 
 # Установка минимально необходимых пакетов
@@ -145,6 +149,8 @@ ENV PATH="/root/.local/bin:$PATH"
 RUN printf "alias py='python3'\nalias python='python3'\nalias ptest='cd /workspace/VPS-copy && py pytorch-test.py'\n" >> ~/.bashrc
 
 RUN python3 -m pip install --upgrade pip
+
+COPY --from=builder /usr/local/lib/python3.11/dist-packages/sageattention* /usr/local/lib/python3.11/dist-packages/
 
 # Команда по умолчанию
 CMD ["bash"]

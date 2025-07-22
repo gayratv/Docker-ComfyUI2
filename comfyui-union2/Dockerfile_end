@@ -91,6 +91,9 @@ RUN if [ -n "$ARIA2_MODEL_DIRS" ]; then \
     fi && \
     chmod +x *.sh && chmod +x ./templates/*.sh && rm -f ./templates/.env
 
+ARG WORKFLOW_TO_COPY
+WORKDIR /workspace/ComfyUI
+COPY workflows/$WORKFLOW_TO_COPY user/default/workflows/$WORKFLOW_TO_COPY
 
 ARG ARG_COPY_CSV=false
 
