@@ -44,6 +44,7 @@ RUN --mount=type=cache,target=/root/pip-cache \
 # ==========================
 
 
+
 WORKDIR /workspace
 RUN --mount=type=cache,target=/root/pip-cache \
     if [ -n "$POST_INSTALL" ]; then \
@@ -53,9 +54,6 @@ RUN --mount=type=cache,target=/root/pip-cache \
     else \
         echo "Skipping post-install script"; \
     fi
-
-RUN echo "===== Финальная проверка Numpy =====" && \
-    python3 -c "import numpy; print('Версия:', numpy.__version__); print('Путь к файлу:', numpy.__file__)"
 
 WORKDIR /workspace/ComfyUI
 COPY input/${MODELS} ./input/
@@ -96,10 +94,6 @@ WORKDIR /workspace/ComfyUI
 COPY workflows/$WORKFLOW_TO_COPY user/default/workflows/$WORKFLOW_TO_COPY
 
 ARG ARG_COPY_CSV=false
-
-#RUN if [ "$ARG_COPY_CSV" = "true" ]; then \
-#      mkdir -p /workspace/ComfyUI/custom_nodes/ComfyUI-CSV-Loader/CSV; \
-#    fi
 
 WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI-CSV-Loader/CSV/
 
