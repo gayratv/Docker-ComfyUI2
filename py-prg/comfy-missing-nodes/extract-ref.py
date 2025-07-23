@@ -3,6 +3,11 @@ import re
 import argparse
 import sys
 
+"""
+ cd ./py-prg/comfy-missing-nodes/
+ python3 extract-ref.py
+"""
+
 def extract_hrefs(text):
     """
     Ищет все вхождения <a href="...ComfyUI_IPAdapter_plus..." …>

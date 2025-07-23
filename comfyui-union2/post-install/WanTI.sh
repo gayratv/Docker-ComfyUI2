@@ -7,7 +7,8 @@ set -x  # Логирование всех команд
 # pip list | grep triton
 # =================
 
-python3 -m pip install --cache-dir=/root/pip-cache torch==2.7.0 torchaudio==2.7.0 \
+#python3 -m pip install --cache-dir=/root/pip-cache torch==2.7.0 torchaudio==2.7.0 \
+python3 -m pip install --cache-dir=/root/pip-cache triton==3.3.1 torch==2.7.1 torchaudio==2.7.1 \
   --extra-index-url https://download.pytorch.org/whl/cu126
 # xformers==0.0.30
 
@@ -15,4 +16,3 @@ python3 -m pip install --cache-dir=/root/pip-cache /workspace/wheels/sageattenti
 
 rm /workspace/wheels/sageattention-*.whl
 rm -rf /root/.cache/pip
-

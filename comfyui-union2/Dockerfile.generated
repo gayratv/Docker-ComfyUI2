@@ -108,6 +108,7 @@ COPY ./custom-nodes/*.txt ./
 # Copy the pre-built Apex wheel from your local host into the image
 WORKDIR /workspace/wheels
 COPY ./assets-docker/apex_wheel/apex-*.whl .
+COPY ./assets-docker/sageattention_wheel/sageattention-*.whl .
 # Install the Apex wheel and then delete the file to keep the image clean
 RUN python3 -m pip install apex-*.whl && rm apex-*.whl
 
@@ -141,6 +142,48 @@ RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
     process_one_repo_install_req_hash.sh "https://github.com/1038lab/ComfyUI-RMBG@4b2e8ce688386cca1257ae3aea94cb7c6bfca09f" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/city96/ComfyUI-GGUF@b3ec875a68d94b758914fd48d30571d953bb7a54" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/kijai/ComfyUI-KJNodes@37a0973b474307b2883cfb49e720f2754106d98d" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/Jonseed/ComfyUI-Detail-Daemon@f391accbda2d309cdcbec65cb9fcc80a41197b20" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/Steudio/ComfyUI_Steudio@93fce9a5a7acf190f9bf44f4063ac508368c8ffe" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/WASasquatch/was-node-suite-comfyui@ea935d1044ae5a26efa54ebeb18fe9020af49a45" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/chflame163/ComfyUI_LayerStyle@3bfe8e435d167b4a5bf08716729f89802dbbaa6f" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/vrgamegirl19/comfyui-vrgamedevgirl@0c5580921e6e6ad56f9fc1ecddce3264790a15fb" true \
     && rm -rf /root/.cache/pip
 
 
@@ -189,6 +232,7 @@ RUN --mount=type=cache,target=/root/pip-cache \
 # ==========================
 
 
+
 WORKDIR /workspace
 RUN --mount=type=cache,target=/root/pip-cache \
     if [ -n "$POST_INSTALL" ]; then \
@@ -198,9 +242,6 @@ RUN --mount=type=cache,target=/root/pip-cache \
     else \
         echo "Skipping post-install script"; \
     fi
-
-RUN echo "===== Финальная проверка Numpy =====" && \
-    python3 -c "import numpy; print('Версия:', numpy.__version__); print('Путь к файлу:', numpy.__file__)"
 
 WORKDIR /workspace/ComfyUI
 COPY input/${MODELS} ./input/
@@ -241,10 +282,6 @@ WORKDIR /workspace/ComfyUI
 COPY workflows/$WORKFLOW_TO_COPY user/default/workflows/$WORKFLOW_TO_COPY
 
 ARG ARG_COPY_CSV=false
-
-#RUN if [ "$ARG_COPY_CSV" = "true" ]; then \
-#      mkdir -p /workspace/ComfyUI/custom_nodes/ComfyUI-CSV-Loader/CSV; \
-#    fi
 
 WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI-CSV-Loader/CSV/
 

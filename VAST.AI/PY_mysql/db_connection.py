@@ -14,7 +14,7 @@ def create_db_connection():
             user='root',
             password='root',
             database='vast',
-            port=3307
+            port=3306
         )
         if connection.is_connected():
             print("Успешное подключение к базе данных")
