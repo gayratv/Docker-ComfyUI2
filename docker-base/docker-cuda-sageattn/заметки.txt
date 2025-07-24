@@ -1,8 +1,0 @@
-
-cd /mnt/f/_prg/python/Docker-ComfyUI/docker-base/docker-cuda-sageattn
-export IMAGE_NAME="cuda-12-6"
-export BASE_IMAGE="nvidia/cuda:12.6.3-cudnn-runtime-ubuntu22.04"
-export INSTALL_tensorrt="false"
-export VERSION="nvidia-runtime-sageattn"
-
-собирать придется на карте 3090

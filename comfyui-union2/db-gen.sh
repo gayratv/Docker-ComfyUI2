@@ -13,6 +13,7 @@ python3 ./python-prg-pre-build/generate_dockerfile_v2.py --nodes "${MODELS}.txt"
 #    --no-cache \
 DOCKER_BUILDKIT=1 docker build --progress=plain \
     --build-arg BUILDKIT_INLINE_CACHE=1 \
+    --build-arg PY_VER="$PY_VER" \
     --cache-from $IMAGE_NAME:$VERSION \
     --build-arg BASE_IMAGE="$BASE_IMAGE" \
     --build-arg NODES="$NODES" \

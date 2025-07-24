@@ -84,9 +84,12 @@ RUN python3 /workspace/ComfyUI/gayrat_py/remove_lines.py
 RUN echo -e "\n\n${COLOR_GREEN}===== Вторая стадия сборки ========${COLOR_RESET}\n"
 FROM ${BASE_IMAGE}
 
+ARG PY_VER=3.11
+
 # Копируем установленные системные Python-пакеты
 RUN echo -e "Копируем установленные системные Python-пакеты"
-COPY --from=builder /usr/local/lib/python3.11/dist-packages /usr/local/lib/python3.11/dist-packages
+#COPY --from=builder /usr/local/lib/python3.11/dist-packages /usr/local/lib/python3.11/dist-packages
+COPY --from=builder "/usr/local/lib/python$PY_VER/dist-packages" "/usr/local/lib/python$PY_VER/dist-packages"
 
 # Копируем рабочую директорию
 RUN echo -e "Копируем рабочую директорию"
@@ -107,10 +110,14 @@ COPY ./custom-nodes/*.txt ./
 
 # Copy the pre-built Apex wheel from your local host into the image
 WORKDIR /workspace/wheels
-COPY ./assets-docker/apex_wheel/apex-*.whl .
-COPY ./assets-docker/sageattention_wheel/sageattention-*.whl .
-# Install the Apex wheel and then delete the file to keep the image clean
-RUN python3 -m pip install apex-*.whl && rm apex-*.whl
+COPY ./assets-docker/wheels/ ./
+
+#COPY ./assets-docker/apex_wheel/apex-*.whl .
+#COPY ./assets-docker/sageattention_wheel/sageattention-*.whl .
+## Install the Apex wheel and then delete the file to keep the image clean
+#RUN python3 -m pip install apex-*.whl && rm apex-*.whl
+
+
 
 
 
@@ -184,6 +191,12 @@ RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
     process_one_repo_install_req_hash.sh "https://github.com/vrgamegirl19/comfyui-vrgamedevgirl@0c5580921e6e6ad56f9fc1ecddce3264790a15fb" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/1038lab/ComfyUI-Pollinations@78d8ee093b3081c48815cf8df6486e3417de873b" true \
     && rm -rf /root/.cache/pip
 
 

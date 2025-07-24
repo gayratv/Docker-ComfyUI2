@@ -1,11 +1,11 @@
 wsl
 clear
 
-export CUDA="CUDA12.6"
-export IMAGE_NAME_BASE="nvidia-devel"
-export IMAGE_NAME="gayrat/cuda-12-6:nvidia-devel"
+export CUDA="CUDA12.8"
+export IMAGE_NAME_BASE="devel"
+export IMAGE_NAME="gayrat/comfyui-union2:WanTI-CUDA12.8-cpp312"
 cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
-source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.6"
+source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.8"
 
 ============
 export IMAGE_NAME_BASE="WanTI"
@@ -16,12 +16,12 @@ cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.6"
 ============
 
-source vast-contract.sh 23782409 $IMAGE_NAME
+source vast-contract.sh 20217854 $IMAGE_NAME
 source ./vs.sh
 
 source tmux-s.sh WanTI
 
-./dl_common.sh Nunchaku2
+./dl_common.sh WanTI
 ./dl_common.sh _wanti
 
 
@@ -87,4 +87,23 @@ docker pull nvidia/cuda:12.6.3-cudnn-devel-ubuntu22.04
 ==========================
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
-source ./ssh-transfer.sh "ssh -p 14639 root@76.71.171.219 -L 8080:localhost:8080"
+source ./ssh-transfer.sh "ssh -p 40126 root@65.95.15.19 -L 8080:localhost:8080"
+
+===========
+export LOCAL_FOLDER=/mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/aria2/templates/dl_common.sh
+
+scp -P $VAST_SSH -i ~/.ssh/mvps/ud_rsa \
+    "$LOCAL_FOLDER" \
+    root@$VAST_PUBLIC_IPADDR:/workspace/templates/dl_common.sh
+
+
+export LOCAL_FILE="/mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/aria2/templates/dl_common.sh"
+scp -P "$VAST_SSH" -i ~/.ssh/mvps/ud_rsa \
+    "$LOCAL_FILE" \
+    root@"$VAST_PUBLIC_IPADDR":/workspace/templates/dl_common.sh
+
+
+export LOCAL_FOLDER="/mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/aria2"
+scp -P "$VAST_SSH" -i ~/.ssh/mvps/ud_rsa \
+    "$LOCAL_FOLDER"/* \
+    root@"$VAST_PUBLIC_IPADDR":/workspace/

@@ -1044,18 +1044,17 @@ cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 export MODELS="WanTI"
+export PY_VER="3.11"
 export WORKFLOW_TO_COPY=$MODELS
 export ARIA2_MODEL_DIRS="${MODELS} _wanti"
 export VERSION="$MODELS-CUDA12.6"
 export NODES="$MODELS.txt"
 export IMAGE_NAME="comfyui-union2"
-export COMFYUI_VERSION="v0.3.44"
-export BASE_IMAGE="cuda-12-6:nvidia-devel"
+export COMFYUI_VERSION="v0.3.45"
+export BASE_IMAGE="cuda-12-6:nvidia-devel-cpp311"
 export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
 export REQ_MODIFY="base-CUDA-12.6"
 export POST_INSTALL="$MODELS.sh"
-
-export BASE_IMAGE="cuda-12-6:nvidia-runtime"
 
 ./db-gen.sh
 
@@ -1068,6 +1067,31 @@ python3 python-prg-pre-build/sync_dir.py "$MODELS"
 
 rsync -avh --progress /mnt/h/ComfyUI-data/models/ /mnt/d/ComfyUI-data/models/
 
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+
+Wan Text to Image - Генерация изображений CUDA12.8 python 3.12
+https://boosty.to/stabledif/posts/f5163720-321a-4e6a-ad9a-2e442ca53e3d?isFromFeed=true
+
+Для карты 5090
+
+source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+export MODELS="WanTI"
+export PY_VER="3.12"
+export WORKFLOW_TO_COPY=$MODELS
+export BASE_IMAGE="cuda-12-8:nvidia-devel-cpp312"
+export ARIA2_MODEL_DIRS="${MODELS} _wanti"
+export VERSION="$MODELS-CUDA12.8-cpp312"
+export NODES="$MODELS.txt"
+export IMAGE_NAME="comfyui-union2"
+export COMFYUI_VERSION="v0.3.44"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
+export REQ_MODIFY="base-CUDA-12.6"
+export POST_INSTALL="$MODELS.sh"
+
+./db-gen.sh
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
