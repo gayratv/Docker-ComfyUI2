@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Если установлена  use-sage-attention - то применяется sageattention
+
 # Проверяем аргументы
 if [ -z "$1" ]; then
   echo "Ошибка: Не указано имя модели."

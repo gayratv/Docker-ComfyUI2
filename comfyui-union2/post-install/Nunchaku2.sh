@@ -23,5 +23,8 @@ ln -s /workspace/ComfyUI/models/depth-anything \
 #cd /workspace/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts
 #rm -rf /workspace/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts/depth-anything
 
+# nunchaku просит установить apex
+python3 -m pip install --cache-dir=/root/pip-cache /workspace/wheels/apex_wheel/apex-*.whl
+
 rm -rf /root/.cache/pip
 

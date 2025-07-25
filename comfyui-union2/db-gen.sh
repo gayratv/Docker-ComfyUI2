@@ -7,6 +7,9 @@ mkdir -p ./input/"${MODELS}"
 
 python3 ./python-prg-pre-build/generate_dockerfile_v2.py --nodes "${MODELS}.txt"
 
+# Установить PY_VER по умолчанию, если не задана
+: "${PY_VER:=3.11}"
+export PY_VER
 
 #    --no-cache \
 #    --cache-from $IMAGE_NAME:$VERSION \
