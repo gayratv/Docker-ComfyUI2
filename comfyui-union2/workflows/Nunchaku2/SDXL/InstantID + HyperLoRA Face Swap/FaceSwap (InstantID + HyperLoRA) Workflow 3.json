@@ -5,55 +5,6 @@
   "last_link_id": 1286,
   "nodes": [
     {
-      "id": 1,
-      "type": "HyperLoRAConfig",
-      "pos": [
-        3376.753662109375,
-        -806.8603515625
-      ],
-      "size": [
-        304,
-        370
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "label": "HYPER_LORA_CONFIG",
-          "name": "HYPER_LORA_CONFIG",
-          "type": "HYPER_LORA_CONFIG",
-          "links": [
-            1
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "hyperlora",
-        "ver": "9f67080d974302c95bdb10f986d1ac88f649288c",
-        "Node name for S&R": "HyperLoRAConfig",
-        "aux_id": "bytedance/ComfyUI-HyperLoRA",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "clip_vit_large_14_processor",
-        "clip_vit_large_14",
-        1024,
-        64,
-        12,
-        4,
-        4,
-        "clip + arcface",
-        "antelopev2",
-        512,
-        16,
-        128,
-        8,
-        false
-      ]
-    },
-    {
       "id": 2,
       "type": "HyperLoRALoader",
       "pos": [
@@ -65,7 +16,7 @@
         82
       ],
       "flags": {},
-      "order": 32,
+      "order": 38,
       "mode": 0,
       "inputs": [
         {
@@ -113,7 +64,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 56,
+      "order": 63,
       "mode": 0,
       "inputs": [
         {
@@ -161,7 +112,7 @@
         58
       ],
       "flags": {},
-      "order": 1,
+      "order": 0,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -240,7 +191,7 @@
         78
       ],
       "flags": {},
-      "order": 64,
+      "order": 65,
       "mode": 0,
       "inputs": [
         {
@@ -292,7 +243,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 40,
+      "order": 41,
       "mode": 0,
       "inputs": [
         {
@@ -335,7 +286,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 39,
+      "order": 40,
       "mode": 0,
       "inputs": [
         {
@@ -378,7 +329,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 66,
+      "order": 67,
       "mode": 0,
       "inputs": [
         {
@@ -421,7 +372,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 2,
+      "order": 1,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -458,7 +409,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 3,
+      "order": 2,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -496,7 +447,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 4,
+      "order": 3,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -533,7 +484,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 42,
+      "order": 48,
       "mode": 0,
       "inputs": [
         {
@@ -580,7 +531,7 @@
         122
       ],
       "flags": {},
-      "order": 50,
+      "order": 55,
       "mode": 0,
       "inputs": [
         {
@@ -643,7 +594,7 @@
         260
       ],
       "flags": {},
-      "order": 35,
+      "order": 34,
       "mode": 0,
       "inputs": [
         {
@@ -708,7 +659,7 @@
         246
       ],
       "flags": {},
-      "order": 46,
+      "order": 45,
       "mode": 0,
       "inputs": [
         {
@@ -741,7 +692,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 60,
+      "order": 59,
       "mode": 0,
       "inputs": [
         {
@@ -782,7 +733,7 @@
         246
       ],
       "flags": {},
-      "order": 61,
+      "order": 60,
       "mode": 0,
       "inputs": [
         {
@@ -817,7 +768,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 62,
+      "order": 61,
       "mode": 0,
       "inputs": [
         {
@@ -858,7 +809,7 @@
         106
       ],
       "flags": {},
-      "order": 47,
+      "order": 46,
       "mode": 0,
       "inputs": [
         {
@@ -906,7 +857,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 55,
+      "order": 54,
       "mode": 0,
       "inputs": [
         {
@@ -949,7 +900,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 5,
+      "order": 4,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -987,7 +938,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 6,
+      "order": 5,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1022,7 +973,7 @@
         61.31538772583008
       ],
       "flags": {},
-      "order": 33,
+      "order": 32,
       "mode": 0,
       "inputs": [
         {
@@ -1065,7 +1016,7 @@
         330.9972229003906
       ],
       "flags": {},
-      "order": 54,
+      "order": 53,
       "mode": 0,
       "inputs": [
         {
@@ -1096,7 +1047,7 @@
         262
       ],
       "flags": {},
-      "order": 53,
+      "order": 52,
       "mode": 0,
       "inputs": [
         {
@@ -1183,7 +1134,7 @@
         260
       ],
       "flags": {},
-      "order": 37,
+      "order": 36,
       "mode": 0,
       "inputs": [
         {
@@ -1248,7 +1199,7 @@
         266
       ],
       "flags": {},
-      "order": 51,
+      "order": 50,
       "mode": 0,
       "inputs": [
         {
@@ -1359,7 +1310,7 @@
         138
       ],
       "flags": {},
-      "order": 57,
+      "order": 56,
       "mode": 0,
       "inputs": [
         {
@@ -1443,7 +1394,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 7,
+      "order": 6,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1480,7 +1431,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 8,
+      "order": 7,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1517,7 +1468,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 9,
+      "order": 8,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1552,7 +1503,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 10,
+      "order": 9,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1591,7 +1542,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 67,
+      "order": 66,
       "mode": 0,
       "inputs": [
         {
@@ -1640,7 +1591,7 @@
         58
       ],
       "flags": {},
-      "order": 41,
+      "order": 37,
       "mode": 0,
       "inputs": [
         {
@@ -1760,7 +1711,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 11,
+      "order": 10,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1797,7 +1748,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 12,
+      "order": 11,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1943,12 +1894,12 @@
           {
             "name": "A",
             "selected": true,
-            "url": "/api/view?filename=rgthree.compare._temp_azcsn_00007_.png&type=temp&subfolder=&rand=0.38564758926144826"
+            "url": "/api/view?filename=rgthree.compare._temp_ekzea_00001_.png&type=temp&subfolder=&rand=0.14713755016898655"
           },
           {
             "name": "B",
             "selected": true,
-            "url": "/api/view?filename=rgthree.compare._temp_azcsn_00008_.png&type=temp&subfolder=&rand=0.8242120727818134"
+            "url": "/api/view?filename=rgthree.compare._temp_ekzea_00002_.png&type=temp&subfolder=&rand=0.666993044774933"
           }
         ]
       ]
@@ -1967,7 +1918,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 13,
+      "order": 12,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -2002,7 +1953,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 14,
+      "order": 13,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -2138,12 +2089,12 @@
           {
             "name": "A",
             "selected": true,
-            "url": "/api/view?filename=rgthree.compare._temp_sfiui_00007_.png&type=temp&subfolder=&rand=0.8349082944816342"
+            "url": "/api/view?filename=rgthree.compare._temp_hrobk_00001_.png&type=temp&subfolder=&rand=0.2246422427281295"
           },
           {
             "name": "B",
             "selected": true,
-            "url": "/api/view?filename=rgthree.compare._temp_sfiui_00008_.png&type=temp&subfolder=&rand=0.20524718788525398"
+            "url": "/api/view?filename=rgthree.compare._temp_hrobk_00002_.png&type=temp&subfolder=&rand=0.8629386796017985"
           }
         ]
       ]
@@ -2197,7 +2148,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 36,
+      "order": 35,
       "mode": 0,
       "inputs": [
         {
@@ -2240,7 +2191,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 15,
+      "order": 14,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -2278,7 +2229,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 16,
+      "order": 15,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -2313,7 +2264,7 @@
         78
       ],
       "flags": {},
-      "order": 45,
+      "order": 44,
       "mode": 2,
       "inputs": [
         {
@@ -2371,7 +2322,7 @@
         58
       ],
       "flags": {},
-      "order": 17,
+      "order": 16,
       "mode": 2,
       "inputs": [],
       "outputs": [
@@ -2406,7 +2357,7 @@
         278
       ],
       "flags": {},
-      "order": 52,
+      "order": 51,
       "mode": 2,
       "inputs": [
         {
@@ -2489,7 +2440,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 34,
+      "order": 33,
       "mode": 0,
       "inputs": [
         {
@@ -2532,7 +2483,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 18,
+      "order": 17,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -2567,7 +2518,7 @@
         262
       ],
       "flags": {},
-      "order": 65,
+      "order": 64,
       "mode": 0,
       "inputs": [
         {
@@ -2621,7 +2572,7 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        375833958466804,
+        657336494614191,
         "randomize",
         10,
         1,
@@ -2642,7 +2593,7 @@
         262
       ],
       "flags": {},
-      "order": 48,
+      "order": 47,
       "mode": 0,
       "inputs": [
         {
@@ -2760,7 +2711,7 @@
         78
       ],
       "flags": {},
-      "order": 58,
+      "order": 57,
       "mode": 0,
       "inputs": [
         {
@@ -2817,7 +2768,7 @@
         58
       ],
       "flags": {},
-      "order": 19,
+      "order": 18,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -2858,7 +2809,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 63,
+      "order": 62,
       "mode": 0,
       "inputs": [
         {
@@ -2897,7 +2848,7 @@
         246
       ],
       "flags": {},
-      "order": 59,
+      "order": 58,
       "mode": 0,
       "inputs": [
         {
@@ -2930,7 +2881,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 20,
+      "order": 19,
       "mode": 2,
       "inputs": [],
       "outputs": [
@@ -2967,7 +2918,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 21,
+      "order": 20,
       "mode": 2,
       "inputs": [],
       "outputs": [
@@ -3108,7 +3059,7 @@
         106
       ],
       "flags": {},
-      "order": 22,
+      "order": 21,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -3146,7 +3097,7 @@
         200
       ],
       "flags": {},
-      "order": 43,
+      "order": 42,
       "mode": 0,
       "inputs": [
         {
@@ -3192,7 +3143,7 @@
         200
       ],
       "flags": {},
-      "order": 44,
+      "order": 43,
       "mode": 0,
       "inputs": [
         {
@@ -3320,7 +3271,7 @@
         250
       ],
       "flags": {},
-      "order": 23,
+      "order": 22,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -3407,7 +3358,7 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": [
-        202778828994079,
+        470835658003534,
         "randomize",
         10,
         1,
@@ -3428,7 +3379,7 @@
         106
       ],
       "flags": {},
-      "order": 24,
+      "order": 23,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -3466,7 +3417,7 @@
         88
       ],
       "flags": {},
-      "order": 25,
+      "order": 24,
       "mode": 0,
       "inputs": [],
       "outputs": [],
@@ -3491,7 +3442,7 @@
         314
       ],
       "flags": {},
-      "order": 26,
+      "order": 25,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -3536,7 +3487,7 @@
         314
       ],
       "flags": {},
-      "order": 27,
+      "order": 26,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -3569,58 +3520,6 @@
       ]
     },
     {
-      "id": 9,
-      "type": "CheckpointLoaderSimple",
-      "pos": [
-        3987.693115234375,
-        -600.1087036132812
-      ],
-      "size": [
-        315,
-        98
-      ],
-      "flags": {},
-      "order": 28,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "label": "MODEL",
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            59,
-            149
-          ]
-        },
-        {
-          "label": "CLIP",
-          "name": "CLIP",
-          "type": "CLIP",
-          "links": [
-            217
-          ]
-        },
-        {
-          "label": "VAE",
-          "name": "VAE",
-          "type": "VAE",
-          "links": [
-            182
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.30",
-        "Node name for S&R": "CheckpointLoaderSimple",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "SDXL/agxl_V2.safetensors"
-      ]
-    },
-    {
       "id": 361,
       "type": "ControlNetLoader",
       "pos": [
@@ -3632,7 +3531,7 @@
         58
       ],
       "flags": {},
-      "order": 29,
+      "order": 27,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -3667,7 +3566,7 @@
         58
       ],
       "flags": {},
-      "order": 30,
+      "order": 28,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -3703,7 +3602,7 @@
         58
       ],
       "flags": {},
-      "order": 31,
+      "order": 29,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -3740,7 +3639,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 38,
+      "order": 39,
       "mode": 0,
       "inputs": [
         {
@@ -3767,6 +3666,107 @@
         "widget_ue_connectable": {}
       },
       "widgets_values": []
+    },
+    {
+      "id": 1,
+      "type": "HyperLoRAConfig",
+      "pos": [
+        3376.753662109375,
+        -806.8603515625
+      ],
+      "size": [
+        304,
+        370
+      ],
+      "flags": {},
+      "order": 30,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "HYPER_LORA_CONFIG",
+          "name": "HYPER_LORA_CONFIG",
+          "type": "HYPER_LORA_CONFIG",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "hyperlora",
+        "ver": "9f67080d974302c95bdb10f986d1ac88f649288c",
+        "Node name for S&R": "HyperLoRAConfig",
+        "aux_id": "bytedance/ComfyUI-HyperLoRA",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "clip_vit_large_14_processor",
+        "clip_vit_large_14",
+        1024,
+        64,
+        12,
+        4,
+        4,
+        "clip + arcface",
+        "antelopev2",
+        512,
+        16,
+        128,
+        8,
+        false
+      ]
+    },
+    {
+      "id": 9,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        3987.693115234375,
+        -600.1087036132812
+      ],
+      "size": [
+        315,
+        98
+      ],
+      "flags": {},
+      "order": 31,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "label": "MODEL",
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            59,
+            149
+          ]
+        },
+        {
+          "label": "CLIP",
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            217
+          ]
+        },
+        {
+          "label": "VAE",
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            182
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.30",
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "SDXL/realvisxlV50.safetensors"
+      ]
     }
   ],
   "links": [
@@ -4625,10 +4625,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.8769226950001211,
+      "scale": 1.061076460950149,
       "offset": [
-        -2779.913140889985,
-        935.0978456316564
+        -902.986991365505,
+        962.5227503734284
       ]
     },
     "ue_links": [],

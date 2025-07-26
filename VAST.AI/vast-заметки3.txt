@@ -8,7 +8,7 @@ cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.8"
 
 ============
-export IMAGE_NAME_BASE="WanTI"
+export IMAGE_NAME_BASE="Nunchaku2"
 export CUDA="CUDA12.6"
 export IMAGE_NAME="gayrat/comfyui-union2:${IMAGE_NAME_BASE}-${CUDA}"
 echo -e "IMAGE_NAME : ${IMAGE_NAME}"
@@ -16,18 +16,20 @@ cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.6"
 ============
 
-source vast-contract.sh 20217856 $IMAGE_NAME
+source vast-contract.sh 23782409 $IMAGE_NAME
 source ./vs.sh
 
-source tmux-s.sh WanTI
+source tmux-s.sh Nunchaku2
 
-./dl_common.sh WanTI
+./dl_common.sh Nunchaku2
 ./dl_common.sh _wanti
 
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
 ./vast-ssh.sh
 ./vast-cp-picts.sh
+
+ssh -p 29676 root@ssh3.vast.ai -i ~/.ssh/mvps/ud_rsa
 
 ====================
 export IMAGE_NAME_BASE="FluxKontext"
@@ -87,7 +89,9 @@ docker pull nvidia/cuda:12.6.3-cudnn-devel-ubuntu22.04
 ==========================
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
-source ./ssh-transfer.sh "ssh -p 40126 root@65.95.15.19 -L 8080:localhost:8080"
+source ./ssh-transfer.sh "ssh -p 48629 root@142.189.171.78 -L 8080:localhost:8080"
+
+ssh -p 17792 root@ssh9.vast.ai  -i ~/.ssh/mvps/ud_rsa
 
 ===========
 export LOCAL_FOLDER=/mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/aria2/templates/dl_common.sh

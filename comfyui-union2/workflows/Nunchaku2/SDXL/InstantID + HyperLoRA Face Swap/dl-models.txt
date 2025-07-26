@@ -1,0 +1,56 @@
+# InstantX/InstantID
+https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/diffusion_pytorch_model.safetensors
+      dir=models/controlnet/SDXL
+      out=instantID_controlNet_sdxl.safetensors
+
+https://huggingface.co/InstantX/InstantID/resolve/main/ip-adapter.bin
+    dir=models/instantid/SDXL
+    out=ip-adapter.bin
+
+https://huggingface.co/xinsir/controlnet-union-sdxl-1.0/resolve/main/diffusion_pytorch_model.safetensors
+      dir=models/controlnet/SDXL/union
+      out=controlnet-union-sdxl-1.0.safetensors
+https://huggingface.co/xinsir/controlnet-union-sdxl-1.0/resolve/main/config.json
+      dir=models/controlnet/SDXL/union
+      out=config.json
+
+https://huggingface.co/openai/clip-vit-large-patch14/raw/main/preprocessor_config.json
+    out=preprocessor_config.json
+    dir=models/hyper_lora/clip_processor/clip_vit_large_14_processor
+
+https://huggingface.co/openai/clip-vit-large-patch14/resolve/main/model.safetensors
+    dir=models/hyper_lora/clip_vit/clip_vit_large_14
+    out=model.safetensors
+https://huggingface.co/openai/clip-vit-large-patch14/raw/main/config.json
+    dir=models/hyper_lora/clip_vit/clip_vit_large_14
+    out=config.json
+
+https://huggingface.co/xinsir/controlnet-union-sdxl-1.0/resolve/main/diffusion_pytorch_model_promax.safetensors
+      dir=models/controlnet/SDXL/union_promax
+      out=controlnet-union-sdxl-1.0_promax.safetensors
+https://huggingface.co/xinsir/controlnet-union-sdxl-1.0/resolve/main/config_promax.json
+      dir=models/controlnet/SDXL/union_promax
+      out=config_promax.json
+
+# 🌟HyperLoRA Loader🌟
+https://huggingface.co/bytedance-research/HyperLoRA/resolve/main/sdxl_hyper_id_lora_v1_fidelity/hyper_lora_modules.json
+      dir=models/hyper_lora/hyper_lora/sdxl_hyper_id_lora_v1_fidelity
+      out=hyper_lora_modules.json
+
+https://huggingface.co/bytedance-research/HyperLoRA/resolve/main/sdxl_hyper_id_lora_v1_fidelity/hyper_lora_modules.safetensors
+      dir=models/hyper_lora/hyper_lora/sdxl_hyper_id_lora_v1_fidelity
+      out=hyper_lora_modules.safetensors
+
+https://huggingface.co/bytedance-research/HyperLoRA/resolve/main/sdxl_hyper_id_lora_v1_fidelity/id_projector.safetensors
+      dir=models/hyper_lora/hyper_lora/sdxl_hyper_id_lora_v1_fidelity
+      out=id_projector.safetensors
+
+https://huggingface.co/bytedance-research/HyperLoRA/resolve/main/sdxl_hyper_id_lora_v1_fidelity/resampler.safetensors
+      dir=models/hyper_lora/hyper_lora/sdxl_hyper_id_lora_v1_fidelity
+      out=resampler.safetensors
+
+
+===
+https://civitai.com/api/download/models/798204?type=Model&format=SafeTensor&size=full&fp=fp16
+    out=realvisxlV50.safetensors
+    dir=models/checkpoints/SDXL
