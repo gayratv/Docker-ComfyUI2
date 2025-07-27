@@ -1,8 +1,8 @@
 {
   "id": "c778b525-4580-4b98-9121-ab88790f48bf",
   "revision": 0,
-  "last_node_id": 613,
-  "last_link_id": 965,
+  "last_node_id": 615,
+  "last_link_id": 968,
   "nodes": [
     {
       "id": 609,
@@ -208,98 +208,6 @@
       "bgcolor": "#653"
     },
     {
-      "id": 24,
-      "type": "CLIPTextEncode",
-      "pos": [
-        -829.4457397460938,
-        -832.721435546875
-      ],
-      "size": [
-        523.4016723632812,
-        210.48556518554688
-      ],
-      "flags": {
-        "collapsed": false
-      },
-      "order": 4,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            5,
-            871
-          ]
-        }
-      ],
-      "title": "CLIP Text Encode (Negative Prompt)",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.36",
-        "Node name for S&R": "CLIPTextEncode",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "poorly drawn, bad anatomy, bad hands, bad eyes, missing fingers, extra fingers, ugly, deformed, disfigured, blurry, grainy, out of focus, low resolution, amateur, poorly lit, oversaturated, undersaturated, watermark, signature, text, writing, noise, artifacts"
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
-      "id": 26,
-      "type": "CLIPTextEncode",
-      "pos": [
-        -859.0601196289062,
-        -1162.7252197265625
-      ],
-      "size": [
-        522.2387084960938,
-        209.96142578125
-      ],
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            4,
-            870
-          ]
-        }
-      ],
-      "title": "CLIP Text Encode (Positive Prompt)",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.36",
-        "Node name for S&R": "CLIPTextEncode",
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "Capture a vibrant, hyper-realistic scene in an open-air tropical fruit market bursting with color and life. Center frame a joyful young woman with sun-kissed, shoulder-length caramel curls, laughing broadly as she lifts an oversized crimson grapefruit in her left hand and a giant golden orange in her right, droplets of juice sparkling on her toned arms. She wears a sleeveless magenta summer dress patterned with tiny citrus motifs, the fabric clinging slightly in the humid air. Surround her with wooden stalls piled high with shiny green limes, tangerines, mangos, and pomegranates, arranged in neat pyramids that stretch into a softly blurred background. Above, multicolored cloth canopies ripple in a gentle breeze, scattering dappled, warm midday light that paints everything with a saturated glow and casts soft shadows on the damp stone path underfoot. Children and local vendors smile in the distance, their features intentionally out of focus to keep attention on the main subject while still hinting at lively commerce. Use a 50 mm lens at f/1.8 to achieve shallow depth of field, ISO 200, shutter 1/800 s to freeze motion and capture flying droplets. Emphasize realistic skin texture, subtle freckles, natural hair strands, and the tactile pores of both fruits. Mood: exuberant, cinematic, immersive; color palette rich oranges, reds, and deep greens balanced by neutral browns of wooden crates. Deliver a 4 K resolution image that feels like a single frame from a high-budget travel documentary, evoking the taste, scent, and sound of a bustling market at peak harvest. \n"
-      ],
-      "color": "#232",
-      "bgcolor": "#353"
-    },
-    {
       "id": 27,
       "type": "Power Lora Loader (rgthree)",
       "pos": [
@@ -391,7 +299,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 11,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
@@ -434,7 +342,7 @@
         58
       ],
       "flags": {},
-      "order": 13,
+      "order": 12,
       "mode": 0,
       "inputs": [
         {
@@ -477,7 +385,7 @@
         88
       ],
       "flags": {},
-      "order": 6,
+      "order": 4,
       "mode": 0,
       "inputs": [],
       "outputs": [],
@@ -502,7 +410,7 @@
         189.5915069580078
       ],
       "flags": {},
-      "order": 7,
+      "order": 5,
       "mode": 0,
       "inputs": [],
       "outputs": [],
@@ -527,7 +435,7 @@
         1414.81298828125
       ],
       "flags": {},
-      "order": 20,
+      "order": 22,
       "mode": 0,
       "inputs": [
         {
@@ -561,7 +469,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 19,
+      "order": 21,
       "mode": 0,
       "inputs": [
         {
@@ -605,7 +513,7 @@
         262
       ],
       "flags": {},
-      "order": 18,
+      "order": 20,
       "mode": 0,
       "inputs": [
         {
@@ -669,7 +577,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 16,
+      "order": 19,
       "mode": 0,
       "inputs": [
         {
@@ -713,7 +621,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 14,
+      "order": 18,
       "mode": 0,
       "inputs": [
         {
@@ -761,7 +669,7 @@
         46
       ],
       "flags": {},
-      "order": 12,
+      "order": 16,
       "mode": 0,
       "inputs": [
         {
@@ -793,31 +701,6 @@
       "widgets_values": []
     },
     {
-      "id": 611,
-      "type": "Note",
-      "pos": [
-        61.931636810302734,
-        -585.8101806640625
-      ],
-      "size": [
-        302.56182861328125,
-        229.2654266357422
-      ],
-      "flags": {},
-      "order": 8,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [],
-      "properties": {
-        "widget_ue_connectable": {}
-      },
-      "widgets_values": [
-        "1280*720\n\n1920*1080"
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
       "id": 612,
       "type": "EmptyLatentImage",
       "pos": [
@@ -829,7 +712,7 @@
         125.0058822631836
       ],
       "flags": {},
-      "order": 9,
+      "order": 6,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -865,8 +748,8 @@
         58
       ],
       "flags": {},
-      "order": 10,
-      "mode": 4,
+      "order": 7,
+      "mode": 0,
       "inputs": [
         {
           "name": "model",
@@ -890,6 +773,246 @@
       "widgets_values": [
         1.0000000000000002
       ]
+    },
+    {
+      "id": 611,
+      "type": "Note",
+      "pos": [
+        86.46842956542969,
+        -513.4267578125
+      ],
+      "size": [
+        302.56182861328125,
+        229.2654266357422
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "1280*720\n\n1920*1080"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 26,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -859.0601196289062,
+        -1162.7252197265625
+      ],
+      "size": [
+        522.2387084960938,
+        209.96142578125
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": null
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 967
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            4,
+            870
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.36",
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "Capture a vibrant, hyper-realistic scene in an open-air tropical fruit market bursting with color and life. Center frame a joyful young woman with sun-kissed, shoulder-length caramel curls, laughing broadly as she lifts an oversized crimson grapefruit in her left hand and a giant golden orange in her right, droplets of juice sparkling on her toned arms. She wears a sleeveless magenta summer dress patterned with tiny citrus motifs, the fabric clinging slightly in the humid air. Surround her with wooden stalls piled high with shiny green limes, tangerines, mangos, and pomegranates, arranged in neat pyramids that stretch into a softly blurred background. Above, multicolored cloth canopies ripple in a gentle breeze, scattering dappled, warm midday light that paints everything with a saturated glow and casts soft shadows on the damp stone path underfoot. Children and local vendors smile in the distance, their features intentionally out of focus to keep attention on the main subject while still hinting at lively commerce. Use a 50 mm lens at f/1.8 to achieve shallow depth of field, ISO 200, shutter 1/800 s to freeze motion and capture flying droplets. Emphasize realistic skin texture, subtle freckles, natural hair strands, and the tactile pores of both fruits. Mood: exuberant, cinematic, immersive; color palette rich oranges, reds, and deep greens balanced by neutral browns of wooden crates. Deliver a 4 K resolution image that feels like a single frame from a high-budget travel documentary, evoking the taste, scent, and sound of a bustling market at peak harvest. \n"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 24,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -829.4457397460938,
+        -832.721435546875
+      ],
+      "size": [
+        523.4016723632812,
+        210.48556518554688
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": null
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 968
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            5,
+            871
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Negative Prompt)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.36",
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "poorly drawn, bad anatomy, bad hands, bad eyes, missing fingers, extra fingers, ugly, deformed, disfigured, blurry, grainy, out of focus, low resolution, amateur, poorly lit, oversaturated, undersaturated, watermark, signature, text, writing, noise, artifacts"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 614,
+      "type": "LoadPromptsFromFile //Inspire",
+      "pos": [
+        -665.3682861328125,
+        -318.7598876953125
+      ],
+      "size": [
+        305.2925720214844,
+        170
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_data_opt",
+          "shape": 7,
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "zipped_prompt",
+          "shape": 6,
+          "type": "ZIPPED_PROMPT",
+          "links": [
+            966
+          ]
+        },
+        {
+          "name": "count",
+          "type": "INT",
+          "links": []
+        },
+        {
+          "name": "remaining_count",
+          "type": "INT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "aux_id": "ltdrdata/ComfyUI-Inspire-Pack",
+        "ver": "04223778ea4fad60a4ceb6798f063ec6cdc0e1e0",
+        "Node name for S&R": "LoadPromptsFromFile //Inspire",
+        "cnr_id": "comfyui-inspire-pack",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "WanTI/wan-text-to-image.txt",
+        false,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 615,
+      "type": "UnzipPrompt //Inspire",
+      "pos": [
+        -862.7394409179688,
+        -505.5509033203125
+      ],
+      "size": [
+        179.94100952148438,
+        66
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "zipped_prompt",
+          "type": "ZIPPED_PROMPT",
+          "link": 966
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "STRING",
+          "links": [
+            967
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "STRING",
+          "links": [
+            968
+          ]
+        },
+        {
+          "name": "name",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "ltdrdata/ComfyUI-Inspire-Pack",
+        "ver": "04223778ea4fad60a4ceb6798f063ec6cdc0e1e0",
+        "Node name for S&R": "UnzipPrompt //Inspire",
+        "cnr_id": "comfyui-inspire-pack",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
     }
   ],
   "links": [
@@ -1028,6 +1151,30 @@
       4,
       3,
       "LATENT"
+    ],
+    [
+      966,
+      614,
+      0,
+      615,
+      0,
+      "ZIPPED_PROMPT"
+    ],
+    [
+      967,
+      615,
+      0,
+      26,
+      1,
+      "STRING"
+    ],
+    [
+      968,
+      615,
+      1,
+      24,
+      1,
+      "STRING"
     ]
   ],
   "groups": [
@@ -1061,30 +1208,14 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.9547137506693377,
+      "scale": 0.6043718164997941,
       "offset": [
-        1260.3494548636938,
-        1465.026527352737
+        2220.63684808403,
+        1502.0400249912045
       ]
     },
     "frontendVersion": "1.23.4",
     "ue_links": [
-      {
-        "downstream": 24,
-        "downstream_slot": 0,
-        "upstream": "27",
-        "upstream_slot": 1,
-        "controller": 609,
-        "type": "CLIP"
-      },
-      {
-        "downstream": 26,
-        "downstream_slot": 0,
-        "upstream": "27",
-        "upstream_slot": 1,
-        "controller": 609,
-        "type": "CLIP"
-      },
       {
         "downstream": 7,
         "downstream_slot": 1,
@@ -1100,6 +1231,30 @@
         "upstream_slot": 0,
         "controller": 609,
         "type": "MODEL"
+      },
+      {
+        "downstream": 613,
+        "downstream_slot": 0,
+        "upstream": "27",
+        "upstream_slot": 0,
+        "controller": 609,
+        "type": "MODEL"
+      },
+      {
+        "downstream": 26,
+        "downstream_slot": 0,
+        "upstream": "27",
+        "upstream_slot": 1,
+        "controller": 609,
+        "type": "CLIP"
+      },
+      {
+        "downstream": 24,
+        "downstream_slot": 0,
+        "upstream": "27",
+        "upstream_slot": 1,
+        "controller": 609,
+        "type": "CLIP"
       }
     ],
     "links_added_by_ue": [

@@ -23,8 +23,8 @@ python3 -m pip install --cache-dir=/root/pip-cache triton==3.3.1 torch==2.7.1 to
 python3 -m pip install --cache-dir=/root/pip-cache /workspace/wheels/sageattention_wheel/sageattention-*.whl
 
 # обновим Frontend
-python3 -m pip uninstall -y comfyui-frontend-package
-python3 -m pip install --cache-dir=/root/pip-cache pip install comfyui-frontend-package==1.25.1
+#python3 -m pip uninstall -y comfyui-frontend-package
+#python3 -m pip install --cache-dir=/root/pip-cache pip install comfyui-frontend-package==1.25.0
 
 
 
