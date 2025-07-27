@@ -1031,7 +1031,7 @@ https://boosty.to/stabledif/posts/f5163720-321a-4e6a-ad9a-2e442ca53e3d?isFromFee
 source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 export MODELS="WanTI"
-export use_sage_attention=1
+export use_sage_attention=0
 export PY_VER="3.11"
 export WORKFLOW_TO_COPY=$MODELS
 export BASE_IMAGE="cuda-12-6:nvidia-runtime-cpp311"

@@ -196,7 +196,7 @@ RUN --mount=type=cache,target=/root/repo-cache \
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/kijai/ComfyUI-WanVideoWrapper@c0a4e8aa87b380acd3fede86e50d57af48ce7964" true \
+    process_one_repo_install_req_hash.sh "https://github.com/kijai/ComfyUI-WanVideoWrapper@3567202e759b7a606b953c3f9767de59c695750e" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
@@ -277,6 +277,12 @@ RUN --mount=type=cache,target=/root/repo-cache \
     process_one_repo_install_req_hash.sh "https://github.com/kijai/ComfyUI-DepthAnythingV2@d505cbca99803fc63327b8305618a23e59a18b42" true \
     && rm -rf /root/.cache/pip
 
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/ltdrdata/ComfyUI-Inspire-Pack@04223778ea4fad60a4ceb6798f063ec6cdc0e1e0" true \
+    && rm -rf /root/.cache/pip
+
 
 ARG NODES
 
@@ -339,12 +345,8 @@ COPY input/${MODELS} ./input/
 
 
 WORKDIR /workspace/ComfyUI/models/embeddings
-# для версии numpy
 COPY assets-docker/embeddings/ .
 
-WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI-Manager
-# для версии numpy
-COPY assets-docker/pip_overrides.json .
 
 WORKDIR /workspace/WAS_node/
 COPY assets-docker/WAS_node/nsp_pantry.json .
@@ -371,6 +373,10 @@ RUN if [ -n "$ARIA2_MODEL_DIRS" ]; then \
 ARG WORKFLOW_TO_COPY
 WORKDIR /workspace/ComfyUI
 COPY workflows/$WORKFLOW_TO_COPY user/default/workflows/$WORKFLOW_TO_COPY
+
+WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI-Inspire-Pack/prompts
+COPY workflows/$WORKFLOW_TO_COPY/prompts $WORKFLOW_TO_COPY/
+
 
 ARG ARG_COPY_CSV=false
 

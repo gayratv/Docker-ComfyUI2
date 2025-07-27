@@ -60,12 +60,8 @@ COPY input/${MODELS} ./input/
 
 
 WORKDIR /workspace/ComfyUI/models/embeddings
-# для версии numpy
 COPY assets-docker/embeddings/ .
 
-WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI-Manager
-# для версии numpy
-COPY assets-docker/pip_overrides.json .
 
 WORKDIR /workspace/WAS_node/
 COPY assets-docker/WAS_node/nsp_pantry.json .
@@ -92,6 +88,10 @@ RUN if [ -n "$ARIA2_MODEL_DIRS" ]; then \
 ARG WORKFLOW_TO_COPY
 WORKDIR /workspace/ComfyUI
 COPY workflows/$WORKFLOW_TO_COPY user/default/workflows/$WORKFLOW_TO_COPY
+
+WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI-Inspire-Pack/prompts
+COPY workflows/$WORKFLOW_TO_COPY/prompts $WORKFLOW_TO_COPY/
+
 
 ARG ARG_COPY_CSV=false
 
