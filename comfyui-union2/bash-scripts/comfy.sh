@@ -2,7 +2,7 @@
 
 cd /workspace/ComfyUI
 
-if [ -n "$use_sage_attention" ]; then
+if [ "$use_sage_attention" = "1" ]; then
     echo "use-sage-attention переменная задана, запускаем с параметром --use-sage-attention"
     python3 main.py --listen 0.0.0.0 --port 8188 --disable-smart-memory --disable-metadata --use-sage-attention
 else

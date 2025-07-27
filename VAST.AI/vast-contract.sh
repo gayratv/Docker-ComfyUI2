@@ -22,12 +22,18 @@ IMAGE_NAME=$2
 
 # Создаем инстанс с использованием переданного имени образа
 echo -e "\n\033[33m vastai create instance \033[0m"
+vastai create env-var MODEL "$IMAGE_NAME_BASE"
+#vastai delete env-var use_sage_attention
+vastai create env-var use_sage_attention "1"
+
+vastai show env-vars
+#     -p 8188:8188 \
 vastai create instance "$INSTANCE_ID" \
     --image "$IMAGE_NAME" \
     --disk 100 \
     --ssh --direct \
     --onstart-cmd 'env >> /etc/environment ; tmux source-file ~/.tmux.conf ; touch ~/.no_auto_tmux; ' \
-    --env '-p 8188:8188 MODEL=Nunchaku2' \
+    --env '-p 8188:8188' \
     > vast-create-instance.txt
 
 echo -e "\n\033[33mVAST contract открыт\033[0m"
