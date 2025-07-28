@@ -9,13 +9,13 @@
 
 echo "run --name $IMAGE_NAME $IMAGE_NAME:$VERSION"
 docker rm -f "$IMAGE_NAME"
-use_sage_attention="${use_sage_attention:-false}"
+USE_SAGE_ATTENTION="${USE_SAGE_ATTENTION:-false}"
 
 #    -e WAS_CONFIG_DIR=/workspace/WAS_node \
 docker run -it --privileged --gpus all -p 8188:8188 -p 1188:1188 \
     --env-file .env \
     -e MODELS=$MODELS \
-    -e use_sage_attention="$use_sage_attention" \
+    -e USE_SAGE_ATTENTION="$USE_SAGE_ATTENTION" \
     -v /mnt/h/ComfyUI-data/models:/workspace/ComfyUI/models \
     -v /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/_temp_save/output:/workspace/ComfyUI/output \
     -v /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/workflows/${MODELS}:/workspace/ComfyUI/user/default/workflows/${MODELS} \

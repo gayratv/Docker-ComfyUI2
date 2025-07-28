@@ -37,9 +37,14 @@ RUN --mount=type=cache,target=/root/repo-cache \
     git-clone-checkout.sh "https://github.com/comfyanonymous/ComfyUI" "$COMFYUI_VERSION" "/root/repo-cache"
 
 WORKDIR /workspace/ComfyUI
+COPY python-prg/remove-frontend-from-requirements.py .
+RUN python3 remove-frontend-from-requirements.py
+
+ARG COMFYUI_FRONTEND_VERSION
 
 RUN --mount=type=cache,target=/root/pip-cache \
     python3 -m pip install --cache-dir=/root/pip-cache -r requirements.txt \
+    python3 -m pip install --cache-dir=/root/pip-cache comfyui-frontend-package=="$COMFYUI_FRONTEND_VERSION" \
     && rm -rf /root/.cache/pip
 
 
@@ -148,7 +153,7 @@ RUN --mount=type=cache,target=/root/repo-cache \
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/1038lab/ComfyUI-RMBG@4b2e8ce688386cca1257ae3aea94cb7c6bfca09f" true \
+    process_one_repo_install_req_hash.sh "https://github.com/1038lab/ComfyUI-RMBG@72bc6a5f8deca40f10d788503266b80c363374ab" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
@@ -160,7 +165,7 @@ RUN --mount=type=cache,target=/root/repo-cache \
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/kijai/ComfyUI-KJNodes@b7f337fe3aa5984f4959402131aa03c7fedd2dc9" true \
+    process_one_repo_install_req_hash.sh "https://github.com/kijai/ComfyUI-KJNodes@a6b867b63a29ca48ddb15c589e17a9f2d8530d57" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
@@ -196,7 +201,7 @@ RUN --mount=type=cache,target=/root/repo-cache \
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/kijai/ComfyUI-WanVideoWrapper@3567202e759b7a606b953c3f9767de59c695750e" true \
+    process_one_repo_install_req_hash.sh "https://github.com/kijai/ComfyUI-WanVideoWrapper@998a69cc0acbec503001b8b0ce0a5d5404420e1e" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
@@ -220,7 +225,7 @@ RUN --mount=type=cache,target=/root/repo-cache \
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite@f1c513a5632574f6a65baa33fb47d060d18ec463" true \
+    process_one_repo_install_req_hash.sh "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite@330bce6c3c0d47ebdedcc0348d9ab355707b7523" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \

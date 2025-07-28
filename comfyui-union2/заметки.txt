@@ -1031,15 +1031,16 @@ https://boosty.to/stabledif/posts/f5163720-321a-4e6a-ad9a-2e442ca53e3d?isFromFee
 source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 export MODELS="WanTI"
-export use_sage_attention=0
+export USE_SAGE_ATTENTION=0
 export PY_VER="3.11"
 export WORKFLOW_TO_COPY=$MODELS
-export BASE_IMAGE="cuda-12-6:nvidia-runtime-cpp311"
+export BASE_IMAGE="cuda-12-6:nvidia-devel-cpp311"
 export ARIA2_MODEL_DIRS="${MODELS} _wanti"
 export VERSION="$MODELS-CUDA12.6-cpp311"
 export NODES="$MODELS.txt"
 export IMAGE_NAME="comfyui-union2"
-export COMFYUI_VERSION="v0.3.45"
+export COMFYUI_VERSION="v0.3.46"
+export COMFYUI_FRONTEND_VERSION="1.25.1"
 export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
 export REQ_MODIFY="base-CUDA-12.6"
 export POST_INSTALL="$MODELS.sh"

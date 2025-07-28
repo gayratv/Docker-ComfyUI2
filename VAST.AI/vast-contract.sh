@@ -23,17 +23,13 @@ IMAGE_NAME=$2
 # Создаем инстанс с использованием переданного имени образа
 echo -e "\n\033[33m vastai create instance \033[0m"
 
-use_sage_attention="${use_sage_attention:-false}"
+USE_SAGE_ATTENTION="${USE_SAGE_ATTENTION:-false}"
+echo -e "use_sage_attention : ${USE_SAGE_ATTENTION}"
+vastai create env-var USE_SAGE_ATTENTION "$USE_SAGE_ATTENTION"
 
 vastai create env-var MODEL "$IMAGE_NAME_BASE"
-#vastai delete env-var use_sage_attention
 
-vastai create env-var use_sage_attention "$use_sage_attention"
-
-
-#vastai show env-vars
-#     -p 8188:8188 \
-
+vastai show env-vars
 
 # Формируем аргументы для --env с одинарными кавычками
 #ENV_VAR_ARG=$(printf "'-p 8188:8188 -e MODEL=%s -e use_sage_attention=%s'" \

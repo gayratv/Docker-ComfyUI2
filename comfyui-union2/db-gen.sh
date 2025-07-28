@@ -10,6 +10,7 @@ python3 ./python-prg-pre-build/generate_dockerfile_v2.py --nodes "${MODELS}.txt"
 # Установить PY_VER по умолчанию, если не задана
 : "${PY_VER:=3.11}"
 export PY_VER
+: "${COMFYUI_FRONTEND_VERSION:=1.25.1}"
 
 #    --no-cache \
 #    --cache-from $IMAGE_NAME:$VERSION \
@@ -17,6 +18,7 @@ export PY_VER
 DOCKER_BUILDKIT=1 docker build --progress=plain \
     --build-arg BUILDKIT_INLINE_CACHE=1 \
     --build-arg PY_VER="$PY_VER" \
+    --build-arg COMFYUI_FRONTEND_VERSION="$COMFYUI_FRONTEND_VERSION" \
     --cache-from $IMAGE_NAME:$VERSION \
     --build-arg BASE_IMAGE="$BASE_IMAGE" \
     --build-arg NODES="$NODES" \
