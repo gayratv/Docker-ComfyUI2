@@ -42,17 +42,18 @@ COPY python-prg/remove-frontend-from-requirements.py .
 
 ARG COMFYUI_FRONTEND_VERSION
 
-RUN --mount=type=cache,target=/root/pip-cache bash -euxo pipefail -c '
+RUN --mount=type=cache,target=/root/pip-cache \
+   bash -euxo pipefail <<'BASH'
   if [ "$COMFYUI_FRONTEND_VERSION" != "1" ]; then
       python3 remove-frontend-from-requirements.py
       python3 -m pip install --cache-dir=/root/pip-cache -r requirements.txt
-      python3 -m pip install --cache-dir=/root/pip-cache \
+      python3 -m pip install --cache-dir=/root/pip-cache
           comfyui-frontend-package=="$COMFYUI_FRONTEND_VERSION"
   else
       python3 -m pip install --cache-dir=/root/pip-cache -r requirements.txt
   fi
   rm -rf /root/.cache/pip
-'
+BASH
 
 COPY nodes.txt  ./
 

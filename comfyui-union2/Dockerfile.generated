@@ -36,17 +36,24 @@ RUN --mount=type=cache,target=/root/repo-cache \
     rm -rf /workspace/* && \
     git-clone-checkout.sh "https://github.com/comfyanonymous/ComfyUI" "$COMFYUI_VERSION" "/root/repo-cache"
 
+
 WORKDIR /workspace/ComfyUI
 COPY python-prg/remove-frontend-from-requirements.py .
-RUN python3 remove-frontend-from-requirements.py
 
 ARG COMFYUI_FRONTEND_VERSION
 
 RUN --mount=type=cache,target=/root/pip-cache \
-    python3 -m pip install --cache-dir=/root/pip-cache -r requirements.txt \
-    && python3 -m pip install --cache-dir=/root/pip-cache comfyui-frontend-package=="$COMFYUI_FRONTEND_VERSION" \
-    && rm -rf /root/.cache/pip
-
+   bash -euxo pipefail <<'BASH'
+  if [ "$COMFYUI_FRONTEND_VERSION" != "1" ]; then
+      python3 remove-frontend-from-requirements.py
+      python3 -m pip install --cache-dir=/root/pip-cache -r requirements.txt
+      python3 -m pip install --cache-dir=/root/pip-cache
+          comfyui-frontend-package=="$COMFYUI_FRONTEND_VERSION"
+  else
+      python3 -m pip install --cache-dir=/root/pip-cache -r requirements.txt
+  fi
+  rm -rf /root/.cache/pip
+BASH
 
 COPY nodes.txt  ./
 
@@ -201,7 +208,7 @@ RUN --mount=type=cache,target=/root/repo-cache \
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/kijai/ComfyUI-WanVideoWrapper@998a69cc0acbec503001b8b0ce0a5d5404420e1e" true \
+    process_one_repo_install_req_hash.sh "https://github.com/kijai/ComfyUI-WanVideoWrapper@de11d523487bd231fcb55f288d0dabfd1b240ca1" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
