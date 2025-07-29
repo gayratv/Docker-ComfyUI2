@@ -44,7 +44,7 @@ ARG COMFYUI_FRONTEND_VERSION
 
 RUN --mount=type=cache,target=/root/pip-cache \
     python3 -m pip install --cache-dir=/root/pip-cache -r requirements.txt \
-    python3 -m pip install --cache-dir=/root/pip-cache comfyui-frontend-package=="$COMFYUI_FRONTEND_VERSION" \
+    && python3 -m pip install --cache-dir=/root/pip-cache comfyui-frontend-package=="$COMFYUI_FRONTEND_VERSION" \
     && rm -rf /root/.cache/pip
 
 

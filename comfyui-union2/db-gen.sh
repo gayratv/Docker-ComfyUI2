@@ -10,7 +10,9 @@ python3 ./python-prg-pre-build/generate_dockerfile_v2.py --nodes "${MODELS}.txt"
 # Установить PY_VER по умолчанию, если не задана
 : "${PY_VER:=3.11}"
 export PY_VER
-: "${COMFYUI_FRONTEND_VERSION:=1.25.1}"
+
+# если COMFYUI_FRONTEND_VERSION==1 то берется встроенная версия Frontend
+: "${COMFYUI_FRONTEND_VERSION:=1}"
 
 #    --no-cache \
 #    --cache-from $IMAGE_NAME:$VERSION \
