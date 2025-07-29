@@ -1,6 +1,8 @@
-# source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
-# cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/python-prg-pre-build/
-# python3 checklist.py
+"""
+source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/python-prg-pre-build/
+python3 checklist.py
+"""
 
 import os
 import sys

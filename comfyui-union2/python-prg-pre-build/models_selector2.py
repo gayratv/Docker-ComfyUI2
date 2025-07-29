@@ -1,6 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
+
+f:
+cd F:\_prg\python\Docker-ComfyUI\comfyui-union2\python-prg-pre-build
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/python-prg-pre-build/
+python3 models_selector2.py
+
+
 Model‑Task Builder GUI — увеличенный вертикальный интервал
 ==========================================================
 

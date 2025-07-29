@@ -4,6 +4,7 @@ source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 mkdir -p ./input/"${MODELS}"
+mkdir -p ./workflows/"${MODELS}"/prompts
 
 python3 ./python-prg-pre-build/generate_dockerfile_v2.py --nodes "${MODELS}.txt"
 
