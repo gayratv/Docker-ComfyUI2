@@ -1025,7 +1025,7 @@ rsync -avh --progress /mnt/h/ComfyUI-data/models/ /mnt/d/ComfyUI-data/models/
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
-Wan Text to Image - Генерация изображений CUDA12.8 python 3.12
+Wan Text to Image - Генерация изображений CUDA12.6 python 3.11
 https://boosty.to/stabledif/posts/f5163720-321a-4e6a-ad9a-2e442ca53e3d?isFromFeed=true
 
 
@@ -1036,7 +1036,7 @@ export USE_SAGE_ATTENTION=0
 export PY_VER="3.11"
 export WORKFLOW_TO_COPY=$MODELS
 export BASE_IMAGE="cuda-12-6:nvidia-devel-cpp311"
-export ARIA2_MODEL_DIRS="${MODELS} _Wan2.1-VACE"
+export ARIA2_MODEL_DIRS="${MODELS} _Wan2.1-VACE _wan2.1"
 export VERSION="$MODELS-CUDA12.6-cpp311"
 export NODES="$MODELS.txt"
 export IMAGE_NAME="comfyui-union2"
