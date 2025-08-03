@@ -134,7 +134,7 @@ COPY ./assets-docker/wheels/ ./
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/gayratv/ComfyUI_Gayrat@10957f8dd56cc335c19be03b7f5eb79e5c21b647" true \
+    process_one_repo_install_req_hash.sh "https://github.com/gayratv/ComfyUI_Gayrat@27d25e1a31b47f6763668132bf835888c502f6d1" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
@@ -242,7 +242,7 @@ RUN --mount=type=cache,target=/root/repo-cache \
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/kijai/ComfyUI-KJNodes@a6b867b63a29ca48ddb15c589e17a9f2d8530d57" true \
+    process_one_repo_install_req_hash.sh "https://github.com/kijai/ComfyUI-KJNodes@fbdb08f9d6b0e821919d2c9f9caf8972ed439690" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
