@@ -1,0 +1,866 @@
+{
+  "id": "c225aa25-9514-4fe3-aad3-f0dc4a0a2ba6",
+  "revision": 0,
+  "last_node_id": 23,
+  "last_link_id": 76,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "SamplerSelectHelper",
+      "pos": [
+        2046.3658447265625,
+        526.6624145507812
+      ],
+      "size": [
+        333.4296875,
+        1474
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "aux_id": "gayratv/ComfyUI_Gayrat",
+        "Node name for S&R": "SamplerSelectHelper",
+        "ver": "27d25e1a31b47f6763668132bf835888c502f6d1",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 7,
+      "type": "Anything Everywhere3",
+      "pos": [
+        1655.1015625,
+        764.11767578125
+      ],
+      "size": [
+        179.97518920898438,
+        66
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "color_on": "#B39DDB",
+          "label": "MODEL",
+          "name": "anything",
+          "shape": 7,
+          "type": "*",
+          "link": 55
+        },
+        {
+          "color_on": "#FFD500",
+          "label": "CLIP",
+          "name": "anything2",
+          "shape": 7,
+          "type": "*",
+          "link": 56
+        },
+        {
+          "color_on": "#FF6E6E",
+          "label": "VAE",
+          "name": "anything3",
+          "shape": 7,
+          "type": "*",
+          "link": 57
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "cg-use-everywhere",
+        "ver": "a834f09f3889264f192711971ca624128650a250",
+        "Node name for S&R": "Anything Everywhere3",
+        "group_restricted": 0,
+        "color_restricted": 0,
+        "aux_id": "chrisgoringe/cg-use-everywhere",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 14,
+      "type": "PreviewImage",
+      "pos": [
+        3622.976318359375,
+        766.7621459960938
+      ],
+      "size": [
+        1225.0311279296875,
+        757.1040649414062
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 27
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 13,
+      "type": "VAEDecode",
+      "pos": [
+        3337.806884765625,
+        747.9031982421875
+      ],
+      "size": [
+        140,
+        46
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 66
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            25
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "Node name for S&R": "VAEDecode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 8,
+      "type": "FluxSDLatentImage",
+      "pos": [
+        2773.343994140625,
+        469.73797607421875
+      ],
+      "size": [
+        224.75,
+        238
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            65
+          ]
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "aux_id": "gayratv/ComfyUI_Gayrat",
+        "Node name for S&R": "FluxSDLatentImage",
+        "ver": "27d25e1a31b47f6763668132bf835888c502f6d1",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "SD",
+        "1:1",
+        "512x512",
+        1,
+        110250091955443,
+        "randomize"
+      ]
+    },
+    {
+      "id": 20,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        1275.385498046875,
+        756.0624389648438
+      ],
+      "size": [
+        315,
+        98
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            55
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 1,
+          "links": [
+            56
+          ]
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 2,
+          "links": [
+            57
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.48",
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "widget_ue_connectable": {},
+        "models": [
+          {
+            "name": "v1-5-pruned-emaonly-fp16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/stable-diffusion-v1-5-archive/resolve/main/v1-5-pruned-emaonly-fp16.safetensors?download=true",
+            "directory": "checkpoints"
+          }
+        ]
+      },
+      "widgets_values": [
+        "SD1.5/juggernaut_reborn.safetensors"
+      ]
+    },
+    {
+      "id": 19,
+      "type": "UnzipPrompt //Inspire",
+      "pos": [
+        2427.242919921875,
+        1242.2286376953125
+      ],
+      "size": [
+        179.94100952148438,
+        66
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "zipped_prompt",
+          "type": "ZIPPED_PROMPT",
+          "link": 44
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "STRING",
+          "links": [
+            45
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "STRING",
+          "links": null
+        },
+        {
+          "name": "name",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-inspire-pack",
+        "ver": "04223778ea4fad60a4ceb6798f063ec6cdc0e1e0",
+        "Node name for S&R": "UnzipPrompt //Inspire",
+        "aux_id": "ltdrdata/ComfyUI-Inspire-Pack",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 23,
+      "type": "CLIPTextEncode",
+      "pos": [
+        2596.823486328125,
+        1454.5460205078125
+      ],
+      "size": [
+        266.3126525878906,
+        88
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            68
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "beattefull woman"
+      ]
+    },
+    {
+      "id": 9,
+      "type": "CLIPTextEncode",
+      "pos": [
+        2648.762939453125,
+        1266.8416748046875
+      ],
+      "size": [
+        266.3126525878906,
+        88
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": null
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 45
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            64
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "beattefull woman"
+      ]
+    },
+    {
+      "id": 22,
+      "type": "SdxlSamplerParams",
+      "pos": [
+        3000.45947265625,
+        990.5462646484375
+      ],
+      "size": [
+        400,
+        288
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": null
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 64
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 68
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 65
+        },
+        {
+          "name": "loras",
+          "shape": 7,
+          "type": "LORA_PARAMS",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            66
+          ]
+        },
+        {
+          "name": "params",
+          "type": "SAMPLER_PARAMS",
+          "links": [
+            67
+          ]
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "links": null
+        }
+      ],
+      "properties": {
+        "widget_ue_connectable": {},
+        "Node name for S&R": "SdxlSamplerParams"
+      },
+      "widgets_values": [
+        "1",
+        "euler",
+        "simple",
+        "30",
+        "7.0",
+        "1.0"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "SchedulerSelectHelper",
+      "pos": [
+        2413.6259765625,
+        531.2565307617188
+      ],
+      "size": [
+        290.064453125,
+        322
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "aux_id": "gayratv/ComfyUI_Gayrat",
+        "Node name for S&R": "SchedulerSelectHelper",
+        "ver": "27d25e1a31b47f6763668132bf835888c502f6d1",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 16,
+      "type": "PlotParameters+",
+      "pos": [
+        3419.814697265625,
+        416.36614990234375
+      ],
+      "size": [
+        279.4048767089844,
+        174
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 25
+        },
+        {
+          "name": "params",
+          "type": "SAMPLER_PARAMS",
+          "link": 67
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            27
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "gayratv/ComfyUI_Gayrat",
+        "Node name for S&R": "PlotParameters+",
+        "ver": "27d25e1a31b47f6763668132bf835888c502f6d1",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "none",
+        "scheduler",
+        -1,
+        "true",
+        "true"
+      ]
+    },
+    {
+      "id": 18,
+      "type": "LoadPromptsFromFile //Inspire",
+      "pos": [
+        2409.96533203125,
+        1013.4996948242188
+      ],
+      "size": [
+        305.2925720214844,
+        170
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_data_opt",
+          "shape": 7,
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "zipped_prompt",
+          "shape": 6,
+          "type": "ZIPPED_PROMPT",
+          "links": [
+            44
+          ]
+        },
+        {
+          "name": "count",
+          "type": "INT",
+          "links": null
+        },
+        {
+          "name": "remaining_count",
+          "type": "INT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-inspire-pack",
+        "ver": "04223778ea4fad60a4ceb6798f063ec6cdc0e1e0",
+        "Node name for S&R": "LoadPromptsFromFile //Inspire",
+        "aux_id": "ltdrdata/ComfyUI-Inspire-Pack",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "example/prompt1.txt",
+        false,
+        0,
+        0
+      ]
+    }
+  ],
+  "links": [
+    [
+      25,
+      13,
+      0,
+      16,
+      0,
+      "IMAGE"
+    ],
+    [
+      27,
+      16,
+      0,
+      14,
+      0,
+      "IMAGE"
+    ],
+    [
+      44,
+      18,
+      0,
+      19,
+      0,
+      "ZIPPED_PROMPT"
+    ],
+    [
+      45,
+      19,
+      0,
+      9,
+      1,
+      "STRING"
+    ],
+    [
+      55,
+      20,
+      0,
+      7,
+      0,
+      "MODEL"
+    ],
+    [
+      56,
+      20,
+      1,
+      7,
+      1,
+      "CLIP"
+    ],
+    [
+      57,
+      20,
+      2,
+      7,
+      2,
+      "VAE"
+    ],
+    [
+      64,
+      9,
+      0,
+      22,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      65,
+      8,
+      2,
+      22,
+      3,
+      "LATENT"
+    ],
+    [
+      66,
+      22,
+      0,
+      13,
+      0,
+      "LATENT"
+    ],
+    [
+      67,
+      22,
+      1,
+      16,
+      1,
+      "SAMPLER_PARAMS"
+    ],
+    [
+      68,
+      23,
+      0,
+      22,
+      2,
+      "CONDITIONING"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Load models",
+      "bounding": [
+        1250.185302734375,
+        502.608154296875,
+        594.89111328125,
+        584.6386108398438
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7513148009015777,
+      "offset": [
+        -1159.2704041814359,
+        -434.82966222857044
+      ]
+    },
+    "ue_links": [
+      {
+        "downstream": 13,
+        "downstream_slot": 1,
+        "upstream": "20",
+        "upstream_slot": 2,
+        "controller": 7,
+        "type": "VAE"
+      },
+      {
+        "downstream": 23,
+        "downstream_slot": 0,
+        "upstream": "20",
+        "upstream_slot": 1,
+        "controller": 7,
+        "type": "CLIP"
+      },
+      {
+        "downstream": 9,
+        "downstream_slot": 0,
+        "upstream": "20",
+        "upstream_slot": 1,
+        "controller": 7,
+        "type": "CLIP"
+      },
+      {
+        "downstream": 22,
+        "downstream_slot": 0,
+        "upstream": "20",
+        "upstream_slot": 0,
+        "controller": 7,
+        "type": "MODEL"
+      }
+    ],
+    "links_added_by_ue": [
+      73,
+      74,
+      75,
+      76
+    ],
+    "frontendVersion": "1.25.4"
+  },
+  "version": 0.4
+}

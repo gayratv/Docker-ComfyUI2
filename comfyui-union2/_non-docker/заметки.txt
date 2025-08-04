@@ -582,19 +582,23 @@ export REQ_MODIFY="base-CUDA-12.6"
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 Gayrat test nodes
 
-cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
-./workflow-new-image.sh "Gayrat-node-test"
+./bash-scripts/build/comfy-versions.sh
 
+source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 export MODELS="Gayrat-node-test"
+export COMFYUI_VERSION="v0.3.48"
+export COMFYUI_FRONTEND_VERSION="1.25.4"
+export USE_SAGE_ATTENTION=0
 export WORKFLOW_TO_COPY=$MODELS
+export ARIA2_MODEL_DIRS=${MODELS}
 export VERSION="$MODELS-CUDA12.6"
 export NODES="$MODELS.txt"
 export IMAGE_NAME="comfyui-union2"
-export COMFYUI_VERSION="v0.3.40"
-export BASE_IMAGE="cuda-12-6:nvidia-runtime"
+export BASE_IMAGE="cuda-12-6:nvidia-runtime-cpp311"
 export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
-export REQ_MODIFY="base-CUDA-12.6"
+
+./db-gen.sh
 
 echo $HF_TOKEN
 echo $CIVITAI_TOKEN
@@ -905,6 +909,8 @@ NUNCHAKU2
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 ./workflow-new-image.sh "Nunchaku2"
+
+./bash-scripts/build/comfy-versions.sh
 
 source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2

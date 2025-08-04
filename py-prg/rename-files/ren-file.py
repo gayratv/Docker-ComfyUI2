@@ -5,7 +5,8 @@ cd /mnt/f/_prg/python/Docker-ComfyUI/py-prg/rename-files
 FOLDER="/mnt/d/4/Тотальный курс по картинкам в нейросетях 2.0 [Дмитрий Зверев]/3. Создание картинок в нейросети Midjourney - часть 2"
 FOLDER="/mnt/d/4/Тотальный курс по картинкам в нейросетях 2.0 [Дмитрий Зверев]/2. Создание картинок в нейросети Midjourney - часть 1"
 FOLDER="/mnt/d/4/Тотальный курс по картинкам в нейросетях 2.0 [Дмитрий Зверев]/7. Генерация картинок через ChatGPT и Sora"
-python3 ren-file.py "$FOLDER" --prefix 7
+FOLDER="/mnt/d/4/Тотальный курс по картинкам в нейросетях 2.0 [Дмитрий Зверев]/10. Playground и Lexica"
+python3 ren-file.py "$FOLDER" --prefix 10
 
 '''
 import os

@@ -1,0 +1,741 @@
+{
+  "id": "c225aa25-9514-4fe3-aad3-f0dc4a0a2ba6",
+  "revision": 0,
+  "last_node_id": 30,
+  "last_link_id": 101,
+  "nodes": [
+    {
+      "id": 14,
+      "type": "PreviewImage",
+      "pos": [
+        3622.976318359375,
+        766.7621459960938
+      ],
+      "size": [
+        1225.0311279296875,
+        757.1040649414062
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 27
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 13,
+      "type": "VAEDecode",
+      "pos": [
+        3337.806884765625,
+        747.9031982421875
+      ],
+      "size": [
+        140,
+        46
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 66
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            25
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "Node name for S&R": "VAEDecode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 16,
+      "type": "PlotParameters+",
+      "pos": [
+        3419.814697265625,
+        416.36614990234375
+      ],
+      "size": [
+        279.4048767089844,
+        174
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 25
+        },
+        {
+          "name": "params",
+          "type": "SAMPLER_PARAMS",
+          "link": 67
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            27
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "gayratv/ComfyUI_Gayrat",
+        "ver": "27d25e1a31b47f6763668132bf835888c502f6d1",
+        "Node name for S&R": "PlotParameters+",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "none",
+        "scheduler",
+        -1,
+        "true",
+        "true"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "SchedulerSelectHelper",
+      "pos": [
+        2413.6259765625,
+        531.2565307617188
+      ],
+      "size": [
+        290.064453125,
+        322
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            79
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "gayratv/ComfyUI_Gayrat",
+        "ver": "27d25e1a31b47f6763668132bf835888c502f6d1",
+        "Node name for S&R": "SchedulerSelectHelper",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 1,
+      "type": "SamplerSelectHelper",
+      "pos": [
+        2046.3658447265625,
+        526.6624145507812
+      ],
+      "size": [
+        333.4296875,
+        1474
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            80
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "gayratv/ComfyUI_Gayrat",
+        "ver": "27d25e1a31b47f6763668132bf835888c502f6d1",
+        "Node name for S&R": "SamplerSelectHelper",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 26,
+      "type": "EmptyLatentImage",
+      "pos": [
+        2839.060791015625,
+        522.1596069335938
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            85
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.48",
+        "Node name for S&R": "EmptyLatentImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        512,
+        512,
+        1
+      ]
+    },
+    {
+      "id": 24,
+      "type": "CLIPTextEncode",
+      "pos": [
+        2440.010986328125,
+        1046.9293212890625
+      ],
+      "size": [
+        422.84503173828125,
+        164.31304931640625
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            100
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.48",
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "beautiful scenery nature glass bottle landscape, , purple galaxy bottle,"
+      ]
+    },
+    {
+      "id": 25,
+      "type": "CLIPTextEncode",
+      "pos": [
+        2492.0810546875,
+        1293.11083984375
+      ],
+      "size": [
+        425.27801513671875,
+        180.6060791015625
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            101
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.48",
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "text, watermark"
+      ]
+    },
+    {
+      "id": 22,
+      "type": "SdxlSamplerParams",
+      "pos": [
+        3000.45947265625,
+        990.5462646484375
+      ],
+      "size": [
+        400,
+        308
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": null
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": null
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 85
+        },
+        {
+          "name": "loras",
+          "shape": 7,
+          "type": "LORA_PARAMS",
+          "link": null
+        },
+        {
+          "name": "sampler",
+          "type": "STRING",
+          "widget": {
+            "name": "sampler"
+          },
+          "link": 80
+        },
+        {
+          "name": "scheduler",
+          "type": "STRING",
+          "widget": {
+            "name": "scheduler"
+          },
+          "link": 79
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 100
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 101
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            66
+          ]
+        },
+        {
+          "name": "params",
+          "type": "SAMPLER_PARAMS",
+          "links": [
+            67
+          ]
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "links": null
+        }
+      ],
+      "properties": {
+        "aux_id": "gayratv/ComfyUI_Gayrat",
+        "ver": "27d25e1a31b47f6763668132bf835888c502f6d1",
+        "Node name for S&R": "SdxlSamplerParams",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "1",
+        "euler",
+        "simple",
+        "20",
+        "8",
+        "1.0"
+      ]
+    },
+    {
+      "id": 20,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        1278.2889404296875,
+        601.1823120117188
+      ],
+      "size": [
+        315,
+        98
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            55
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 1,
+          "links": [
+            56
+          ]
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 2,
+          "links": [
+            57
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.48",
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "models": [
+          {
+            "name": "v1-5-pruned-emaonly-fp16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/stable-diffusion-v1-5-archive/resolve/main/v1-5-pruned-emaonly-fp16.safetensors?download=true",
+            "directory": "checkpoints"
+          }
+        ],
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "SD1.5/juggernaut_reborn.safetensors"
+      ]
+    },
+    {
+      "id": 7,
+      "type": "Anything Everywhere3",
+      "pos": [
+        1651.2294921875,
+        620.853759765625
+      ],
+      "size": [
+        179.97518920898438,
+        66
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "color_on": "#B39DDB",
+          "label": "MODEL",
+          "name": "anything",
+          "shape": 7,
+          "type": "*",
+          "link": 55
+        },
+        {
+          "color_on": "#FFD500",
+          "label": "CLIP",
+          "name": "anything2",
+          "shape": 7,
+          "type": "*",
+          "link": 56
+        },
+        {
+          "color_on": "#FF6E6E",
+          "label": "VAE",
+          "name": "anything3",
+          "shape": 7,
+          "type": "*",
+          "link": 57
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "aux_id": "chrisgoringe/cg-use-everywhere",
+        "ver": "a834f09f3889264f192711971ca624128650a250",
+        "Node name for S&R": "Anything Everywhere3",
+        "group_restricted": 0,
+        "color_restricted": 0,
+        "cnr_id": "cg-use-everywhere",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    }
+  ],
+  "links": [
+    [
+      25,
+      13,
+      0,
+      16,
+      0,
+      "IMAGE"
+    ],
+    [
+      27,
+      16,
+      0,
+      14,
+      0,
+      "IMAGE"
+    ],
+    [
+      55,
+      20,
+      0,
+      7,
+      0,
+      "MODEL"
+    ],
+    [
+      56,
+      20,
+      1,
+      7,
+      1,
+      "CLIP"
+    ],
+    [
+      57,
+      20,
+      2,
+      7,
+      2,
+      "VAE"
+    ],
+    [
+      66,
+      22,
+      0,
+      13,
+      0,
+      "LATENT"
+    ],
+    [
+      67,
+      22,
+      1,
+      16,
+      1,
+      "SAMPLER_PARAMS"
+    ],
+    [
+      79,
+      2,
+      0,
+      22,
+      5,
+      "STRING"
+    ],
+    [
+      80,
+      1,
+      0,
+      22,
+      4,
+      "STRING"
+    ],
+    [
+      85,
+      26,
+      0,
+      22,
+      2,
+      "LATENT"
+    ],
+    [
+      100,
+      24,
+      0,
+      22,
+      6,
+      "CONDITIONING"
+    ],
+    [
+      101,
+      25,
+      0,
+      22,
+      7,
+      "CONDITIONING"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Load models",
+      "bounding": [
+        1250.185302734375,
+        502.608154296875,
+        612.3151245117188,
+        270.0386047363281
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.8264462809917354,
+      "offset": [
+        -553.6208066074618,
+        -186.0263729252091
+      ]
+    },
+    "frontendVersion": "1.25.4",
+    "ue_links": [
+      {
+        "downstream": 13,
+        "downstream_slot": 1,
+        "upstream": "20",
+        "upstream_slot": 2,
+        "controller": 7,
+        "type": "VAE"
+      },
+      {
+        "downstream": 24,
+        "downstream_slot": 0,
+        "upstream": "20",
+        "upstream_slot": 1,
+        "controller": 7,
+        "type": "CLIP"
+      },
+      {
+        "downstream": 25,
+        "downstream_slot": 0,
+        "upstream": "20",
+        "upstream_slot": 1,
+        "controller": 7,
+        "type": "CLIP"
+      },
+      {
+        "downstream": 22,
+        "downstream_slot": 0,
+        "upstream": "20",
+        "upstream_slot": 0,
+        "controller": 7,
+        "type": "MODEL"
+      }
+    ],
+    "links_added_by_ue": [
+      96,
+      97,
+      98,
+      99
+    ]
+  },
+  "version": 0.4
+}
