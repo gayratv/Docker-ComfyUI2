@@ -20,7 +20,12 @@ python3 -m pip install --cache-dir=/root/pip-cache triton==3.3.1 torch==2.7.1 to
 
 # Для карты 5090
 #python3 -m pip install --cache-dir=/root/pip-cache /workspace/wheels/sageattention_wheel/Kija/sageattention-*.whl
-python3 -m pip install --cache-dir=/root/pip-cache /workspace/wheels/sageattention_wheel/sageattention-*.whl
+
+#WORKDIR /workspace/wheels
+#COPY ./assets-docker/wheels/ ./
+
+#comfyui-union2/assets-docker/wheels/sageattention_wheel/3090/Cuda12_6/sageattention-2.2.0-cp311-cp311-linux_x86_64.whl
+python3 -m pip install --cache-dir=/root/pip-cache /workspace/wheels/sageattention_wheel/3090/Cuda12_6/sageattention-*.whl
 
 # обновим Frontend
 #python3 -m pip uninstall -y comfyui-frontend-package

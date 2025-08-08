@@ -1,0 +1,17 @@
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+./bash-scripts/build/comfy-versions.sh
+
+./db-gen.sh
+
+./dl_common.sh Gayrat-node-test
+
+
+docker cp \
+  /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/workflows/Gayrat-node-test/prompts/agxlv3.txt \
+  comfyui-union2:/workspace/ComfyUI/custom_nodes/ComfyUI-Inspire-Pack/prompts/Gayrat-node-test
+
+rsync -avh --progress /mnt/h/ComfyUI-data/models/ /mnt/d/ComfyUI-data/models/
+
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+./workflow-new-image.sh "Gayrat-inpaint"

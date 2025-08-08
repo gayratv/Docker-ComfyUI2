@@ -1,0 +1,1019 @@
+{
+  "id": "c225aa25-9514-4fe3-aad3-f0dc4a0a2ba6",
+  "revision": 0,
+  "last_node_id": 35,
+  "last_link_id": 177,
+  "nodes": [
+    {
+      "id": 14,
+      "type": "PreviewImage",
+      "pos": [
+        3622.976318359375,
+        766.7621459960938
+      ],
+      "size": [
+        1225.0311279296875,
+        757.1040649414062
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 27
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 13,
+      "type": "VAEDecode",
+      "pos": [
+        3337.806884765625,
+        747.9031982421875
+      ],
+      "size": [
+        140,
+        46
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 147
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            25
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.44",
+        "Node name for S&R": "VAEDecode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 16,
+      "type": "PlotParameters+",
+      "pos": [
+        3419.814697265625,
+        416.36614990234375
+      ],
+      "size": [
+        279.4048767089844,
+        174
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 25
+        },
+        {
+          "name": "params",
+          "type": "SAMPLER_PARAMS",
+          "link": 148
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            27
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_gayrat",
+        "ver": "27d25e1a31b47f6763668132bf835888c502f6d1",
+        "Node name for S&R": "PlotParameters+",
+        "aux_id": "gayratv/ComfyUI_Gayrat",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "none",
+        "scheduler",
+        -1,
+        "true",
+        "true"
+      ]
+    },
+    {
+      "id": 7,
+      "type": "Anything Everywhere3",
+      "pos": [
+        1651.2294921875,
+        620.853759765625
+      ],
+      "size": [
+        179.97518920898438,
+        66
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "color_on": "#B39DDB",
+          "label": "MODEL",
+          "name": "anything",
+          "shape": 7,
+          "type": "*",
+          "link": 55
+        },
+        {
+          "color_on": "#FFD500",
+          "label": "CLIP",
+          "name": "anything2",
+          "shape": 7,
+          "type": "*",
+          "link": 56
+        },
+        {
+          "color_on": "#FF6E6E",
+          "label": "VAE",
+          "name": "anything3",
+          "shape": 7,
+          "type": "*",
+          "link": 57
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "cg-use-everywhere",
+        "ver": "a834f09f3889264f192711971ca624128650a250",
+        "Node name for S&R": "Anything Everywhere3",
+        "group_restricted": 0,
+        "color_restricted": 0,
+        "aux_id": "chrisgoringe/cg-use-everywhere",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 20,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        1278.2889404296875,
+        601.1823120117188
+      ],
+      "size": [
+        315,
+        98
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            55
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 1,
+          "links": [
+            56
+          ]
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 2,
+          "links": [
+            57
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.48",
+        "Node name for S&R": "CheckpointLoaderSimple",
+        "models": [
+          {
+            "name": "v1-5-pruned-emaonly-fp16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/stable-diffusion-v1-5-archive/resolve/main/v1-5-pruned-emaonly-fp16.safetensors?download=true",
+            "directory": "checkpoints"
+          }
+        ],
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "SDXL/agxl_V3.safetensors"
+      ]
+    },
+    {
+      "id": 26,
+      "type": "EmptyLatentImage",
+      "pos": [
+        2839.060791015625,
+        522.1596069335938
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            144
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.48",
+        "Node name for S&R": "EmptyLatentImage",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ]
+    },
+    {
+      "id": 32,
+      "type": "LoadPromptsFromFile //Inspire",
+      "pos": [
+        2579.96337890625,
+        1954.1085205078125
+      ],
+      "size": [
+        305.2925720214844,
+        170
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_data_opt",
+          "shape": 7,
+          "type": "STRING",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "zipped_prompt",
+          "shape": 6,
+          "type": "ZIPPED_PROMPT",
+          "links": [
+            173
+          ]
+        },
+        {
+          "name": "count",
+          "type": "INT",
+          "links": []
+        },
+        {
+          "name": "remaining_count",
+          "type": "INT",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-inspire-pack",
+        "ver": "04223778ea4fad60a4ceb6798f063ec6cdc0e1e0",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "LoadPromptsFromFile //Inspire",
+        "aux_id": "ltdrdata/ComfyUI-Inspire-Pack"
+      },
+      "widgets_values": [
+        "example/prompt2.txt",
+        false,
+        0,
+        0
+      ]
+    },
+    {
+      "id": 33,
+      "type": "UnzipPrompt //Inspire",
+      "pos": [
+        2946.46826171875,
+        1954.09619140625
+      ],
+      "size": [
+        179.94100952148438,
+        66
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "zipped_prompt",
+          "type": "ZIPPED_PROMPT",
+          "link": 173
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "STRING",
+          "links": [
+            174
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "STRING",
+          "links": [
+            175
+          ]
+        },
+        {
+          "name": "name",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-inspire-pack",
+        "ver": "04223778ea4fad60a4ceb6798f063ec6cdc0e1e0",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "UnzipPrompt //Inspire",
+        "aux_id": "ltdrdata/ComfyUI-Inspire-Pack"
+      }
+    },
+    {
+      "id": 34,
+      "type": "ShowText|pysssss",
+      "pos": [
+        2560.700439453125,
+        1578.2218017578125
+      ],
+      "size": [
+        505.90411376953125,
+        305.75201416015625
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 174
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            176
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "aac13aa7ce35b07d43633c3bbe654a38c00d74f5",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 35,
+      "type": "ShowText|pysssss",
+      "pos": [
+        3109.1689453125,
+        1583.739501953125
+      ],
+      "size": [
+        366.5120849609375,
+        292.20001220703125
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 175
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": [
+            177
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "aac13aa7ce35b07d43633c3bbe654a38c00d74f5",
+        "widget_ue_connectable": {},
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 25,
+      "type": "CLIPTextEncode",
+      "pos": [
+        2581.13671875,
+        1114.9981689453125
+      ],
+      "size": [
+        425.27801513671875,
+        180.6060791015625
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": null
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 177
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            143
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.48",
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "bad anatomy, comics, cropped, cross-eyed, worst quality, low quality, painting, 3D render, drawing, crayon, sketch, graphite, impressionist, cartoon, anime, noisy, blurry, soft, deformed, ugly, lowres, low details, JPEG artifacts, airbrushed, semi-realistic, CGI, render, Blender, digital art, manga, amateur, mutilated, distorted\n"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 24,
+      "type": "CLIPTextEncode",
+      "pos": [
+        2572.627197265625,
+        1048.8653564453125
+      ],
+      "size": [
+        422.84503173828125,
+        164.31304931640625
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": null
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 176
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            142
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.48",
+        "Node name for S&R": "CLIPTextEncode",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "portrait photography, capturing emotion, personality, flattering lighting, professional, engaging, compelling composition, The light on the face,In a powerful,photo-realistic scene reminiscent of SR3al's art style,the subject is an ethereal Snow Queen and her fierce young owl companion,The queen,a regal figure with cold white hair and piercing blue eyes,stands proudly beside the majestic owl,which presses close to her in an intimate gesture,Both their skin glows under the icy frost light that dances around them,highlighting the queen's freckles,She is dressed in a grandiose white and blue embroidered vest adorned with intricate snow patterns,complete with a matching pendant featuring an amber gemstone at her throat,Her fierce determination and regality are evident through her intense expression,The owl,with feathers that blend radiantly between white snow and icy blue hues,exudes power and wisdom through its sharp beak and piercing eyes,The dark background subtly bends to their presence as floating snowflakes create an ethereal glow around them,A low angle camera shot captures the Snow Queen and owl in dynamic detail with a focus on texture and materials,showcasing her ornate vest and the intricacies of both queen's skin and feathers,The composition is balanced by the queen's regality juxtaposed against the owl's power,The color palette consists of cool icy tones with highlights from the amber pendant,contrasted against dark background hues that create a sense of mystery and intrigue,Post-processing effects have been applied to emphasize details in both skin textures and feathers while adding an airy quality through the floating snowflakes,The cultural context is inspired by classic fairytales,where the Snow Queen represents enchanting beauty,wisdom,and power,The owl symbolizes knowledge and insight,making their bond a powerful alliance of wisdom and grace,This image captures both the majesty of these two figures as they stand together amidst an ethereal snowy landscape that speaks to the timeless appeal of magical realms"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 1,
+      "type": "SamplerSelectHelper",
+      "pos": [
+        2046.3658447265625,
+        526.6624145507812
+      ],
+      "size": [
+        333.4296875,
+        1474
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            145
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_gayrat",
+        "ver": "27d25e1a31b47f6763668132bf835888c502f6d1",
+        "Node name for S&R": "SamplerSelectHelper",
+        "aux_id": "gayratv/ComfyUI_Gayrat",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false
+      ]
+    },
+    {
+      "id": 2,
+      "type": "SchedulerSelectHelper",
+      "pos": [
+        2413.6259765625,
+        531.2565307617188
+      ],
+      "size": [
+        290.064453125,
+        322
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            146
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_gayrat",
+        "ver": "27d25e1a31b47f6763668132bf835888c502f6d1",
+        "Node name for S&R": "SchedulerSelectHelper",
+        "aux_id": "gayratv/ComfyUI_Gayrat",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false
+      ]
+    },
+    {
+      "id": 31,
+      "type": "SdxlSamplerParams",
+      "pos": [
+        3000.45947265625,
+        990.5462646484375
+      ],
+      "size": [
+        400,
+        288
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": null
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 142
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 143
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 144
+        },
+        {
+          "name": "loras",
+          "shape": 7,
+          "type": "LORA_PARAMS",
+          "link": null
+        },
+        {
+          "name": "sampler",
+          "type": "STRING",
+          "widget": {
+            "name": "sampler"
+          },
+          "link": 145
+        },
+        {
+          "name": "scheduler",
+          "type": "STRING",
+          "widget": {
+            "name": "scheduler"
+          },
+          "link": 146
+        }
+      ],
+      "outputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            147
+          ]
+        },
+        {
+          "name": "params",
+          "type": "SAMPLER_PARAMS",
+          "links": [
+            148
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui_gayrat",
+        "ver": "b8422ecba8de6c4860257f60b102acc4bf827e20",
+        "Node name for S&R": "SdxlSamplerParams",
+        "aux_id": "gayratv/ComfyUI_Gayrat",
+        "widget_ue_connectable": {}
+      },
+      "widgets_values": [
+        "?\n",
+        "euler",
+        "simple",
+        "15",
+        "5",
+        "1.0"
+      ]
+    }
+  ],
+  "links": [
+    [
+      25,
+      13,
+      0,
+      16,
+      0,
+      "IMAGE"
+    ],
+    [
+      27,
+      16,
+      0,
+      14,
+      0,
+      "IMAGE"
+    ],
+    [
+      55,
+      20,
+      0,
+      7,
+      0,
+      "MODEL"
+    ],
+    [
+      56,
+      20,
+      1,
+      7,
+      1,
+      "CLIP"
+    ],
+    [
+      57,
+      20,
+      2,
+      7,
+      2,
+      "VAE"
+    ],
+    [
+      142,
+      24,
+      0,
+      31,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      143,
+      25,
+      0,
+      31,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      144,
+      26,
+      0,
+      31,
+      3,
+      "LATENT"
+    ],
+    [
+      145,
+      1,
+      0,
+      31,
+      5,
+      "STRING"
+    ],
+    [
+      146,
+      2,
+      0,
+      31,
+      6,
+      "STRING"
+    ],
+    [
+      147,
+      31,
+      0,
+      13,
+      0,
+      "LATENT"
+    ],
+    [
+      148,
+      31,
+      1,
+      16,
+      1,
+      "SAMPLER_PARAMS"
+    ],
+    [
+      173,
+      32,
+      0,
+      33,
+      0,
+      "ZIPPED_PROMPT"
+    ],
+    [
+      174,
+      33,
+      0,
+      34,
+      0,
+      "STRING"
+    ],
+    [
+      175,
+      33,
+      1,
+      35,
+      0,
+      "STRING"
+    ],
+    [
+      176,
+      34,
+      0,
+      24,
+      1,
+      "STRING"
+    ],
+    [
+      177,
+      35,
+      0,
+      25,
+      1,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Load models",
+      "bounding": [
+        1250.185302734375,
+        502.608154296875,
+        612.3151245117188,
+        270.0386047363281
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Load Prompts",
+      "bounding": [
+        2550.700439453125,
+        1504.621826171875,
+        934.980712890625,
+        629.486572265625
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6830134553650705,
+      "offset": [
+        -1377.6605736228291,
+        -549.8240431086066
+      ]
+    },
+    "frontendVersion": "1.25.4",
+    "ue_links": [
+      {
+        "downstream": 13,
+        "downstream_slot": 1,
+        "upstream": "20",
+        "upstream_slot": 2,
+        "controller": 7,
+        "type": "VAE"
+      },
+      {
+        "downstream": 25,
+        "downstream_slot": 0,
+        "upstream": "20",
+        "upstream_slot": 1,
+        "controller": 7,
+        "type": "CLIP"
+      },
+      {
+        "downstream": 24,
+        "downstream_slot": 0,
+        "upstream": "20",
+        "upstream_slot": 1,
+        "controller": 7,
+        "type": "CLIP"
+      },
+      {
+        "downstream": 31,
+        "downstream_slot": 0,
+        "upstream": "20",
+        "upstream_slot": 0,
+        "controller": 7,
+        "type": "MODEL"
+      }
+    ],
+    "links_added_by_ue": [
+      169,
+      170,
+      171,
+      172
+    ]
+  },
+  "version": 0.4
+}

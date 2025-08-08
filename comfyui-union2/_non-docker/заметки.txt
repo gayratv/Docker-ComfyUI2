@@ -604,6 +604,13 @@ echo $HF_TOKEN
 echo $CIVITAI_TOKEN
 ./dl_common.sh Gayrat-node-test
 
+
+docker cp \
+  /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/workflows/Gayrat-node-test/prompts/agxlv3.txt \
+  comfyui-union2:/workspace/ComfyUI/custom_nodes/ComfyUI-Inspire-Pack/prompts/Gayrat-node-test
+
+rsync -avh --progress /mnt/h/ComfyUI-data/models/ /mnt/d/ComfyUI-data/models/
+
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 Gayrat inpaint
@@ -1032,6 +1039,7 @@ rsync -avh --progress /mnt/h/ComfyUI-data/models/ /mnt/d/ComfyUI-data/models/
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
 Wan Text to Image - Генерация изображений CUDA12.6 python 3.11
+WanTI
 https://boosty.to/stabledif/posts/f5163720-321a-4e6a-ad9a-2e442ca53e3d?isFromFeed=true
 
 
@@ -1046,8 +1054,8 @@ export ARIA2_MODEL_DIRS="${MODELS} _Wan2.1-VACE _wan2.1"
 export VERSION="$MODELS-CUDA12.6-cpp311"
 export NODES="$MODELS.txt"
 export IMAGE_NAME="comfyui-union2"
-export COMFYUI_VERSION="v0.3.46"
-export COMFYUI_FRONTEND_VERSION="1.25.1"
+export COMFYUI_VERSION="v0.3.49"
+export COMFYUI_FRONTEND_VERSION="v1.25.4"
 export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
 export REQ_MODIFY="base-CUDA-12.6"
 export POST_INSTALL="$MODELS.sh"

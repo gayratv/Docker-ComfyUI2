@@ -7,6 +7,9 @@ D:\4\Нейрограф 2005 июль
 FOLDER="/mnt/d/4/Нейрограф 2005 июль"
 python3 ren-subdir.py "$FOLDER" --prefix "Нейрограф 2025-07"
 
+FOLDER="/mnt/d/4/1/ОРИГИНАЛ"
+python3 ren-subdir.py "$FOLDER" --prefix "Cursor"
+
 '''
 
 import os
