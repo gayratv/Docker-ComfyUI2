@@ -9,3 +9,16 @@ https://huggingface.co/Gayrat1968/antelopev2/resolve/main/1k3d68.onnx
 https://civitai.com/api/download/models/182532?type=Model&format=SafeTensor
     out=Storyboard_sketch.safetensors
     dir=models/loras/SDXL
+
+
+# InstantID — это новый современный метод без настройки,
+# позволяющий генерировать сохраняющие идентификаторы только с одним изображением,
+# поддерживая различные последующие задачи.
+https://huggingface.co/InstantX/InstantID/resolve/main/ip-adapter.bin
+    dir=models/instantid/SDXL
+    out=ip-adapter.bin
+
+# ControlNet-модель для InstantID
+https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/diffusion_pytorch_model.safetensors
+    dir=models/controlnet/SDXL
+    out=ControlNet-InstantID.safetensors

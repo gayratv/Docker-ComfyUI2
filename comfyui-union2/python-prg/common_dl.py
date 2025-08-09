@@ -42,6 +42,9 @@
     export CIVITAI_TOKEN="ваш_civitai_token"
     export HF_TOKEN="ваш_hf_token"
     python3 script.py input.txt
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/python-prg/download-models
+python3 common_dl.py models.txt --prefix /mnt/d/_tmp
     # Результат: civitai.txt и hf.txt + автоматическая загрузка через aria2c
 
 Параметры:
