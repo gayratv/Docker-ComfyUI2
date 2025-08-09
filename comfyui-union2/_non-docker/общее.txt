@@ -4,6 +4,7 @@ cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 ./db-gen.sh
 
 ./dl_common.sh Gayrat-node-test
+./dl_common.sh "$MODELS"
 
 
 docker cp \

@@ -995,6 +995,34 @@ python3 python-prg-pre-build/sync_dir.py "$MODELS"
 rsync -avh --progress /mnt/h/ComfyUI-data/models/ /mnt/d/ComfyUI-data/models/
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+FluxKontext CUDA 12.8
+
+https://civitai.com/models/1721725
+https://www.reddit.com/r/comfyui/comments/1llxly2/fluxkontextecom77_v1/?%24deep_link=true&correlation_id=30492ca9-7cf8-411d-8350-72a67144cceb&post_fullname=t3_1llxly2&post_index=0&ref=email_digest&ref_campaign=email_digest&ref_source=email&utm_content=post_title
+https://chatgpt.com/g/g-685da7d29b9c81919d77d244242f6313-flux-kontext-img2prompt
+
+source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+export MODELS="FluxKontext"
+export ARIA2_MODEL_DIRS="${MODELS} FluxKontext2 _flux_kontext_lora"
+export WORKFLOW_TO_COPY=$MODELS
+export VERSION="$MODELS-CUDA12.8"
+export NODES="$MODELS.txt"
+export IMAGE_NAME="comfyui-union2"
+export COMFYUI_VERSION="v0.3.49"
+export COMFYUI_FRONTEND_VERSION="v1.26.0"
+export BASE_IMAGE="cuda-12-8:nvidia-runtime-cpp311"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu128"
+export PY_VER="3.11"
+export POST_INSTALL="$MODELS.sh"
+
+./db-gen.sh
+
+
+./dl_common.sh "$MODELS"
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
 Wan Text to Image - Генерация изображений
@@ -1091,9 +1119,6 @@ export POST_INSTALL="$MODELS.sh"
 
 Empty ComfyUI CUDA 12.8
 
-cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
-./workflow-new-image.sh "ComfyZero"
-
 source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 export MODELS="ComfyZero"
@@ -1106,7 +1131,7 @@ export VERSION="$MODELS-CUDA12.8-cpp311"
 export NODES="$MODELS.txt"
 export IMAGE_NAME="comfyui-union2"
 export COMFYUI_VERSION="v0.3.49"
-export COMFYUI_FRONTEND_VERSION="1"
+export COMFYUI_FRONTEND_VERSION="v1.26.0"
 export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu128"
 
 export POST_INSTALL="$MODELS.sh"
