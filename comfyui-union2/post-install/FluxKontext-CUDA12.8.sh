@@ -4,6 +4,7 @@ set -e  # Выход при ошибке
 set -x  # Логирование всех команд
 
 #python3 -m pip install --cache-dir=/root/pip-cache pruna
+#git clone https://github.com/PrunaAI/pruna.git
 
 # NUNCHAKU
 #python3 -m pip install --cache-dir=/root/pip-cache \
@@ -17,6 +18,10 @@ if [ -d /workspace/ComfyUI/custom_nodes/comfyui_controlnet_aux/ ]; then
   ln -s /workspace/ComfyUI/models/depth-anything \
    /workspace/ComfyUI/custom_nodes/comfyui_controlnet_aux/ckpts
 fi
+
+# Блок коректировки пакетов для CUDA 12.8
+
+python3 -m pip install --upgrade --cache-dir=/root/pip-cache torch==2.8.0 torchaudio==2.8.0 torchsde==0.2.6 torchvision==0.23.0
 
 rm -rf /root/.cache/pip
 
