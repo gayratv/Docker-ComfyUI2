@@ -15,6 +15,7 @@ export PY_VER
 # если COMFYUI_FRONTEND_VERSION==1 то берется встроенная версия Frontend
 : "${COMFYUI_FRONTEND_VERSION:=1}"
 
+#--build-arg REQ_MODIFY=$REQ_MODIFY \
 #    --no-cache \
 #    --cache-from $IMAGE_NAME:$VERSION \
 #    --no-cache \
@@ -32,7 +33,6 @@ DOCKER_BUILDKIT=1 docker build --progress=plain \
     --build-arg ARIA2_MODEL_DIRS="$ARIA2_MODEL_DIRS" \
     --build-arg COMFYUI_VERSION=$COMFYUI_VERSION \
     --build-arg PYTORCH_WHEEL=$PYTORCH_WHEEL \
-    --build-arg REQ_MODIFY=$REQ_MODIFY \
     -f /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/Dockerfile.generated \
     -t $IMAGE_NAME:$VERSION \
     /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2

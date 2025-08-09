@@ -29,7 +29,7 @@ ARG COLOR_RESET='\033[0m'
 #    rm -rf /root/repo-cache/*
 #RUN exit 1
 
-
+RUN python3 -m pip install --upgrade pip
 
 # Очистка директории и клонирование ComfyUI
 RUN --mount=type=cache,target=/root/repo-cache \

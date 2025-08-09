@@ -34,14 +34,14 @@ COPY post-install/ ./post-install
 
 COPY requirements-modify/ ./requirements-modify
 
-# ========================== блок коррекции установленных пакетов
-RUN --mount=type=cache,target=/root/pip-cache \
-  python3 -m pip uninstall -y onnxruntime onnxruntime-gpu xformers \
-  && python3 -m pip install --cache-dir=/root/pip-cache onnxruntime-gpu hf_transfer
-
-RUN --mount=type=cache,target=/root/pip-cache \
-  python3 -m pip install  --cache-dir=/root/pip-cache xformers sageattention
-# ==========================
+## ========================== блок коррекции установленных пакетов
+#RUN --mount=type=cache,target=/root/pip-cache \
+#  python3 -m pip uninstall -y onnxruntime onnxruntime-gpu xformers \
+#  && python3 -m pip install --cache-dir=/root/pip-cache onnxruntime-gpu hf_transfer
+#
+#RUN --mount=type=cache,target=/root/pip-cache \
+#  python3 -m pip install  --cache-dir=/root/pip-cache xformers sageattention
+## ==========================
 
 
 
@@ -91,6 +91,8 @@ COPY workflows/$WORKFLOW_TO_COPY user/default/workflows/$WORKFLOW_TO_COPY
 
 WORKDIR /workspace/ComfyUI/custom_nodes/ComfyUI-Inspire-Pack/prompts
 COPY workflows/$WORKFLOW_TO_COPY/prompts $WORKFLOW_TO_COPY/
+# удалить если не установлен ComfyUI-Inspire-Pack
+RUN python3 /workspace/ComfyUI/gayrat_py/check_requirements_and_cleanup.py /workspace/ComfyUI/custom_nodes/ComfyUI-Inspire-Pack/
 
 
 ARG ARG_COPY_CSV=false

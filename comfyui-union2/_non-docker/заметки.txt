@@ -914,16 +914,11 @@ rsync -avh --progress /mnt/h/ComfyUI-data/models/ /mnt/d/ComfyUI-data/models/
 NUNCHAKU2
 Вариант 2025-07 для Flux Kontext
 
-cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
-./workflow-new-image.sh "Nunchaku2"
-
-./bash-scripts/build/comfy-versions.sh
-
 source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 export MODELS="Nunchaku2"
-export COMFYUI_VERSION="v0.3.48"
-export COMFYUI_FRONTEND_VERSION="1.25.4"
+export COMFYUI_VERSION="v0.3.49"
+export COMFYUI_FRONTEND_VERSION="1.26.0"
 export USE_SAGE_ATTENTION=0
 export WORKFLOW_TO_COPY=$MODELS
 export ARIA2_MODEL_DIRS="${MODELS} \
@@ -938,11 +933,11 @@ export ARIA2_MODEL_DIRS="${MODELS} \
     _ultralytics \
     _lora_flux \
     _nunchaku"
-export VERSION="$MODELS-CUDA12.6"
 export NODES="$MODELS.txt"
 export IMAGE_NAME="comfyui-union2"
-export BASE_IMAGE="cuda-12-6:nvidia-runtime-cpp311"
-export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
+export VERSION="$MODELS-CUDA12.8"
+export BASE_IMAGE="cuda-12-8:nvidia-runtime-cpp311"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu128"
 export POST_INSTALL="$MODELS.sh"
 
 ./db-gen.sh
@@ -1064,6 +1059,64 @@ export POST_INSTALL="$MODELS.sh"
 
 ->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+
+Empty ComfyUI CUDA 12.6
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+./workflow-new-image.sh "ComfyZero"
+
+source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+export MODELS="ComfyZero"
+export USE_SAGE_ATTENTION=0
+export PY_VER="3.11"
+export WORKFLOW_TO_COPY=$MODELS
+export BASE_IMAGE="cuda-12-6:nvidia-runtime-cpp311"
+export ARIA2_MODEL_DIRS="${MODELS}"
+export VERSION="$MODELS-CUDA12.6-cpp311"
+export NODES="$MODELS.txt"
+export IMAGE_NAME="comfyui-union2"
+export COMFYUI_VERSION="v0.3.48"
+export COMFYUI_FRONTEND_VERSION="1"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu126"
+export REQ_MODIFY="base-CUDA-12.6"
+
+export POST_INSTALL="$MODELS.sh"
+
+./db-gen.sh
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
+
+Empty ComfyUI CUDA 12.8
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+./workflow-new-image.sh "ComfyZero"
+
+source /mnt/f/_prg/python/Docker-ComfyUI/.venv/bin/activate
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+export MODELS="ComfyZero"
+export USE_SAGE_ATTENTION=0
+export PY_VER="3.11"
+export WORKFLOW_TO_COPY=$MODELS
+export BASE_IMAGE="cuda-12-8:nvidia-runtime-cpp311"
+export ARIA2_MODEL_DIRS="${MODELS}"
+export VERSION="$MODELS-CUDA12.8-cpp311"
+export NODES="$MODELS.txt"
+export IMAGE_NAME="comfyui-union2"
+export COMFYUI_VERSION="v0.3.49"
+export COMFYUI_FRONTEND_VERSION="1"
+export PYTORCH_WHEEL="https://download.pytorch.org/whl/cu128"
+
+export POST_INSTALL="$MODELS.sh"
+
+не нужен
+export REQ_MODIFY="base-CUDA-12.8"
+
+./db-gen.sh
+
+->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->->
 
 
 

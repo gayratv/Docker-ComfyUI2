@@ -15,3 +15,6 @@ rsync -avh --progress /mnt/h/ComfyUI-data/models/ /mnt/d/ComfyUI-data/models/
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 ./workflow-new-image.sh "Gayrat-inpaint"
+
+
+docker builder prune --all

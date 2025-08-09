@@ -1,0 +1,21 @@
+ ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+#49 118.3 torchvision 0.23.0 requires torch==2.8.0, but you have torch 2.7.1 which is incompatible.
+#49 118.3 torchaudio 2.8.0 requires torch==2.8.0, but you have torch 2.7.1 which is incompatible.
+
+напиши совместимые версии пакетов для CUDA 12.6
+torch torchvision torchaudio
+
+
+pip install torch==2.7.1 torchvision==0.22.1 torchaudio==2.7.1 --index-url https://download.pytorch.org/whl/cu126
+
+pip install torch==2.7.0 torchvision==0.22.0 torchaudio==2.7.0 --index-url https://download.pytorch.org/whl/test/cu126_full --force-reinstall
+pip install triton==3.3.0 --index-url https://download.pytorch.org/whl/test/
+
+спасибо оргу за выдачу
+все отлично, работает уже несколько месяцев
+за это время появилось несколько новых фишек, например Alepth
+
+
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+xformers 0.0.31.post1 requires torch==2.7.1, but you have torch 2.8.0 which is incompatible.
+
