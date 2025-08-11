@@ -134,13 +134,13 @@ COPY ./assets-docker/wheels/ ./
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/gayratv/ComfyUI_Gayrat@b8422ecba8de6c4860257f60b102acc4bf827e20" true \
+    process_one_repo_install_req_hash.sh "https://github.com/gayratv/ComfyUI_Gayrat@f6a3029136d7290ecd4a6bc650e2ab2af825caa8" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/chrisgoringe/cg-use-everywhere@4de266aea67c3a32ed086eede05801423dca7d8d" true \
+    process_one_repo_install_req_hash.sh "https://github.com/chrisgoringe/cg-use-everywhere@31a9fdbb2f7fdef6b305eae2fd0aa196218c71ac" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
@@ -152,7 +152,7 @@ RUN --mount=type=cache,target=/root/repo-cache \
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/pythongosssss/ComfyUI-Custom-Scripts@aac13aa7ce35b07d43633c3bbe654a38c00d74f5" true \
+    process_one_repo_install_req_hash.sh "https://github.com/pythongosssss/ComfyUI-Custom-Scripts@f2838ed5e59de4d73cde5c98354b87a8d3200190" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
@@ -326,7 +326,7 @@ RUN --mount=type=cache,target=/root/repo-cache \
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/chflame163/ComfyUI_LayerStyle_Advance@0affa0ccaca127740339ab33bf4b1bffa78d79b0" true \
+    process_one_repo_install_req_hash.sh "https://github.com/chflame163/ComfyUI_LayerStyle_Advance@5f8c6f29c484100245bc6f8ea66277f53e23cdbe" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
@@ -338,7 +338,7 @@ RUN --mount=type=cache,target=/root/repo-cache \
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/chflame163/ComfyUI_LayerStyle@677468955a3264709cb176cc4c49772853686291" true \
+    process_one_repo_install_req_hash.sh "https://github.com/chflame163/ComfyUI_LayerStyle@42ccdd8f75ab312285eaa77073a5cc20bdba484c" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
