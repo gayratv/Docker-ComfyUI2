@@ -1,0 +1,119 @@
+
+
+./db.sh
+./dp.sh
+
+./db.sh
+./dr.sh
+
+>->-> Workflow copy  >->->
+
+docker cp  comfyui-union2:/workspace/ComfyUI/user/default/workflows/ /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/_temp_save/
+
+картинки сгенерированные
+docker cp  comfyui-union2:/workspace/ComfyUI/temp/ /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/_temp_save/
+docker cp  comfyui-union2:/workspace/ComfyUI/output/ /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/_temp_save/
+
+>->->->->->->->->->->->->->->->->->->->->->->->-
+
+docker exec comfyui-union2 rm -rf /workspace/ComfyUI/custom_nodes/ComfyUI_Gayrat/Samplers/__pycache__
+
+docker cp \
+  /mnt/f/_prg/python/ComfyUI_Gayrat/Samplers/cust_samplers.py \
+  comfyui-union2:/workspace/ComfyUI/custom_nodes/ComfyUI_Gayrat/Samplers
+
+docker cp \
+  /mnt/f/_prg/python/ComfyUI_Gayrat/Samplers/old/test3.py \
+  comfyui-union2:/workspace/ComfyUI/custom_nodes/ComfyUI_Gayrat/Samplers/old
+
+docker cp \
+  comfyui-union2:/workspace/ComfyUI/custom_nodes/comfyui_controlnet_aux/config.example.yaml \
+  /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/assets-docker/config.yaml
+
+
+>->->->->->->->->->->->->->->->->->->->->->->->-
+
+HOST_PATH=/mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/
+IMAGE_NAME=comfyui-union2
+docker cp  "${HOST_PATH}.env" "$IMAGE_NAME":/workspace/aria2/templates/
+docker cp  "${HOST_PATH}tmux-s.sh" "$IMAGE_NAME":/usr/local/bin/
+
+
+docker cp "$IMAGE_NAME":/workspace/ComfyUI/requirements-common.txt ./requirements-common.txt
+docker cp  "/mnt/f/_prg/ComfyUI/схемы/ACE/ACE examples/workflow/ComfyUI-ACE_Plus/" "$IMAGE_NAME":/workspace/ComfyUI/custom_nodes/
+H:\ComfyUI\custom_nodes
+
+/workspace/ComfyUI/user/default/comfy.settings.json
+
+docker cp "$IMAGE_NAME":/workspace/ComfyUI/user/default/comfy.settings.json ./user/default/
+
+http://127.0.0.1:8188
+
+tmux-s.sh ComfyUI-Fluxtapoz.sh
+tmux-s-bash.sh
+
+>->->->->->->->->->->->->->->->->->->->->->->->-
+
+docker builder prune --all
+
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/aria2/templates
+source ../load-env.sh
+echo $CIVITAI_TOKEN
+./dl_common.sh ACE-plus-portrait /mnt/d/1/3
+
+export LOCAL_PATH=/mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/_temp_save/
+docker cp  comfyui-union2:/workspace/ComfyUI/output/ ${LOCAL_PATH}
+
+export LOCAL_PATH=/mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/_temp_save/
+docker cp  comfyui-union2:/workspace/prestartup_scripts_content.txt ${LOCAL_PATH}
+
+
+cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
+./dcp.sh
+
+export LOCAL_PATH=/mnt/f/_prg/python/ComfyUI_Gayrat/SaveImageAndMask/
+export REMOTE_PATH=/workspace/ComfyUI/custom_nodes/ComfyUI_Gayrat/SaveImageAndMask/
+docker exec comfyui-union2 rm -rf /workspace/ComfyUI/custom_nodes/ComfyUI_Gayrat/SaveImageAndMask/__pycache__
+docker cp ${LOCAL_PATH}LoadImageWithTrimOptions.py  comfyui-union2:${REMOTE_PATH}
+docker cp ${LOCAL_PATH}save_image_with_alpha.py  comfyui-union2:${REMOTE_PATH}
+
+
+docker cp /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/.env comfyui-union2:/workspace/aria2/templates/.env
+source ../load-env.sh
+echo $CIVITAI_TOKEN
+./dl_common.sh raw-comfy
+./dl_common.sh ImageResize /workspace/ComfyUI/custom_nodes/ComfyUI_LayerStyle/
+./dl_common.sh Flux_Upscale
+./dl_common.sh Flex2
+./dl_common.sh FLUX-Multi-LoRA
+
+export HOST_PATH="/mnt/d/1/ComfyUI_LayerStyle_Advance"
+docker cp "$HOST_PATH/py/gemini.py" imageresize:/workspace/ComfyUI/custom_nodes/ComfyUI_LayerStyle_Advance/py/gemini.py
+
+
+
+sudo find . -type f -name "" 2>/dev/null
+
+grep -Rni --include=requirements.txt 'thinc' .
+grep -Rni --include=requirements.txt 'torch' .
+grep -Rni --include=requirements.txt 'spacy' .
+
+find . -name requirements.txt -exec grep -ni 'thinc' {} +
+
+
+Bjornulf_custom_nodes
+
+python3 -c "import numpy as np, sys; print(np.__version__)"
+pip list | grep '^numpy'
+
+
+pip install -U "numpy>=2,<3"
+
+pip install -U "numpy==2.2.3"
+
+
+==========================
+
+cd F:\_prg\python\Docker-ComfyUI\comfyui-union2\python-prg-pre-build
+python3 models_selector2.py

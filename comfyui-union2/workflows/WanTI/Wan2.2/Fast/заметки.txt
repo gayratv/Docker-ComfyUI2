@@ -1,0 +1,43 @@
+https://www.reddit.com/r/comfyui/comments/1mlcv9w/fast_5minuteish_video_generation_workflow_for_us/
+
+```
+I never bothered to try local video AI, but after seeing all the fuss about WAN 2.2, I decided to give it a try this week, and I certainly having fun with it.
+
+I see other people with 12GB of VRAM or lower struggling with the WAN 2.2 14B model, and I notice they don't use GGUF, other model type is not fit on our VRAM as simple as that.
+
+I found that GGUF for both the model and CLIP, plus the lightning lora from Kijay, and some *unload node*, resulting a fast 5 minute generation time for 4-5 seconds video (49 length), at ~640 pixel, 5 steps in total (2+3).
+
+For your sanity, please try GGUF. Waiting that long without GGUF is not worth it, also GGUF is not that bad imho.
+
+Hardware I use:
+- RTX 3060 12GB VRAM
+- 32 GB RAM
+- AMD Ryzen 3600
+
+Link for this simple potato workflow:
+Workflow (I2V Image to Video) - Pastebin JSON:
+https://pastebin.com/WNqLtFYe
+
+Workflow (I2V Image First-Last Frame) - Pastebin JSON:
+https://pastebin.com/ykx8f5KU
+
+WAN 2.2 High GGUF Q4 - 8.5 GB \models\diffusion_models\
+https://huggingface.co/QuantStack/Wan2.2-T2V-A14B-GGUF/blob/main/HighNoise/Wan2.2-T2V-A14B-HighNoise-Q4_K_S.gguf
+
+WAN 2.2 Low GGUF Q4 - 8.3 GB \models\diffusion_models\
+https://huggingface.co/QuantStack/Wan2.2-T2V-A14B-GGUF/blob/main/LowNoise/Wan2.2-T2V-A14B-LowNoise-Q4_0.gguf
+
+UMT5 XXL CLIP GGUF Q5 - 4 GB \models\text_encoders\
+https://huggingface.co/city96/umt5-xxl-encoder-gguf/blob/main/umt5-xxl-encoder-Q5_K_M.gguf
+
+Kijai's Lightning LoRA for WAN 2.2 High - 600 MB \models\loras\
+https://huggingface.co/Kijai/WanVideo_comfy/blob/main/Wan22-Lightning/Wan2.2-Lightning_I2V-A14B-4steps-lora_HIGH_fp16.safetensors
+
+Kijai's Lightning LoRA for WAN 2.2 Low - 600 MB \models\loras\
+https://huggingface.co/Kijai/WanVideo_comfy/blob/main/Wan22-Lightning/Wan2.2-Lightning_I2V-A14B-4steps-lora_LOW_fp16.safetensors
+
+Meme images from r/MemeRestoration - LINK:
+https://www.reddit.com/r/MemeRestoration/comments/rfjhs0/hd_meme_templates_database_800_files
+```
+
+Если хочешь, могу сразу сделать готовый `.txt` файл для скачивания.

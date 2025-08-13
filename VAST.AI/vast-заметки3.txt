@@ -8,19 +8,20 @@ cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.8"
 
 ============
-export IMAGE_NAME_BASE="WanTI"
+export IMAGE_NAME_BASE="FluxKontext"
 export CUDA="CUDA12.6"
-export IMAGE_NAME="gayrat/comfyui-union2:${IMAGE_NAME_BASE}-${CUDA}-cpp311"
+export IMAGE_NAME="gayrat/comfyui-union2:${IMAGE_NAME_BASE}-${CUDA}"
 export USE_SAGE_ATTENTION=1
 echo -e "IMAGE_NAME : ${IMAGE_NAME}"
 cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.6"
 ============
 
-source vast-contract.sh 23782409 $IMAGE_NAME
+source vast-contract.sh 24600885 $IMAGE_NAME
 source ./vs.sh
 
 source tmux-s.sh $MODEL
+source tmux-s-bash.sh
 
 
 source tmux-s.sh WanTI
@@ -29,12 +30,14 @@ source tmux-s.sh WanTI
 ./dl_common.sh _wanti
 ./dl_common.sh WanTI
 
+python3 /workspace/ComfyUI/gayrat_py/common_dl.py ./models/FluxKontext/models.txt
 
 cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
 ./vast-ssh.sh
 ./vast-cp-picts.sh
 
 ssh -p 29676 root@ssh3.vast.ai -i ~/.ssh/mvps/ud_rsa
+ssh -p 36658 root@ssh5.vast.ai -i ~/.ssh/mvps/ud_rsa
 
 ====================
 export IMAGE_NAME_BASE="FluxKontext"

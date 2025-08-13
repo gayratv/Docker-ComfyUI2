@@ -51,6 +51,8 @@ cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/aria2/templates
 python3 /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/python-prg/common_dl.py ./models/FluxKontext/models.txt --prefix /mnt/d/_tmp
     # Результат: civitai.txt и hf.txt + автоматическая загрузка через aria2c
 
+python3 /workspace/ComfyUI/gayrat_py/common_dl.py ./models/FluxKontext/models.txt
+
 Параметры:
     input          (позиционный, обязателен) — путь к файлу с данными aria2
     --prefix       Префикс для dir= (по умолчанию /workspace/ComfyUI/)
