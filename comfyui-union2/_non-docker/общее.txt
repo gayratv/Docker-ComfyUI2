@@ -20,7 +20,7 @@ cd /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2
 
 docker builder prune --all
 
-
+# скопировать набор пакетов
 docker cp \
   comfyui-union2:/workspace/aria2/templates/pkg.txt \
   /mnt/f/_prg/python/Docker-ComfyUI/comfyui-union2/_non-docker/pkg.txt

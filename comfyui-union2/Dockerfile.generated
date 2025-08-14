@@ -218,7 +218,7 @@ RUN --mount=type=cache,target=/root/repo-cache \
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/1038lab/ComfyUI-RMBG@3837285fb8d9c657ae464eafcaf191eb7f197f3e" true \
+    process_one_repo_install_req_hash.sh "https://github.com/1038lab/ComfyUI-RMBG@25c07e9cf1cc7c886a631cd3cc1d4d1497be124e" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
@@ -230,7 +230,7 @@ RUN --mount=type=cache,target=/root/repo-cache \
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/ltdrdata/ComfyUI-Impact-Pack@e22f68fb97115b24ddf35d3d8801cc99fdb8af8d" true \
+    process_one_repo_install_req_hash.sh "https://github.com/ltdrdata/ComfyUI-Impact-Pack@2569e2577266787fcafda232909cc28127eb3501" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
@@ -326,7 +326,7 @@ RUN --mount=type=cache,target=/root/repo-cache \
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/chflame163/ComfyUI_LayerStyle_Advance@5f8c6f29c484100245bc6f8ea66277f53e23cdbe" true \
+    process_one_repo_install_req_hash.sh "https://github.com/chflame163/ComfyUI_LayerStyle_Advance@86db1ac8f211f105d17d0a9597b5a43ed15e8250" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
