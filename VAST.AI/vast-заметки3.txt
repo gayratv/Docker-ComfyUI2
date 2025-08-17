@@ -11,18 +11,20 @@ source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.8"
 export IMAGE_NAME_BASE="FluxKontext"
 export CUDA="CUDA12.6"
 export IMAGE_NAME="gayrat/comfyui-union2:${IMAGE_NAME_BASE}-${CUDA}"
-export USE_SAGE_ATTENTION=1
+export IMAGE_NAME="gayrat/comfyui-union2:FluxKontext-CUDA12.6-comfy-v0.3.50"
+export USE_SAGE_ATTENTION=0
 echo -e "IMAGE_NAME : ${IMAGE_NAME}"
 cd /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI
 source /mnt/f/_prg/python/Docker-ComfyUI/VAST.AI/strt.sh "${IMAGE_NAME}" "12.6"
 ============
 
-source vast-contract.sh 24600885 $IMAGE_NAME
+source vast-contract.sh 24923140 $IMAGE_NAME
 source ./vs.sh
 
 source tmux-s.sh $MODEL
 source tmux-s-bash.sh
 
+dl_model.sh ./FluxKontext/models.txt
 
 source tmux-s.sh WanTI
 

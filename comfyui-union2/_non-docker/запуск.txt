@@ -1,0 +1,18 @@
+
+https://t.me/c/2817795925/7835
+
+Gos, [13.08.2025 18:26]
+Я скачал последнюю сборку Orexа, а потом установил sage c тритоном. 3.12, 2.7.1, cu128
+
+Gos, [13.08.2025 18:28]
+set NO_ALBUMENTATIONS_UPDATE=1
+set TF_ENABLE_ONEDNN_OPTS=0
+set TORCH_FORCE_NO_WEIGHTS_ONLY_LOAD=1
+set PATH=C:\_Com\python_embeded\Scripts;C:\Python311\Lib;C:\Python311\Libs;%PATH%
+set CFLAGS=/IC:\Python312\include
+set LDFLAGS=/LIBPATH:C:\Python312\libs
+set PYTHONPATH=C:\Python312\Lib
+
+python_embeded\python.exe -s ComfyUI\main.py --windows-standalone-build --use-sage-attention --fast fp16_accumulation
+
+pause
