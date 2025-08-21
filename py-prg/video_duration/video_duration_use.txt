@@ -1,0 +1,27 @@
+export DIR_NAME="8. Создание ИИ Авиаторов в heygen"
+cd "/mnt/d/4/ИИ-Разраб 2025 [ПродСовет]/$DIR_NAME"
+rm "$DIR_NAME.mp4"
+cd /mnt/f/_prg/python/Docker-ComfyUI/py-prg/video_duration
+python video_duration.py "/mnt/d/4/ИИ-Разраб 2025 [ПродСовет]/$DIR_NAME"
+cd "/mnt/d/4/ИИ-Разраб 2025 [ПродСовет]/$DIR_NAME"
+
+
+
+
+
+./ffmpeg_filter_complex.sh
+
+./transcode_and_concat.sh
+
+./check-video.sh
+
+Этот скрипт рассчитывает общую длительность всех видеофайлов в указанной папке
+и создает текстовый файл со списком видео и их продолжительностью.
+
+Как пользоваться:
+1. Установите библиотеку moviepy:
+
+python3 -m pip install moviepy
+
+pip install --no-cache-dir --force-reinstall moviepy
+
