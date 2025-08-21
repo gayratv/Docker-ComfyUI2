@@ -1,0 +1,11 @@
+# https://www.patreon.com/posts/update-qwen-now-136699689?utm_campaign=patron_engagement&utm_source=post_link&post_id=136699689&utm_id=62c9bf32-826d-4b3a-82c0-9eba958f0052&utm_medium=email
+#
+# Теперь второй проход выполняется с моделью Wan 2.2 t2v, с низким уровнем шума.
+# Вам понадобится версия GGUF (на RTX 5090 я использую файл Q8 GGUF).
+# Вариант квантования можно найти здесь:
+# https://huggingface.co/QuantStack/Wan2.2-T2V-A14B-GGUF/tree/main/LowNoise
+#
+# Нужен только бесшумный вариант.
+#
+#
+# https://docs.comfy.org/tutorials/image/qwen/qwen-image#1-workflow-file

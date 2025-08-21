@@ -1,0 +1,23 @@
+
+https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_fp8_e4m3fn.safetensors
+    dir=models/diffusion_models
+    out=qwen_image_fp8_e4m3fn.safetensors
+
+# 16gb
+https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b.safetensors
+    dir=models/text_encoders
+    out=qwen_2.5_vl_7b.safetensors
+
+# 9gb
+# https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors
+#     dir=models/text_encoders
+
+https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors
+    dir=models/vae
+    out=qwen_image_vae.safetensors
+
+https://huggingface.co/lightx2v/Qwen-Image-Lightning/resolve/main/Qwen-Image-Lightning-8steps-V1.0.safetensors
+    dir=models/loras
+    out=Qwen-Image-Lightning-8steps-V1.0.safetensors
+
+

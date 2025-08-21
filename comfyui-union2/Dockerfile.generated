@@ -134,19 +134,13 @@ COPY ./assets-docker/wheels/ ./
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/kijai/ComfyUI-WanVideoWrapper@427e7be6c2c3a2be6563a631b0275443f69b0d94" true \
+    process_one_repo_install_req_hash.sh "https://github.com/ltdrdata/ComfyUI-Impact-Pack@2569e2577266787fcafda232909cc28127eb3501" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/kijai/ComfyUI-KJNodes@2f7300dc546ec2d36fa8b0feebe493d41026524c" true \
-    && rm -rf /root/.cache/pip
-
-RUN --mount=type=cache,target=/root/repo-cache \
-    --mount=type=cache,target=/root/pip-cache \
-    PIP_CACHE_DIR=/root/pip-cache \
-    process_one_repo_install_req_hash.sh "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite@8e4d79471bf1952154768e8435a9300077b534fa" true \
+    process_one_repo_install_req_hash.sh "https://github.com/ltdrdata/ComfyUI-Impact-Subpack@50c7b71a6a224734cc9b21963c6d1926816a97f1" true \
     && rm -rf /root/.cache/pip
 
 RUN --mount=type=cache,target=/root/repo-cache \
@@ -165,6 +159,48 @@ RUN --mount=type=cache,target=/root/repo-cache \
     --mount=type=cache,target=/root/pip-cache \
     PIP_CACHE_DIR=/root/pip-cache \
     process_one_repo_install_req_hash.sh "https://github.com/pythongosssss/ComfyUI-Custom-Scripts@f2838ed5e59de4d73cde5c98354b87a8d3200190" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/kael558/ComfyUI-GGUF-FantasyTalking@e30022604df58b5e503514be11508f4b3ff352ba" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/ClownsharkBatwing/RES4LYF@7750bf7800b6ad9d670308a09989fc0c04c40cec" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/ssitu/ComfyUI_UltimateSDUpscale@627c871f14532b164331f08d0eebfbf7404161ee" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/city96/ComfyUI-GGUF@cf0573351ac260d629d460d97f09b09ac17d3726" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/kijai/ComfyUI-WanVideoWrapper@427e7be6c2c3a2be6563a631b0275443f69b0d94" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/kijai/ComfyUI-KJNodes@2f7300dc546ec2d36fa8b0feebe493d41026524c" true \
+    && rm -rf /root/.cache/pip
+
+RUN --mount=type=cache,target=/root/repo-cache \
+    --mount=type=cache,target=/root/pip-cache \
+    PIP_CACHE_DIR=/root/pip-cache \
+    process_one_repo_install_req_hash.sh "https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite@8e4d79471bf1952154768e8435a9300077b534fa" true \
     && rm -rf /root/.cache/pip
 
 
