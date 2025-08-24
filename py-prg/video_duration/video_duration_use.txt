@@ -1,8 +1,14 @@
-export DIR_NAME="8. Создание ИИ Авиаторов в heygen"
-cd "/mnt/d/4/ИИ-Разраб 2025 [ПродСовет]/$DIR_NAME"
+export BASE_DIR="/mnt/d/4/Cursor AI [Udemy] [Грегори Джон]"
+export DIR_NAME="2 - Cursor environment setup"
+cd "$BASE_DIR/$DIR_NAME"
 rm "$DIR_NAME.mp4"
 cd /mnt/f/_prg/python/Docker-ComfyUI/py-prg/video_duration
-python video_duration.py "/mnt/d/4/ИИ-Разраб 2025 [ПродСовет]/$DIR_NAME"
+python video_duration.py "$BASE_DIR/$DIR_NAME"
+
+python video_duration.py "$BASE_DIR/$DIR_NAME" --skip-transcode
+
+
+
 cd "/mnt/d/4/ИИ-Разраб 2025 [ПродСовет]/$DIR_NAME"
 
 

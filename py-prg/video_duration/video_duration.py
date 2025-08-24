@@ -1,7 +1,8 @@
 import os
 import argparse
 import subprocess
-import shutil  # Добавлен импорт shutil
+import shutil
+import glob
 from moviepy.video.io.VideoFileClip import VideoFileClip
 
 
@@ -34,7 +35,7 @@ def get_max_resolution(folder_path, video_files):
     return max_width, max_height
 
 
-def process_videos(folder_path):
+def process_videos(folder_path, skip_transcode):
     """
     Основная функция для обработки видео.
     """
@@ -50,107 +51,135 @@ def process_videos(folder_path):
         print("В папке не найдено ни одного видеофайла. Процесс остановлен.")
         return
 
-    max_width, max_height = get_max_resolution(folder_path, video_files)
-    print(f"\nОбнаружено максимальное разрешение: {max_width}x{max_height}")
-
     transcoded_dir = os.path.join(folder_path, "_transcoded_videos")
     list_file_name = "ffmpeg_list.txt"
     output_file_name = f"{os.path.basename(os.path.normpath(folder_path))}.mp4"
 
-    if os.path.exists(transcoded_dir):
-        print("Удаление старой временной папки...")
-        shutil.rmtree(transcoded_dir)
-    os.makedirs(transcoded_dir)
-    print(f"Создана временная папка: {transcoded_dir}\n")
+    if not skip_transcode:
+        max_width, max_height = get_max_resolution(folder_path, video_files)
+        print(f"\nОбнаружено максимальное разрешение: {max_width}x{max_height}")
 
-    transcoded_files_list = []
-    total_duration_seconds = 0.0
+        if os.path.exists(transcoded_dir):
+            print("Удаление старой временной папки...")
+            shutil.rmtree(transcoded_dir)
+        os.makedirs(transcoded_dir)
+        print(f"Создана временная папка: {transcoded_dir}\n")
 
-    with open(log_file_path, 'w', encoding='utf-8') as log_file, \
-            open(youtube_log_path, 'w', encoding='utf-8') as youtube_file:
-        log_file.write("Список видео и их длительность:\n\n")
-        youtube_file.write("Таймкоды для YouTube-описания:\n\n")
+        transcoded_files_list = []
+        total_duration_seconds = 0.0
 
-    for i, filename in enumerate(video_files):
-        print(f"  \033[1;34mОбработка файла {i + 1}/{len(video_files)}:\033[0m {filename}")
+        with open(log_file_path, 'w', encoding='utf-8') as log_file, \
+                open(youtube_log_path, 'w', encoding='utf-8') as youtube_file:
+            log_file.write("Список видео и их длительность:\n\n")
+            youtube_file.write("Таймкоды для YouTube-описания:\n\n")
 
-        input_path = os.path.join(folder_path, filename)
-        output_path = os.path.join(transcoded_dir, filename)
+        for i, filename in enumerate(video_files):
+            print(f"  \033[1;34mОбработка файла {i + 1}/{len(video_files)}:\033[0m {filename}")
 
-        command = [
+            input_path = os.path.join(folder_path, filename)
+            output_path = os.path.join(transcoded_dir, filename)
+
+            command = [
+                "ffmpeg",
+                "-i", input_path,
+                "-vf",
+                f"scale={max_width}:{max_height}:force_original_aspect_ratio=decrease,pad={max_width}:{max_height}:(ow-iw)/2:(oh-ih)/2,setsar=1:1,format=yuv420p",
+                "-c:v", "h264_nvenc",
+                "-r", "30",
+                "-c:a", "aac",
+                "-b:a", "192k",
+                "-vsync", "2",
+                "-preset", "fast",
+                "-crf", "23",
+                "-stats",
+                "-y", output_path
+            ]
+
+            try:
+                subprocess.run(command, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
+
+                clip = VideoFileClip(input_path)
+                formatted_youtube_time = format_duration(total_duration_seconds)
+                with open(youtube_log_path, 'a', encoding='utf-8') as f:
+                    f.write(f"{formatted_youtube_time} {filename}\n")
+                with open(log_file_path, 'a', encoding='utf-8') as f:
+                    f.write(f"{format_duration(clip.duration)} | {filename}\n")
+                total_duration_seconds += clip.duration
+                clip.close()
+
+                transcoded_files_list.append(output_path)
+
+            except subprocess.CalledProcessError as e:
+                print(f"  \033[1;31mОшибка транскодирования файла {filename}:\033[0m")
+                print(e.output.decode())
+                return
+
+        print("\nСоздание списка для объединения...")
+        with open(os.path.join(folder_path, list_file_name), 'w', encoding='utf-8') as f:
+            for file_path in transcoded_files_list:
+                f.write(f"file '{file_path}'\n")
+
+        print("\033[1;34mОбъединение видео...\033[0m")
+        concat_command = [
             "ffmpeg",
-            "-i", input_path,
-            "-vf",
-            f"scale={max_width}:{max_height}:force_original_aspect_ratio=decrease,pad={max_width}:{max_height}:(ow-iw)/2:(oh-ih)/2,setsar=1:1,format=yuv420p",
-            "-c:v", "h264_nvenc",
-            "-r", "30",  # <--- NEW: Установлена постоянная частота кадров 30 FPS
-            "-c:a", "aac",
-            "-b:a", "192k",
+            "-f", "concat",
+            "-safe", "0",
+            "-i", os.path.join(folder_path, list_file_name),
+            "-c", "copy",
             "-vsync", "2",
-            "-preset", "fast",
-            "-crf", "23",
             "-stats",
-            "-y", output_path
+            "-y", os.path.join(folder_path, output_file_name)
         ]
 
         try:
-            subprocess.run(command, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
-
-            clip = VideoFileClip(input_path)
-            formatted_youtube_time = format_duration(total_duration_seconds)
-            with open(youtube_log_path, 'a', encoding='utf-8') as f:
-                f.write(f"{formatted_youtube_time} {filename}\n")
-            with open(log_file_path, 'a', encoding='utf-8') as f:
-                f.write(f"{format_duration(clip.duration)} | {filename}\n")
-            total_duration_seconds += clip.duration
-            clip.close()
-
-            transcoded_files_list.append(output_path)
-
+            subprocess.run(concat_command, check=True)
         except subprocess.CalledProcessError as e:
-            print(f"  \033[1;31mОшибка транскодирования файла {filename}:\033[0m")
+            print("\033[1;31mОшибка объединения файлов:\033[0m")
             print(e.output.decode())
             return
 
-    print("\nСоздание списка для объединения...")
-    with open(os.path.join(folder_path, list_file_name), 'w', encoding='utf-8') as f:
-        for file_path in transcoded_files_list:
-            f.write(f"file '{file_path}'\n")
+        print(f"\n\033[1;32mГотово! Объединенный файл '{output_file_name}' создан.\033[0m")
+        print(f"\nВременная папка '{transcoded_dir}' и файл-список '{list_file_name}' сохранены.")
+        print("Вы можете удалить их вручную, когда они больше не понадобятся.")
 
-    print("\033[1;34mОбъединение видео...\033[0m")
-    concat_command = [
-        "ffmpeg",
-        "-f", "concat",
-        "-safe", "0",
-        "-i", os.path.join(folder_path, list_file_name),
-        "-c", "copy",
-        "-vsync", "2",
-        "-stats",
-        "-y", os.path.join(folder_path, output_file_name)
-    ]
+        with open(log_file_path, 'a', encoding='utf-8') as f:
+            f.write(f"\n--- Общая длительность: {format_duration(total_duration_seconds)} ---")
 
-    try:
-        subprocess.run(concat_command, check=True)
-    except subprocess.CalledProcessError as e:
-        print("\033[1;31mОшибка объединения файлов:\033[0m")
-        print(e.output.decode())
-        return
+    else:
+        # Логика для режима --skip-transcode
+        print("\033[1;34mПерекодировка пропущена. Создание файлов отчетов...\033[0m")
+        total_duration_seconds = 0.0
 
-    print(f"\n\033[1;32mГотово! Объединенный файл '{output_file_name}' создан.\033[0m")
+        with open(log_file_path, 'w', encoding='utf-8') as log_file, \
+                open(youtube_log_path, 'w', encoding='utf-8') as youtube_file:
+            log_file.write("Список видео и их длительность:\n\n")
+            youtube_file.write("Таймкоды для YouTube-описания:\n\n")
 
-    # === ИЗМЕНЕНИЕ ===
-    # Команды удаления временной папки и файла-списка удалены.
-    # Добавлено информационное сообщение.
-    print(f"\nВременная папка '{transcoded_dir}' и файл-список '{list_file_name}' сохранены.")
-    print("Вы можете удалить их вручную, когда они больше не понадобятся.")
+        for i, filename in enumerate(video_files):
+            input_path = os.path.join(folder_path, filename)
+            try:
+                clip = VideoFileClip(input_path)
+                formatted_youtube_time = format_duration(total_duration_seconds)
+                with open(youtube_log_path, 'a', encoding='utf-8') as f:
+                    f.write(f"{formatted_youtube_time} {filename}\n")
+                with open(log_file_path, 'a', encoding='utf-8') as f:
+                    f.write(f"{format_duration(clip.duration)} | {filename}\n")
+                total_duration_seconds += clip.duration
+                clip.close()
+            except Exception as e:
+                print(f"Не удалось определить длительность для {filename}: {e}")
 
-    with open(log_file_path, 'a', encoding='utf-8') as f:
-        f.write(f"\n--- Общая длительность: {format_duration(total_duration_seconds)} ---")
+        with open(log_file_path, 'a', encoding='utf-8') as f:
+            f.write(f"\n--- Общая длительность: {format_duration(total_duration_seconds)} ---")
+
+        print(f"\n\033[1;32mГотово! Файлы отчетов созданы в папке '{folder_path}'.\033[0m")
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Рассчитывает общую длительность видео в папке и создает лог.")
     parser.add_argument("folder_path", help="Путь к папке с видео")
+    parser.add_argument("--skip-transcode", action="store_true",
+                        help="Пропустить перекодирование и сразу объединить существующие файлы.")
 
     args = parser.parse_args()
 
@@ -158,4 +187,4 @@ if __name__ == "__main__":
         print(f"Ошибка: Папка не найдена по пути '{args.folder_path}'")
     else:
         print("\033[1;34mНачинаю работу. Пожалуйста, подождите...\033[0m")
-        process_videos(args.folder_path)
+        process_videos(args.folder_path, args.skip_transcode)
