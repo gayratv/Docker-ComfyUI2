@@ -2,36 +2,36 @@
 # -*- coding: utf-8 -*-
 
 # python3 -m pip install --upgrade pillow
-
-'''
-Как использовать
-# базовый случай: все изображения из папки ./images -> output.pdf
-
+"""
 export CODE_DIR="/mnt/f/_prg/python/Docker-ComfyUI/py-prg"
 export IMG_DIR="/mnt/f/tempg/_DOWNLOADS"
-python3 "$CODE_DIR/images_to_pdf.py" "$IMG_DIR" -o output.pdf --long-height 2445
+python3 "$CODE_DIR/images_to_pdf2.py" "$IMG_DIR" -o output.pdf --long-height 2445 \
+         --auto-trim-sides --auto-trim-tol 10 --auto-trim-minrun 12 \
+         --trim-left 260 \
+         --trim-right 260
 
-# A4, портрет, поля 10 мм, вписать целиком
-python images_to_pdf.py ./images -o album.pdf --page A4 --orientation portrait --margins-mm 10 --fit fit
+260
 
-# Letter, альбомная, заполнить страницу (возможна обрезка), поля 5 мм
-python images_to_pdf.py ./images -o album.pdf --page Letter --orientation landscape --margins-mm 5 --fit fill
+Новый функционал:
+- --long-height N        — разрезать длинные изображения на слайсы высотой N
+- --trim-left N          — жёстко обрезать слева N пикселей
+- --trim-right N         — жёстко обрезать справа N пикселей
+- --auto-trim-sides      — автоматически обрезать однотонные поля слева/справа
+- --auto-trim-tol N      — допуск различий RGB (по каналу) для автообрезки (по умолчанию 8)
+- --auto-trim-minrun N   — минимальная ширина однотонной кромки, чтобы считать её полем (по умолчанию 10)
 
-# Авторазмер по первой картинке + сортировка по времени изменения
-python images_to_pdf.py ./images -o out.pdf --page Auto --sort mtime
+Примеры:
+  python images_to_pdf.py ./images -o out.pdf --long-height 2445 \
+         --auto-trim-sides --auto-trim-tol 10 --auto-trim-minrun 12
 
-# Серый цвет и ограничить первыми 300 файлами
-python images_to_pdf.py ./images -o out.pdf --grayscale --limit 300
-
-# Разрезать длинные изображения на части высотой 2445 (или своим значением)
-python images_to_pdf.py ./images -o out.pdf --long-height 2445
-'''
+  python images_to_pdf.py ./images -o out.pdf --trim-left 40 --trim-right 40
+"""
 
 import argparse
-import os
 import sys
 import time
 from pathlib import Path
+from typing import Tuple
 from PIL import Image, ImageOps
 
 # Попытка подключить HEIC/HEIF, если установлен pillow-heif
@@ -48,14 +48,16 @@ PAGE_SIZES_MM = {
     "LETTER": (216, 279),  # мм
 }
 
+
 def mm_to_px(mm, dpi):
     return int(round(mm * dpi / 25.4))
+
 
 def natural_key(s: str):
     """Естественная сортировка: file2 < file10."""
     import re
-    return [int(t) if t.isdigit() else t.lower()
-            for t in re.split(r'(\d+)', s)]
+    return [int(t) if t.isdigit() else t.lower() for t in re.split(r"(\d+)", s)]
+
 
 def collect_images(input_dir: Path, pattern: str):
     if pattern:
@@ -67,6 +69,7 @@ def collect_images(input_dir: Path, pattern: str):
                 files.append(p)
     return files
 
+
 def load_and_prepare(img_path: Path):
     img = Image.open(img_path)
     # Учитываем EXIF-поворот
@@ -74,7 +77,6 @@ def load_and_prepare(img_path: Path):
     # Приводим к RGB (убираем альфу/CMYK/P/…)
     if img.mode not in ("RGB", "L"):
         if img.mode in ("RGBA", "LA"):
-            # заливаем на белый фон
             bg = Image.new("RGB", img.size, (255, 255, 255))
             bg.paste(img, mask=img.split()[-1])
             img = bg
@@ -82,8 +84,85 @@ def load_and_prepare(img_path: Path):
             img = img.convert("RGB")
     return img
 
+
+def column_is_bg(im: Image.Image, x: int, ref: Tuple[int, int, int], tol: int) -> bool:
+    """Колонка x достаточно близка к ref по всем пикселям (RGB) в пределах tol."""
+    r_ref, g_ref, b_ref = ref
+    w, h = im.size
+    # Берём полосу в 1px шириной
+    col = im.crop((x, 0, x + 1, h)).convert("RGB").getdata()
+    for r, g, b in col:
+        if abs(r - r_ref) > tol or abs(g - g_ref) > tol or abs(b - b_ref) > tol:
+            return False
+    return True
+
+
+def sample_side_color(im: Image.Image, side: str, band: int = 3) -> Tuple[int, int, int]:
+    """Средний цвет первых/последних band колонок."""
+    w, h = im.size
+    if side == "left":
+        box = (0, 0, min(band, w), h)
+    else:
+        box = (max(0, w - band), 0, w, h)
+    region = im.crop(box).convert("RGB")
+    pixels = list(region.getdata())
+    n = len(pixels)
+    r = sum(p[0] for p in pixels) // max(1, n)
+    g = sum(p[1] for p in pixels) // max(1, n)
+    b = sum(p[2] for p in pixels) // max(1, n)
+    return (r, g, b)
+
+
+def detect_side_margins(im: Image.Image, tol: int = 8, min_run: int = 10) -> Tuple[int, int]:
+    """Возвращает (left_px, right_px) — ширины однотонных полей слева/справа."""
+    w, h = im.size
+    if w == 0:
+        return (0, 0)
+
+    left_ref = sample_side_color(im, "left")
+    right_ref = sample_side_color(im, "right")
+
+    # Скан слева
+    left = 0
+    run = 0
+    for x in range(w):
+        if column_is_bg(im, x, left_ref, tol):
+            run += 1
+        else:
+            left = run if run >= min_run else 0
+            break
+    else:
+        left = w // 2
+
+    # Скан справа
+    right = 0
+    run = 0
+    for x in range(w - 1, -1, -1):
+        if column_is_bg(im, x, right_ref, tol):
+            run += 1
+        else:
+            right = run if run >= min_run else 0
+            break
+    else:
+        right = w // 2
+
+    return (left, right)
+
+
+def apply_side_trims(im: Image.Image, manual_left: int, manual_right: int,
+                     auto: bool, tol: int, min_run: int) -> Image.Image:
+    w, h = im.size
+    left_auto, right_auto = (0, 0)
+    if auto:
+        left_auto, right_auto = detect_side_margins(im, tol=tol, min_run=min_run)
+    x0 = max(0, min(w, manual_left + left_auto))
+    x1 = max(x0 + 1, w - max(0, manual_right + right_auto))
+    if x1 <= x0:
+        return im  # защитимся от некорректной обрезки
+    return im.crop((x0, 0, x1, h))
+
+
 def split_long_image(img: Image.Image, slice_height: int):
-    """Разрезает изображение по высоте на части высотой slice_height (последняя может быть короче)."""
     parts = []
     w, h = img.size
     if h <= slice_height:
@@ -93,19 +172,14 @@ def split_long_image(img: Image.Image, slice_height: int):
         parts.append(img.crop(box))
     return parts
 
+
 def resize_to_page(image: Image.Image, page_px: tuple[int, int], margins_px: tuple[int, int, int, int], mode: str):
-    """
-    mode: "fit" — вписать целиком (с полями),
-          "fill" — заполнить страницу (возможна обрезка),
-          "none" — не менять размер, центрировать.
-    """
     pw, ph = page_px
     left, top, right, bottom = margins_px
     tw = max(1, pw - left - right)
     th = max(1, ph - top - bottom)
 
     if mode == "none":
-        # Просто разместим по центру поля
         canvas = Image.new("RGB", (pw, ph), (255, 255, 255))
         x = left + (tw - image.width) // 2
         y = top + (th - image.height) // 2
@@ -124,11 +198,9 @@ def resize_to_page(image: Image.Image, page_px: tuple[int, int], margins_px: tup
         return canvas
 
     if mode == "fill":
-        # Масштабируем, затем обрезаем по центру в окно (tw x th)
         scale = max(tw / iw, th / ih)
         nw, nh = max(1, int(iw * scale)), max(1, int(ih * scale))
         img2 = image.resize((nw, nh), Image.LANCZOS)
-        # Обрезаем до (tw x th) из центра
         cx, cy = nw // 2, nh // 2
         left_crop = max(0, cx - tw // 2)
         top_crop = max(0, cy - th // 2)
@@ -138,6 +210,7 @@ def resize_to_page(image: Image.Image, page_px: tuple[int, int], margins_px: tup
         return canvas
 
     raise ValueError("Unknown resize mode")
+
 
 def compute_page_size(args, first_image: Image.Image):
     dpi = args.dpi
@@ -153,9 +226,7 @@ def compute_page_size(args, first_image: Image.Image):
         raise ValueError("margins-mm должен быть из 1, 2 или 4 чисел")
 
     if args.page.upper() == "AUTO":
-        # Страница под размер изображения при указанном DPI + поля
         iw, ih = first_image.size
-        # Размер страницы = поля + картинка (в режиме fit она уменьшится, но база — от первой)
         pw = mm_to_px(ml + mr, dpi) + iw
         ph = mm_to_px(mt + mb, dpi) + ih
         orientation = args.orientation.upper()
@@ -182,9 +253,10 @@ def compute_page_size(args, first_image: Image.Image):
     )
     return (pw, ph), margins_px
 
+
 def main():
     parser = argparse.ArgumentParser(
-        description="Собрать PDF из изображений с возможным разрезанием длинных картинок."
+        description="Собрать PDF из изображений с разрезанием длинных и обрезкой боковых полей."
     )
     parser.add_argument("input_dir", type=str, help="Папка с изображениями")
     parser.add_argument("-o", "--output", type=str, default="output.pdf", help="Имя выходного PDF")
@@ -198,8 +270,17 @@ def main():
     parser.add_argument("--grayscale", action="store_true", help="Конвертировать страницы в градации серого")
     parser.add_argument("--limit", type=int, default=0, help="Ограничить кол-во изображений (0 — без лимита)")
 
-    # Новая опция: если высота изображения > long-height, разрезать на части высотой long-height
+    # Разрезание длинных
     parser.add_argument("--long-height", type=int, default=2445, help="Если изображение выше этого порога — будет разрезано на страницы такой высоты (по умолчанию 2445)")
+
+    # Ручная обрезка сторон
+    parser.add_argument("--trim-left", type=int, default=0, help="Жёстко обрезать слева N пикселей")
+    parser.add_argument("--trim-right", type=int, default=0, help="Жёстко обрезать справа N пикселей")
+
+    # Авто обрезка однотонных боковых полей
+    parser.add_argument("--auto-trim-sides", action="store_true", help="Автоматически обрезать однотонные поля слева/справа")
+    parser.add_argument("--auto-trim-tol", type=int, default=8, help="Толеранс (по каналу) для автообрезки (по умолчанию 8)")
+    parser.add_argument("--auto-trim-minrun", type=int, default=10, help="Мин. ширина однотонной кромки в пикселях (по умолчанию 10)")
 
     args = parser.parse_args()
 
@@ -226,8 +307,17 @@ def main():
 
     # Подготовим первую страницу, чтобы вычислить размер листа
     first = load_and_prepare(files[0])
+    # Обрезка боков (auto/manual) применяется до вычисления листа, чтобы подгонять авторазмер точнее
+    first = apply_side_trims(
+        first,
+        manual_left=args.trim_left,
+        manual_right=args.trim_right,
+        auto=args.auto_trim_sides,
+        tol=args.auto_trim_tol,
+        min_run=args.auto_trim_minrun,
+    )
+
     if args.orientation == "auto":
-        # Автоориентация по первой картинке
         args.orientation = "landscape" if first.width >= first.height else "portrait"
 
     page_px, margins_px = compute_page_size(args, first)
@@ -241,6 +331,16 @@ def main():
             img = load_and_prepare(fp)
             if args.grayscale:
                 img = img.convert("L").convert("RGB")
+
+            # Применяем обрезку боков (auto/manual)
+            img = apply_side_trims(
+                img,
+                manual_left=args.trim_left,
+                manual_right=args.trim_right,
+                auto=args.auto_trim_sides,
+                tol=args.auto_trim_tol,
+                min_run=args.auto_trim_minrun,
+            )
 
             # Если картинка длиннее порога — режем на части по высоте long-height
             parts = split_long_image(img, args.long_height) if img.height > args.long_height else [img]
@@ -261,7 +361,6 @@ def main():
     out = Path(args.output)
     out.parent.mkdir(parents=True, exist_ok=True)
 
-    # Сохраняем мультистраничный PDF
     first_page = pages[0]
     other_pages = pages[1:]
     first_page.save(
@@ -274,6 +373,7 @@ def main():
 
     dt = time.time() - start_t
     print(f"✅ Готово: {out} | страниц: {len(pages)} | заняло: {dt:.1f} c")
+
 
 if __name__ == "__main__":
     main()
